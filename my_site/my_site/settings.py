@@ -31,7 +31,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://pancrm.web.cloudcenter.ovh',
+    'https://liuba.web.cloudcenter.ovh',
 ]
 
 
