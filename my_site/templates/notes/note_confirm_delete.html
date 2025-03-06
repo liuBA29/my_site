@@ -1,0 +1,17 @@
+<!-- templates/notes_app/note_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Удалить заметку{% endblock %}
+
+{% block content %}
+    <h2>Вы уверены, что хотите удалить эту заметку?</h2>
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.content }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+
+    <a href="{% url 'note_list' %}">Отменить</a>
+{% endblock %}

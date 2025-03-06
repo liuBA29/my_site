@@ -1,0 +1,29 @@
+# docker-compose.yml
+version: "3.9"
+services:
+  web:
+    build: .
+    command: gunicorn my_site.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles  # Том для статических файлов
+    ports:
+      - "8001:8000"
+    environment:
+#      DEBUG: "0"  # В продакшене выключаем DEBUG
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles  # Том для статических файлов
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+volumes:
+  static_volume:  # Определение тома для статических файлов

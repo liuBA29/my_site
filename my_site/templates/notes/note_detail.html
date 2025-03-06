@@ -1,0 +1,11 @@
+<!-- notes_app/templates/notes/note_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ note.title }}</h1>
+  <p>{{ note.content }}</p>
+  <a href="{% url 'note_edit' pk=note.pk %}">Редактировать</a>
+  <a href="{% url 'note_delete' pk=note.pk %}">Удалить</a>
+  <br>
+  <a href="{% url 'note_list' %}">Вернуться к списку</a>
+{% endblock %}

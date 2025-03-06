@@ -1,0 +1,53 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Сайт-портфолио Любовь Ковалёва{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+</head>
+<body>
+
+    <!-- Заголовок сайта -->
+    <header>
+        <div class="container">
+            <h1><a href="{% url 'home' %}">Мой сайт</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Полезный софт</a></li>
+                    <li><a href="#">Мои проекты</a></li>
+                    <li><a href="#">Контакты</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Статус подключения к Asterisk -->
+
+
+    <!-- Основное содержимое страницы -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript для обновления статуса Asterisk -->
+    <script>
+
+    </script>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!-- templates/notes/note_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Список Заметок{% endblock %}
+
+{% block content %}
+    <h2>Все Заметки</h2>
+    <ul>
+        {% for note in notes %}
+            <li><a href="{% url 'note_detail' pk=note.pk %}">{{ note.title }}</a></li>
+        {% empty %}
+            <p>Заметок нет.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
