@@ -10,7 +10,7 @@ class Project(models.Model):
     tech_stack = models.CharField(max_length=255, verbose_name="Используемые технологии")  # Например: Django, React, PostgreSQL
     repo_link = models.URLField(blank=True, null=True, verbose_name="Ссылка на репозиторий")
     demo_link = models.URLField(blank=True, null=True, verbose_name="Ссылка на демо")
-    image = models.ImageField(upload_to="projects/", blank=True, null=True, verbose_name="Изображение проекта")
+    image = CloudinaryField('image', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
