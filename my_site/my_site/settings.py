@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'notes_app.apps.NotesAppConfig',
-
+    'main_app.apps.MainAppConfig',
     'cloudinary',
     'cloudinary_storage',
 ]
