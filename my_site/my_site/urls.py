@@ -23,7 +23,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('notes_app.urls')), # Подключаем маршруты notes_app
+    path('', include('main_app.urls')), # Подключаем маршруты main_app
+
 
 ]
 

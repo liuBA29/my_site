@@ -1,4 +1,4 @@
-
+<!-- base.html -->
 
 {% load static %}
 
@@ -15,12 +15,12 @@
     <!-- Заголовок сайта -->
     <header>
         <div class="container">
-            <h1><a href="{% url 'home' %}">Мой сайт</a></h1>
+            <p><a href="{% url 'home' %}">©LiuBA29</a></p>
             <nav>
                 <ul>
-                    <li><a href="#">Полезный софт</a></li>
-                    <li><a href="#">Мои проекты</a></li>
-                    <li><a href="#">Контакты</a></li>
+                     <li><a href="{% url 'useful_soft' %}">Полезный софт</a></li>
+                    <li><a href="{% url 'my_projects' %}">Мои проекты</a></li>
+                    <li><a href="{% url 'contact' %}">Контакты</a></li>
 
                 </ul>
             </nav>
@@ -38,7 +38,8 @@
     <!-- Подвал -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+            <p>Благодарю за то, что посетили &copy;мой сайт 2025</p>
+
         </div>
     </footer>
 

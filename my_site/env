@@ -1,0 +1,20 @@
+
+# .env
+SECRET_KEY='django-insecure-u&e-+8@e+s3)b(sfh3os88a3#q%l_fxa^sgv=9rtg%*$!9p)02'
+DEBUG=True
+
+ALLOWED_HOSTS=liuba.web.cloudcenter.ovh,127.0.0.1,localhost
+
+CLOUDINARY_CLOUD_NAME=dczzlelzw
+CLOUDINARY_API_KEY=353144417445858
+CLOUDINARY_API_SECRET=GOCrxt6jrp2J2oas7_GU7RmuePQ
+
+# Настройки базы данных (если решишь перейти на PostgreSQL)
+DB_ENGINE=django.db.backends.sqlite3
+DB_NAME=db.sqlite3
+
+
+ASTERISK_HOST=192.168.101.101
+ASTERISK_PORT=22
+ASTERISK_USERNAME=root
+ASTERISK_PASSWORD=raspberry
