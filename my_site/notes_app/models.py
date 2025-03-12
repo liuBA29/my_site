@@ -2,6 +2,17 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+class Article(models.Model):
+    title = models.CharField(max_length=55)
+    slug = models.SlugField(unique=True)
+    text=models.TextField()
+
+    def __str__(self):
+        return self.title
+    def get_absolute_url(self):
+        return reverse('notes:article_detail', kwargs={'slug': self.slug})
+
+
 class Note(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок")
     content = models.TextField(verbose_name="Содержание")

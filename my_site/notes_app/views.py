@@ -1,9 +1,16 @@
 # notes_app/views.py
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Note
+from .models import Note, Article
+
 from .forms import NoteForm
+
+
+def article_detail(request, slug):
+    article=get_object_or_404(Article,slug=slug)
+    context = {'article':article}
+    return render(request, 'notes/article_detail.html', context)
 
 
 def main_page(request):
