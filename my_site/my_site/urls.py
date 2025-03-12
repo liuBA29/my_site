@@ -7,10 +7,11 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main_app.urls')),
+    path('my', include('main_app.urls')),
 ] + i18n_patterns(
     path("i18n/", include("django.conf.urls.i18n")),
-    path('', include('notes_app.urls')),
+    path('', include('notes_app.urls', namespace='notes')),
+    prefix_default_language=False,
 )
 
 
