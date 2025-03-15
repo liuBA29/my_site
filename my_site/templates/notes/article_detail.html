@@ -1,20 +1,39 @@
 <!-- notes/article_detail.html  -->
-{% load i18n %}
+{% load i18n static%}
 
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+</head>
+<body>
+<form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}">
-    <select name="language">
+
+    <div class="language-buttons">
         {% get_current_language as LANGUAGE_CODE %}
         {% get_available_languages as LANGUAGES %}
         {% get_language_info_list for LANGUAGES as languages %}
+
         {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
+            <button
+                type="submit"
+                name="language"
+                value="{{ language.code }}"
+                class="language-button{% if language.code == LANGUAGE_CODE %} active{% endif %}">
+                {{ language.code|upper }}
+            </button>
         {% endfor %}
-    </select>
-    <input type="submit" value="Go">
+    </div>
 </form>
+
 
 <div class="card">
     <div class="img"></div>
@@ -29,3 +48,8 @@
     </p>
 
 </div>
+<script src="{% url 'javascript-catalog' %}"></script>
+<script src="{% static 'JS/main.js' %}"></script>
+<!-- http://127.0.0.1:8000/en/jsi18n/-там посмотреть функции -->
+</body>
+</html>
