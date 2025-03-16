@@ -17,14 +17,14 @@
 
             <nav>
                 <ul>
-                    <li><a href="{% url 'home' %}">
+                    <li><a href="{% url 'main_app:home' %}">
     <img src="https://res.cloudinary.com/dczzlelzw/image/upload/v1741465485/xcsdias2quuqs40gswqg.webp"
          alt="Обо мне"
          style="width: 50px; height: auto;">
 </a></li>
-                     <li><a href="{% url 'useful_soft' %}">Полезный софт</a></li>
-                    <li><a href="{% url 'my_projects' %}">Мои проекты</a></li>
-                    <li><a href="{% url 'contact' %}">Контакты</a></li>
+                     <li><a href="{% url 'main_app:useful_soft' %}">Полезный софт</a></li>
+                    <li><a href="{% url 'main_app:my_projects' %}">Мои проекты</a></li>
+                    <li><a href="{% url 'main_app:contact' %}">Контакты</a></li>
                 </ul>
             </nav>
             <button id="theme-toggle" class="theme-button">Поменять тему</button>
