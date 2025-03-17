@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-13 13:54+0300\n"
+"POT-Creation-Date: 2025-03-17 15:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,10 +40,26 @@ msgstr "слаг"
 msgid "text"
 msgstr "текст"
 
-#: .\templates\notes\article_detail.html:25
+#: .\templates\base.html:26
+msgid "Useful soft"
+msgstr "Полезный софт"
+
+#: .\templates\base.html:27
+msgid "My projects"
+msgstr "Мои проекты"
+
+#: .\templates\base.html:28
+msgid "Contacts"
+msgstr "Контакты"
+
+#: .\templates\base.html:31
+msgid "Change the theme"
+msgstr "Сменить тему"
+
+#: .\templates\notes\article_detail.html:44
 msgid "Template title"
 msgstr "Шаблон заголовка"
 
-#: .\templates\notes\article_detail.html:27
+#: .\templates\notes\article_detail.html:46
 msgid "Template text"
 msgstr "Шаблон текста"

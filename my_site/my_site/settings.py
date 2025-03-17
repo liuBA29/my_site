@@ -141,7 +141,6 @@ MODELTRANSLATION_TRANSLATION_FILES = (
 )
 
 
-
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]

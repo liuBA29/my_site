@@ -5,5 +5,13 @@
 
 {% block content %}
     <h2>мои проекты здесь</h2>
+{% for p in projects%}
+<ul>
+    <a href=""><li><h3>{{p.title}}</h3></li></a>
+    <li>{{p.description}}</li>
+
+    <hr>
+</ul>
+{% endfor %}
 
 {% endblock %}

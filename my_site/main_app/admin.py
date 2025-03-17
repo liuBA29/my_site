@@ -1,18 +1,19 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 from .models import *
 
 @admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(TranslationAdmin):
     prepopulated_fields = {'slug': ('title',)}
     # pass
 
 @admin.register(UsefulSoftware)
-class UsefulSoftwareAdmin(admin.ModelAdmin):
+class UsefulSoftwareAdmin(TranslationAdmin):
     prepopulated_fields = {'slug': ('name',)}
     # pass
 
 
 @admin.register(ContactMessage)
-class ContactMessageAdmin(admin.ModelAdmin):
+class ContactMessageAdmin(TranslationAdmin):
     pass
 

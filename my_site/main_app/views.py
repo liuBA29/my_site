@@ -4,7 +4,7 @@ from .models import *
 
 
 def main_page(request):
-    #clients = Client.objects.all().values('id', 'name', 'is_active')
+    project = Project.objects.all().values('title', 'description')
     return render(request, 'main_app/index.html')
 
 
@@ -18,8 +18,9 @@ def useful_soft_detail(request):
     return render(request, 'main_app/useful_soft_detail.html')
 
 def my_projects(request):
-    #clients = Client.objects.all().values('id', 'name', 'is_active')
-    return render(request, 'main_app/my_projects.html')
+    projects = Project.objects.all()
+    context = {'projects': projects}
+    return render(request, 'main_app/my_projects.html', context)
 
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
