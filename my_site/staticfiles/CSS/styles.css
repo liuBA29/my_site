@@ -57,6 +57,8 @@ nav ul li {
 }
 
 nav ul li a {
+    display: block;
+    width: 140px; /* Указываем размер ссылки */
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -120,6 +122,9 @@ footer {
     margin: 0;
 }
 
+
+
+
 /* Темная и светлая темы */
 .light-theme {
     --background-color: #ffffff;
@@ -162,27 +167,60 @@ footer {
 
 
 
-.theme-button:hover {
-    background-color: #FF1493;
-}
+/*------------toggle-----------*/
 
-@media (max-width: 768px) {
-    .theme-button {
-        top: 10px;
-        right: 10px;
-        transform: none;
-    }
-}
+.toggle {
+            --width: 40px;
+            --height: calc(var(--width) / 2);
+            --border-radius: calc(var(--height) / 2);
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+            top: 10vh; /* Поднимаем на 15% */
+            right: 18vh; /* Размещаем справа */
+        }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Меню в столбик */
-        gap: 10px;
-    }
+        .toggle__input {
+            display: none;
+        }
 
-    nav ul li {
-        flex: none; /* Убрать равномерное растяжение пунктов меню */
-    }
+        .toggle__fill {
+            position: absolute;
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--border-radius);
+            background: black;
+            transition: background 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill {
+            background: #FFB6C1;
+        }
+
+        .toggle__fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: var(--height);
+            width: var(--height);
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border-radius: var(--border-radius);
+            transition: transform 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill::after {
+            transform: translateX(var(--height));
+        }
+
+/*------------language----------*/
+.language-buttons {
+    position: absolute;
+    top: 2vh; /* Размещаем чуть выше бегунка */
+    right: 5vh; /* Совпадает с бегунком */
+    display: flex;
+    gap: 8px;
 }
 
 
@@ -209,6 +247,26 @@ footer {
 }
 
 
+/*------------------------*/
+
+@media (max-width: 768px) {
+    .theme-button {
+        top: 10px;
+        right: 10px;
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Меню в столбик */
+        gap: 10px;
+    }
+
+    nav ul li {
+        flex: none; /* Убрать равномерное растяжение пунктов меню */
+    }
+}
 
 
 

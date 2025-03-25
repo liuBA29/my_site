@@ -10,89 +10,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Сайт-портфолио Любовь Ковалёва{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+
 </head>
 <body class="light-theme">
-    <!-- Заголовок сайта -->
     <header>
         <div class="container">
-
             <nav>
-                <ul>
+                <ul><!-- плохо срабатывает переключение на главную страницу при нажатии на картинку. с чем связано это и как это исправить? -->
                     <li><a href="{% url 'main_app:home' %}">
-    <img src="https://res.cloudinary.com/dczzlelzw/image/upload/v1741465485/xcsdias2quuqs40gswqg.webp"
-         alt="Обо мне"
-         style="width: 50px; height: auto;">
-</a></li>
-                     <li><a href="{% url 'main_app:useful_soft' %}">{% trans 'Useful soft' %}</a></li>
+                        <img src="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png" alt="Обо мне" style="width: 100px; height: auto;">
+                    </a></li>
+                    <li><a href="{% url 'main_app:useful_soft' %}">{% trans 'Useful soft' %}</a></li>
                     <li><a href="{% url 'main_app:my_projects' %}">{% trans 'My projects' %}</a></li>
                     <li><a href="{% url 'main_app:contact' %}">{% trans 'Contacts' %}</a></li>
                 </ul>
             </nav>
-            <button id="theme-toggle" class="theme-button">{% trans 'Change theme' %}</button>
+
+            <form action="#">
+                <label class="toggle" for="themeToggle">
+                    <input class="toggle__input" type="checkbox" id="themeToggle">
+                    <span class="toggle__fill"></span>
+                </label>
+            </form>
         </div>
-<form action="{% url 'set_language' %}" method="post">
-    {% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}">
-
-    <div class="language-buttons">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-
-        {% for language in languages %}
-            <button
-                type="submit"
-                name="language"
-                value="{{ language.code }}"
-                class="language-button{% if language.code == LANGUAGE_CODE %} active{% endif %}">
-                {{ language.code|upper }}
-            </button>
-        {% endfor %}
-    </div>
-</form>
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <div class="language-buttons">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <button type="submit" name="language" value="{{ language.code }}" class="language-button{% if language.code == LANGUAGE_CODE %} active{% endif %}">
+                        {{ language.code|upper }}
+                    </button>
+                {% endfor %}
+            </div>
+        </form>
     </header>
 
-    <!-- Основное содержимое страницы -->
     <main class="container">
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Подвал -->
     <footer>
         <div class="container">
-
             <p>{% trans 'Thank you for visiting my site' %}<br> &copy;LiuBA29 2025</p>
         </div>
     </footer>
 
-    <!-- JavaScript  -->
     <script>
-    // Проверяем сохраненную тему
-    const currentTheme = localStorage.getItem('theme') || 'light-theme';
-    document.body.classList.add(currentTheme);
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light-theme';
+        document.body.classList.add(currentTheme);
+        themeToggle.checked = currentTheme === 'dark-theme';
 
-    // Получаем кнопку для переключения темы
-    const themeToggle = document.getElementById('theme-toggle');
-
-    // Обработчик события для переключения темы
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            // Переключаем между темами
-            const newTheme = document.body.classList.contains('light-theme') ? 'dark-theme' : 'light-theme';
+        themeToggle.addEventListener('change', () => {
+            const newTheme = themeToggle.checked ? 'dark-theme' : 'light-theme';
             document.body.classList.remove('light-theme', 'dark-theme');
             document.body.classList.add(newTheme);
-
-            // Сохраняем выбранную тему в localStorage
             localStorage.setItem('theme', newTheme);
         });
-        }
-
-
-</script>
-
-
+    </script>
 
     {% block extra_js %}{% endblock %}
-
 </body>
 </html>
