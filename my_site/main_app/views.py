@@ -9,13 +9,16 @@ def main_page(request):
 
 
 def useful_soft(request):
-    context = {}
-    #clients = Client.objects.all().values('id', 'name', 'is_active')
+    soft = UsefulSoftware.objects.all()
+    context = {'soft': soft}
+
     return render(request, 'main_app/useful_soft.html', context)
 
-def useful_soft_detail(request):
-    #clients = Client.objects.all().values('id', 'name', 'is_active')
-    return render(request, 'main_app/useful_soft_detail.html')
+def useful_soft_detail(request, slug):
+    soft = get_object_or_404(UsefulSoftware, slug=slug)
+    context = {'soft': soft}
+
+    return render(request, 'main_app/useful_soft_detail.html', context)
 
 def my_projects(request):
     projects = Project.objects.all()

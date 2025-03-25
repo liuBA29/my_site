@@ -1,0 +1,10 @@
+<!-- templates/main_app/useful_soft_detail.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{soft.title}}{% endblock %}
+
+{% block content %}
+<h2>{{soft.name}}</h2>
+    <p>{{soft.description}}</p>
+
+{% endblock %}

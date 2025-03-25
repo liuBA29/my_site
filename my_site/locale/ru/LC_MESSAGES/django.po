@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 15:28+0300\n"
+"POT-Creation-Date: 2025-03-18 16:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,11 +40,13 @@ msgstr "слаг"
 msgid "text"
 msgstr "текст"
 
-#: .\templates\base.html:26
+#: .\templates\base.html:26 .\templates\main_app\useful_soft.html:4
+#: .\templates\main_app\useful_soft.html:7
 msgid "Useful soft"
 msgstr "Полезный софт"
 
-#: .\templates\base.html:27
+#: .\templates\base.html:27 .\templates\main_app\my_projects.html:4
+#: .\templates\main_app\my_projects.html:7
 msgid "My projects"
 msgstr "Мои проекты"
 
@@ -53,8 +55,84 @@ msgid "Contacts"
 msgstr "Контакты"
 
 #: .\templates\base.html:31
-msgid "Change the theme"
+msgid "Change theme"
 msgstr "Сменить тему"
+
+#: .\templates\base.html:64
+msgid "Thank you for visiting my site"
+msgstr "Благодарю, что посетили мой сайт"
+
+#: .\templates\main_app\contact.html:8
+msgid "My contacts"
+msgstr "Контакты"
+
+#: .\templates\main_app\index.html:24
+msgid "Hello! My name is Lyubov Kovaleva"
+msgstr "Привет! Меня зовут Любовь Ковалёва"
+
+#: .\templates\main_app\index.html:26
+msgid ""
+"\n"
+"    I am passionate about programming in Python, Django, JS, and Bash.<br>\n"
+"    I develop small programs and scripts for business process automation\n"
+"    for small businesses and personal use.<br>\n"
+"    I can help you create a small website tailored to your needs,\n"
+"    developed with SEO optimization in mind. If necessary, I can also\n"
+"    manage the website, update content, and ensure security support.<br>\n"
+"    "
+msgstr ""
+"\n"
+"      Я увлекаюсь программированием на Python, Django, JS, Bash.<br>\n"
+"      Я пишу небольшие программы, скрипты для автоматизации процессов\n"
+"      малого бизнеса и для частного использования.<br>\n"
+"      Помогу в написании небольшого сайта под Ваши цели, который будет "
+"разработан,\n"
+"      с учетом SEO-оптимизации. При необходимости займусь его "
+"администрированием,\n"
+"      обновлением контента, поддержке безопасности.<br>\n"
+"    "
+
+#: .\templates\main_app\index.html:35
+msgid ""
+"\n"
+"    I invite you to check out some of\n"
+"    "
+msgstr ""
+"\n"
+"    Предлагаю Вам посмотреть некоторые мои работы\n"
+"    "
+
+#: .\templates\main_app\index.html:38
+#, fuzzy
+#| msgid "My projects"
+msgid "my projects"
+msgstr "Мои проекты"
+
+#: .\templates\main_app\index.html:39
+msgid ""
+"\n"
+"    you might find something\n"
+"    "
+msgstr ""
+"\n"
+"    может быть Вы найдете что-то\n"
+"    "
+
+#: .\templates\main_app\index.html:42
+msgid "useful for yourself"
+msgstr "полезным для себя"
+
+#: .\templates\main_app\index.html:44
+msgid ""
+"\n"
+"    I am open to collaboration and job offers.\n"
+"    Feel free to contact me!\n"
+"    "
+msgstr ""
+"\n"
+"    Я открыта для сотрудничества и предложений по работе.\n"
+"    Обращайтесь!\n"
+"    "
 
 #: .\templates\notes\article_detail.html:44
 msgid "Template title"

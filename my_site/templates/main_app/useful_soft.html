@@ -1,14 +1,16 @@
 <!-- templates/main_app/useful_soft.html -->
 {% extends 'base.html' %}
-
-{% block title %}Полезный софт{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Useful soft' %}{% endblock %}
 
 {% block content %}
-    <h2>Полезный софт</h2>
-    <h3> для йога студий </h3>
-    <p>что-то здесь</p>
+    <h2>{% trans 'Useful soft' %}</h2>
+{% for s in soft%}
+<ul>
+    <a href="{% url 'main_app:useful_soft_detail' s.slug %}"><li><h3>{{s.name}}</h3></li></a>
+    <li>{{s.description}}</li>
 
-
-
-    <a href="№">ппп</a>
+    <br>
+</ul>
+{% endfor %}
 {% endblock %}

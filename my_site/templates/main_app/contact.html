@@ -1,9 +1,10 @@
 <!-- templates/main_app/contacts.html -->
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}контакты{% endblock %}
 
 {% block content %}
-    <h2>контакты Любовь Ковалёва</h2>
+
+    <h2> {% trans "My contacts" %} </h2>
 
 {% endblock %}

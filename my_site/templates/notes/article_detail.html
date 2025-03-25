@@ -11,8 +11,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+
+    <style>
+        .toggle {
+            --width:40px;
+            --height: calc(var(--width) / 2);
+            --border-radius: calc(var(--height) / 2);
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .toggle__input {
+            display: none;
+        }
+
+        .toggle__fill {
+            position: absolute;
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--border-radius);
+            background: #FFB6C1;
+            transition: background 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill {
+          background: black;
+        }
+
+        .toggle__fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: var(--height);
+            width: var(--height);
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border-radius: var(--border-radius);
+            transition: transform 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill::after{
+          transform: translateX(var(--height));
+        }
+
+    </style>
+
 </head>
 <body>
+
+
+
+
 <form action="{% url 'set_language' %}" method="post">
     {% csrf_token %}
     <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -34,6 +84,17 @@
     </div>
 </form>
 
+<br><br>
+<form action="./my-action">
+    <label class="toggle" for="myToggle">
+    <input class="toggle__input"  type="checkbox" name="" id="myToggle">
+    <span class="toggle__fill"></span>
+</label>
+
+</form>
+
+
+<br><br>
 
 <div class="card">
     <div class="img"></div>

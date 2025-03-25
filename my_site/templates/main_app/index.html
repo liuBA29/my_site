@@ -1,13 +1,15 @@
 <!-- templates/main_app/index.html -->
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}Сайт-портфолио web-разработчика Любовь Ковалева{% endblock %}
 
 {% block content %}
+
+<!--
     <h2>Привет! Меня зовут Любовь Ковалёва </h2>
-    <p>Я увлекаюсь программированием на Python, Django, JS, Bash.
-        <br>Я<!--
-        создала и веду проект telecommunications.by,--> пишу небольшие программы, скрипты для автоматизации процессов
+    <p> Я увлекаюсь программированием на Python, Django, JS, Bash.
+        <br>Я пишу небольшие программы, скрипты для автоматизации процессов
         малого бизнеса и для частного использования.
         <br>Помогу в написании небольшого сайта под Ваши цели, который будет разработан
         с учетом SEO-оптимизации. При необходимости займусь его администрированием,
@@ -18,5 +20,33 @@
         <br>Я открыта для сотрудничества и предложений по работе.
 Обращайтесь!
         <br>
-    </p>
+    </p>-->
+<h2>{% trans "Hello! My name is Lyubov Kovaleva" %}</h2>
+<p>
+    {% blocktrans %}
+    I am passionate about programming in Python, Django, JS, and Bash.<br>
+    I develop small programs and scripts for business process automation
+    for small businesses and personal use.<br>
+    I can help you create a small website tailored to your needs,
+    developed with SEO optimization in mind. If necessary, I can also
+    manage the website, update content, and ensure security support.<br>
+    {% endblocktrans %}
+
+    {% blocktrans %}
+    I invite you to check out some of
+    {% endblocktrans %}
+    <a href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a> —
+    {% blocktrans %}
+    you might find something
+    {% endblocktrans %}
+    <a href="{% url 'main_app:useful_soft' %}">{% trans "useful for yourself" %}</a>.
+
+    {% blocktrans %}
+    I am open to collaboration and job offers.
+    Feel free to contact me!
+    {% endblocktrans %}
+</p>
+
+
+
 {% endblock %}
