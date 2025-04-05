@@ -1,16 +1,25 @@
-<!-- templates/main_app/useful_soft.html -->
+<!-- templates/main_app/useful_soft_detail.html -->
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}{% trans 'Useful soft' %}{% endblock %}
 
 {% block content %}
     <h2>{% trans 'Useful soft' %}</h2>
-{% for s in soft%}
-<ul>
-    <a href="{% url 'main_app:useful_soft_detail' s.slug %}"><li><h3>{{s.name}}</h3></li></a>
-    <li>{{s.description}}</li>
+<div class="list-elements">
+    {% for s in soft %}
+        <ul class="soft-item">
+            <a href="{% url 'main_app:useful_soft_detail' s.slug %}">
+                <h3>{{ s.name }}</h3>
 
-    <br>
-</ul>
-{% endfor %}
+            {% if s.image %}
+                <li><img src="{{ s.image.url }}" alt="{{ s.name }}" /></li>
+            {% else %}
+                <li>{% trans "No image available" %}</li>
+            {% endif %}
+            <li>{{ s.description }}</li>
+            <li>{{ s.download_link }}</li>
+            </a>
+        </ul>
+    {% endfor %}
+</div>
 {% endblock %}

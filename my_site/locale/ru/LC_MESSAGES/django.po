@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-18 16:27+0300\n"
+"POT-Creation-Date: 2025-04-05 23:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,25 +40,20 @@ msgstr "слаг"
 msgid "text"
 msgstr "текст"
 
-#: .\templates\base.html:26 .\templates\main_app\useful_soft.html:4
+#: .\templates\base.html:23 .\templates\main_app\useful_soft.html:4
 #: .\templates\main_app\useful_soft.html:7
 msgid "Useful soft"
 msgstr "Полезный софт"
 
-#: .\templates\base.html:27 .\templates\main_app\my_projects.html:4
-#: .\templates\main_app\my_projects.html:7
+#: .\templates\base.html:24
 msgid "My projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:28
+#: .\templates\base.html:25
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\templates\base.html:31
-msgid "Change theme"
-msgstr "Сменить тему"
-
-#: .\templates\base.html:64
+#: .\templates\base.html:58
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
@@ -134,10 +129,24 @@ msgstr ""
 "    Обращайтесь!\n"
 "    "
 
-#: .\templates\notes\article_detail.html:44
+#: .\templates\main_app\my_projects.html:8
+
+#| msgid "My projects"
+msgid "My Projects"
+msgstr "Мои проекты"
+
+#: .\templates\main_app\my_projects.html:18
+#: .\templates\main_app\useful_soft.html:17
+msgid "No image available"
+msgstr "Изображение отсутствует"
+
+#: .\templates\notes\article_detail.html:105
 msgid "Template title"
 msgstr "Шаблон заголовка"
 
-#: .\templates\notes\article_detail.html:46
+#: .\templates\notes\article_detail.html:107
 msgid "Template text"
 msgstr "Шаблон текста"
+
+#~ msgid "Change theme"
+#~ msgstr "Сменить тему"
