@@ -10,9 +10,10 @@ __pycache__/
 # Virtual Environment
 venv/
 .env
+env
 
 # Django Static and Media Files
-/static/
+
 .media/
 
 # Logs
