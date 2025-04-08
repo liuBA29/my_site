@@ -1,3 +1,5 @@
+# main_app/models.py
+
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
@@ -32,7 +34,7 @@ class UsefulSoftware(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('')
+        return reverse('main_app:useful_soft_detail', kwargs={'slug':self.slug})
 
 
 

@@ -339,6 +339,21 @@ footer {
 
 }
 
+/* downolads styles */
+a.btn {
+    display: inline-block;
+    background-color: #FF00;
+    color: #FF69B4;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+a.btn:hover {
+    background-color: #FFB6C1;
+}
+
 
 
 

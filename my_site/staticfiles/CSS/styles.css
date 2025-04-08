@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     max-width: 1200px;
 }
@@ -18,11 +18,12 @@ body {
 header {
     background: #FFB6C1;
     color: #fff;
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: -10px;
 }
 
 header .nav-container {
@@ -58,15 +59,17 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    width: 140px; /* Указываем размер ссылки */
+    width: 120px; /* Указываем размер ссылки */
     color: white;
+    white-space: nowrap;
+    font-size: 19px;
     text-decoration: none;
     font-weight: bold;
     transition: transform 0.2s ease-in-out;
 }
 
 nav ul li a:hover {
-    transform: scale(1.1);
+    transform: scale(1.3);
     text-decoration: underline;
 }
 
@@ -129,6 +132,18 @@ footer {
 .light-theme {
     --background-color: #ffffff;
     --text-color: #000000;
+
+}
+
+.light-theme h3{
+    color: #FFB6C1;
+
+}
+
+
+.dark-theme h3{
+    color: white;
+
 }
 
 .dark-theme {
@@ -149,6 +164,8 @@ footer {
 .dark-theme a {
     color: #ffffff;
 }
+
+
 
 .theme-button {
     position: absolute;
@@ -176,7 +193,7 @@ footer {
             display: inline-block;
             cursor: pointer;
             position: absolute;
-            top: 10vh; /* Поднимаем на 15% */
+            top: 12vh; /* Поднимаем на 15% */
             right: 18vh; /* Размещаем справа */
         }
 
@@ -268,6 +285,74 @@ footer {
     }
 }
 
+
+/*  list-elements */Убираем маркеры (точки) у списка */
+.list-elements ul {
+    list-style-type: none;
+    padding-left: 0;
+
+}
+
+
+
+.list-elements ul li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #8F8F8F;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+
+
+/* Стили для изображений */
+.list-elements ul li img {
+    width: 150px;  /* Уменьшаем изображение */
+    height: 150px;
+    border-radius: 5px;
+    object-fit: cover; /* Сохраняем пропорции картинки */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для "Нет изображения" */
+.list-elements ul li:empty {
+    color: #FF6347; /* Цвет для отсутствующих изображений */
+}
+
+/* Стиль ссылки в li */
+.list-elements ul li a {
+    color: #FF69B4;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.list-elements a {
+
+    text-decoration: none;
+
+}
+
+.list-elements ul li a:hover {
+    color: #D16B8A;
+
+}
+
+/* downolads styles */
+a.btn {
+    display: inline-block;
+    background-color: #FF00;
+    color: #FF69B4;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+a.btn:hover {
+    background-color: #FFB6C1;
+}
 
 
 
