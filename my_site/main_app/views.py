@@ -38,3 +38,4 @@ def project_detail(request, slug):
 def contact(request):
     #clients = Client.objects.all().values('id', 'name', 'is_active')
     return render(request, 'main_app/contact.html')
+

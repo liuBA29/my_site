@@ -31,9 +31,18 @@
             <div class="downloads">
                 <h3>{% trans "Download Options" %}:</h3>
 
-                <a href="{% static 'downloads/mantra-player-installer.zip' %}" download class="btn btn-primary">
-    {% trans "Download installer" %}
-</a>
+                {% if soft.download_ru %}
+
+                    <a href="{{ soft.download_ru.url }}" download class="btn btn-primary">
+                        🇷🇺 {% trans "Download Russian version" %}
+                    </a>
+                {% endif %}
+
+                {% if soft.download_en %}
+                    <a href="{{ soft.download_en.url }}" download class="btn btn-primary">
+                        🇬🇧 {% trans "Download English version" %}
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

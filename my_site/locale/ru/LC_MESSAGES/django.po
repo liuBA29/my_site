@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-05 23:03+0300\n"
+"POT-Creation-Date: 2025-04-09 18:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,8 +130,6 @@ msgstr ""
 "    "
 
 #: .\templates\main_app\my_projects.html:8
-
-#| msgid "My projects"
 msgid "My Projects"
 msgstr "Мои проекты"
 
@@ -139,6 +137,37 @@ msgstr "Мои проекты"
 #: .\templates\main_app\useful_soft.html:17
 msgid "No image available"
 msgstr "Изображение отсутствует"
+
+#: .\templates\main_app\test_useful.html:16
+#: .\templates\main_app\useful_soft_detail.html:17
+msgid "No Image"
+msgstr ""
+
+#: .\templates\main_app\test_useful.html:24
+#: .\templates\main_app\useful_soft_detail.html:25
+msgid "Version"
+msgstr ""
+
+#: .\templates\main_app\test_useful.html:28
+#: .\templates\main_app\useful_soft_detail.html:29
+msgid "Author"
+msgstr ""
+
+#: .\templates\main_app\test_useful.html:32
+msgid "Download Options"
+msgstr ""
+
+#: .\templates\main_app\test_useful.html:37
+msgid "Download Russian version"
+msgstr ""
+
+#: .\templates\main_app\test_useful.html:43
+msgid "Download English version"
+msgstr ""
+
+#: .\templates\main_app\useful_soft_detail.html:36
+msgid "Download installer"
+msgstr ""
 
 #: .\templates\notes\article_detail.html:105
 msgid "Template title"
