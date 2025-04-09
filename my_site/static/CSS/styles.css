@@ -285,59 +285,140 @@ footer {
     }
 }
 
-
-/*  list-elements */Убираем маркеры (точки) у списка */
-.list-elements ul {
-    list-style-type: none;
-    padding-left: 0;
-
-}
-
-
-
-.list-elements ul li {
+.list-elements {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #8F8F8F;
-    font-size: 1rem;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 20px;
 }
 
+/* Ссылка оборачивает всю карточку */
+.soft-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
 
+.soft-item-link:hover {
+    background-color: #f9f9f9;
+}
 
-/* Стили для изображений */
-.list-elements ul li img {
-    width: 150px;  /* Уменьшаем изображение */
+/* Остальное как раньше */
+.soft-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.soft-item .left {
+    flex: 0 0 150px;
+}
+
+.soft-item .left img {
+    width: 150px;
     height: 150px;
     border-radius: 5px;
-    object-fit: cover; /* Сохраняем пропорции картинки */
+    object-fit: cover;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Стиль для "Нет изображения" */
-.list-elements ul li:empty {
-    color: #FF6347; /* Цвет для отсутствующих изображений */
+.soft-item .no-image {
+    width: 150px;
+    height: 150px;
+    background-color: #f5f5f5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 5px;
 }
 
-/* Стиль ссылки в li */
-.list-elements ul li a {
+.soft-item .right {
+    flex: 1;
+    color: #8F8F8F;
+    font-size: 1rem;
+}
+
+.soft-item h3 {
+    margin: 0 0 10px 0;
+    color: #FF69B4;
+}
+
+.soft-item h3:hover {
+    text-decoration: underline;
+}
+
+.download-link {
+    color: #4169E1;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .soft-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .soft-item .left,
+    .soft-item .right {
+        width: 100%;
+    }
+
+    .soft-item .right {
+        text-align: left;
+    }
+}
+
+
+.soft-item h3 {
+    margin: 0 0 10px 0;
+}
+
+.soft-item h3 a {
     color: #FF69B4;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-.list-elements a {
-
-    text-decoration: none;
-
-}
-
-.list-elements ul li a:hover {
+.soft-item h3 a:hover {
     color: #D16B8A;
-
 }
+
+.download-link {
+    color: #4169E1;
+    text-decoration: underline;
+}
+
+.download-link:hover {
+    color: #27408B;
+}
+
+/* Адаптация под маленькие экраны */
+@media (max-width: 768px) {
+    .soft-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .soft-item .left,
+    .soft-item .right {
+        width: 100%;
+    }
+
+    .soft-item .right {
+        text-align: left;
+    }
+}
+
 
 /* downolads styles */
 a.btn {

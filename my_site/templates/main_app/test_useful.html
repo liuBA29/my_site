@@ -1,4 +1,3 @@
-<!-- templates/main_app/useful_soft_detail.html -->
 {% extends 'base.html' %}
 {% load i18n static %}
 {% block title %}{{ soft.title }}{% endblock %}
@@ -30,13 +29,10 @@
             {% endif %}
 
             <div class="downloads">
-                <br>
+                <h3>{% trans "Download Options" %}:</h3>
 
                 <a href="{% static 'downloads/mantra-player-installer.zip' %}" download class="btn btn-primary">
-    {% trans "Download installer (RU)" %}
-</a>
-                <a href="{% static 'downloads/mantra-player-installer.zip' %}" download class="btn btn-primary">
-    {% trans "Download installer (EN)" %}
+    {% trans "Download installer" %}
 </a>
             </div>
         </div>

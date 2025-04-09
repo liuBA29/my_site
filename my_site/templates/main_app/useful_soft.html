@@ -4,22 +4,27 @@
 {% block title %}{% trans 'Useful soft' %}{% endblock %}
 
 {% block content %}
-    <h2>{% trans 'Useful soft' %}</h2>
+<h2>{% trans 'Useful soft' %}</h2>
+
 <div class="list-elements">
     {% for s in soft %}
-        <ul class="soft-item">
-            <a href="{% url 'main_app:useful_soft_detail' s.slug %}">
-                <h3>{{ s.name }}</h3>
+        <a href="{% url 'main_app:useful_soft_detail' s.slug %}" class="soft-item-link">
+            <div class="soft-item">
+                <div class="left">
+                    {% if s.image %}
+                        <img src="{{ s.image.url }}" alt="{{ s.name }}">
+                    {% else %}
+                        <div class="no-image">{% trans "No image available" %}</div>
+                    {% endif %}
+                </div>
+                <div class="right">
+                    <h3>{{ s.name }}</h3>
+                    <p>{{ s.description }}</p>
 
-            {% if s.image %}
-                <li><img src="{{ s.image.url }}" alt="{{ s.name }}" /></li>
-            {% else %}
-                <li>{% trans "No image available" %}</li>
-            {% endif %}
-            <li>{{ s.description }}</li>
-            <li>{{ s.download_link }}</li>
-            </a>
-        </ul>
+                </div>
+            </div>
+        </a>
     {% endfor %}
 </div>
 {% endblock %}
+
