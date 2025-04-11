@@ -12,14 +12,15 @@
             <div class="soft-item">
                 <div class="left">
                     {% if s.image %}
-                        <img src="{{ s.image.url }}" alt="{{ s.name }}">
+                    <div class="image-small">
+                        <img src="{{ s.image.url }}" alt="{{ s.name }}"></div>
                     {% else %}
                         <div class="no-image">{% trans "No image available" %}</div>
                     {% endif %}
                 </div>
                 <div class="right">
                     <h3>{{ s.name }}</h3>
-                    <p>{{ s.description }}</p>
+                    <p>{{ s.description|safe|truncatewords:40  }}</p>
 
                 </div>
             </div>

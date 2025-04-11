@@ -5,6 +5,11 @@
 
 {% block content %}
 <main class="cont">
+
+  <a href="{% url 'main_app:useful_soft' %}" class="back-btn">
+    <span>&larr;</span> {% trans "Back to list" %}
+</a>
+
     <h2>{{ soft.name }}</h2>
 
     <div class="soft-item">
@@ -19,15 +24,22 @@
         {% endif %}
 
         <div class="right">
-            <p>{{ soft.description }}</p>
 
-            {% if soft.version %}
+            <p>Welcome to Mantra Player!</p>
+            <h4>{% trans "What is it?" %}</h4>
+
+<div>
+    {{ soft.description|safe }}
+</div>
+
+             {% if soft.version %}
                 <p><strong>{% trans "Version" %}:</strong> {{ soft.version }}</p>
             {% endif %}
 
             {% if soft.author %}
                 <p><strong>{% trans "Author" %}:</strong> {{ soft.author }}</p>
             {% endif %}
+
 
             <div class="downloads">
                 <br>

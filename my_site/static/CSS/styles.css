@@ -42,6 +42,10 @@ header h1 a {
     text-decoration: none;
 }
 
+h4 {
+    color: #FF69B4;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -319,8 +323,8 @@ footer {
 }
 
 .soft-item .left img {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 5px;
     object-fit: cover;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -358,6 +362,14 @@ footer {
     color: #4169E1;
     font-weight: bold;
 }
+
+
+.soft-item .left .image-small img {
+    width: 150px;
+    height: 150px;
+}
+
+
 
 @media (max-width: 768px) {
     .soft-item {
@@ -451,6 +463,37 @@ body.light-theme .soft-item-link:hover {
 /* Темная тема */
 body.dark-theme .soft-item-link:hover {
     background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* стрелочка */
+/* Стрелочка для кнопки в светлой теме */
+.light-theme .back-btn {
+
+    color: pink;
+    border: 1px solid #ddd;
+}
+
+.light-theme .back-btn:hover {
+    background-color: pink;
+    color: white;
+}
+
+/* Стрелочка для кнопки в темной теме */
+.dark-theme .back-btn {
+    background-color: #333;
+    color: #ff69b4;
+    border: 1px solid #555;
+}
+
+.dark-theme .back-btn:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+/* Увеличение размера стрелочки */
+.back-btn span {
+    margin-right: 8px;
+    font-size: 18px;
 }
 
 
