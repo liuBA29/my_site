@@ -27,6 +27,14 @@ class UsefulSoftware(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField(verbose_name="Описание")
     download_link = models.URLField(verbose_name="Ссылка на скачивание", blank=True, null=True)
+    english_link = models.URLField(verbose_name="English version link", blank=True, null=True)  # Новое поле
+    download_link_backup = models.URLField(verbose_name="Резервная ссылка (RU)", blank=True, null=True)
+    english_link_backup = models.URLField(verbose_name="Резервная ссылка (EN)", blank=True, null=True)
+    author = models.CharField(
+        max_length=200,
+        default="Liubov Kovaleva @LiuBA29",
+        verbose_name="Автор"
+    )  # Новое поле
     created_at = models.DateTimeField(auto_now_add=True)
     image = CloudinaryField('image', blank=True, null=True)
 
@@ -34,7 +42,7 @@ class UsefulSoftware(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('main_app:useful_soft_detail', kwargs={'slug':self.slug})
+        return reverse('main_app:useful_soft_detail', kwargs={'slug': self.slug})
 
 
 

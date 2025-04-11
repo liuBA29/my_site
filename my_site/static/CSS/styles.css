@@ -436,6 +436,23 @@ a.btn:hover {
 }
 
 
+.soft-item-link {
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Светлая тема */
+body.light-theme .soft-item-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Темная тема */
+body.dark-theme .soft-item-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
 
 
 

@@ -32,10 +32,14 @@
             <div class="downloads">
                 <br>
 
-                <a href="{{soft.download_link}}"  target="_blank" download class="btn btn-primary">
-    {% trans "Download installer" %}
+                <a href="{{soft.download_link}}"   download class="btn btn-primary">
+    {% trans "Download installer(RU)" %}
 </a>
+{% if soft.english_link %}
+                 <a href="{{soft.english_link}}"   download class="btn btn-primary">
+    {% trans "Download installer(EN)" %}
 
+</a>{% endif %}
 
 
             </div>
