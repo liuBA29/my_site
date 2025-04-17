@@ -2,25 +2,33 @@
 
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{{project.title}}{% endblock %}
 
+{% block title %}{% trans 'My Projects' %}{% endblock %}
 {% block content %}
     <h2>{% trans 'My Projects' %}</h2>
+
 <div class="list-elements">
     {% for p in projects %}
-        <ul class="soft-item">
-            <a href="{% url 'main_app:project_detail' p.slug %}">
-                <h3>{{ p.title }}</h3>
+
+            <a href="{% url 'main_app:project_detail' p.slug %}" class="soft-item-link">
+                <div class="soft-item">
+                    <div class="left">
 
             {% if p.image %}
-                <li><img src="{{ p.image.url }}" alt="{{ p.title }}" /></li>
+                <div class="image-small"><img src="{{ p.image.url }}" alt="{{ p.title }}"></div>
             {% else %}
-                <li>{% trans "No image available" %}</li>
+                        <div class="no-image">{% trans "No image available" %}</div>
             {% endif %}
-            <li>{{ p.description }}</li>
-            <li>{{ p.download_link }}</li>
+                    </div>
+
+                    <div class="right">
+                        <h3>{{ p.title }}</h3>
+                        <p>{{ p.description|safe|truncatewords:40  }}</p>
+
+                    </div>
+                </div>
             </a>
-        </ul>
+
     {% endfor %}
 </div>
 {% endblock %}
