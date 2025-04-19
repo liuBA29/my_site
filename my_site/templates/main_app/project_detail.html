@@ -25,26 +25,34 @@
           <div>
     {{ project.description|safe }}
 </div>
+          <!--  no need to input this because this information is already exists in a description#
+
             {% if project.tech_stack %}
-                <p><strong>{% trans "Tech stack" %}:</strong> {{ project.tech_stack }}</p>
+                <h4>{% trans "Tech stack" %}</h4>
+
+          {{ project.tech_stack|safe }}-->
+
+
             {% endif %}
-{% if project.repo_link %}
-    <p><strong>{% trans "GitHub" %}:</strong> <a href="{{ project.repo_link }}" target="_blank" rel="noopener noreferrer">{{ project.repo_link }}</a></p>
-{% endif %}
 
-           <div class="downloads">
+
+            <div class="downloads">
                 <br>
-
-
-{% if project.demo_link %}
-                 <a href="{{project.demo_link}}"   download class="btn btn-primary">
-    {% trans "Download demo" %}
+                {% if project.demo_link_ru %}
+                <a href="{{project.demo_link_ru}}"   download class="btn btn-primary">
+        {% trans "Download DEMO(RU)" %}
+</a>{% endif %}
+{% if project.demo_link_en %}
+                 <a href="{{project.demo_link_en}}"   download class="btn btn-primary">
+    {% trans "Download DEMO(EN)" %}
 
 </a>{% endif %}
-
-
             </div>
 
+
+{% if project.repo_link %}
+    <h4><strong>{% trans "GitHub" %}:</strong> </h4><a class="simple-link" href="{{ project.repo_link }}" target="_blank" rel="noopener noreferrer">{{ project.repo_link }}</a>
+{% endif %}
 
 </div>
     </div>

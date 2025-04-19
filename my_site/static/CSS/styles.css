@@ -169,6 +169,13 @@ footer {
     color: #ffffff;
 }
 
+.light-theme main.container .simple-link {
+    color: #888; /* светло-серый, но не слишком бледный */
+    font-weight: bold;
+    font-size: 1.1em; /* немного больше обычного */
+    text-decoration: underline;
+    text-decoration-color: pink; /* подчёркивание розовым */
+}
 
 
 .theme-button {

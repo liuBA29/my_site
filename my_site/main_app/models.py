@@ -11,7 +11,8 @@ class Project(models.Model):
     description = models.TextField(verbose_name="Описание проекта")
     tech_stack = models.CharField(max_length=255, verbose_name="Используемые технологии")  # Например: Django, React, PostgreSQL
     repo_link = models.URLField(blank=True, null=True, verbose_name="Ссылка на репозиторий")
-    demo_link = models.URLField(blank=True, null=True, verbose_name="Ссылка на демо")
+    demo_link_ru = models.URLField(blank=True, null=True, verbose_name="Ссылка на демо (ru)")
+    demo_link_en = models.URLField(blank=True, null=True, verbose_name="Ссылка на демо (en)")
     image = CloudinaryField('image', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

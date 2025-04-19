@@ -2,50 +2,43 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}Сайт-портфолио web-разработчика Любовь Ковалева{% endblock %}
+{% block title %}{% trans "Portfolio website of web developer Lyubov Kovaleva" %}{% endblock %}
 
 {% block content %}
 
-<!--
-    <h2>Привет! Меня зовут Любовь Ковалёва </h2>
-    <p> Я увлекаюсь программированием на Python, Django, JS, Bash.
-        <br>Я пишу небольшие программы, скрипты для автоматизации процессов
-        малого бизнеса и для частного использования.
-        <br>Помогу в написании небольшого сайта под Ваши цели, который будет разработан
-        с учетом SEO-оптимизации. При необходимости займусь его администрированием,
-        обновлением контента, поддержке безопасности.
-        <br>
-Предлагаю Вам посмотреть некоторые <a href="{% url 'main_app:my_projects' %}">мои работы</a>, может быть Вы найдете что-то
-        <a href="% url 'main_app:useful_soft' %">полезное для себя</a>.
-        <br>Я открыта для сотрудничества и предложений по работе.
-Обращайтесь!
-        <br>
-    </p>-->
-<h2>{% trans "Hello! My name is Lyubov Kovaleva" %}</h2>
+
+<h2>{% trans "Hello and welcome!" %}</h2>
 <p>
     {% blocktrans %}
-    I am passionate about programming in Python, Django, JS, and Bash.<br>
-    I develop small programs and scripts for business process automation
-    for small businesses and personal use.<br>
-    I can help you create a small website tailored to your needs,
-    developed with SEO optimization in mind. If necessary, I can also
-    manage the website, update content, and ensure security support.<br>
+    My name is Lyubov Kovaleva.<br>
+    I’m passionate about programming in Python, Django, JS, and Bash, and I also enjoy working with databases and API integrations.<br>
+    I develop scripts and applications to automate tasks for businesses and personal use.<br><br>
+
+    Need a small, functional, and SEO-friendly website?<br>
+    Looking to automate routine tasks or connect APIs?<br>
+    You’re in the right place.<br><br>
+
+    I can help you create a custom website tailored to your needs — and if necessary, I can take care of maintenance, content updates, and security.
     {% endblocktrans %}
 
-    {% blocktrans %}
-    I invite you to check out some of
-    {% endblocktrans %}
-    <a href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a> —
-    {% blocktrans %}
-    you might find something
-    {% endblocktrans %}
-    <a href="{% url 'main_app:useful_soft' %}">{% trans "useful for yourself" %}</a>.
+<br><br>
+{% blocktrans %}Take a look around{% endblocktrans %}
+<a class="simple-link" href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a>
+
+    {% blocktrans %}or you might find some{% endblocktrans %}
+<a class="simple-link" href="{% url 'main_app:useful_soft' %}">{% trans "useful software" %}</a>
+{% blocktrans %}you’ll like.{% endblocktrans %}
+<br><br>
+
+
+
 
     {% blocktrans %}
-    I am open to collaboration and job offers.
-    Feel free to contact me!
+    I am open to working on various projects and job offers.
+    <br>Don’t hesitate to reach out!
     {% endblocktrans %}
 </p>
+
 
 
 

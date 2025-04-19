@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 18:49+0300\n"
+"POT-Creation-Date: 2025-04-19 20:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "текст"
 
 #: .\templates\base.html:23 .\templates\main_app\useful_soft.html:4
 #: .\templates\main_app\useful_soft.html:7
-msgid "Useful soft"
+msgid "Useful software"
 msgstr "Полезный софт"
 
 #: .\templates\base.html:24
@@ -61,113 +61,151 @@ msgstr "Благодарю, что посетили мой сайт"
 msgid "My contacts"
 msgstr "Контакты"
 
-#: .\templates\main_app\index.html:24
-msgid "Hello! My name is Lyubov Kovaleva"
-msgstr "Привет! Меня зовут Любовь Ковалёва"
+#: .\templates\main_app\index.html:5
+msgid "Portfolio website of web developer Lyubov Kovaleva"
+msgstr "Портфолио веб-разработчика Любови Ковалёвой"
+
+#: .\templates\main_app\index.html:10
+msgid "Hello and welcome!"
+msgstr "Приветствую вас!"
+
+#: .\templates\main_app\index.html:12
+msgid ""
+"\n"
+"    My name is Lyubov Kovaleva.<br>\n"
+"    I’m passionate about programming in Python, Django, JS, and Bash, and I "
+"also enjoy working with databases and API integrations.<br>\n"
+"    I develop scripts and applications to automate tasks for businesses and "
+"personal use.<br><br>\n"
+"\n"
+"    Need a small, functional, and SEO-friendly website?<br>\n"
+"    Looking to automate routine tasks or connect APIs?<br>\n"
+"    You’re in the right place.<br><br>\n"
+"\n"
+"    I can help you create a custom website tailored to your needs — and if "
+"necessary, I can take care of maintenance, content updates, and security.\n"
+"    "
+msgstr ""
+"\n"
+"    Меня зовут Любовь Ковалева.<br>\n"
+"    Я увлекаюсь программированием на Python, Django, JS и Bash, люблю "
+"работать с базами данных и интеграциями API.<br>\n"
+"    Разрабатываю скрипты и приложения для автоматизации задач — как для "
+"бизнеса, так и для личного использования.<br><br>\n"
+"\n"
+"    Нужен простой, функциональный и SEO-оптимизированный сайт?<br>\n"
+"    Хотите автоматизировать рутинные процессы или связать сервисы через API?"
+"<br>\n"
+"    Вы по адресу.<br><br>\n"
+"\n"
+"    Я помогу создать сайт, адаптированный под ваши цели. При необходимости "
+"могу взять на себя поддержку, обновление контента и обеспечение "
+"безопасности.\n"
+"    "
+
+#: .\templates\main_app\index.html:25
+msgid "Take a look around"
+msgstr "Взгляние на"
 
 #: .\templates\main_app\index.html:26
-msgid ""
-"\n"
-"    I am passionate about programming in Python, Django, JS, and Bash.<br>\n"
-"    I develop small programs and scripts for business process automation\n"
-"    for small businesses and personal use.<br>\n"
-"    I can help you create a small website tailored to your needs,\n"
-"    developed with SEO optimization in mind. If necessary, I can also\n"
-"    manage the website, update content, and ensure security support.<br>\n"
-"    "
-msgstr ""
-"\n"
-"      Я увлекаюсь программированием на Python, Django, JS, Bash.<br>\n"
-"      Я пишу небольшие программы, скрипты для автоматизации процессов\n"
-"      малого бизнеса и для частного использования.<br>\n"
-"      Помогу в написании небольшого сайта под Ваши цели, который будет "
-"разработан,\n"
-"      с учетом SEO-оптимизации. При необходимости займусь его "
-"администрированием,\n"
-"      обновлением контента, поддержке безопасности.<br>\n"
-"    "
-
-#: .\templates\main_app\index.html:35
-msgid ""
-"\n"
-"    I invite you to check out some of\n"
-"    "
-msgstr ""
-"\n"
-"    Предлагаю Вам посмотреть некоторые мои работы\n"
-"    "
-
-#: .\templates\main_app\index.html:38
-#, fuzzy
-#| msgid "My projects"
 msgid "my projects"
-msgstr "Мои проекты"
+msgstr "мои проекты"
 
-#: .\templates\main_app\index.html:39
+#: .\templates\main_app\index.html:28
+msgid "or you might find some"
+msgstr "или, может быть, Вы найдете"
+
+#: .\templates\main_app\index.html:26
+msgid "useful software"
+msgstr "полезный софт"
+
+#: .\templates\main_app\index.html:30
+msgid "you’ll like."
+msgstr "для себя."
+
+#: .\templates\main_app\index.html:32
+
 msgid ""
 "\n"
-"    you might find something\n"
-"    "
-msgstr ""
-"\n"
-"    может быть Вы найдете что-то\n"
-"    "
-
-#: .\templates\main_app\index.html:42
-msgid "useful for yourself"
-msgstr "полезным для себя"
-
-#: .\templates\main_app\index.html:44
-msgid ""
-"\n"
-"    I am open to collaboration and job offers.\n"
-"    Feel free to contact me!\n"
+"    I am open to working on various projects and job offers.\n"
+"    <br>Don’t hesitate to reach out!\n"
 "    "
 msgstr ""
 "\n"
 "    Я открыта для сотрудничества и предложений по работе.\n"
-"    Обращайтесь!\n"
+"    <br>Если Вам это тоже интересно, то напишите мне!\n"
 "    "
 
+#: .\templates\main_app\my_projects.html:6
 #: .\templates\main_app\my_projects.html:8
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\main_app\my_projects.html:18
-#: .\templates\main_app\useful_soft.html:17
+#: .\templates\main_app\my_projects.html:20
+#: .\templates\main_app\useful_soft.html:18
 msgid "No image available"
 msgstr "Изображение отсутствует"
 
+#: .\templates\main_app\project_detail.html:9
+#: .\templates\main_app\useful_soft_detail.html:10
+msgid "Back to list"
+msgstr "Назад к списку"
+
+#: .\templates\main_app\project_detail.html:20
 #: .\templates\main_app\test_useful.html:16
-#: .\templates\main_app\useful_soft_detail.html:17
+#: .\templates\main_app\useful_soft_detail.html:22
 msgid "No Image"
-msgstr ""
+msgstr "Изображение отсутствует"
+
+#: .\templates\main_app\project_detail.html:31
+msgid "Tech stack"
+msgstr "Используемые технологии"
+
+#: .\templates\main_app\project_detail.html:43
+msgid "Download DEMO(RU)"
+msgstr "Загрузить ДЕМО(RU)"
+
+#: .\templates\main_app\project_detail.html:47
+msgid "Download DEMO(EN)"
+msgstr "Загрузить ДЕМО(EN)"
+
+#: .\templates\main_app\project_detail.html:54
+msgid "GitHub"
+msgstr "GitHub"
 
 #: .\templates\main_app\test_useful.html:24
-#: .\templates\main_app\useful_soft_detail.html:25
+#: .\templates\main_app\useful_soft_detail.html:36
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #: .\templates\main_app\test_useful.html:28
-#: .\templates\main_app\useful_soft_detail.html:29
+#: .\templates\main_app\useful_soft_detail.html:40
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #: .\templates\main_app\test_useful.html:32
 msgid "Download Options"
-msgstr ""
+msgstr "Загрузить опции"
 
 #: .\templates\main_app\test_useful.html:37
 msgid "Download Russian version"
-msgstr ""
+msgstr "Загрузить русскую версию"
 
 #: .\templates\main_app\test_useful.html:43
 msgid "Download English version"
-msgstr ""
+msgstr "Загрузить английскую версию"
 
-#: .\templates\main_app\useful_soft_detail.html:36
-msgid "Download installer"
-msgstr ""
+#: .\templates\main_app\useful_soft_detail.html:29
+msgid "What is it?"
+msgstr "Что это такое?"
+
+#: .\templates\main_app\useful_soft_detail.html:48
+msgid "Download installer(RU)"
+msgstr "Загрузить установщик(RU)"
+
+#: .\templates\main_app\useful_soft_detail.html:52
+msgid "Download installer(EN)"
+msgstr "Загрузить установщик(EN)"
 
 #: .\templates\notes\article_detail.html:105
 msgid "Template title"
@@ -176,6 +214,3 @@ msgstr "Шаблон заголовка"
 #: .\templates\notes\article_detail.html:107
 msgid "Template text"
 msgstr "Шаблон текста"
-
-#~ msgid "Change theme"
-#~ msgstr "Сменить тему"
