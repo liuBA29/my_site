@@ -6,6 +6,11 @@
 {% block content %}
 <h2>{% trans 'Useful software' %}</h2>
 
+
+<p class="section-description">
+    {% trans 'Here you can find software I’ve developed that is fully completed and ready to use. <br>You can download and use it for free. <br>I hope these tools will be helpful in your daily tasks or projects.' %}
+</p>
+
 <div class="list-elements">
     {% for s in soft %}
         <a href="{% url 'main_app:useful_soft_detail' s.slug %}" class="soft-item-link">

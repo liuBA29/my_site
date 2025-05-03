@@ -174,14 +174,22 @@ footer {
     font-weight: bold;
     font-size: 1.1em; /* немного больше обычного */
     text-decoration: underline;
-    text-decoration-color: pink; /* подчёркивание розовым */
+    #text-decoration-color: pink; /* подчёркивание розовым */
+}
+
+.dark-theme main.container .simple-link {
+    color: #ccc; /* светло-серый, но не слишком бледный */
+    font-weight: bold;
+    font-size: 1.1em; /* немного больше обычного */
+    text-decoration: underline;
+    #text-decoration-color: pink; /* подчёркивание розовым */
 }
 
 
 .theme-button {
     position: absolute;
     right: 20px;
-    top: 6%;
+    top: 20px;
     transform: translateY(-50%);
     background-color: #FF69B4;
     color: white;
@@ -354,6 +362,8 @@ footer {
     flex: 1;
     color: #8F8F8F;
     font-size: 1rem;
+
+
 }
 
 .soft-item h3 {
@@ -503,6 +513,19 @@ body.dark-theme .soft-item-link:hover {
     font-size: 18px;
 }
 
+.section-description {
+    font-size: 1.05rem;
+    margin: 1rem 0 2rem 0;
+    color: #8F8F8F;
+    line-height: 1.6;
+}
+
+
+
+:root {
+  --main-padding: 30px;
+  --gap-large: 20px;
+}
 
 
 

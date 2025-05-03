@@ -6,6 +6,12 @@
 {% block title %}{% trans 'My Projects' %}{% endblock %}
 {% block content %}
     <h2>{% trans 'My Projects' %}</h2>
+<p class="section-description">
+    {% blocktrans %}
+        These are projects I’ve created either for specific clients or as my own ideas in progress.<br>
+        They are not meant for direct use without adaptation, but they give a good impression of my skills and development approach.
+    {% endblocktrans %}
+</p>
 
 <div class="list-elements">
     {% for p in projects %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 20:18+0300\n"
+"POT-Creation-Date: 2025-05-03 13:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr "мои проекты"
 msgid "or you might find some"
 msgstr "или, может быть, Вы найдете"
 
-#: .\templates\main_app\index.html:26
+#: .\templates\main_app\index.html:29
 msgid "useful software"
 msgstr "полезный софт"
 
@@ -123,8 +123,7 @@ msgstr "полезный софт"
 msgid "you’ll like."
 msgstr "для себя."
 
-#: .\templates\main_app\index.html:32
-
+#: .\templates\main_app\index.html:36
 msgid ""
 "\n"
 "    I am open to working on various projects and job offers.\n"
@@ -141,8 +140,23 @@ msgstr ""
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\main_app\my_projects.html:20
-#: .\templates\main_app\useful_soft.html:18
+#: .\templates\main_app\my_projects.html:10
+msgid ""
+"\n"
+"        These are projects I’ve created either for specific clients or as my "
+"own ideas in progress.<br>\n"
+"        They are not meant for direct use without adaptation, but they give "
+"a good impression of my skills and development approach.\n"
+"    "
+msgstr ""
+"\n"
+"        Это проекты, созданные мной по заказу клиентов или реализованные как собственные идеи.<br>\n"
+"        Они не предназначены для прямого использования без адаптации, но хорошо демонстрируют мои навыки и подход к разработке.\n"
+"    "
+
+
+#: .\templates\main_app\my_projects.html:26
+#: .\templates\main_app\useful_soft.html:23
 msgid "No image available"
 msgstr "Изображение отсутствует"
 
@@ -194,6 +208,16 @@ msgstr "Загрузить русскую версию"
 #: .\templates\main_app\test_useful.html:43
 msgid "Download English version"
 msgstr "Загрузить английскую версию"
+
+#: .\templates\main_app\useful_soft.html:11
+msgid ""
+"Here you can find software I’ve developed that is fully completed and ready "
+"to use. <br>You can download and use it for free. <br>I hope these tools "
+"will be helpful in your daily tasks or projects."
+msgstr ""
+"Здесь размещены написанные мною программы, которые завершены и готовы к "
+"использованию. <br>Вы можете скачать их бесплатно. <br>Надеюсь, они будут "
+"вам полезны в работе или повседневной жизни."
 
 #: .\templates\main_app\useful_soft_detail.html:29
 msgid "What is it?"
