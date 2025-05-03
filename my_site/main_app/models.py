@@ -4,6 +4,30 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
 
+
+
+
+from django.db import models
+
+class PageView(models.Model):
+    path = models.CharField(max_length=255, unique=True)
+    views_count = models.PositiveIntegerField(default=0)
+    last_viewed = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.path} — {self.views_count} просмотров"
+
+
+class PageVisitLog(models.Model):
+    path = models.CharField(max_length=255)
+    viewed_at = models.DateTimeField(auto_now_add=True)
+    ip_address = models.GenericIPAddressField()
+
+    def __str__(self):
+        return f"{self.viewed_at} - {self.path} - {self.ip_address}"
+
+
+
 # 🔹 Модель для проектов
 class Project(models.Model):
     title = models.CharField(max_length=200, verbose_name="Название проекта")

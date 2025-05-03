@@ -1,0 +1,26 @@
+<!-- main_app/visits_log.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>История посещений</h1>
+<table border="1">
+  <tr>
+    <th>Дата и время</th>
+    <th>URL</th>
+    <th>IP-адрес</th>
+  </tr>
+  {% for log in logs %}
+  <tr>
+    <td>{{ log.viewed_at }}</td>
+    <td>{{ log.path }}</td>
+    <td>{{ log.ip_address }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

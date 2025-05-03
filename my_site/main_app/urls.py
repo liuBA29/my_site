@@ -10,4 +10,6 @@ urlpatterns = [
     path('my-projects/', my_projects, name='my_projects'),  #
     path('project/<slug:slug>/', project_detail, name='project_detail'),
     path('contact/', contact, name='contact'),  #
+    path('page-view/', page_view, name='page_view'),  #
+    path('visits-log/', visits_log, name='visits_log'),
 ]

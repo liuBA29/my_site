@@ -1,13 +1,28 @@
 # main_app/views.py
 
 from django.shortcuts import render, redirect, get_object_or_404
-
 from .models import *
+from django.utils.deprecation import MiddlewareMixin
+
+def page_view(request):
+    page_path = request.path
+    page_view = PageView.objects.filter(path=page_path).first()
+    views = page_view.views_count if page_view else 0
+    return render(request, 'main_app/page_view.html', {'views': views})
+
+
 
 
 def main_page(request):
     project = Project.objects.all().values('title', 'description')
     return render(request, 'main_app/index.html')
+
+
+
+def visits_log(request):
+    logs = PageVisitLog.objects.order_by('-viewed_at')[:100]  # можно ограничить
+    return render(request, 'main_app/visits_log.html', {'logs': logs})
+
 
 
 def useful_soft(request):
