@@ -11,7 +11,12 @@ EXCLUDED_IPS = os.getenv('EXCLUDED_IPS', '').split(',')
 
 # Список IP-адресов, с которых не следует учитывать посещения (например, твой IP)
 
-TRACKED_PATHS = ['/', '/useful-soft/', '/my-projects/', '/contact/']
+TRACKED_PATHS = [
+    '/',
+    '/useful-soft/', '/useful-soft/mantra-player/', '/useful-soft/email-sender/',
+    '/my-projects/','/project/asterisk-call-monitoring/',
+    '/contact/',
+]
 
 class PageViewMiddleware:
     def __init__(self, get_response):
