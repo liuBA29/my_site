@@ -514,11 +514,13 @@ body.dark-theme .soft-item-link:hover {
 }
 
 .section-description {
-    font-size: 1.05rem;
+    font-size: 1.2rem; /* Увеличиваем размер шрифта */
     margin: 1rem 0 2rem 0;
     color: #8F8F8F;
     line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
 }
+
 
 
 
