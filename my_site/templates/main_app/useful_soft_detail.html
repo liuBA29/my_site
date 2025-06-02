@@ -1,7 +1,11 @@
 <!-- templates/main_app/useful_soft_detail.html -->
 {% extends 'base.html' %}
 {% load i18n static %}
-{% block title %}{{ soft.name }}{% endblock %}
+{% block title %}{{ soft.name }} | Полезный софт от Любови Ковалёвой{% endblock %}
+{% block meta_description %}{{ soft.description|striptags|truncatechars:150 }}{% endblock %}
+{% block og_title %}{{ soft.name }} | LiuBA29 Software{% endblock %}
+{% block og_description %}{{ soft.description|striptags|truncatechars:150 }}{% endblock %}
+{% block og_image %}{{ soft.image.url }}{% endblock %}
 
 {% block content %}
 <main class="cont">

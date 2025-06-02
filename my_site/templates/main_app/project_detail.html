@@ -1,13 +1,17 @@
-<!-- templates/main_app/project_detail.html -->
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{{project.title}}{% endblock %}
+
+{% block title %}{{ project.title }} | Проект Любови Ковалёвой{% endblock %}
+{% block meta_description %}{{ project.description|striptags|truncatechars:150 }}{% endblock %}
+{% block og_title %}{{ project.title }} | Портфолио LiuBA29{% endblock %}
+{% block og_description %}{{ project.description|striptags|truncatechars:150 }}{% endblock %}
+{% block og_image %}{{ project.image.url }}{% endblock %}
 
 {% block content %}
 <main class="cont">
     <a href="{% url 'main_app:my_projects' %}" class="back-btn">
-    <span>&larr;</span> {% trans "Back to list" %}
-</a>
+        <span>&larr;</span> {% trans "Back to list" %}
+    </a>
 
     <h2>{{ project.title }}</h2>
     <div class="soft-item">
@@ -20,41 +24,31 @@
                 {% trans "No Image" %}
             </div>
         {% endif %}
-      <div class="right">
 
-          <div>
-    {{ project.description|safe }}
-</div>
-          <!--  no need to input this because this information is already exists in a description#
-
-            {% if project.tech_stack %}
-                <h4>{% trans "Tech stack" %}</h4>
-
-          {{ project.tech_stack|safe }}-->
-
-
-            {% endif %}
-
+        <div class="right">
+            <div>
+                {{ project.description|safe }}
+            </div>
 
             <div class="downloads">
                 <br>
                 {% if project.demo_link_ru %}
-                <a href="{{project.demo_link_ru}}"   download class="btn btn-primary">
-        {% trans "Download DEMO(RU)" %}
-</a>{% endif %}
-{% if project.demo_link_en %}
-                 <a href="{{project.demo_link_en}}"   download class="btn btn-primary">
-    {% trans "Download DEMO(EN)" %}
-
-</a>{% endif %}
+                    <a href="{{ project.demo_link_ru }}" download class="btn btn-primary">
+                        {% trans "Download DEMO(RU)" %}
+                    </a>
+                {% endif %}
+                {% if project.demo_link_en %}
+                    <a href="{{ project.demo_link_en }}" download class="btn btn-primary">
+                        {% trans "Download DEMO(EN)" %}
+                    </a>
+                {% endif %}
             </div>
 
-
-{% if project.repo_link %}
-    <h4><strong>{% trans "GitHub" %}:</strong> </h4><a class="simple-link" href="{{ project.repo_link }}" target="_blank" rel="noopener noreferrer">{{ project.repo_link }}</a>
-{% endif %}
-
-</div>
+            {% if project.repo_link %}
+                <h4><strong>{% trans "GitHub" %}:</strong></h4>
+                <a class="simple-link" href="{{ project.repo_link }}" target="_blank" rel="noopener noreferrer">{{ project.repo_link }}</a>
+            {% endif %}
+        </div>
     </div>
 </main>
 {% endblock %}
