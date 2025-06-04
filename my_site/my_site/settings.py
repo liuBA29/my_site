@@ -42,6 +42,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,9 +52,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes_app.apps.NotesAppConfig',
     'main_app.apps.MainAppConfig',
+    'chat',
     'cloudinary',
     'cloudinary_storage',
 ]
+
+ASGI_APPLICATION = 'my_site.asgi.application'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'my_site.wsgi.application'
+ASGI_APPLICATION = 'my_site.asgi.application'
 
 
 # Database
