@@ -7,7 +7,6 @@ from django.urls import reverse
 
 
 
-from django.db import models
 
 class PageView(models.Model):
     path = models.CharField(max_length=255, unique=True)
