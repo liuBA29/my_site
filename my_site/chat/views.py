@@ -20,12 +20,16 @@ def set_username(request):
         # Если пользователь не аутентифицирован — сохраняем как GuestUser
         if not request.user.is_authenticated and username:
             ip = get_client_ip(request)
-            GuestUser.objects.create(
-                ip_address=ip,
-                username=username,
-                room_name=room_name,
-                created_at=now()
-            )
+
+            # Проверяем, существует ли уже такой гость
+            exists = GuestUser.objects.filter(ip_address=ip).exists()
+            if not exists:
+                GuestUser.objects.create(
+                    ip_address=ip,
+                    username=username,
+                    room_name=room_name,
+                    created_at=now()
+                )
 
         return JsonResponse({'status': 'ok'})
 
