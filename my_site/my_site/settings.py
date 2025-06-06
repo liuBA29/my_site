@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notes_app.apps.NotesAppConfig',
     'main_app.apps.MainAppConfig',
-    'chat',
+    'chat.apps.ChatConfig',
     'cloudinary',
     'cloudinary_storage',
 ]
