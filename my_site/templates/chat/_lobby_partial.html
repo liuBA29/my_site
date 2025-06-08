@@ -1,154 +1,26 @@
-<!--  templates/chat/_lobby_partial.html -->
+<!-- templates/chat/_lobby_partial.html -->
 
 
+<h2>Добро пожаловать в чат</h2>
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Чат</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f2f2f2;
-      margin: 0;
-      padding: 20px;
-    }
+<label>Имя пользователя:</label>
+<input id="username-input" type="text" value="{{ username }}" {% if username %}readonly{% endif %} placeholder="YourName" />
 
-    h2 {
-      color: #444;
-      margin-bottom: 10px;
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-    }
-
-    input[type="text"] {
-      padding: 8px;
-      width: 250px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    #chat-area {
-      margin-top: 20px;
-    }
-
-    #chat-log {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      height: 300px;
-      padding: 10px;
-      overflow-y: auto;
-      font-size: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .message {
-      max-width: 70%;
-      padding: 6px 10px;
-      border-radius: 12px;
-      position: relative;
-      word-wrap: break-word;
-      clear: both;
-    }
-
-    .message-left {
-      background: #e6f7ff;
-      align-self: flex-start;
-    }
-
-    .message-right {
-      background: #dcf8c6;
-      align-self: flex-end;
-    }
-
-    .message strong {
-      display: block;
-      color: #0077cc;
-      margin-bottom: 4px;
-    }
-
-    .timestamp {
-      font-size: 10px;
-      color: #888;
-      margin-top: 4px;
-      text-align: right;
-    }
-
-    #chat-message-input {
-      margin-top: 10px;
-      padding: 8px;
-      width: 75%;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    #chat-message-submit {
-      padding: 8px 12px;
-      background-color: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-
-    #chat-message-submit:hover {
-      background-color: #0b7dda;
-    }
-  </style>
-</head>
-<body>
-
-  <h2>Добро пожаловать в чат</h2>
-
-  <label>Имя пользователя:</label>
-  <input id="username-input" type="text" value="{{ username }}" {% if username %}readonly{% endif %} placeholder="YourName" />
-
-  <!--<label>Имя комнаты:</label>
-  <input id="room-name-input" type="text" value="{{ room_name }}" />  -->
-
-
-  {% if user.is_authenticated %}
+{% if user.is_authenticated %}
   <label>Имя комнаты:</label>
   <input id="room-name-input" type="text" value="{{ room_name|default:"test" }}" />
 {% else %}
   <input id="room-name-input" type="hidden" value="{{ room_name|default:"test" }}" />
 {% endif %}
 
+<button id="room-join">Войти</button>
 
-  <button id="room-join">Войти</button>
-
-  <div id="chat-area" style="display: none;">
-    <div id="chat-log"></div>
-    <input id="chat-message-input" type="text" placeholder="Введите сообщение">
-    <button id="chat-message-submit">Отправить</button>
-  </div>
-
-  <script>
+<div id="chat-area" style="display: none;">
+  <div id="chat-log"></div>
+  <input id="chat-message-input" type="text" placeholder="Введите сообщение">
+  <button id="chat-message-submit">Отправить</button>
+</div>
+<script>
     let chatSocket;
     let username;
 
@@ -246,5 +118,3 @@
     return cookieValue;
   }
   </script>
-</body>
-</html>

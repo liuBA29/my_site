@@ -1,4 +1,5 @@
 # chat/views.py
+
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -47,30 +48,35 @@ def get_client_ip(request):
 
 
 def lobby(request):
+    if request.GET.get('partial') == '1':
+        context = get_user_context(request)
+        return render(request, 'chat/_lobby_partial.html', context)
+
+    context = get_user_context(request)
+    return render(request, 'chat/lobby.html', context)
+
+
+def get_user_context(request):
     if request.user.is_authenticated:
-        username = request.user.username
-        room_name = ''
-        return render(request, 'chat/lobby.html', {
-            'username': username,
-            'room_name': room_name,
-        })
+        return {
+            'username': request.user.username,
+            'room_name': '',
+        }
     else:
         ip = get_client_ip(request)
         guest = GuestUser.objects.filter(ip_address=ip).order_by('-created_at').first()
 
         if guest:
-            username = guest.username
-            room_name = guest.room_name
-            # Сохраняем в сессию, если нужно
-            request.session['username'] = username
+            request.session['username'] = guest.username
+            return {
+                'username': guest.username,
+                'room_name': guest.room_name,
+            }
         else:
-            username = ''
-            room_name = ''
-
-        return render(request, 'chat/lobby.html', {
-            'username': username,
-            'room_name': room_name,
-        })
+            return {
+                'username': '',
+                'room_name': '',
+            }
 
 
 

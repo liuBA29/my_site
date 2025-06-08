@@ -1,20 +1,83 @@
 <!-- templates/main_app/contacts.html -->
+
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}контакты{% endblock %}
 
 {% block content %}
+  <h2>{% trans "My contacts" %}</h2>
 
-    <h2> {% trans "My contacts" %} </h2>
+  <p class="section-description">
+      <span>Email: luba.sentino@gmail.com</span><br>
+      <span>Telegram: @liubakovaleva</span><br>
+      <a href="#" id="open-chat" class="soft-item-link"><span>Чат-online</span></a><br>
+  </p>
 
-<p class="section-description">
-    <span>Email: luba.sentino@gmail.com</span><br>
-    <span>Telegram: @liubakovaleva </span><br>
-    <a href="{% url 'chat:lobby' %}" class="soft-item-link"> <span>Чат-online </span></a><br>
+  <!-- Модальное окно -->
+  <div id="chatModal" class="modal" style="display:none;">
+    <div class="modal-content" style="background:white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto;">
+      <span class="close" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
+      <div id="chatContent">Загрузка...</div>
+    </div>
+  </div>
 
-</p>
+  <style>
+    .modal {
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
+    .modal-content {
+      margin-top: 10%;
+    }
 
+    .modal-open {
+      overflow: hidden;
+    }
+  </style>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.getElementById('chatModal');
+      const openBtn = document.getElementById('open-chat');
+      const closeBtn = modal.querySelector('.close');
+      const chatContent = document.getElementById('chatContent');
 
+      openBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+        document.body.classList.add('modal-open');
+
+        fetch("{% url 'chat:lobby' %}?partial=1")
+          .then(response => response.text())
+          .then(html => {
+            chatContent.innerHTML = html;
+            // запускаем JS скрипт чата, если он внутри partial
+            const scriptTags = chatContent.querySelectorAll("script");
+            scriptTags.forEach(oldScript => {
+              const newScript = document.createElement("script");
+              newScript.text = oldScript.text;
+              document.body.appendChild(newScript);
+            });
+          });
+      });
+
+      closeBtn.addEventListener('click', function () {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        chatContent.innerHTML = ''; // очищаем
+      });
+
+      window.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+          chatContent.innerHTML = '';
+        }
+      });
+    });
+  </script>
 {% endblock %}
