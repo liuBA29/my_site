@@ -47,11 +47,28 @@ class GuestUser(models.Model):
 
 
 class Message(models.Model):
-    user = models.ForeignKey(GuestUser, on_delete=models.CASCADE, related_name='messages')
-    room_name = models.CharField(max_length=100)
+    username = models.ForeignKey(GuestUser, on_delete=models.CASCADE, related_name='messages')
+    room = models.ForeignKey('Room', on_delete=models.CASCADE, related_name='messages', blank=True, null=True)
     content = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
 
-    def __str__(self):
-        return f"[{self.timestamp.strftime('%H:%M:%S')}] {self.user.username}: {self.content[:20]}"
+    class Meta:
+        ordering = ['timestamp']
 
+    def __str__(self):
+        return f"[{self.timestamp.strftime('%H:%M:%S')}] {self.username.username}: {self.content[:20]}"
+
+
+
+class Room(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = custom_slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
