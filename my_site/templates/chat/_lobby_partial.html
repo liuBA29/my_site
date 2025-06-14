@@ -8,7 +8,11 @@
 
 {% if user.is_authenticated %}
   <label>Имя комнаты:</label>
-  <input id="room-name-input" type="text" value="{{ room_name|default:"test" }}" />
+  <select id="room-name-input">
+    {% for name in room_names %}
+    <option value="{{ name }}">{{ name }}</option>
+    {% endfor %}
+     <select/>
 {% else %}
   <input id="room-name-input" type="hidden" value="{{ room_name|default:"test" }}" />
 {% endif %}
@@ -16,7 +20,10 @@
 <button id="room-join">Войти</button>
 
 <div id="chat-area" style="display: none;">
-  <div id="chat-log"></div>
+  <div id="chat-log">
+
+    <!-- добавь пожалуйста сюда список всех участников данной комнаты мелким шрифтом-->
+  </div>
   <input id="chat-message-input" type="text" placeholder="Введите сообщение">
   <button id="chat-message-submit">Отправить</button>
 </div>

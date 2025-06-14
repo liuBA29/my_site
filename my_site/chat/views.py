@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from .models import GuestUser
+from .models import *
 import json
 
 
@@ -40,10 +40,16 @@ def lobby(request):
 
 
 def get_user_context(request):
+    room_list = Room.objects.all().order_by('name')
+    room_names = [room.name for room in room_list]
+
     if request.user.is_authenticated:
         return {
             'username': request.user.username,
             'room_name': '',
+            'room_names': room_names,
+            'master': True,
+
         }
     else:
         ip = get_client_ip(request)
