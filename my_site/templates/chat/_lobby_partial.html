@@ -20,6 +20,46 @@
   <input id="chat-message-input" type="text" placeholder="Введите сообщение">
   <button id="chat-message-submit">Отправить</button>
 </div>
+<style>
+  .message-left {
+    text-align: left;
+    background-color: #eee;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 70%;
+  }
+
+  .message-right {
+    text-align: right;
+    background-color: #d0f0c0;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: auto;
+    max-width: 70%;
+  }
+
+  .message {
+    clear: both;
+  }
+
+  .timestamp {
+    font-size: 0.75em;
+    color: #888;
+    text-align: right;
+    display: block;
+  }
+
+  #chat-log {
+    border: 1px solid #ccc;
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+  }
+</style>
 <script>
     let chatSocket;
     let username;
@@ -40,6 +80,7 @@
       }
 
       document.getElementById('chat-area').style.display = 'block';
+      document.getElementById('chat-message-input').focus();
 
       chatSocket = new WebSocket(
         'ws://' + window.location.host +
@@ -58,10 +99,6 @@
 
     document.getElementById('chat-area').style.display = 'block';
 
-    chatSocket = new WebSocket(
-      'ws://' + window.location.host +
-      '/ws/socket-server/' + roomName + '/'
-    );
 
       chatSocket.onmessage = function(e) {
         const data = JSON.parse(e.data);
@@ -100,6 +137,12 @@
         }
       };
     };
+
+    document.getElementById('chat-message-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('chat-message-submit').click();
+      }
+    });
 
 
     // Функция для получения CSRF-токена

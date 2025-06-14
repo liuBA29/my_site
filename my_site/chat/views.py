@@ -3,8 +3,6 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from django.utils.timezone import now
-from django.contrib.auth.models import AnonymousUser
 from .models import GuestUser
 import json
 
@@ -17,21 +15,6 @@ def set_username(request):
         room_name = data.get('room_name', '').strip()
 
         request.session['username'] = username
-
-        # Если пользователь не аутентифицирован — сохраняем как GuestUser
-        if not request.user.is_authenticated and username:
-            ip = get_client_ip(request)
-
-            # Проверяем, существует ли уже такой гость
-            exists = GuestUser.objects.filter(ip_address=ip).exists()
-            if not exists:
-                GuestUser.objects.create(
-                    ip_address=ip,
-                    username=username,
-                    room_name=room_name,
-                    created_at=now()
-                )
-
         return JsonResponse({'status': 'ok'})
 
     elif request.method == 'GET':
@@ -77,6 +60,3 @@ def get_user_context(request):
                 'username': '',
                 'room_name': '',
             }
-
-
-
