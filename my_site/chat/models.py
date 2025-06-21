@@ -1,9 +1,10 @@
 # chat/models.py
 
 from django.db import models
-from cloudinary.models import CloudinaryField
+
 from django.utils import timezone
 from django.utils.text import slugify
+from django.conf import settings
 import unicodedata
 import re
 
@@ -47,7 +48,18 @@ class GuestUser(models.Model):
 
 
 class Message(models.Model):
-    username = models.ForeignKey(GuestUser, on_delete=models.CASCADE, related_name='messages')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True, blank=True,
+        on_delete=models.CASCADE,
+        related_name='messages'
+    )
+    guest_user = models.ForeignKey(
+        GuestUser,
+        null=True, blank=True,
+        on_delete=models.CASCADE,
+        related_name='messages'
+    )
     room = models.ForeignKey('Room', on_delete=models.CASCADE, related_name='messages', blank=True, null=True)
     content = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)
@@ -56,7 +68,15 @@ class Message(models.Model):
         ordering = ['timestamp']
 
     def __str__(self):
-        return f"[{self.timestamp.strftime('%H:%M:%S')}] {self.username.username}: {self.content[:20]}"
+        return f"[{self.timestamp.strftime('%H:%M:%S')}] {self.get_author_name()}: {self.content[:20]}"
+
+    def get_author_name(self):
+        if self.user:
+            return self.user.username
+        elif self.guest_user:
+            return self.guest_user.username
+        else:
+            return "Аноним"
 
 
 

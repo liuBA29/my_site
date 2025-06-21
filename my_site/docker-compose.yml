@@ -1,19 +1,31 @@
 # docker-compose.yml
 version: "3.9"
 services:
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+
+
   web:
     build: .
-    command: gunicorn my_site.wsgi:application --bind 0.0.0.0:8000
+    command: daphne -b 0.0.0.0 -p 8000 my_site.asgi:application
+
     volumes:
       - .:/app
       - static_volume:/app/staticfiles  # Том для статических файлов
     ports:
       - "8001:8000"
     environment:
+      DJANGO_SETTINGS_MODULE: my_site.settings
       DEBUG: "0"  # В продакшене выключаем DEBUG
       CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
       CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
       CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
 
   nginx:
     image: nginx:latest

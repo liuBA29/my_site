@@ -89,10 +89,12 @@
       document.getElementById('chat-area').style.display = 'block';
       document.getElementById('chat-message-input').focus();
 
+      const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
       chatSocket = new WebSocket(
-        'ws://' + window.location.host +
-        '/ws/socket-server/' + roomName + '/'
+      wsScheme + '://' + window.location.host +
+      '/ws/socket-server/' + roomName + '/'
       );
+
 
       // Отправим имя на сервер для сохранения в сессии
     fetch('/chat/set-username/', {

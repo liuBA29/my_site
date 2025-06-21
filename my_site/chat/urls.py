@@ -1,10 +1,10 @@
 # chat/urls.py
 
 from django.urls import path
-from . import views
+from .views import *
 
 app_name = "chat"
 urlpatterns = [
-    path('', views.lobby, name="lobby"),
-    path('set-username/', views.set_username, name='set_username'),
+    path('', lobby, name="lobby"),
+    path('set-username/', set_username, name='set_username'),
 ]

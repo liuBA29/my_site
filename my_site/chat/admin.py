@@ -15,13 +15,14 @@ class GuestUserAdmin(admin.ModelAdmin):
 
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('username', 'room', 'content', 'timestamp')
-    search_fields = ('content', 'user__username', 'room_name')
+    list_display = ('user', 'guest_user', 'room', 'content', 'timestamp')
+
+    search_fields = ('content', 'user__guest_user', 'room_name')
     list_filter = ('room', 'timestamp')
 
 
 @admin.register(Room)
-class MessageAdmin(admin.ModelAdmin):
+class RoomAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'created_at')
     search_fields = ('name', 'slug', 'created_at')
     list_filter = ('name', 'slug')

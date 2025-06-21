@@ -11,7 +11,9 @@ COPY requirements.txt /app/requirements.txt
 
 # Устанавливаем зависимости
 RUN pip install --upgrade pip \
-    && pip install -r requirements.txt
+    && pip install -r requirements.txt \
+    && pip install daphne
+
 
 # Копируем все файлы проекта
 COPY . /app
@@ -29,5 +31,6 @@ RUN python manage.py collectstatic --noinput
 # Указываем порт, который будет использоваться приложением
 EXPOSE 8000
 
-# Указываем команду запуска Gunicorn
-CMD ["gunicorn", "my_site.wsgi:application", "--bind", "0.0.0.0:8000"]
+# Указываем команду запуска daphne
+CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "my_site.asgi:application"]
+

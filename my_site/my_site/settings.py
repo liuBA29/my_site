@@ -9,19 +9,20 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import os.path
+# import os.path
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+import cloudinary
+
 from django.utils.translation import gettext_lazy as _
 
 # Загружаем переменные окружения
-load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -50,14 +51,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'notes_app.apps.NotesAppConfig',
     'main_app.apps.MainAppConfig',
     'chat.apps.ChatConfig',
+
     'cloudinary',
     'cloudinary_storage',
 ]
 
-ASGI_APPLICATION = 'my_site.asgi.application'
 
 
 MIDDLEWARE = [
@@ -92,13 +94,29 @@ TEMPLATES = [
         },
     },
 ]
-
+WSGI_APPLICATION = 'my_site.wsgi.application'
 ASGI_APPLICATION = 'my_site.asgi.application'
 
+import  socket
+
+REDIS_HOST = os.getenv('REDIS_HOST', 'redis')
+
+
+if REDIS_HOST == 'redis':
+    try:
+        socket.gethostbyname('redis')
+    except socket.gaierror:
+        REDIS_HOST = '127.0.0.1'
+
+
+
 CHANNEL_LAYERS = {
-    'default':{
-        'BACKEND': 'channels.layers.InMemoryChannelLayer'
-    }
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(REDIS_HOST, int(os.getenv('REDIS_PORT', 6379)))],
+        },
+    },
 }
 
 
@@ -154,15 +172,12 @@ MODELTRANSLATION_TRANSLATION_FILES = (
 
 
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale'),
+    BASE_DIR / 'locale',
 ]
 
 LANGUAGE_CODE = 'ru'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -203,7 +218,14 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
+cloudinary.config(
+    cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
+    api_key=CLOUDINARY_STORAGE['API_KEY'],
+    api_secret=CLOUDINARY_STORAGE['API_SECRET']
+)
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-
+# Вспомогательный вывод для отладки (можно убрать в проде)
+print("Cloudinary API Key:", CLOUDINARY_STORAGE['API_KEY'])
 
