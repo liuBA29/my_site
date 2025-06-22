@@ -9,7 +9,6 @@ from django.utils.timezone import now
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
         from .models import GuestUser, Room
-
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f'chat_{self.room_name}'
         self.room, _ = Room.objects.get_or_create(name=self.room_name)
@@ -58,22 +57,22 @@ class ChatConsumer(WebsocketConsumer):
             if self.scope['user'].is_authenticated:
                 author = self.scope['user']
                 # Сохраняем с user
-                Message.objects.create(
-                    user=author,
-                    room=self.room,
-                    content=msg,
-                    timestamp=now()
-                )
+                # Message.objects.create(
+                #     user=author,
+                #     room=self.room,
+                #     content=msg,
+                #     timestamp=now()
+                # )
                 username_str = author.username
             else:
                 guest = self.guest_user
                 # Сохраняем с guest_user
-                Message.objects.create(
-                    guest_user=guest,
-                    room=self.room,
-                    content=msg,
-                    timestamp=now()
-                )
+                # Message.objects.create(
+                #     guest_user=guest,
+                #     room=self.room,
+                #     content=msg,
+                #     timestamp=now()
+                # )
                 username_str = guest.username if guest else "Аноним"
 
             async_to_sync(self.channel_layer.group_send)(
