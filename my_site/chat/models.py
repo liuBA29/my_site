@@ -20,7 +20,7 @@ def custom_slugify(value):
 class GuestUser(models.Model):
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     username = models.CharField(max_length=100)
-    room_name = models.CharField(max_length=100, blank=True)
+    room = models.ForeignKey('Room', on_delete=models.SET_NULL, null=True, blank=True, related_name='guests')
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -34,16 +34,11 @@ class GuestUser(models.Model):
                 counter += 1
             self.slug = slug
 
-        # Автоматически задаём room_name как '{slug}_room' если room_name пустой или отличается
-        desired_room_name = f"{self.slug}_room"
-        if self.room_name != desired_room_name:
-            self.room_name = desired_room_name
-
-
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.username} ({self.room_name})"
+        return f"{self.username} ({self.room.name if self.room else 'без комнаты'})"
+
 
 
 
