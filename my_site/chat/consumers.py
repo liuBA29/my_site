@@ -17,6 +17,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
+        print(self.channel_name, " - это self channel name")
 
         await self.accept()
 
