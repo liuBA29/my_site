@@ -227,5 +227,5 @@ cloudinary.config(
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Вспомогательный вывод для отладки (можно убрать в проде)
-print("Cloudinary API Key:", CLOUDINARY_STORAGE['API_KEY'])
+# print("Cloudinary API Key:", CLOUDINARY_STORAGE['API_KEY'])
 
