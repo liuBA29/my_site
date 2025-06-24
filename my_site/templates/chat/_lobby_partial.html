@@ -17,7 +17,7 @@
     {% endfor %}
      </select>
 {% else %}
-  <input id="room-name-input" type="hidden" value="{{ room_name|default:"test" }}" />
+  <input id="room-name-input" type="hidden" value="{{ room_name|default:'myroom' }}" />
 {% endif %}
 
 <button id="room-join">Войти</button>
@@ -71,10 +71,107 @@
   }
 </style>
 <script>
+    // При загрузке страницы — получаем имя пользователя из сессии
+  window.addEventListener('load', function () {
+    fetch('/chat/check-user/')
+      .then(response => response.json())
+      .then(data => {
+        if (data.username) {
+          document.getElementById('username-input').value = data.username;
+          document.getElementById('username-input').readOnly = true;
+        } else {
+          alert("Вы новый пользователь. Пожалуйста, введите имя.");
+        }
+      });
+  });
+
   let chatSocket;
   let username;
 
-  // Получение CSRF-токена из cookie
+    function formatTime(date) {
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return `${hours}:${minutes}`;
+    }
+
+    document.getElementById('room-join').onclick = function() {
+      const roomName = document.getElementById('room-name-input').value;
+      username = document.getElementById('username-input').value;
+
+      if (!username) {
+        alert("Пожалуйста, введите имя пользователя!");
+        return;
+      }
+
+      document.getElementById('chat-area').style.display = 'block';
+      document.getElementById('chat-message-input').focus();
+
+      const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
+      chatSocket = new WebSocket(
+      wsScheme + '://' + window.location.host +
+      '/ws/socket-server/' + roomName + '/'
+      );
+
+
+      // Отправим имя на сервер для сохранения в сессии
+    fetch('/chat/set-username/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+      },
+      body: JSON.stringify({ username })
+    });
+
+    document.getElementById('chat-area').style.display = 'block';
+
+
+      chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const chatLog = document.getElementById('chat-log');
+        const user = data.username || "Сервер";
+        const isOwnMessage = (user === username);
+        const time = formatTime(new Date());
+
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(isOwnMessage ? 'message-right' : 'message-left');
+
+        messageDiv.innerHTML = `
+          <strong>${user}</strong>
+          <span>${data.message}</span>
+          <div class="timestamp">${time}</div>
+        `;
+
+        chatLog.appendChild(messageDiv);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      };
+
+      chatSocket.onclose = function(e) {
+        alert('Соединение с чатом потеряно.');
+      };
+
+      document.getElementById('chat-message-submit').onclick = function() {
+        const messageInput = document.getElementById('chat-message-input');
+        const message = messageInput.value;
+        if (message.trim() !== '') {
+          chatSocket.send(JSON.stringify({
+            'message': message,
+            'username': username
+          }));
+          messageInput.value = '';
+        }
+      };
+    };
+
+    document.getElementById('chat-message-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('chat-message-submit').click();
+      }
+    });
+
+
+    // Функция для получения CSRF-токена
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -90,114 +187,5 @@
     return cookieValue;
   }
 
-  // Форматирование времени
-  function formatTime(date) {
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    return `${hours}:${minutes}`;
-  }
 
-  // Обработка входа в комнату
-  function joinRoom() {
-    const roomName = document.getElementById('room-name-input').value;
-    username = document.getElementById('username-input').value.trim();
-
-    if (!username) {
-      alert("Пожалуйста, введите имя пользователя!");
-      document.getElementById('username-input').focus();
-      return;
-    }
-
-    // Закрыть старое соединение, если оно есть
-    if (chatSocket) {
-      chatSocket.close();
-    }
-
-    const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
-    chatSocket = new WebSocket(`${wsScheme}://${window.location.host}/ws/socket-server/${roomName}/`);
-
-    // Сохраняем имя на сервере
-    fetch('/chat/set-username/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': getCookie('csrftoken')
-      },
-      body: JSON.stringify({ username })
-    });
-
-    document.getElementById('chat-area').style.display = 'block';
-    document.getElementById('chat-message-input').focus();
-
-    chatSocket.onmessage = function (e) {
-      const data = JSON.parse(e.data);
-      const chatLog = document.getElementById('chat-log');
-      const user = data.username || "Сервер";
-      const isOwnMessage = (user === username);
-      const time = formatTime(new Date());
-
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('message', isOwnMessage ? 'message-right' : 'message-left');
-
-      messageDiv.innerHTML = `
-        <strong>${user}</strong>
-        <span>${data.message}</span>
-        <div class="timestamp">${time}</div>
-      `;
-
-      chatLog.appendChild(messageDiv);
-      chatLog.scrollTop = chatLog.scrollHeight;
-    };
-
-    chatSocket.onclose = function () {
-      alert('Соединение с чатом потеряно.');
-    };
-
-    chatSocket.onerror = function (error) {
-      console.error("Ошибка WebSocket:", error);
-    };
-
-    // Отправка сообщения
-    document.getElementById('chat-message-submit').onclick = function () {
-      const messageInput = document.getElementById('chat-message-input');
-      const message = messageInput.value.trim();
-
-      if (message) {
-        chatSocket.send(JSON.stringify({
-          message: message,
-          username: username
-        }));
-        messageInput.value = '';
-      }
-    };
-  }
-
-  // Обработка нажатия Enter в поле ввода
-  document.getElementById('chat-message-input').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      document.getElementById('chat-message-submit').click();
-    }
-  });
-
-  // Назначаем функцию на кнопку входа
-  document.getElementById('room-join').onclick = joinRoom;
-
-  // При загрузке страницы — проверка имени пользователя
-  window.addEventListener('load', function () {
-    fetch('/chat/check-user/')
-      .then(response => response.json())
-      .then(data => {
-        if (data.username) {
-          document.getElementById('username-input').value = data.username;
-          document.getElementById('username-input').readOnly = true;
-          document.getElementById('username-label').style.display = 'none';
-        } else {
-          document.getElementById('username-label').style.display = 'block';
-          document.getElementById('username-input').focus();
-        }
-      })
-      .catch(error => {
-        console.error("Ошибка при проверке пользователя:", error);
-      });
-  });
-</script>
+  </script>

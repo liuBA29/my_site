@@ -10,12 +10,17 @@ import json
 
 @csrf_exempt
 def set_username(request):
+
     """
     Сохраняет или обновляет имя гостя по IP-адресу
     """
     if request.user.is_authenticated:
         # Пользователь аутентифицирован — не создаём гостя
-        return JsonResponse({"message": "Пользователь аутентифицирован", "username": request.user.username})
+        all_rooms = list(Room.objects.all().order_by('name').values_list('name', flat=True))
+
+        return JsonResponse({"message": "Пользователь аутентифицирован",
+                             "username": request.user.username,
+                             "all_rooms":all_rooms,}, )
 
     if request.method != "POST":
         return JsonResponse({"error": "Метод не разрешён"}, status=405)
@@ -32,13 +37,15 @@ def set_username(request):
     ip = get_client_ip(request)
 
 
+
+
     guest, created = GuestUser.objects.get_or_create(
         ip_address=ip,
-        defaults={'username': username}
+        defaults={'username': username,}
     )
-    if not created:
-        guest.username = username
-        guest.save()
+
+
+
 
     request.session['guest_username'] = guest.username
 
@@ -47,9 +54,6 @@ def set_username(request):
 
 @require_GET
 def check_guest_user(request):
-    """
-    Проверяет, есть ли гость по IP и возвращает имя
-    """
     ip = get_client_ip(request)
     guest = GuestUser.objects.filter(ip_address=ip).order_by('-created_at').first()
     return JsonResponse({"username": guest.username if guest else None})

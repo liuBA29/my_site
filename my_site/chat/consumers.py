@@ -13,6 +13,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f'chat_{self.room_name}'
 
+        print(f"[DEBUG] Подключение к комнате: {self.room_name}")
+
+
         # Присоединение к группе комнаты
         await self.channel_layer.group_add(
             self.room_group_name,
@@ -23,7 +26,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.accept()
         await self.send(text_data=json.dumps({
             'type': 'connection_established',
-            'message': f'Вы подключились к комнате: '
+            'message': f'Вы подключились к комнате: {self.room_name}'
         }))
 
     async def disconnect(self, close_code):
