@@ -13,6 +13,10 @@ def set_username(request):
     """
     Сохраняет или обновляет имя гостя по IP-адресу
     """
+    if request.user.is_authenticated:
+        # Пользователь аутентифицирован — не создаём гостя
+        return JsonResponse({"message": "Пользователь аутентифицирован", "username": request.user.username})
+
     if request.method != "POST":
         return JsonResponse({"error": "Метод не разрешён"}, status=405)
 
@@ -26,7 +30,7 @@ def set_username(request):
         return JsonResponse({"error": "Имя обязательно"}, status=400)
 
     ip = get_client_ip(request)
-# !!Надо чтоб еще и комната создавалась под него! она создается в модели Romm
+
 
     guest, created = GuestUser.objects.get_or_create(
         ip_address=ip,
