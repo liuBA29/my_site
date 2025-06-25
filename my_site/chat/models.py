@@ -17,6 +17,20 @@ def custom_slugify(value):
     return slugify(value)
 
 
+class Room(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = custom_slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
 class GuestUser(models.Model):
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     username = models.CharField(max_length=100)
@@ -38,6 +52,12 @@ class GuestUser(models.Model):
 
     def __str__(self):
         return f"{self.username} ({self.room.name if self.room else 'без комнаты'})"
+
+
+
+
+
+
 
 
 
@@ -72,18 +92,3 @@ class Message(models.Model):
             return self.guest_user.username
         else:
             return "Аноним"
-
-
-
-class Room(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=120, unique=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = custom_slugify(self.name)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
