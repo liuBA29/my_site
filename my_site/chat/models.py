@@ -31,10 +31,37 @@ class Room(models.Model):
         return self.name
 
 
+from django.db import models
+from django.utils.text import slugify
+import unicodedata
+import re
+
+
+def custom_slugify(value):
+    value = str(value)
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+    value = re.sub(r'[^\w\s-]', '', value).strip().lower()
+    return slugify(value)
+
+
+class Room(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = custom_slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
 class GuestUser(models.Model):
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     username = models.CharField(max_length=100)
-    room = models.ForeignKey('Room', on_delete=models.SET_NULL, null=True, blank=True, related_name='guests')
+    room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, blank=True, related_name='guests')
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -48,10 +75,20 @@ class GuestUser(models.Model):
                 counter += 1
             self.slug = slug
 
+        if not self.room and self.username:
+            base_name = f"{self.username}room".lower()
+            room_name = base_name
+            counter = 1
+            while Room.objects.filter(name=room_name).exists():
+                room_name = f"{base_name}{counter}"
+                counter += 1
+            self.room = Room.objects.create(name=room_name)
+
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.username} ({self.room.name if self.room else 'без комнаты'})"
+
 
 
 
