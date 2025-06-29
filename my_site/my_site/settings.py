@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'notes_app.apps.NotesAppConfig',
     'main_app.apps.MainAppConfig',
     'chat.apps.ChatConfig',
+    'accounts.apps.AccountsConfig',
 
     'cloudinary',
     'cloudinary_storage',
@@ -228,4 +229,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Вспомогательный вывод для отладки (можно убрать в проде)
 # print("Cloudinary API Key:", CLOUDINARY_STORAGE['API_KEY'])
-
+AUTH_USER_MODEL = 'accounts.CustomUser'

@@ -4,11 +4,13 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
-from .models import GuestUser, Room
+from django.contrib.auth.decorators import login_required
+from ..accounts.models import CustomUser, Room
 import json
 
 
 @csrf_exempt
+@login_required
 def set_username(request):
     if request.user.is_authenticated:
         # Пользователь аутентифицирован — не создаём гостя

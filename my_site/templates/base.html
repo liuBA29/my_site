@@ -42,6 +42,22 @@
                 </ul>
             </nav>
 
+
+            <!-- register -->
+         <nav>
+    {% if user.is_authenticated %}
+        Привет, {{ user.username }}!
+        <a href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'accounts:register' %}">Регистрация</a> |
+        <a href="{% url 'accounts:login' %}">Войти</a>
+    {% endif %}
+</nav>
+
+
+
+
+
             <form action="#">
                 <label class="toggle" for="themeToggle">
                     <input class="toggle__input" type="checkbox" id="themeToggle">

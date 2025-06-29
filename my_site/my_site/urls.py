@@ -14,6 +14,7 @@ urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
     path('', include('main_app.urls', namespace='main_app')),
     path('notes/', include('notes_app.urls', namespace='notes')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('chat/', include('chat.urls', namespace='chat')),
     prefix_default_language=False,
 )
