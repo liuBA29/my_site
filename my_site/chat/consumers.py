@@ -4,15 +4,14 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
 from django.utils.timezone import now
-from accounts.models import CustomUser, Room
-#Модель GuestUser больше не используется. убери корректно ее пожалуйста. Вместо нее сейчас используется CustomUser И находится эта модель
-# в приложении accounts// перепиши консюмер под это дело.
+
+
 
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        from .models import GuestUser, Room
+        from accounts.models import CustomUser, Room
 
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f'chat_{self.room_name}'
