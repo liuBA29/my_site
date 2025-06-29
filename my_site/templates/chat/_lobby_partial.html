@@ -10,15 +10,20 @@
 
 
 {% if user.is_authenticated %}
-  <label>Имя комнаты:</label>
-  <select id="room-name-input">
-    {% for name in room_names %}
-    <option value="{{ name }}">{{ name }}</option>
-    {% endfor %}
-     </select>
+  {% if user.is_superuser %}
+    <label for="room-name-input">Имя комнаты:</label>
+    <select id="room-name-input" name="room">
+      {% for name in room_names %}
+      <option value="{{ name }}">{{ name }}</option>
+      {% endfor %}
+    </select>
+  {% else %}
+    <input id="room-name-input" type="hidden" value="{{ room_name|default:'myroom' }}" />
+  {% endif %}
 {% else %}
-  <input id="room-name-input" type="hidden" value="{{ room_name|default:'myroom' }}" />
+  <p>Чтобы попасть в чат, необходимо <a href="{% url 'login' %}">войти</a> или <a href="{% url 'signup' %}">зарегистрироваться</a>.</p>
 {% endif %}
+
 
 <button id="room-join">Войти</button>
 

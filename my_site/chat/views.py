@@ -5,8 +5,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
-from ..accounts.models import CustomUser, Room
+from accounts.models import CustomUser, Room
 import json
+
+#Модель GuestUser больше не используется. убери корректно ее пожалуйста. Вместо нее сейчас используется CustomUser И находится эта модель
+# в приложении accounts// перепиши вьюху под это дело.
 
 
 @csrf_exempt

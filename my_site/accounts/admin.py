@@ -7,10 +7,13 @@ from .models import CustomUser, Room
 # Для кастомного пользователя можно расширить UserAdmin
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
-    # Укажем дополнительные поля для отображения в списке пользователей
-    list_display = ('username', 'email', 'is_staff', 'is_active')
-    # Чтобы видеть ManyToMany-поле rooms на странице пользователя
+    list_display = ('username', 'email', 'is_staff', 'is_active', 'get_rooms')  # добавили get_rooms
     filter_horizontal = ('rooms',)
+
+    def get_rooms(self, obj):
+        return ", ".join([room.name for room in obj.rooms.all()])
+    get_rooms.short_description = 'Rooms'
+
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
