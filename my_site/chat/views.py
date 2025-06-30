@@ -8,65 +8,37 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import CustomUser, Room
 import json
 
-#Модель GuestUser больше не используется. убери корректно ее пожалуйста. Вместо нее сейчас используется CustomUser И находится эта модель
-# в приложении accounts// перепиши вьюху под это дело.
 
 
-@csrf_exempt
 @login_required
+@csrf_exempt
 def set_username(request):
-    if request.user.is_authenticated:
-        # Пользователь аутентифицирован — не создаём гостя
-        all_rooms = list(Room.objects.all().order_by('name').values_list('name', flat=True))
-        return JsonResponse({"message": "Пользователь аутентифицирован",
-                             "username": request.user.username,
-                             "all_rooms":all_rooms
-                             })
-
+    """
+    Если пользователь авторизован — просто вернуть имя и список комнат.
+    """
     if request.method != "POST":
         return JsonResponse({"error": "Метод не разрешён"}, status=405)
 
-    try:
-        data = json.loads(request.body)
-    except json.JSONDecodeError:
-        return JsonResponse({"error": "Неверный JSON"}, status=400)
-
-    username = data.get("username")
-    if not username:
-        return JsonResponse({"error": "Имя обязательно"}, status=400)
-
-    ip = get_client_ip(request)
-
-    guest, created = GuestUser.objects.get_or_create(ip_address=ip)
-    guest.username = username
-    guest.save()  # здесь произойдёт автоматическое создание комнаты
-
-    request.session['guest_username'] = guest.username
-
     return JsonResponse({
-        "message": "Имя сохранено",
-        "username": guest.username,
-        "room": guest.room.name
+        "message": "Пользователь аутентифицирован",
+        "username": request.user.username,
+        "all_rooms": list(Room.objects.all().order_by('name').values_list('name', flat=True))
     })
 
+
+@login_required
 @require_GET
-def check_guest_user(request):
-    ip = get_client_ip(request)
-    guest = GuestUser.objects.filter(ip_address=ip).order_by('-created_at').first()
-    return JsonResponse({"username": guest.username if guest else None})
-
-
-def get_client_ip(request):
+def check_user(request):
     """
-    Получает IP-адрес клиента из заголовков
+    Возвращает имя пользователя, если он авторизован.
     """
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    return x_forwarded_for.split(',')[0] if x_forwarded_for else request.META.get('REMOTE_ADDR')
+    return JsonResponse({"username": request.user.username})
 
 
+@login_required
 def lobby(request):
     """
-    Возвращает основную страницу чата или частичный шаблон
+    Страница чата
     """
     context = get_user_context(request)
 
@@ -76,25 +48,18 @@ def lobby(request):
 
 
 def get_user_context(request):
-    """
-    Возвращает контекст для отображения комнаты и имени пользователя
-    """
     room_names = Room.objects.all().order_by('name').values_list('name', flat=True)
 
-    if request.user.is_authenticated:
-        return {
-            'username': request.user.username,
-            'room_name': '',
-            'room_names': room_names,
-            'master': True
-        }
-
-    ip = get_client_ip(request)
-    guest = GuestUser.objects.filter(ip_address=ip).order_by('-created_at').first()
+    # если пользователь не суперюзер — взять первую комнату, в которую он добавлен
+    room = None
+    if not request.user.is_superuser:
+        room = Room.objects.filter(users=request.user).first()
 
     return {
-        'username': guest.username if guest else '',
-        'room_name': guest.room.name if guest and guest.room else '',
-        'room_names': room_names
+        'username': request.user.username,
+        'room_name': room.name if room else '',
+        'room_names': room_names,
+        'master': request.user.is_superuser
     }
+
 

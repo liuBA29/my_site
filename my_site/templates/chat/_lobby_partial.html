@@ -3,10 +3,7 @@
 
 <h2>Добро пожаловать в чат</h2>
 
-<div id="username-label" {% if username %}style="display:none"{% endif %}>
-  <label for="username-input">Как вас зовут?</label>
-</div>
-<input id="username-input" type="text" value="{{ username }}" {% if username %}readonly{% endif %} placeholder="Ваше имя" />
+<input id="username-input" type="hidden" value="{{ username }}" />
 
 
 {% if user.is_authenticated %}
@@ -118,15 +115,7 @@
       );
 
 
-      // Отправим имя на сервер для сохранения в сессии
-    fetch('/chat/set-username/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': getCookie('csrftoken')
-      },
-      body: JSON.stringify({ username })
-    });
+
 
     document.getElementById('chat-area').style.display = 'block';
 
