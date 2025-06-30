@@ -2,9 +2,8 @@
 
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from asgiref.sync import async_to_sync
+from asgiref.sync import async_to_sync, sync_to_async
 from django.utils.timezone import now
-
 
 
 
@@ -12,6 +11,7 @@ from django.utils.timezone import now
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         from accounts.models import CustomUser, Room
+        from .models import Message
 
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f'chat_{self.room_name}'
@@ -32,7 +32,29 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'message': f'Вы подключились к комнате: {self.room_name}'
         }))
 
+        # Загружаем последние сообщения
+        from accounts.models import Room
+        @sync_to_async
+        def get_room_and_messages(room_slug):
+            room = Room.objects.get(slug=room_slug)
+            messages = list(room.messages.select_related('user').order_by('-timestamp')[:50])
+            return room, messages
+
+        room, messages = await get_room_and_messages(self.room_name)
+
+        for message in reversed(messages):  # от старых к новым
+            await self.send(text_data=json.dumps({
+                'message': message.content,
+                'username': message.user.username,
+                'timestamp': message.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
+            }))
+
+
+
     async def disconnect(self, close_code):
+        from accounts.models import CustomUser, Room
+        from .models import Message
+
         # Удаление из группы комнаты
         await self.channel_layer.group_discard(
             self.room_group_name,
@@ -40,9 +62,25 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
+
+
         data = json.loads(text_data)
         message = data.get('message')
-        username = data.get('username', 'Аноним')
+        username = data.get('username')
+        room_slug = self.room_name
+
+        from accounts.models import CustomUser, Room
+        from .models import Message
+
+        user = await sync_to_async(CustomUser.objects.get)(username=username)
+        room = await sync_to_async(Room.objects.get)(slug=room_slug)
+
+        # Сохраняем сообщение
+        await sync_to_async(Message.objects.create)(
+            user=user,
+            room=room,
+            content=message
+        )
 
         # Отправка сообщения в группу
         await self.channel_layer.group_send(
