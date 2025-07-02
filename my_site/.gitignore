@@ -24,3 +24,9 @@ env
 Thumbs.db
 resume.txt
 resume.docx
+
+
+delete_table.py
+delete_then_create_as_sample.py
+table_structure.py
+remotedb.sqlite3
