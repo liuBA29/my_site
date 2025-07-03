@@ -212,7 +212,7 @@ footer {
             display: inline-block;
             cursor: pointer;
             position: absolute;
-            top: 12vh; /* Поднимаем на 15% */
+            top: 20vh; /* Поднимаем на 15% */
             right: 18vh; /* Размещаем справа */
         }
 
@@ -250,11 +250,33 @@ footer {
             transform: translateX(var(--height));
         }
 
+/*------------auth----------*/
+.auth {
+    position: absolute;
+    top: 2vh;
+    right: 0vh;
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.auth a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logout {
+    font-size: 0.8rem; /* чуть меньше */
+    color: #bbbbbb; /* блеклый серый */
+}
+
+
+
 /*------------language----------*/
 .language-buttons {
     position: absolute;
-    top: 2vh; /* Размещаем чуть выше бегунка */
-    right: 5vh; /* Совпадает с бегунком */
+    top: 10vh; /* Размещаем чуть выше бегунка */
+    right: 6vh;
     display: flex;
     gap: 8px;
 }
@@ -406,9 +428,7 @@ footer {
 }
 
 
-.soft-item h3 {
-    margin: 0 0 10px 0;
-}
+
 
 .soft-item h3 a {
     color: #FF69B4;
@@ -528,6 +548,10 @@ body.dark-theme .soft-item-link:hover {
   --main-padding: 30px;
   --gap-large: 20px;
 }
+
+/*==================*/
+
+
 
 
 

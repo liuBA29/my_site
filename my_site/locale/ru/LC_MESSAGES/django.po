@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 13:43+0300\n"
+"POT-Creation-Date: 2025-07-03 12:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\my_site\settings.py:132
+#: .\my_site\settings.py:164
 msgid "Russian"
 msgstr "Русский"
 
-#: .\my_site\settings.py:133
+#: .\my_site\settings.py:165
 msgid "English"
 msgstr "English"
 
@@ -40,20 +40,36 @@ msgstr "слаг"
 msgid "text"
 msgstr "текст"
 
-#: .\templates\base.html:23 .\templates\main_app\useful_soft.html:4
-#: .\templates\main_app\useful_soft.html:7
+#: .\templates\base.html:39 .\templates\main_app\useful_soft.html:4
+#: .\templates\main_app\useful_soft.html:10
 msgid "Useful software"
 msgstr "Полезный софт"
 
-#: .\templates\base.html:24
+#: .\templates\base.html:40
 msgid "My projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:25
+#: .\templates\base.html:41
 msgid "Contacts"
 msgstr "Контакты"
 
 #: .\templates\base.html:58
+msgid "Hello"
+msgstr "Привет"
+
+#: .\templates\base.html:59
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\templates\base.html:61
+msgid "Register"
+msgstr "Регистрация"
+
+#: .\templates\base.html:62
+msgid "Login"
+msgstr "Войти"
+
+#: .\templates\base.html:92
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
@@ -65,16 +81,17 @@ msgstr "Контакты"
 msgid "Portfolio website of web developer Lyubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
-#: .\templates\main_app\index.html:10
+#: .\templates\main_app\index.html:14
 msgid "Hello and welcome!"
 msgstr "Приветствую вас!"
 
-#: .\templates\main_app\index.html:12
+#: .\templates\main_app\index.html:16
 msgid ""
 "\n"
 "    My name is Lyubov Kovaleva.<br>\n"
-"    I’m passionate about programming in Python, Django, Django REST Framework, JS, and Bash, and I "
-"also enjoy working with databases and API integrations.<br>\n"
+"    I’m passionate about programming in Python, Django, Django REST "
+"Framework, JS, and Bash, and I also enjoy working with databases and API "
+"integrations.<br>\n"
 "    I develop scripts and applications to automate tasks for businesses and "
 "personal use.<br><br>\n"
 "\n"
@@ -88,8 +105,8 @@ msgid ""
 msgstr ""
 "\n"
 "    Меня зовут Любовь Ковалева.<br>\n"
-"    Я увлекаюсь программированием на Python, Django, Django REST Framework, JS и Bash, люблю "
-"работать с базами данных и интеграциями API.<br>\n"
+"    Я увлекаюсь программированием на Python, Django, Django REST Framework, "
+"JS и Bash, люблю работать с базами данных и интеграциями API.<br>\n"
 "    Разрабатываю скрипты и приложения для автоматизации задач — как для "
 "бизнеса, так и для личного использования.<br><br>\n"
 "\n"
@@ -103,27 +120,27 @@ msgstr ""
 "безопасности.\n"
 "    "
 
-#: .\templates\main_app\index.html:25
+#: .\templates\main_app\index.html:29
 msgid "Take a look around"
 msgstr "Взгляние на"
 
-#: .\templates\main_app\index.html:26
+#: .\templates\main_app\index.html:30
 msgid "my projects"
 msgstr "мои проекты"
 
-#: .\templates\main_app\index.html:28
+#: .\templates\main_app\index.html:32
 msgid "or you might find some"
 msgstr "или, может быть, Вы найдете"
 
-#: .\templates\main_app\index.html:29
+#: .\templates\main_app\index.html:33
 msgid "useful software"
 msgstr "полезный софт"
 
-#: .\templates\main_app\index.html:30
+#: .\templates\main_app\index.html:34
 msgid "you’ll like."
 msgstr "для себя."
 
-#: .\templates\main_app\index.html:36
+#: .\templates\main_app\index.html:40
 msgid ""
 "\n"
 "    I am open to working on various projects and job offers.\n"
@@ -136,11 +153,11 @@ msgstr ""
 "    "
 
 #: .\templates\main_app\my_projects.html:6
-#: .\templates\main_app\my_projects.html:8
+#: .\templates\main_app\my_projects.html:12
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\main_app\my_projects.html:10
+#: .\templates\main_app\my_projects.html:14
 msgid ""
 "\n"
 "        These are projects I’ve created either for specific clients or as my "
@@ -150,50 +167,47 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"        Это проекты, созданные мной по заказу клиентов или реализованные как собственные идеи.<br>\n"
-"        Они не предназначены для прямого использования без адаптации, но хорошо демонстрируют мои навыки и подход к разработке.\n"
+"        Это проекты, созданные мной по заказу клиентов или реализованные как "
+"собственные идеи.<br>\n"
+"        Они не предназначены для прямого использования без адаптации, но "
+"хорошо демонстрируют мои навыки и подход к разработке.\n"
 "    "
 
-
-#: .\templates\main_app\my_projects.html:26
-#: .\templates\main_app\useful_soft.html:23
+#: .\templates\main_app\my_projects.html:30
+#: .\templates\main_app\useful_soft.html:26
 msgid "No image available"
 msgstr "Изображение отсутствует"
 
-#: .\templates\main_app\project_detail.html:9
-#: .\templates\main_app\useful_soft_detail.html:10
+#: .\templates\main_app\project_detail.html:15
+#: .\templates\main_app\useful_soft_detail.html:14
 msgid "Back to list"
 msgstr "Назад к списку"
 
-#: .\templates\main_app\project_detail.html:20
+#: .\templates\main_app\project_detail.html:26
 #: .\templates\main_app\test_useful.html:16
-#: .\templates\main_app\useful_soft_detail.html:22
+#: .\templates\main_app\useful_soft_detail.html:26
 msgid "No Image"
 msgstr "Изображение отсутствует"
 
-#: .\templates\main_app\project_detail.html:31
-msgid "Tech stack"
-msgstr "Используемые технологии"
-
-#: .\templates\main_app\project_detail.html:43
+#: .\templates\main_app\project_detail.html:39
 msgid "Download DEMO(RU)"
 msgstr "Загрузить ДЕМО(RU)"
 
-#: .\templates\main_app\project_detail.html:47
+#: .\templates\main_app\project_detail.html:44
 msgid "Download DEMO(EN)"
 msgstr "Загрузить ДЕМО(EN)"
 
-#: .\templates\main_app\project_detail.html:54
+#: .\templates\main_app\project_detail.html:50
 msgid "GitHub"
 msgstr "GitHub"
 
 #: .\templates\main_app\test_useful.html:24
-#: .\templates\main_app\useful_soft_detail.html:36
+#: .\templates\main_app\useful_soft_detail.html:40
 msgid "Version"
 msgstr "Версия"
 
 #: .\templates\main_app\test_useful.html:28
-#: .\templates\main_app\useful_soft_detail.html:40
+#: .\templates\main_app\useful_soft_detail.html:44
 msgid "Author"
 msgstr "Автор"
 
@@ -209,7 +223,7 @@ msgstr "Загрузить русскую версию"
 msgid "Download English version"
 msgstr "Загрузить английскую версию"
 
-#: .\templates\main_app\useful_soft.html:11
+#: .\templates\main_app\useful_soft.html:14
 msgid ""
 "Here you can find software I’ve developed that is fully completed and ready "
 "to use. <br>You can download and use it for free. <br>I hope these tools "
@@ -219,15 +233,15 @@ msgstr ""
 "использованию. <br>Вы можете скачать их бесплатно. <br>Надеюсь, они будут "
 "вам полезны в работе или повседневной жизни."
 
-#: .\templates\main_app\useful_soft_detail.html:29
+#: .\templates\main_app\useful_soft_detail.html:33
 msgid "What is it?"
 msgstr "Что это такое?"
 
-#: .\templates\main_app\useful_soft_detail.html:48
+#: .\templates\main_app\useful_soft_detail.html:52
 msgid "Download installer(RU)"
 msgstr "Загрузить установщик(RU)"
 
-#: .\templates\main_app\useful_soft_detail.html:52
+#: .\templates\main_app\useful_soft_detail.html:56
 msgid "Download installer(EN)"
 msgstr "Загрузить установщик(EN)"
 
@@ -238,3 +252,6 @@ msgstr "Шаблон заголовка"
 #: .\templates\notes\article_detail.html:107
 msgid "Template text"
 msgstr "Шаблон текста"
+
+#~ msgid "Tech stack"
+#~ msgstr "Используемые технологии"
