@@ -1,11 +1,31 @@
-<!-- accounts/login.html  -->
+<!-- templates/accounts/login.html  -->
 
-<h2>Вход</h2>
-<form method="post">
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Login | Portfolio website of web developer Liubov Kovaleva" %}{% endblock %}
+{% block meta_description %}
+  {% trans "Login page of the portfolio website of web developer Liubov Kovaleva. Django, Python, freelance, useful tools." %}
+{% endblock %}
+{% block og_title %}{% trans "Login | Liubov Kovaleva Portfolio" %}{% endblock %}
+{% block og_description %}
+{% trans "Login to the personal account of Liubov Kovaleva’s portfolio site. Django projects, utilities, and contact." %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<h2>{% trans "Login" %}</h2>
+<form method="post" class="login-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Войти</button>
+    <button type="submit" class="login-button">{% trans "Login" %}</button>
 </form>
-<a href="{% url 'accounts:register' %}">Регистрация</a>
 
+<p>{% trans "Don't have an account?" %} <a class="simple-link" href="{% url 'accounts:register' %}">{% trans "Register" %}</a></p>
 
+</p>
+{% endblock %}

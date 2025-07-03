@@ -1,9 +1,30 @@
 
 <!-- accounts/register.html  -->
-<h2>Регистрация</h2>
-<form method="post">
+{# templates/accounts/register.html #}
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Register | Portfolio website of web developer Liubov Kovaleva" %}{% endblock %}
+{% block meta_description %}
+  {% trans "Registration page for the portfolio website of web developer Liubov Kovaleva. Django, Python, tools, freelance projects." %}
+{% endblock %}
+{% block og_title %}{% trans "Register | Liubov Kovaleva Portfolio" %}{% endblock %}
+{% block og_description %}
+  {% trans "Create an account to use tools and access features on Liubov Kovaleva’s developer portfolio site." %}
+{% endblock %}
+
+{% block content %}
+
+<h2>{% trans "Register" %}</h2>
+
+<form method="post" class="login-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
+    <button type="submit" class="login-button">{% trans "Register" %}</button>
 </form>
-<a href="{% url 'accounts:login' %}">Войти</a>
+
+<p>{% trans "Already have an account?" %}
+  <a class="simple-link" href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+</p>
+
+{% endblock %}

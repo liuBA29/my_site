@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-03 12:03+0300\n"
+"POT-Creation-Date: 2025-07-03 15:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,43 @@ msgstr "слаг"
 msgid "text"
 msgstr "текст"
 
+#: .\templates\accounts\login.html:6
+#, fuzzy
+#| msgid "Portfolio website of web developer Lyubov Kovaleva"
+msgid "Login | Portfolio website of web developer Liubov Kovaleva"
+msgstr "Портфолио веб-разработчика Любови Ковалёвой"
+
+#: .\templates\accounts\login.html:8
+#, fuzzy
+#| msgid "Portfolio website of web developer Lyubov Kovaleva"
+msgid ""
+"Login page of the portfolio website of web developer Liubov Kovaleva. "
+"Django, Python, freelance, useful tools."
+msgstr "Страница входа на сайт-портфолио веб-разработчицы Любови Ковалёвой. Django, Python, фриланс, полезные инструменты."
+
+#: .\templates\accounts\login.html:10
+msgid "Login | Liubov Kovaleva Portfolio"
+msgstr "Вход | Портфолио Любови Ковалёвой"
+
+#: .\templates\accounts\login.html:12
+msgid ""
+"Login to the personal account of Liubov Kovaleva’s portfolio site. Django "
+"projects, utilities, and contact."
+msgstr "Вход в личный кабинет на сайте-портфолио Любови Ковалёвой. Проекты на Django, утилиты и контакты."
+
+#: .\templates\accounts\login.html:21 .\templates\accounts\login.html:25
+#: .\templates\base.html:62
+msgid "Login"
+msgstr "Войти"
+
+#: .\templates\accounts\login.html:28
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+#: .\templates\accounts\login.html:28 .\templates\base.html:61
+msgid "Register"
+msgstr "Регистрация"
+
 #: .\templates\base.html:39 .\templates\main_app\useful_soft.html:4
 #: .\templates\main_app\useful_soft.html:10
 msgid "Useful software"
@@ -60,14 +97,6 @@ msgstr "Привет"
 #: .\templates\base.html:59
 msgid "Logout"
 msgstr "Выйти"
-
-#: .\templates\base.html:61
-msgid "Register"
-msgstr "Регистрация"
-
-#: .\templates\base.html:62
-msgid "Login"
-msgstr "Войти"
 
 #: .\templates\base.html:92
 msgid "Thank you for visiting my site"

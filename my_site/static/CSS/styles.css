@@ -550,7 +550,61 @@ body.dark-theme .soft-item-link:hover {
 }
 
 /*==================*/
+.login-form p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* label сверху, input снизу */
+    gap: 2px;
+}
 
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* выравниваем поля строго по левой границе */
+    gap: 4px;
+    margin-top: 10px;
+    margin-left: 20px; /* отступ слева для всей формы */
+}
+
+.login-form input {
+    width: 250px;  /* фиксированная ширина, чтобы все поля были одинаковыми */
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.login-button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    align-self: flex-start; /* чтобы кнопка тоже вровень с полями была */
+}
+
+.login-button:hover {
+    background-color: #ff85c1;
+    transform: scale(1.05);
+}
+
+/* Адаптация для больших экранов (если нужно) */
+@media (min-width: 992px) {
+    .login-form {
+        gap: 3px;
+    }
+}
 
 
 
