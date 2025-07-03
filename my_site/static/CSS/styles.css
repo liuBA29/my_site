@@ -603,9 +603,17 @@ body.dark-theme .soft-item-link:hover {
 @media (min-width: 992px) {
     .login-form {
         gap: 3px;
-    }
+
+
+    /*   ================= messages ======================   */
+ /* Отдельный контейнер для тостов */
+.toast-container {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  pointer-events: none;
 }
 
-
-
-
+/* Общий стиль тоста */

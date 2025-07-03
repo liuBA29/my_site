@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-03 15:03+0300\n"
+"POT-Creation-Date: 2025-07-03 21:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,46 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\accounts\forms.py:15
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\accounts\forms.py:17
+msgid "Please enter a username"
+msgstr "Пожалуйста, введите ваше имя"
+
+#: .\accounts\forms.py:19
+msgid "Your username 💫"
+msgstr "Имя пользователя"
+
+#: .\accounts\forms.py:22
+msgid "Email"
+msgstr "Email"
+
+#: .\accounts\forms.py:24
+msgid "Please enter your email address"
+msgstr "Пожалуйста, введите адрес электронной почты"
+
+#: .\accounts\forms.py:25
+msgid "Enter a valid email address"
+msgstr "Введите корректный email"
+
+#: .\accounts\forms.py:28
+msgid "Your email ✉"
+msgstr "Ваш Email"
+
+#: .\accounts\forms.py:32 .\accounts\forms.py:33
+msgid "Password"
+msgstr "Пароль"
+
+#: .\accounts\forms.py:36
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
+
+#: .\accounts\forms.py:37
+msgid "Repeat password"
+msgstr "Повторите пароль"
 
 #: .\my_site\settings.py:164
 msgid "Russian"
@@ -52,7 +92,9 @@ msgstr "Портфолио веб-разработчика Любови Кова
 msgid ""
 "Login page of the portfolio website of web developer Liubov Kovaleva. "
 "Django, Python, freelance, useful tools."
-msgstr "Страница входа на сайт-портфолио веб-разработчицы Любови Ковалёвой. Django, Python, фриланс, полезные инструменты."
+msgstr ""
+"Страница входа на сайт-портфолио веб-разработчицы Любови Ковалёвой. Django, "
+"Python, фриланс, полезные инструменты."
 
 #: .\templates\accounts\login.html:10
 msgid "Login | Liubov Kovaleva Portfolio"
@@ -62,10 +104,12 @@ msgstr "Вход | Портфолио Любови Ковалёвой"
 msgid ""
 "Login to the personal account of Liubov Kovaleva’s portfolio site. Django "
 "projects, utilities, and contact."
-msgstr "Вход в личный кабинет на сайте-портфолио Любови Ковалёвой. Проекты на Django, утилиты и контакты."
+msgstr ""
+"Вход в личный кабинет на сайте-портфолио Любови Ковалёвой. Проекты на "
+"Django, утилиты и контакты."
 
 #: .\templates\accounts\login.html:21 .\templates\accounts\login.html:25
-#: .\templates\base.html:62
+#: .\templates\accounts\register.html:27 .\templates\base.html:62
 msgid "Login"
 msgstr "Войти"
 
@@ -73,9 +117,42 @@ msgstr "Войти"
 msgid "Don't have an account?"
 msgstr "Нет аккаунта?"
 
-#: .\templates\accounts\login.html:28 .\templates\base.html:61
+#: .\templates\accounts\login.html:28 .\templates\accounts\register.html:18
+#: .\templates\accounts\register.html:23 .\templates\base.html:61
 msgid "Register"
 msgstr "Регистрация"
+
+#: .\templates\accounts\register.html:7
+#, fuzzy
+#| msgid "Portfolio website of web developer Lyubov Kovaleva"
+msgid "Register | Portfolio website of web developer Liubov Kovaleva"
+msgstr "Портфолио веб-разработчика Любови Ковалёвой"
+
+#: .\templates\accounts\register.html:9
+#, fuzzy
+#| msgid "Portfolio website of web developer Lyubov Kovaleva"
+msgid ""
+"Registration page for the portfolio website of web developer Liubov "
+"Kovaleva. Django, Python, tools, freelance projects."
+msgstr ""
+"Страница входа на сайт-портфолио веб-разработчицы Любови Ковалёвой. Django, "
+"Python, фриланс, полезные инструменты."
+
+#: .\templates\accounts\register.html:11
+#, fuzzy
+#| msgid "Login | Liubov Kovaleva Portfolio"
+msgid "Register | Liubov Kovaleva Portfolio"
+msgstr "Вход | Портфолио Любови Ковалёвой"
+
+#: .\templates\accounts\register.html:13
+msgid ""
+"Create an account to use tools and access features on Liubov Kovaleva’s "
+"developer portfolio site."
+msgstr "Создайте аккаунт, чтобы использовать инструменты и функции на сайте-портфолио Любови Ковалёвой."
+
+#: .\templates\accounts\register.html:26
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
 
 #: .\templates\base.html:39 .\templates\main_app\useful_soft.html:4
 #: .\templates\main_app\useful_soft.html:10
@@ -151,7 +228,7 @@ msgstr ""
 
 #: .\templates\main_app\index.html:29
 msgid "Take a look around"
-msgstr "Взгляние на"
+msgstr "Ознакомьтесь с"
 
 #: .\templates\main_app\index.html:30
 msgid "my projects"
@@ -284,3 +361,17 @@ msgstr "Шаблон текста"
 
 #~ msgid "Tech stack"
 #~ msgstr "Используемые технологии"
+
+
+
+
+msgid "This password is too short."
+msgstr "Пароль слишком короткий."
+
+
+
+msgid "This password is too common."
+msgstr "Этот пароль слишком распространён."
+
+msgid "This password is entirely numeric."
+msgstr "Пароль не должен состоять только из цифр."

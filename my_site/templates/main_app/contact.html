@@ -5,7 +5,20 @@
 {% block title %}контакты{% endblock %}
 
 {% block content %}
+{% if messages %}
+  <div class="page-messages">
+    {% for message in messages %}
+      <div class="page-message {{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
   <h2>{% trans "My contacts" %}</h2>
+
+
+
 
   <p class="section-description">
       <span>Email: luba.sentino@gmail.com</span><br>

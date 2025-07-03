@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
-from .models import Room  # Добавь импорт Room
+from .models import Room
+from django.utils.translation import gettext_lazy as _
 
 def register_view(request):
     if request.method == 'POST':
@@ -38,7 +39,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.success(request, 'Вы успешно вошли!')
+            messages.success(request, f'Вы успешно вошли, {user} !')
             return redirect('main_app:contact')  # куда перенаправлять после входа
     else:
         form = CustomAuthenticationForm()
