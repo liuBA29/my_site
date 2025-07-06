@@ -128,7 +128,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         if self.scope["user"].username != username:
             await self.send(text_data=json.dumps({
                 'type': 'user_joined',
-                'message': f'{username} присоединился к чату',
+                'message': f'{username} присоединилась к чату',
             }))
 
 
