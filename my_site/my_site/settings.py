@@ -231,3 +231,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Вспомогательный вывод для отладки (можно убрать в проде)
 # print("Cloudinary API Key:", CLOUDINARY_STORAGE['API_KEY'])
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')

@@ -1,11 +1,30 @@
 # accounts/views.py
-
+import requests
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
 from .models import Room
 from django.utils.translation import gettext_lazy as _
+
+
+
+
+def send_telegram_message(text):
+    token = settings.TELEGRAM_BOT_TOKEN
+    chat_id = settings.TELEGRAM_CHAT_ID
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    data = {
+        'chat_id': chat_id,
+        'text': text
+    }
+    try:
+        response = requests.post(url, data=data)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        print(f"Ошибка отправки в Telegram: {e}")
+
 
 def register_view(request):
     if request.method == 'POST':
@@ -22,6 +41,10 @@ def register_view(request):
 
             login(request, user)
             messages.success(request, 'Регистрация прошла успешно!')
+
+            # Отправляем уведомление в телеграм
+            send_telegram_message(f"Новый пользователь зарегистрировался: {user.username} (ID: {user.id})")
+
             return redirect('main_app:contact')
         else:
             print("❌ Ошибка валидации формы:")
