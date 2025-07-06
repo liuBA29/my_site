@@ -1,5 +1,6 @@
 Django==5.2.3
 daphne==3.0.2
+Unidecode==1.4.0
 
 python-dotenv==1.0.1
 cloudinary==1.42.1

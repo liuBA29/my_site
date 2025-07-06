@@ -617,11 +617,5 @@ body.dark-theme .soft-item-link:hover {
 }
 
 /* =====  for messages.success ===== */
-.page-messages .page-message.success {
-    color: #3399ff;
-    text-align: center;
-    font-weight: bold;
-    margin: 10px 0;
-}
 
 

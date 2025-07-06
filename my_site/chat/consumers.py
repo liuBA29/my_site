@@ -1,7 +1,7 @@
 # chat/consumers.py
 
 import json
-from accounts.views import send_telegram_message
+
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync, sync_to_async
 from django.utils.timezone import now
@@ -12,6 +12,7 @@ from django.utils.timezone import now
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         from accounts.models import CustomUser, Room
+        from accounts.views import send_telegram_message
         from .models import Message
 
         self.room_name = self.scope['url_route']['kwargs']['room_name']

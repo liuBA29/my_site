@@ -85,16 +85,20 @@
     max-width: 70%;
   }
 
-  .message-server {
+.message-server {
   text-align: center;
-  background-color: #eee;
+  background-color: transparent;
   margin: 5px;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: bold;
-  max-width: 70%;
-  color: #444;
+  padding: 3px;
+  font-size: 0.90em;
+  font-weight: normal;
+  color: #999999; /* чуть темнее, но всё ещё мягкий */
+  max-width: 100%;
+  font-style: italic;
+  opacity: 0.8; /* немного выше, чтобы лучше читался */
 }
+
+
 
 
   .message {
@@ -201,7 +205,10 @@
       chatSocket.onmessage = function (e) {
       const data = JSON.parse(e.data);
       const chatLog = document.getElementById('chat-log');
+
       const user = data.username || "Сервер";
+
+
       const isOwnMessage = (user === username);
       const time = formatTime(new Date());
 
