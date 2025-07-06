@@ -1,6 +1,7 @@
 # chat/consumers.py
 
 import json
+from accounts.views import send_telegram_message
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync, sync_to_async
 from django.utils.timezone import now
@@ -31,6 +32,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
         if not user.is_authenticated:
             await self.close()
             return
+
+        # 🟢 Telegram-уведомление:
+        if not user.is_superuser:
+            send_telegram_message(f"💬 Пользователь {user.username} зашёл в чат!")
 
         # Отправка сообщения только подключившемуся пользователю
         if user.is_superuser:
