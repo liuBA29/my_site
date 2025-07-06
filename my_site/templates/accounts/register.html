@@ -17,27 +17,6 @@
 
 <h2>{% trans "Register" %}</h2>
 
-{# — Выведем сообщения здесь, в теле страницы, перед формой — #}
-  {% if messages %}
-    <div class="page-messages">
-      {% for message in messages %}
-        <div class="page-message {{ message.tags }}">
-          {{ message }}
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
-
-{# — Выведем сообщения здесь, в теле страницы, перед формой — #}
-  {% if messages %}
-    <div class="page-messages">
-      {% for message in messages %}
-        <div class="page-message {{ message.tags }}">
-          {{ message }}
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
 
 <form method="post" novalidate class="login-form">
     {% csrf_token %}

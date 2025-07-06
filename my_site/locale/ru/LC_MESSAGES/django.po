@@ -365,8 +365,13 @@ msgstr "Шаблон текста"
 
 
 
-msgid "This password is too short."
-msgstr "Пароль слишком короткий."
+#: django/contrib/auth/password_validation.py:nnn
+msgid "This password is too short. It must contain at least %d character."
+msgid_plural "This password is too short. It must contain at least %d characters."
+msgstr[0] "Пароль слишком короткий. Он должен содержать как минимум %d символ."
+msgstr[1] "Пароль слишком короткий. Он должен содержать как минимум %d символа."
+msgstr[2] "Пароль слишком короткий. Он должен содержать как минимум %d символов."
+
 
 
 
