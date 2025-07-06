@@ -212,7 +212,7 @@ footer {
             display: inline-block;
             cursor: pointer;
             position: absolute;
-            top: 12vh; /* Поднимаем на 15% */
+            top: 20vh; /* Поднимаем на 15% */
             right: 18vh; /* Размещаем справа */
         }
 
@@ -250,11 +250,33 @@ footer {
             transform: translateX(var(--height));
         }
 
+/*------------auth----------*/
+.auth {
+    position: absolute;
+    top: 2vh;
+    right: 0vh;
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.auth a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logout {
+    font-size: 0.8rem; /* чуть меньше */
+    color: #bbbbbb; /* блеклый серый */
+}
+
+
+
 /*------------language----------*/
 .language-buttons {
     position: absolute;
-    top: 2vh; /* Размещаем чуть выше бегунка */
-    right: 5vh; /* Совпадает с бегунком */
+    top: 10vh; /* Размещаем чуть выше бегунка */
+    right: 6vh;
     display: flex;
     gap: 8px;
 }
@@ -406,9 +428,7 @@ footer {
 }
 
 
-.soft-item h3 {
-    margin: 0 0 10px 0;
-}
+
 
 .soft-item h3 a {
     color: #FF69B4;
@@ -529,5 +549,79 @@ body.dark-theme .soft-item-link:hover {
   --gap-large: 20px;
 }
 
+/*==================*/
+.login-form p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* label сверху, input снизу */
+    gap: 2px;
+}
+
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* выравниваем поля строго по левой границе */
+    gap: 4px;
+    margin-top: 10px;
+    margin-left: 20px; /* отступ слева для всей формы */
+}
+
+.login-form input {
+    width: 250px;  /* фиксированная ширина, чтобы все поля были одинаковыми */
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.login-button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    align-self: flex-start; /* чтобы кнопка тоже вровень с полями была */
+}
+
+.login-button:hover {
+    background-color: #ff85c1;
+    transform: scale(1.05);
+}
+
+/* Адаптация для больших экранов (если нужно) */
+@media (min-width: 992px) {
+    .login-form {
+        gap: 3px;
+
+
+    /*   ================= messages ======================   */
+ /* Отдельный контейнер для тостов */
+.toast-container {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+/* =====  for messages.success ===== */
+.page-messages .page-message.success {
+    color: #3399ff;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
 
 

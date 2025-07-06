@@ -1,31 +1,27 @@
 <!-- templates/main_app/contacts.html -->
-
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}контакты{% endblock %}
 
 {% block content %}
-{% if messages %}
-  <div class="page-messages">
-    {% for message in messages %}
-      <div class="page-message {{ message.tags }}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+  {% if messages %}
+    <div class="page-messages">
+      {% for message in messages %}
+        {% if 'success' in message.tags %}
+          <div class="page-message success">
+            {{ message }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
 
   <h2>{% trans "My contacts" %}</h2>
 
-
-
-
   <p class="section-description">
-      <span>Email: luba.sentino@gmail.com</span><br>
-      <span>Telegram: @liubakovaleva</span><br>
-
-
-      <a href="#" id="open-chat" class="soft-item-link"><span>Чат-online</span></a><br>
+    <span>Email: luba.sentino@gmail.com</span><br>
+    <span>Telegram: @liubakovaleva</span><br>
+    <a href="#" id="open-chat" class="soft-item-link"><span>Чат-online</span></a><br>
   </p>
 
   <!-- Модальное окно -->
@@ -37,6 +33,46 @@
   </div>
 
   <style>
+.page-messages {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.page-message {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px auto;
+    max-width: 600px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.page-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.page-message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.page-message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+
     .modal {
       position: fixed;
       z-index: 9999;
@@ -50,15 +86,17 @@
       padding: 20px;
       border-radius: 10px;
       max-width: 800px;
-
       position: relative;
-      top: 1cm; /* сдвиг вниз */
+      top: 1cm;
       margin: auto;
     }
 
     .modal-open {
       overflow: hidden;
     }
+
+
+
   </style>
 
   <script>
@@ -77,7 +115,6 @@
           .then(response => response.text())
           .then(html => {
             chatContent.innerHTML = html;
-            // запускаем JS скрипт чата, если он внутри partial
             const scriptTags = chatContent.querySelectorAll("script");
             scriptTags.forEach(oldScript => {
               const newScript = document.createElement("script");
@@ -90,7 +127,7 @@
       closeBtn.addEventListener('click', function () {
         modal.style.display = 'none';
         document.body.classList.remove('modal-open');
-        chatContent.innerHTML = ''; // очищаем
+        chatContent.innerHTML = '';
       });
 
       window.addEventListener('click', function (e) {
