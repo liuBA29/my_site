@@ -1,7 +1,7 @@
 <!-- templates/chat/_lobby_partial.html -->
 
 
-<h2>Добро пожаловать в чат</h2>
+<h2>Добро пожаловать в чат, <strong>{{username}}</strong></h2>
 
 <input id="username-input" type="hidden" value="{{ username }}" />
 
@@ -22,7 +22,9 @@
 {% endif %}
 
 
-<button id="room-join">Войти</button>
+<div style="text-align: center;">
+  <button class="btn-login" id="room-join">Войти</button>
+</div>
 
 <div id="chat-area" style="display: none;">
   <div id="chat-log">
@@ -33,6 +35,32 @@
   <button id="chat-message-submit">Отправить</button>
 </div>
 <style>
+    .btn-login {
+      padding: 5px 10px;
+      text-decoration: none;
+
+      font-weight: bold;
+      color: #FF69B4;
+      background-color: transparent;
+      border: 2px solid #FF69B4;
+      border-radius: 5px;
+      margin: 5px;
+      transition: background-color 0.3s, color 0.3s;
+  }
+
+    .btn-login:hover {
+      background-color: #FF69B4;
+      color: white;
+  }
+
+    .btn-login:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(37, 117, 252, 0.5);
+    }
+
+
+
+
   .message-left {
     text-align: left;
     background-color: #eee;
