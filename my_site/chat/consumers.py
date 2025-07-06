@@ -18,22 +18,42 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         print(f"[DEBUG] Подключение к комнате: {self.room_name}")
 
-
         # Присоединение к группе комнаты
         await self.channel_layer.group_add(
             self.room_group_name,
             self.channel_name
         )
 
-
         await self.accept()
-        await self.send(text_data=json.dumps({
-            'type': 'connection_established',
-            'message': f'Вы подключились к комнате: {self.room_name}'
-        }))
+
+        user = self.scope["user"]
+
+        if not user.is_authenticated:
+            await self.close()
+            return
+
+        # Отправка сообщения только подключившемуся пользователю
+        if user.is_superuser:
+            await self.send(text_data=json.dumps({
+                'type': 'connection_established',
+                'message': f'Вы подключились к комнате: {self.room_name}'
+            }))
+        else:
+            await self.send(text_data=json.dumps({
+                'type': 'connection_established',
+                'message': 'Вы подключились'
+            }))
+
+        # Уведомляем других участников комнаты
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'user_joined',
+                'username': user.username,
+            }
+        )
 
         # Загружаем последние сообщения
-        from accounts.models import Room
         @sync_to_async
         def get_room_and_messages(room_slug):
             room = Room.objects.get(slug=room_slug)
@@ -48,8 +68,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'username': message.user.username,
                 'timestamp': message.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
             }))
-
-
 
     async def disconnect(self, close_code):
         from accounts.models import CustomUser, Room
@@ -101,4 +119,16 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'message': message,
             'username': username,
         }))
+
+
+    async def user_joined(self, event):
+        username = event['username']
+
+        # Не отправляем подключившемуся самому
+        if self.scope["user"].username != username:
+            await self.send(text_data=json.dumps({
+                'type': 'user_joined',
+                'message': f'{username} присоединился к чату',
+            }))
+
 

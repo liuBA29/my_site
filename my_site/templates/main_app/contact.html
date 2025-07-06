@@ -26,7 +26,8 @@
 
   <!-- Модальное окно -->
   <div id="chatModal" class="modal" style="display:none;">
-    <div class="modal-content" style="background:white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto;">
+
+    <div class="modal-content">
       <span class="close" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
       <div id="chatContent">Загрузка...</div>
     </div>
@@ -72,6 +73,11 @@
     border: 1px solid #bee5eb;
 }
 
+      .modal-content {
+      resize: both;
+      overflow: auto;
+    }
+
 
     .modal {
       position: fixed;
@@ -79,17 +85,33 @@
       left: 0; top: 0;
       width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
+
     }
 
     .modal-content {
-      background: white;
+      background-color: white;
       padding: 20px;
       border-radius: 10px;
       max-width: 800px;
       position: relative;
       top: 1cm;
       margin: auto;
+
     }
+
+
+     .dark-theme .modal-content {
+      background-color: #2e2e2e;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      top: 1cm;
+      margin: auto;
+
+    }
+
+
 
     .modal-open {
       overflow: hidden;
