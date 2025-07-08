@@ -23,7 +23,7 @@
 
 <!-- Блок с кнопкой Войти -->
 <div id="lobby-area" style="text-align: center;">
-  <button class="btn-login" id="room-join">Войти</button>
+  <button class="btn-login" id="room-join">Войти в чат</button>
 </div>
 
 <!-- Блок с надписью "Вы в чате" и кнопкой Выйти, изначально скрыт -->
@@ -115,13 +115,19 @@
     display: block;
   }
 
+
+
+
+
+
+
+
+
   #chat-log {
     border: 1px solid #ccc;
     height: 300px;
     overflow-y: auto;
     padding: 10px;
-
-
     margin-bottom: 10px;
   }
 
@@ -144,6 +150,75 @@
   font-size: 1em;
   margin-left: 5px;
 }
+
+
+
+
+
+
+
+  .btn-login {
+    position: relative;
+    overflow: hidden;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: #FF69B4;
+    background-color: transparent;
+    border: 2px solid #FF69B4;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn-login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 105, 180, 0.4) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    animation: shimmer 2.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -150%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .btn-login:hover {
+    background-color: #FF69B4;
+    color: white;
+  }
+
+  .btn-login:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.3);
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 
