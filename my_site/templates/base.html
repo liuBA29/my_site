@@ -8,18 +8,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Сайт-портфолио Любовь Ковалёва{% endblock %}</title>
+    <title>{% block title %}{% trans "Portfolio website of Liubov Kovaleva" %}{% endblock %}</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dczzlelzw/image/upload/v1747063141/df83zssh8bli1agpk9bw.png">
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
 
-    <meta name="description" content="{% block meta_description %}Портфолио веб-разработчика Любови Ковалёвой: проекты, полезные утилиты, контакт для сотрудничества.{% endblock %}">
-    <meta name="keywords" content="веб-разработка, Python, Django, портфолио, фрилансер, Любовь Ковалёва, разработка сайтов">
+    <meta name="description" content="{% block meta_description %}{% trans "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, contact for collaboration." %}{% endblock %}">
+    <meta name="keywords" content="{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}">
+
     <meta name="robots" content="index, follow">
 
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{% block og_title %}Портфолио Любови Ковалёвой{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Веб-разработка, проекты, автоматизация задач. Сайт-портфолио LiuBA29.{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{% trans "Portfolio of Liubov Kovaleva" %}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{% trans "Web development, projects, task automation. Portfolio site of LiuBA29." %}{% endblock %}">
     <meta property="og:image" content="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
@@ -46,10 +47,10 @@
               </a>
                         </div>
                     </li>
+                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Useful Software" %}</a></li>
+                    <li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">{% trans "My Projects" %}</a></li>
+                    <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
 
-                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">Useful software</a></li>
-<li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">My projects</a></li>
-<li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contacts</a></li>
                 </ul>
             </nav>
 

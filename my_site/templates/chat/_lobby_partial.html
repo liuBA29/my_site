@@ -1,14 +1,14 @@
 <!-- templates/chat/_lobby_partial.html -->
 
 
-
+{% load i18n %}
 
 <input id="username-input" type="hidden" value="{{ username }}" />
 
 
 {% if user.is_authenticated %}
   {% if user.is_superuser %}
-    <label for="room-name-input">Имя комнаты:</label>
+    <label for="room-name-input">{% trans "Room name:" %}</label>
     <select id="room-name-input" name="room">
       {% for name in room_names %}
       <option value="{{ name }}">{{ name }}</option>
@@ -18,19 +18,17 @@
     <input id="room-name-input" type="hidden" value="{{ room_name|default:'myroom' }}" />
   {% endif %}
 {% else %}
-  <p>Чтобы попасть в чат, необходимо <a href="{% url 'login' %}">войти</a> или <a href="{% url 'signup' %}">зарегистрироваться</a>.</p>
+  <p>{% trans "To join the chat, please" %} <a href="{% url 'login' %}">{% trans "log in" %}</a> {% trans "or" %} <a href="{% url 'signup' %}">{% trans "sign up" %}</a>.</p>
 {% endif %}
 
 <!-- Блок с кнопкой Войти -->
 <div id="lobby-area" style="text-align: center;">
-  <button class="btn-login" id="room-join">Войти в чат</button>
+  <button class="btn-login" id="room-join">{% trans "Join Chat" %}</button>
 </div>
 
 <!-- Блок с надписью "Вы в чате" и кнопкой Выйти, изначально скрыт -->
 <div id="in-chat-area" style="display: none; text-align: center;">
-
-  <p>Вы в чате, <strong><span id="chat-username">{{username}}</span></strong></p>
-
+  <p>{% trans "You are in chat," %} <strong><span id="chat-username">{{username}}</span></strong></p>
 </div>
 
 
@@ -39,8 +37,8 @@
   </div>
 
   <div class="chat-input-area">
-  <input id="chat-message-input" type="text" placeholder="Введите сообщение">
-  <button id="chat-message-submit">Отправить</button>
+  <input id="chat-message-input" type="text" placeholder="{% trans 'Enter message' %}">
+    <button id="chat-message-submit">{% trans "Send" %}</button>
   </div>
 
 </div>
@@ -225,7 +223,9 @@
 
 </style>
 <script>
-    // При загрузке страницы — получаем имя пользователя из сессии
+    // ==========================
+// 1. При загрузке страницы
+// ==========================
   window.addEventListener('load', function () {
     fetch('/chat/check-user/')
       .then(response => response.json())
@@ -242,27 +242,19 @@
   let chatSocket;
   let username;
 
+// ==========================
+// 2. Формат времени (часы:минуты)
+// ==========================
+
     function formatTime(date) {
       const hours = String(date.getHours()).padStart(2, '0');
       const minutes = String(date.getMinutes()).padStart(2, '0');
       return `${hours}:${minutes}`;
     }
 
-    window.addEventListener('load', function () {
-    fetch('/chat/check-user/')
-      .then(response => response.json())
-      .then(data => {
-        if (data.username) {
-          document.getElementById('username-input').value = data.username;
-          document.getElementById('username-input').readOnly = true;
-          // Обновим приветствие (если username динамический)
-
-          document.getElementById('chat-username').textContent = data.username;
-        } else {
-          alert("Вы новый пользователь. Пожалуйста, введите имя.");
-        }
-      });
-  });
+// ==========================
+// 3. Присоединение к комнате
+// ==========================
 
     document.getElementById('room-join').onclick = function() {
       const roomName = document.getElementById('room-name-input').value;
@@ -273,7 +265,8 @@
         return;
       }
 
-      document.getElementById('chat-area').style.display = 'block';
+      // Показать чат, скрыть лобби
+  document.getElementById('chat-area').style.display = 'block';
 
   const isSuperUser = {{ user.is_superuser|yesno:"true,false" }};
   if (!isSuperUser) {
@@ -295,7 +288,9 @@
       );
 
 
-
+// ==========================
+  // 4. Обработка входящих сообщений
+  // ==========================
       chatSocket.onmessage = function (e) {
       const data = JSON.parse(e.data);
       const chatLog = document.getElementById('chat-log');
@@ -330,6 +325,10 @@
       chatLog.scrollTop = chatLog.scrollHeight;
     };
 
+    // ==========================
+  // 5. Потеря соединения
+  // ==========================
+
     chatSocket.onclose = function (e) {
       alert('Соединение с чатом потеряно.');
       // При разрыве соединения вернуть интерфейс в начальное состояние
@@ -337,6 +336,10 @@
       document.getElementById('in-chat-area').style.display = 'none';
       document.getElementById('lobby-area').style.display = 'block';
     };
+
+    // ==========================
+  // 6. Отправка сообщения
+  // ==========================
 
     document.getElementById('chat-message-submit').onclick = function () {
       const messageInput = document.getElementById('chat-message-input');
@@ -350,7 +353,9 @@
       }
     };
 
-    // Обработчик кнопки Выйти
+  // ==========================
+  // 7. Выйти из комнаты
+  // ==========================
     document.getElementById('room-leave').onclick = function () {
       if (chatSocket) {
         chatSocket.close();
@@ -367,14 +372,18 @@
     };
   };
 
-  // Отправка по Enter
+// ==========================
+// 8. Отправка по Enter
+// ==========================
   document.getElementById('chat-message-input').addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       document.getElementById('chat-message-submit').click();
     }
   });
 
-  // Функция для получения CSRF-токена, если понадобится
+  // ==========================
+// 9. Получение CSRF-токена (если понадобится)
+// ==========================
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {

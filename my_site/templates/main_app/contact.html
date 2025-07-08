@@ -1,7 +1,7 @@
 <!-- templates/main_app/contacts.html -->
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}контакты{% endblock %}
+{% block title %}{% trans "Contacts" %}{% endblock %}
 
 {% block content %}
   {% if messages %}
@@ -21,7 +21,7 @@
   <p class="section-description">
     <span>Email: luba.sentino@gmail.com</span><br>
     <span>Telegram: @liubakovaleva</span><br>
-    <a href="#" id="open-chat" class="soft-item-link"><span>Чат-online</span></a><br>
+    <a href="#" id="open-chat" class="soft-item-link"><span>{% trans "Chat-online" %}</span></a><br>
   </p>
 
   <!-- Модальное окно -->
@@ -29,7 +29,7 @@
 
     <div class="modal-content">
       <span class="close" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
-      <div id="chatContent">Загрузка...</div>
+      <div id="chatContent">{% trans "Loading..." %}</div>
     </div>
   </div>
 

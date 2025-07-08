@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-03 21:52+0300\n"
+"POT-Creation-Date: 2025-07-08 19:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,14 +80,10 @@ msgid "text"
 msgstr "текст"
 
 #: .\templates\accounts\login.html:6
-#, fuzzy
-#| msgid "Portfolio website of web developer Lyubov Kovaleva"
 msgid "Login | Portfolio website of web developer Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
 #: .\templates\accounts\login.html:8
-#, fuzzy
-#| msgid "Portfolio website of web developer Lyubov Kovaleva"
 msgid ""
 "Login page of the portfolio website of web developer Liubov Kovaleva. "
 "Django, Python, freelance, useful tools."
@@ -108,29 +103,25 @@ msgstr ""
 "Вход в личный кабинет на сайте-портфолио Любови Ковалёвой. Проекты на "
 "Django, утилиты и контакты."
 
-#: .\templates\accounts\login.html:21 .\templates\accounts\login.html:25
-#: .\templates\accounts\register.html:27 .\templates\base.html:62
+#: .\templates\accounts\login.html:19 .\templates\accounts\login.html:26
+#: .\templates\accounts\register.html:28 .\templates\base.html:74
 msgid "Login"
 msgstr "Войти"
 
-#: .\templates\accounts\login.html:28
+#: .\templates\accounts\login.html:29
 msgid "Don't have an account?"
 msgstr "Нет аккаунта?"
 
-#: .\templates\accounts\login.html:28 .\templates\accounts\register.html:18
-#: .\templates\accounts\register.html:23 .\templates\base.html:61
+#: .\templates\accounts\login.html:29 .\templates\accounts\register.html:18
+#: .\templates\accounts\register.html:24 .\templates\base.html:73
 msgid "Register"
 msgstr "Регистрация"
 
 #: .\templates\accounts\register.html:7
-#, fuzzy
-#| msgid "Portfolio website of web developer Lyubov Kovaleva"
 msgid "Register | Portfolio website of web developer Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
 #: .\templates\accounts\register.html:9
-#, fuzzy
-#| msgid "Portfolio website of web developer Lyubov Kovaleva"
 msgid ""
 "Registration page for the portfolio website of web developer Liubov "
 "Kovaleva. Django, Python, tools, freelance projects."
@@ -139,8 +130,6 @@ msgstr ""
 "Python, фриланс, полезные инструменты."
 
 #: .\templates\accounts\register.html:11
-#, fuzzy
-#| msgid "Login | Liubov Kovaleva Portfolio"
 msgid "Register | Liubov Kovaleva Portfolio"
 msgstr "Вход | Портфолио Любови Ковалёвой"
 
@@ -148,53 +137,93 @@ msgstr "Вход | Портфолио Любови Ковалёвой"
 msgid ""
 "Create an account to use tools and access features on Liubov Kovaleva’s "
 "developer portfolio site."
-msgstr "Создайте аккаунт, чтобы использовать инструменты и функции на сайте-портфолио Любови Ковалёвой."
+msgstr ""
+"Создайте аккаунт, чтобы использовать инструменты и функции на сайте-"
+"портфолио Любови Ковалёвой."
 
-#: .\templates\accounts\register.html:26
+#: .\templates\accounts\register.html:27
 msgid "Already have an account?"
 msgstr "Уже есть аккаунт?"
 
-#: .\templates\base.html:39 .\templates\main_app\useful_soft.html:4
-#: .\templates\main_app\useful_soft.html:10
-msgid "Useful software"
+#: .\templates\base.html:11
+#, fuzzy
+msgid "Portfolio website of Liubov Kovaleva"
+msgstr "Портфолио веб-разработчика Любови Ковалёвой"
+
+#: .\templates\base.html:15
+msgid ""
+"Portfolio of web developer Liubov Kovaleva: projects, useful utilities, "
+"contact for collaboration."
+msgstr ""
+"Портфолио веб-разработчицы Любови Ковалёвой: проекты, полезные утилиты, "
+"контакты для сотрудничества."
+
+#: .\templates\base.html:16
+msgid ""
+"web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, "
+"website development"
+msgstr ""
+"веб-разработка, Python, Django, портфолио, фрилансер, Любовь Ковалёва, "
+"разработка сайтов"
+
+#: .\templates\base.html:22
+#, fuzzy
+msgid "Portfolio of Liubov Kovaleva"
+msgstr "Портфолио Любови Ковалёвой"
+
+#: .\templates\base.html:23
+msgid "Web development, projects, task automation. Portfolio site of LiuBA29."
+msgstr "Веб-разработка, проекты, автоматизация задач. Сайт-портфолио LiuBA29."
+
+#: .\templates\base.html:50
+msgid "Useful Software"
 msgstr "Полезный софт"
 
-#: .\templates\base.html:40
-msgid "My projects"
+#: .\templates\base.html:51 .\templates\main_app\my_projects.html:6
+#: .\templates\main_app\my_projects.html:12
+msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:41
+#: .\templates\base.html:52 .\templates\main_app\contact.html:4
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\templates\base.html:58
+#: .\templates\base.html:70
 msgid "Hello"
 msgstr "Привет"
 
-#: .\templates\base.html:59
+#: .\templates\base.html:71
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\templates\base.html:92
+#: .\templates\base.html:104
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
-#: .\templates\main_app\contact.html:8
+#: .\templates\main_app\contact.html:19
 msgid "My contacts"
 msgstr "Контакты"
 
+#: .\templates\main_app\contact.html:24
+msgid "Chat-online"
+msgstr "Онлайн чат"
+
+#: .\templates\main_app\contact.html:32
+msgid "Loading..."
+msgstr "Загружается..."
+
 #: .\templates\main_app\index.html:5
-msgid "Portfolio website of web developer Lyubov Kovaleva"
+msgid "Portfolio website of web developer Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
-#: .\templates\main_app\index.html:14
+#: .\templates\main_app\index.html:22
 msgid "Hello and welcome!"
 msgstr "Приветствую вас!"
 
-#: .\templates\main_app\index.html:16
+#: .\templates\main_app\index.html:24
 msgid ""
 "\n"
-"    My name is Lyubov Kovaleva.<br>\n"
+"    My name is Liubov Kovaleva.<br>\n"
 "    I’m passionate about programming in Python, Django, Django REST "
 "Framework, JS, and Bash, and I also enjoy working with databases and API "
 "integrations.<br>\n"
@@ -226,27 +255,27 @@ msgstr ""
 "безопасности.\n"
 "    "
 
-#: .\templates\main_app\index.html:29
+#: .\templates\main_app\index.html:37
 msgid "Take a look around"
 msgstr "Ознакомьтесь с"
 
-#: .\templates\main_app\index.html:30
+#: .\templates\main_app\index.html:38
 msgid "my projects"
 msgstr "мои проекты"
 
-#: .\templates\main_app\index.html:32
+#: .\templates\main_app\index.html:40
 msgid "or you might find some"
 msgstr "или, может быть, Вы найдете"
 
-#: .\templates\main_app\index.html:33
+#: .\templates\main_app\index.html:41
 msgid "useful software"
 msgstr "полезный софт"
 
-#: .\templates\main_app\index.html:34
+#: .\templates\main_app\index.html:42
 msgid "you’ll like."
 msgstr "для себя."
 
-#: .\templates\main_app\index.html:40
+#: .\templates\main_app\index.html:48
 msgid ""
 "\n"
 "    I am open to working on various projects and job offers.\n"
@@ -257,11 +286,6 @@ msgstr ""
 "    Я открыта для сотрудничества и предложений по работе.\n"
 "    <br>Если Вам это тоже интересно, то напишите мне!\n"
 "    "
-
-#: .\templates\main_app\my_projects.html:6
-#: .\templates\main_app\my_projects.html:12
-msgid "My Projects"
-msgstr "Мои проекты"
 
 #: .\templates\main_app\my_projects.html:14
 msgid ""
@@ -329,6 +353,11 @@ msgstr "Загрузить русскую версию"
 msgid "Download English version"
 msgstr "Загрузить английскую версию"
 
+#: .\templates\main_app\useful_soft.html:4
+#: .\templates\main_app\useful_soft.html:10
+msgid "Useful software"
+msgstr "Полезный софт"
+
 #: .\templates\main_app\useful_soft.html:14
 msgid ""
 "Here you can find software I’ve developed that is fully completed and ready "
@@ -359,24 +388,24 @@ msgstr "Шаблон заголовка"
 msgid "Template text"
 msgstr "Шаблон текста"
 
+#~ msgid "My projects"
+#~ msgstr "Мои проекты"
+
 #~ msgid "Tech stack"
 #~ msgstr "Используемые технологии"
 
+#~ msgid "This password is too short. It must contain at least %d character."
+#~ msgid_plural ""
+#~ "This password is too short. It must contain at least %d characters."
+#~ msgstr[0] ""
+#~ "Пароль слишком короткий. Он должен содержать как минимум %d символ."
+#~ msgstr[1] ""
+#~ "Пароль слишком короткий. Он должен содержать как минимум %d символа."
+#~ msgstr[2] ""
+#~ "Пароль слишком короткий. Он должен содержать как минимум %d символов."
 
+#~ msgid "This password is too common."
+#~ msgstr "Этот пароль слишком распространён."
 
-
-#: django/contrib/auth/password_validation.py:nnn
-msgid "This password is too short. It must contain at least %d character."
-msgid_plural "This password is too short. It must contain at least %d characters."
-msgstr[0] "Пароль слишком короткий. Он должен содержать как минимум %d символ."
-msgstr[1] "Пароль слишком короткий. Он должен содержать как минимум %d символа."
-msgstr[2] "Пароль слишком короткий. Он должен содержать как минимум %d символов."
-
-
-
-
-msgid "This password is too common."
-msgstr "Этот пароль слишком распространён."
-
-msgid "This password is entirely numeric."
-msgstr "Пароль не должен состоять только из цифр."
+#~ msgid "This password is entirely numeric."
+#~ msgstr "Пароль не должен состоять только из цифр."
