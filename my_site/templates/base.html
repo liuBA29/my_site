@@ -35,9 +35,12 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="{% url 'main_app:home' %}">
-                        <img src="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png" alt="Обо мне" style="width: 100px; height: auto;">
-                    </a></li>
+                    <li>
+  <a href="{% url 'main_app:home' %}" id="logo-link">
+    <img id="logo-img" src="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png" alt="Обо мне" style="width: 100px; height: auto;">
+  </a>
+</li>
+
                     <li><a href="{% url 'main_app:useful_soft' %}">{% trans 'Useful software' %}</a></li>
                     <li><a href="{% url 'main_app:my_projects' %}">{% trans 'My projects' %}</a></li>
                     <li><a href="{% url 'main_app:contact' %}">{% trans 'Contacts' %}</a></li>
@@ -107,6 +110,37 @@
             document.body.classList.add(newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // Скрипт изменения картинки логотипа при наведении и клике
+    const logoLink = document.getElementById('logo-link');
+    const logoImg = document.getElementById('logo-img');
+
+    const originalSrc = 'https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png';
+    const altSrc = 'https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png';
+
+    let clicked = false;
+
+    logoLink.addEventListener('mouseenter', () => {
+        if (!clicked) {
+            logoImg.src = altSrc;
+        }
+    });
+
+    logoLink.addEventListener('mouseleave', () => {
+        if (!clicked) {
+            logoImg.src = originalSrc;
+        }
+    });
+
+    logoLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Можно убрать, если нужно перейти по ссылке сразу
+        clicked = true;
+        logoImg.src = altSrc;
+        // Если хочешь после клика перейти по ссылке, раскомментируй:
+        // window.location.href = logoLink.href;
+    });
+
+
     </script>
 
     {% block extra_js %}

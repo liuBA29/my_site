@@ -15,7 +15,9 @@ def page_view(request):
 
 def main_page(request):
     project = Project.objects.all().values('title', 'description')
-    return render(request, 'main_app/index.html')
+    show_alt_image = request.GET.get("alt") == "1"
+
+    return render(request, 'main_app/index.html', )
 
 
 
