@@ -38,8 +38,11 @@
   <div class="chat-log" id="chat-log">
   </div>
 
+  <div class="chat-input-area">
   <input id="chat-message-input" type="text" placeholder="Введите сообщение">
   <button id="chat-message-submit">Отправить</button>
+  </div>
+
 </div>
 <style>
     .btn-login {
@@ -125,6 +128,22 @@
   .chat-log {
     color: #2e2e2e;
   }
+
+  .chat-input-area {
+  display: flex;
+}
+
+#chat-message-input {
+  flex: 1;
+  padding: 5px;
+  font-size: 1em;
+}
+
+#chat-message-submit {
+  padding: 5px 10px;
+  font-size: 1em;
+  margin-left: 5px;
+}
 
 
 
