@@ -616,6 +616,53 @@ body.dark-theme .soft-item-link:hover {
   pointer-events: none;
 }
 
-/* =====  for messages.success ===== */
+/* =====  gradient ===== */
+.gradient-overlay {
+  position: relative;
+  display: inline-block; /* или block, зависит от контекста */
+}
 
+.gradient-overlay img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
+/* Псевдоэлемент с градиентом */
+.gradient-overlay {
+  position: relative;
+  display: inline-block;
+}
+
+.gradient-overlay img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100px;
+  height: auto;
+}
+
+.gradient-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* сокращение для top:0; right:0; bottom:0; left:0; */
+  background: linear-gradient(270deg, #ff00cc, #3333ff, #ff00cc);
+  background-size: 600% 600%;
+  animation: gradientShift 8s ease infinite;
+  mix-blend-mode: screen; /* или попробуй overlay */
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

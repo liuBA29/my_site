@@ -25,6 +25,10 @@
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
 
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+
+
+
+
 </head>
 
 
@@ -36,14 +40,16 @@
             <nav>
                 <ul>
                     <li>
-  <a href="{% url 'main_app:home' %}" id="logo-link">
-    <img id="logo-img" src="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png" alt="Обо мне" style="width: 100px; height: auto;">
-  </a>
-</li>
+                        <div class="">
+              <a href="{% url 'main_app:home' %}" id="logo-link">
+                <img id="logo-img" src="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png" alt="Обо мне" style="width: 100px; height: auto;">
+              </a>
+                        </div>
+                    </li>
 
-                    <li><a href="{% url 'main_app:useful_soft' %}">{% trans 'Useful software' %}</a></li>
-                    <li><a href="{% url 'main_app:my_projects' %}">{% trans 'My projects' %}</a></li>
-                    <li><a href="{% url 'main_app:contact' %}">{% trans 'Contacts' %}</a></li>
+                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">Useful software</a></li>
+<li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">My projects</a></li>
+<li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contacts</a></li>
                 </ul>
             </nav>
 
@@ -133,7 +139,7 @@
     });
 
     logoLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Можно убрать, если нужно перейти по ссылке сразу
+
         clicked = true;
         logoImg.src = altSrc;
         // Если хочешь после клика перейти по ссылке, раскомментируй:
