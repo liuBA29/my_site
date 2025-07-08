@@ -25,6 +25,7 @@ resume.txt
 resume.docx
 
 
+bot_test.py
 delete_table.py
 delete_then_create_as_sample.py
 table_structure.py
