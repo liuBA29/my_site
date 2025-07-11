@@ -1,4 +1,4 @@
-# accounts/urls.py
+# main_app/urls.py
 
 from django.urls import path
 from .views import *
