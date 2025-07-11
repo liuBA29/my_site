@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-08 19:46+0300\n"
+"POT-Creation-Date: 2025-07-09 15:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,25 @@ msgstr "Подтвердите пароль"
 #: .\accounts\forms.py:37
 msgid "Repeat password"
 msgstr "Повторите пароль"
+
+#: .\chat\consumers.py:41
+#, python-format
+msgid "💬 User %(username)s has joined the chat!"
+msgstr "💬 %(username)s уже в чате!"
+
+#: .\chat\consumers.py:47
+#, python-format
+msgid "You have joined room: %(room)s"
+msgstr "Вы присоединились к чату"
+
+#: .\chat\consumers.py:52
+msgid "You have joined the chat"
+msgstr "Вы присоединились к чату"
+
+#: .\chat\consumers.py:139
+#, python-format
+msgid "%(username)s has joined the chat"
+msgstr "%(username)s уже в чате"
 
 #: .\my_site\settings.py:164
 msgid "Russian"
@@ -167,7 +186,7 @@ msgstr ""
 "разработка сайтов"
 
 #: .\templates\base.html:22
-#, fuzzy
+
 msgid "Portfolio of Liubov Kovaleva"
 msgstr "Портфолио Любови Ковалёвой"
 
@@ -199,6 +218,51 @@ msgstr "Выйти"
 #: .\templates\base.html:104
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
+
+#: .\templates\chat\_lobby_partial.html:12
+msgid "Room name:"
+msgstr "Название комнаты:"
+
+#: .\templates\chat\_lobby_partial.html:22
+msgid "To join the chat, please"
+msgstr "Чтобы присоединиться к чату, пожалуйста,"
+
+#: .\templates\chat\_lobby_partial.html:22
+msgid "log in"
+msgstr "войдите"
+
+#: .\templates\chat\_lobby_partial.html:22
+msgid "or"
+msgstr "или"
+
+#: .\templates\chat\_lobby_partial.html:22
+msgid "sign up"
+msgstr "зарегистрируйтесь"
+
+#: .\templates\chat\_lobby_partial.html:27
+msgid "Join Chat"
+msgstr "Войти в чат"
+
+#: .\templates\chat\_lobby_partial.html:33
+msgid "You are in chat,"
+msgstr "Вы в чате"
+
+#: .\templates\chat\_lobby_partial.html:42
+msgid "Enter message"
+msgstr "Вести сообщение"
+
+#: .\templates\chat\_lobby_partial.html:43
+msgid "Send"
+msgstr "Отправить"
+
+#: .\templates\chat\_lobby_partial.html:239
+msgid "You are a new user. Please? enter your name."
+msgstr "Вы новый пользователь. Пожалуйста, введите своё имя."
+
+#: .\templates\chat\_lobby_partial.html:300
+#: .\templates\chat\_lobby_partial.html:310
+msgid "Server"
+msgstr "Сервер"
 
 #: .\templates\main_app\contact.html:19
 msgid "My contacts"

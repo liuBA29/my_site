@@ -5,6 +5,9 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync, sync_to_async
 from django.utils.timezone import now
+from django.utils.translation import gettext as _
+from django.utils.timezone import localtime
+
 
 
 
@@ -18,7 +21,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f'chat_{self.room_name}'
 
-        print(f"[DEBUG] Подключение к комнате: {self.room_name}")
+        print(f"[DEBUG] Connection to room: {self.room_name}")
 
         # Присоединение к группе комнаты
         await self.channel_layer.group_add(
@@ -36,18 +39,18 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # 🟢 Telegram-уведомление:
         if not user.is_superuser:
-            send_telegram_message(f"💬 Пользователь {user.username} зашёл в чат!")
+            send_telegram_message(_("💬 User %(username)s has joined the chat!") % {"username": user.username})
 
         # Отправка сообщения только подключившемуся пользователю
         if user.is_superuser:
             await self.send(text_data=json.dumps({
                 'type': 'connection_established',
-                'message': f'Вы подключились к комнате: {self.room_name}'
+                'message': _("You have joined room: %(room)s") % {"room": self.room_name}
             }))
         else:
             await self.send(text_data=json.dumps({
                 'type': 'connection_established',
-                'message': 'Вы подключились'
+                'message': _('You have joined the chat')
             }))
 
         # Уведомляем других участников комнаты
@@ -134,7 +137,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         if self.scope["user"].username != username:
             await self.send(text_data=json.dumps({
                 'type': 'user_joined',
-                'message': f'{username} присоединилась к чату',
+                'message': _('%(username)s has joined the chat') % {'username': username},
             }))
 
 

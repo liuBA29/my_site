@@ -1,7 +1,8 @@
 <!-- templates/chat/_lobby_partial.html -->
 
 
-{% load i18n %}
+
+{% load i18n static%}
 
 <input id="username-input" type="hidden" value="{{ username }}" />
 
@@ -25,6 +26,7 @@
 <div id="lobby-area" style="text-align: center;">
   <button class="btn-login" id="room-join">{% trans "Join Chat" %}</button>
 </div>
+
 
 <!-- Блок с надписью "Вы в чате" и кнопкой Выйти, изначально скрыт -->
 <div id="in-chat-area" style="display: none; text-align: center;">
@@ -234,7 +236,7 @@
           document.getElementById('username-input').value = data.username;
           document.getElementById('username-input').readOnly = true;
         } else {
-          alert("Вы новый пользователь. Пожалуйста, введите имя.");
+          alert("{% trans "You are a new user. Please? enter your name." %}");
         }
       });
   });
@@ -295,7 +297,7 @@
       const data = JSON.parse(e.data);
       const chatLog = document.getElementById('chat-log');
 
-      const user = data.username || "Сервер";
+      const user = data.username || "{% trans 'Server' %}";
 
 
       const isOwnMessage = (user === username);
@@ -305,7 +307,8 @@
       messageDiv.classList.add('message');
 
 
-        if (user === "Сервер") {
+        if (user === "{% trans 'Server' %}") {
+
             messageDiv.classList.add('message-server');
           } else if (isOwnMessage) {
             messageDiv.classList.add('message-right');
@@ -399,3 +402,7 @@
     return cookieValue;
   }
 </script>
+
+
+<!-- <script src="{% static 'JS/main.js' %}"></script>
+ -->
