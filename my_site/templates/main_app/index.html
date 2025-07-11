@@ -24,9 +24,10 @@
 
 <!-- 1 -->
     <h2>{% trans "Hello and welcome!" %}</h2>
-<div class="section-description">
 
-  <p>{% blocktrans %}My name is Liubov Kovaleva, and this is my portfolio website.{% endblocktrans %}</p>
+<div class="section-description">
+<h1>{% blocktrans %}My name is Liubov Kovaleva, and this is my portfolio website{% endblocktrans %}</h1>
+
 
   <p>
     {% blocktrans %}
@@ -90,6 +91,15 @@
 
 
 <style>
+ h1 {
+    margin-top: 0;
+    font-size: 1.3em;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #8F8F8F;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
 
 .page-messages {
     margin: 20px 0;

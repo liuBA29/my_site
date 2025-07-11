@@ -46,6 +46,10 @@ h4 {
     color: #FF69B4;
 }
 
+
+
+
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -98,9 +102,10 @@ main.container {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+h1,h2 {
     color: #FF69B4;
     text-align: center;
+    font-size: 1.5em;
 }
 
 p {
@@ -555,7 +560,6 @@ body.dark-theme .soft-item-link:hover {
 
 
 
-
 :root {
   --main-padding: 30px;
   --gap-large: 20px;
@@ -627,3 +631,7 @@ body.dark-theme .soft-item-link:hover {
   z-index: 2000;
   pointer-events: none;
 }
+
+
+
+

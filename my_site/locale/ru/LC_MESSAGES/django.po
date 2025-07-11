@@ -289,8 +289,8 @@ msgid "Hello and welcome!"
 msgstr "Приветствую Вас!"
 
 #: .\templates\main_app\index.html:29
-msgid "My name is Liubov Kovaleva, and this is my portfolio website."
-msgstr "Меня зовут Любовь Ковалева, и это мой сайт-портфолио."
+msgid "My name is Liubov Kovaleva, and this is my portfolio website"
+msgstr "Меня зовут Любовь Ковалева, и это мой сайт-портфолио"
 
 #: .\templates\main_app\index.html:32
 msgid ""
@@ -425,7 +425,7 @@ msgstr "мои проекты"
 
 #: .\templates\main_app\index.html:73
 msgid "or you might find some"
-msgstr "или, может быть, Вы найдете"
+msgstr "или "
 
 #: .\templates\main_app\index.html:74
 msgid "useful software"
@@ -433,7 +433,7 @@ msgstr "полезный софт"
 
 #: .\templates\main_app\index.html:75
 msgid "you’ll like."
-msgstr "для себя."
+msgstr "."
 
 msgid ""
 "\n"
@@ -442,7 +442,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Я открыта для общения и сотрудничества. Буду рада встречи с вами!\n"
+"    Я открыта для общения и сотрудничества. Буду рада встречи с Вами!\n"
 "    "
 
 #: .\templates\main_app\my_projects.html:14

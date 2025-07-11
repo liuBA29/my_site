@@ -46,6 +46,10 @@ h4 {
     color: #FF69B4;
 }
 
+
+
+
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -98,9 +102,10 @@ main.container {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+h1,h2 {
     color: #FF69B4;
     text-align: center;
+    font-size: 1.5em;
 }
 
 p {
@@ -555,7 +560,6 @@ body.dark-theme .soft-item-link:hover {
 
 
 
-
 :root {
   --main-padding: 30px;
   --gap-large: 20px;
@@ -630,30 +634,4 @@ body.dark-theme .soft-item-link:hover {
 
 
 
-.tech-highlight {
-    background-color: #f9f9ff;
-    border-left: 6px solid #c5a5ff;
-    padding: 20px;
-    margin: 30px 0;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
 
-.tech-highlight h3 {
-    margin-top: 0;
-    color: #4a148c;
-    font-size: 20px;
-    margin-bottom: 12px;
-    font-weight: bold;
-}
-
-.tech-highlight ul {
-    padding-left: 20px;
-    margin-bottom: 0;
-}
-
-.tech-highlight li {
-    margin-bottom: 8px;
-    line-height: 1.5;
-    font-size: 16px;
-}
