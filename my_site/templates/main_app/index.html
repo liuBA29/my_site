@@ -19,37 +19,74 @@
   </div>
 {% endif %}
 
-<h2>{% trans "Hello and welcome!" %}</h2>
-<p class="section-description">
+
+
+
+<!-- 1 -->
+    <h2>{% trans "Hello and welcome!" %}</h2>
+<div class="section-description">
+
+  <p>{% blocktrans %}My name is Liubov Kovaleva, and this is my portfolio website.{% endblocktrans %}</p>
+
+  <p>
     {% blocktrans %}
-    My name is Liubov Kovaleva.<br>
-    I’m passionate about programming in Python, Django, Django REST Framework, JS, and Bash, and I also enjoy working with databases and API integrations.<br>
-    I develop scripts and applications to automate tasks for businesses and personal use.<br><br>
-
-    Need a small, functional, and SEO-friendly website?<br>
-    Looking to automate routine tasks or connect APIs?<br>
-    You’re in the right place.<br><br>
-
-    I can help you create a custom website tailored to your needs — and if necessary, I can take care of maintenance, content updates, and security.
+    I discovered Python programming out of curiosity, without any particular ambition — but to my surprise, I realized I genuinely enjoy it!
+    Since then, I've been diving deeper into the world of code and the Django framework — and now I happily create projects.
     {% endblocktrans %}
+  </p>
 
-<br><br>
-{% blocktrans %}Take a look around{% endblocktrans %}
-<a class="simple-link" href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a>
+  <p>{% blocktrans %}This website is the most illustrative example of my work and creative approach. Here’s what’s “under the hood”:{% endblocktrans %}</p>
+
+  <ul>
+    <li>{% trans "The site is deployed using Docker Compose on a cloud server" %}</li>
+    <li>{% trans "It supports two languages — I use django-modeltranslation for that" %}</li>
+    <li>{% trans "In the top-right corner, there’s a theme switcher (day/night). I added it just in case you absolutely can’t stand my marshmallow-pink design — so you have a tougher alternative. Though even the night version still has pink accents 😊" %}</li>
+    <li>{% trans "User registration is implemented — you’ll need it if you want to send me a message via the chat (in the “Contacts” section)" %}</li>
+    <li>{% trans "The chat itself is built using Django Channels, Redis, and Daphne. I replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it requires ASGI" %}</li>
+    <li>{% trans "On other pages, you can explore my projects and helpful apps. They’re available for free download — either directly or via GitHub, no registration required." %}</li>
+  </ul>
+
+  <h3>{% blocktrans %}Additionally:{% endblocktrans %}</h3>
+  <ul>
+    <li>{% trans "I use meta tags for SEO" %}</li>
+    <li>{% trans "I work with Cloudinary (media) and WhiteNoise (static files)" %}</li>
+    <li>{% trans "I use JavaScript when necessary — mainly for interface interactivity" %}</li>
+    <li>{% trans "I also write Bash scripts for automation and know how to work with API integrations." %}</li>
+  </ul>
+
+  <p>
+    {% blocktrans %}
+    I continue growing in the Python field because I truly enjoy programming — and I want to do it professionally.
+    {% endblocktrans %}
+  </p>
+
+  <p>
+    {% blocktrans %}
+    Even if you're just browsing, I appreciate your visit — and I’d be happy if you take a look at my projects.
+    {% endblocktrans %}
+  </p>
+
+  <p>
+    {% blocktrans %}Take a look around{% endblocktrans %}
+    <a class="simple-link" href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a>
 
     {% blocktrans %}or you might find some{% endblocktrans %}
-<a class="simple-link" href="{% url 'main_app:useful_soft' %}">{% trans "useful software" %}</a>
-{% blocktrans %}you’ll like.{% endblocktrans %}
-<br><br>
+    <a class="simple-link" href="{% url 'main_app:useful_soft' %}">{% trans "useful software" %}</a>
+    {% blocktrans %}you’ll like.{% endblocktrans %}
+  </p>
 
-
-
-
+  <p>
     {% blocktrans %}
-    I am open to working on various projects and job offers.
-    <br>Don’t hesitate to reach out!
+    I'm open to communication and collaboration — looking forward to connecting with you!
     {% endblocktrans %}
-</p>
+  </p>
+
+
+
+
+
+</div>
+
 
 
 <style>
