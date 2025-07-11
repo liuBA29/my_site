@@ -13,4 +13,4 @@ class StaticViewSitemap(Sitemap):
 
     def location(self, item):
          # получаем относительный путь, например '/my-projects/'
-        return reverse(item) 
+        return reverse(item)

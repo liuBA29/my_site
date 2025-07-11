@@ -8,17 +8,15 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 from django.contrib.sitemaps.views import sitemap
-from main_app.sitemaps import StaticViewSitemap
+from main_app.views import simple_sitemap
 
 
-sitemaps = {
-    'static': StaticViewSitemap,
-}
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),  # подключаем sitemap.xml
+    path('sitemap.xml', simple_sitemap, name='sitemap'),  # подключаем sitemap.xml
 ] + i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path("i18n/", include("django.conf.urls.i18n")),

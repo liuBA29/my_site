@@ -3,6 +3,38 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.utils.deprecation import MiddlewareMixin
+from django.http import HttpResponse
+
+def simple_sitemap(request):
+    sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+            <loc>https://liuba.web.cloudcenter.ovh/</loc>
+            <changefreq>monthly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https://liuba.web.cloudcenter.ovh/my-projects/</loc>
+            <changefreq>monthly</changefreq>
+            <priority>0.8</priority>
+        </url>
+        <url>
+            <loc>https://liuba.web.cloudcenter.ovh/useful-soft/</loc>
+            <changefreq>monthly</changefreq>
+            <priority>0.8</priority>
+        </url>
+        <url>
+            <loc>https://liuba.web.cloudcenter.ovh/contact/</loc>
+            <changefreq>monthly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    </urlset>"""
+
+    return HttpResponse(sitemap_xml, content_type="application/xml")
+
+
+
+
 
 def page_view(request):
     page_path = request.path

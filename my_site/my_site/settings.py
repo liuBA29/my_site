@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
     'django.contrib.sitemaps',  # <-- добавь сюда
     'notes_app.apps.NotesAppConfig',
     'main_app.apps.MainAppConfig',
@@ -61,7 +63,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 ]
 
-
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
