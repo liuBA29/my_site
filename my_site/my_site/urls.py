@@ -17,8 +17,8 @@ sitemaps = {
 
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-                  path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),  # подключаем sitemap.xml
+    path('admin/', admin.site.urls),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),  # подключаем sitemap.xml
 ] + i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
     path("i18n/", include("django.conf.urls.i18n")),
