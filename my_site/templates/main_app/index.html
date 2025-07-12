@@ -33,7 +33,7 @@
 <div class="tech-stack-box">
   <div class="tech-stack-icons">
     <h3>{% trans "My tech stack" %}</h3>
-    <ul>
+    <ul class="tech-stack-list">
       <li><i class="fab fa-python"></i> Python & Django (Channels, ASGI, Daphne)</li>
       <li><i class="fab fa-html5"></i> HTML5, CSS3, JavaScript</li>
       <li><i class="fas fa-database"></i> PostgreSQL & Redis</li>
@@ -96,10 +96,10 @@
   Even if you're just browsing, I sincerely appreciate your visit — and I would be grateful if you took a moment to look at the projects I mentioned above:
   {% endblocktrans %}
 
-  <a class="simple-link" href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a>
+    <a class="simple-link" href="{% url 'main_app:my_projects' %}"><span style="white-space: nowrap;">{% trans "my projects" %}</span></a>
 
   {% blocktrans %}or check out some{% endblocktrans %}
-  <a class="simple-link" href="{% url 'main_app:useful_soft' %}">{% trans "useful software" %}</a>
+    <a class="simple-link" href="{% url 'main_app:useful_soft' %}"><span style="white-space: nowrap;">{% trans "useful software" %}</span></a>
   {% blocktrans %}— simple desktop applications built with Tkinter.{% endblocktrans %}
 </p>
 
