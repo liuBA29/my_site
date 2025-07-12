@@ -45,7 +45,10 @@
                     <li>
                         <div class="">
               <a href="{% url 'main_app:home' %}" id="logo-link">
-                <img id="logo-img" src="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png" alt="Обо мне" style="width: 100px; height: auto;">
+                <img id="logo-img"
+                     src="{% if request.resolver_match.url_name == 'home' %}https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png{% else %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endif %}"
+                     alt="Обо мне"
+                     style="width: 100px; height: auto;">
               </a>
                         </div>
                     </li>
@@ -127,8 +130,12 @@
     const originalSrc = 'https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png';
     const altSrc = 'https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png';
 
-    let clicked = false;
+   // Проверь, главная ли страница
+const isHomePage = window.location.pathname === '{% url "main_app:home" %}';
 
+let clicked = false;
+
+if (!isHomePage) {
     logoLink.addEventListener('mouseenter', () => {
         if (!clicked) {
             logoImg.src = altSrc;
@@ -142,12 +149,11 @@
     });
 
     logoLink.addEventListener('click', (e) => {
-
         clicked = true;
         logoImg.src = altSrc;
-        // Если хочешь после клика перейти по ссылке, раскомментируй:
-        // window.location.href = logoLink.href;
+        // window.location.href = logoLink.href; // при необходимости
     });
+}
 
 
     </script>

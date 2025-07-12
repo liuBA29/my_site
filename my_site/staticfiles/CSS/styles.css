@@ -98,23 +98,145 @@ nav ul li a.active {
   margin-bottom: 20px;
   /* дополнительные стили для оформления */
   background-color: #f9f0ff;
+  margin-top: 140px;  /* вот этот отступ опустит блок ниже */
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #d19cd6;
 }
 
 
-.tech-stack {
+.tech-stack-box {
+  border: 2px solid var(--theme-accent, #F77CA3);
+  border-radius: 12px;
+  padding: 12px 18px;
+  max-width: 220px;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 0.9em;
+  line-height: 1.1;
   float: right;
-  width: 250px; /* ширина блока с твоим стеком */
-  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
-  margin-bottom: 20px;
-  /* дополнительные стили для оформления */
-  background-color: #f9f0ff;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #d19cd6;
+  margin: 0 0 15px 15px;
 }
+
+body.dark-mode .tech-stack-box {
+  border-color: var(--theme-accent-dark, #bb5b85);
+  background-color: transparent;
+}
+
+/* Убираем лишние отступы у списка, делаем компактно */
+.tech-stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+}
+
+.tech-stack-list li {
+  margin-bottom: 4px;
+  display: flex;
+  font-size: 0.9em;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Иконки — аккуратный размер и цвет */
+.tech-stack-list li i {
+  font-size: 1.1em;
+  color: var(--theme-accent, #F77CA3);
+}
+
+* 📱 На экранах до 900px — компактнее, но без потери читаемости */
+@media (max-width: 900px) {
+  .tech-stack-box {
+    float: none;
+    margin: 10px 0;
+    max-width: 100%;
+    font-size: 0.8em;
+    padding: 10px 12px;
+    line-height: 1.05;
+  }
+  .tech-stack-list li i {
+    font-size: 1em;
+  }
+}
+
+/* 🧸 Ещё компактнее на совсем маленьких устройствах */
+.tech-stack-box {
+  border: 2px solid var(--theme-accent, #F77CA3);
+  border-radius: 12px;
+  padding: 8px 12px;
+  max-width: 220px;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 0.9em;
+  line-height: 1.1;
+  float: right;
+  margin: 0 0 15px 15px;
+}
+
+.tech-stack-box h3 {
+  text-align: center;
+  font-size: 1em;
+  margin: 4px 0 8px 0;
+  color: var(--theme-accent, #F77CA3);
+}
+
+body.dark-mode .tech-stack-box {
+  border-color: var(--theme-accent-dark, #bb5b85);
+}
+
+.tech-stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.tech-stack-list li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  gap: 6px;
+}
+
+.tech-stack-list li i {
+  font-size: 1.05em;
+  color: var(--theme-accent, #F77CA3);
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+/* 📱 Меньше ширина и отступы на маленьких экранах */
+@media (max-width: 900px) {
+  .tech-stack-box {
+    float: none;
+    margin: 10px 0;
+    max-width: 100%;
+    font-size: 0.8em;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .tech-stack-box {
+    font-size: 0.52em;
+    padding: 4px 6px;
+    max-width: 100%;
+  }
+
+  .tech-stack-list li {
+    gap: 3px;
+    line-height: 0.95;
+  }
+
+  .tech-stack-box h3 {
+    font-size: 0.95em;
+    margin-bottom: 6px;
+  }
+}
+
+
 /*=================================.tech-stack===========================================*/
 
 
@@ -242,6 +364,50 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
 }
+
+
+/*======================tech stack========================*/
+/* Новый блок с твоим стеком навыков */
+.section-description {
+  position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
+}
+
+.tech-stack-icons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-stack-icons li {
+  margin: 8px 0;
+  font-size: 1.05em;
+  display: flex;
+  align-items: center;
+}
+
+.tech-stack-icons i {
+  color: #F77CA3; /* нежно-розовый акцент */
+  margin-right: 10px;
+  font-size: 1.2em;
+  min-width: 20px;
+}
+
+.tech-stack-box {
+  border: 2px solid var(--theme-accent, #F77CA3);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  background-color: transparent; /* прозрачный фон */
+  box-shadow: none; /* убираем тень для чистоты */
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .tech-stack-box {
+  border-color: var(--theme-accent-dark, #bb5b85);
+  background-color: transparent; /* тоже прозрачный */
+}
+
+
 
 
 
@@ -658,40 +824,6 @@ body.dark-theme .soft-item-link:hover {
 }
 
 
-/*======================tech stack========================*/
-/* Новый блок с твоим стеком навыков */
-.section-description {
-  position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
-}
-
-/* Блок с навыками */
-
-
-.dark-theme .tech-stack {
-    background-color: #2d213d; /* Темно-фиолетовый фон */
-    border: 1px solid #7a4fa0; /* Более тёмная рамка */
-    color: #e0d6f5; /* Светлый текст */
-}
-
-
-.light-theme .textstack {
-  float: right;
-  width: 280px;  /* ширина блока */
-  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
-  padding: 15px;
-  background-color: #fff0f6; /* нежно-розовый фон для выделения */
-  border: 2px solid #ff69b4; /* розовая рамка */
-  border-radius: 15px;
-  box-shadow: 2px 2px 8px rgba(255,105,180,0.3);
-  font-weight: bold;
-  color: #ff1493;
-}
-
-.dark-theme .tech-stack {
-    background-color: #2d213d; /* Темно-фиолетовый фон */
-    border: 1px solid #7a4fa0; /* Более тёмная рамка */
-    color: #e0d6f5; /* Светлый текст */
-}
 
 
 

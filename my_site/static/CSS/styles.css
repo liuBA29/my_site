@@ -98,23 +98,12 @@ nav ul li a.active {
   margin-bottom: 20px;
   /* дополнительные стили для оформления */
   background-color: #f9f0ff;
+  margin-top: 140px;  /* вот этот отступ опустит блок ниже */
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #d19cd6;
 }
 
-
-.tech-stack {
-  float: right;
-  width: 250px; /* ширина блока с твоим стеком */
-  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
-  margin-bottom: 20px;
-  /* дополнительные стили для оформления */
-  background-color: #f9f0ff;
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #d19cd6;
-}
 
 .tech-stack-box {
   border: 2px solid var(--theme-accent, #F77CA3);
@@ -144,6 +133,7 @@ body.dark-mode .tech-stack-box {
 .tech-stack-list li {
   margin-bottom: 4px;
   display: flex;
+  font-size: 0.9em;
   align-items: center;
   gap: 8px;
 }
