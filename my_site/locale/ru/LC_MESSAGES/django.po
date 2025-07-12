@@ -291,7 +291,7 @@ msgstr "Приветствую Вас!"
 #: .\templates\main_app\index.html:29
 msgid ""
 "My name is Liubov Kovaleva, and I'm a web developer specializing in Python"
-msgstr "Меня зовут Любовь Ковалева, я занимаюсь веб-разработкой на Python"
+msgstr "Меня зовут Любовь Ковалева, я веб-разработчик на Python"
 
 #: .\templates\main_app\index.html:33
 msgid ""

@@ -89,8 +89,33 @@ nav ul li a.active {
 
 
 
-/*============================================================================*/
+/*=================================.tech-stack===========================================*/
 
+.tech-stack {
+  float: right;
+  width: 250px; /* ширина блока с твоим стеком */
+  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
+  margin-bottom: 20px;
+  /* дополнительные стили для оформления */
+  background-color: #f9f0ff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #d19cd6;
+}
+
+
+.tech-stack {
+  float: right;
+  width: 250px; /* ширина блока с твоим стеком */
+  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
+  margin-bottom: 20px;
+  /* дополнительные стили для оформления */
+  background-color: #f9f0ff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #d19cd6;
+}
+/*=================================.tech-stack===========================================*/
 
 
 /* Основной контент */
@@ -631,6 +656,44 @@ body.dark-theme .soft-item-link:hover {
   z-index: 2000;
   pointer-events: none;
 }
+
+
+/*======================tech stack========================*/
+/* Новый блок с твоим стеком навыков */
+.section-description {
+  position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
+}
+
+/* Блок с навыками */
+
+
+.dark-theme .tech-stack {
+    background-color: #2d213d; /* Темно-фиолетовый фон */
+    border: 1px solid #7a4fa0; /* Более тёмная рамка */
+    color: #e0d6f5; /* Светлый текст */
+}
+
+
+.light-theme .textstack {
+  float: right;
+  width: 280px;  /* ширина блока */
+  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
+  padding: 15px;
+  background-color: #fff0f6; /* нежно-розовый фон для выделения */
+  border: 2px solid #ff69b4; /* розовая рамка */
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px rgba(255,105,180,0.3);
+  font-weight: bold;
+  color: #ff1493;
+}
+
+.dark-theme .tech-stack {
+    background-color: #2d213d; /* Темно-фиолетовый фон */
+    border: 1px solid #7a4fa0; /* Более тёмная рамка */
+    color: #e0d6f5; /* Светлый текст */
+}
+
+
 
 
 
