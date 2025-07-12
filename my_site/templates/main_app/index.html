@@ -26,24 +26,30 @@
     <h2>{% trans "Hello and welcome!" %}</h2>
 
 <div class="section-description">
-<h1>{% blocktrans %}My name is Liubov Kovaleva, and this is my portfolio website{% endblocktrans %}</h1>
+<h1>{% blocktrans %}My name is Liubov Kovaleva, and I'm a web developer specializing in Python{% endblocktrans %}</h1>
 
 
   <p>
-    {% blocktrans %}
-    I discovered Python programming out of curiosity, without any particular ambition — but to my surprise, I realized I genuinely enjoy it!
-    Since then, I've been diving deeper into the world of code and the Django framework — and now I happily create projects.
-    {% endblocktrans %}
-  </p>
+  {% blocktrans %}
+  I discovered Python programming out of curiosity, without any particular ambition.<br>
+  But to my surprise, I realized I genuinely enjoy it!<br>
+  Since then, coding has become a meaningful part of my life. I enjoy building things that are simple, useful, and thoughtful —
+  from web projects to small tools that help people in real life.
+  {% endblocktrans %}
+</p>
 
   <p>{% blocktrans %}This website is the most illustrative example of my work and creative approach. Here’s what’s “under the hood”:{% endblocktrans %}</p>
 
   <ul>
     <li>{% trans "The site is deployed using Docker Compose on a cloud server" %}</li>
     <li>{% trans "It supports two languages — I use django-modeltranslation for that" %}</li>
-    <li>{% trans "In the top-right corner, there’s a theme switcher (day/night). I added it just in case you absolutely can’t stand my marshmallow-pink design — so you have a tougher alternative. Though even the night version still has pink accents 😊" %}</li>
-    <li>{% trans "User registration is implemented — you’ll need it if you want to send me a message via the chat (in the “Contacts” section)" %}</li>
+
+
+
+    <li>{% trans "You’ll find a day/night switch in the top right corner. If the white-and-pink design feels a bit too sweet for your taste, you can switch to the more reserved night mode. Though even there, the pink accents remain — it’s just the color that resonates with my artist’s soul right now. 😉🩰" %}</li>
+    <li>{% trans "A simple User registration is implemented — you’ll need it if you want to send me a message via the chat (in the “Contacts” section)" %}</li>
     <li>{% trans "The chat itself is built using Django Channels, Redis, and Daphne. I replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it requires ASGI" %}</li>
+    <li>{% trans "There is also a Telegram bot seamlessly integrated with the Django Channels backend, leveraging the Telegram Bot API to send real-time alerts about new user messages, so I always stay informed" %}</li>
     <li>{% trans "On other pages, you can explore my projects and helpful apps. They’re available for free download — either directly or via GitHub, no registration required." %}</li>
   </ul>
 
@@ -62,19 +68,17 @@
   </p>
 
   <p>
-    {% blocktrans %}
-    Even if you're just browsing, I appreciate your visit — and I’d be happy if you take a look at my projects.
-    {% endblocktrans %}
-  </p>
+  {% blocktrans %}
+  Even if you're just browsing, I sincerely appreciate your visit — and I would be grateful if you took a moment to look at the projects I mentioned above:
+  {% endblocktrans %}
 
-  <p>
-    {% blocktrans %}Take a look around{% endblocktrans %}
-    <a class="simple-link" href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a>
+  <a class="simple-link" href="{% url 'main_app:my_projects' %}">{% trans "my projects" %}</a>
 
-    {% blocktrans %}or you might find some{% endblocktrans %}
-    <a class="simple-link" href="{% url 'main_app:useful_soft' %}">{% trans "useful software" %}</a>
-    {% blocktrans %}you’ll like.{% endblocktrans %}
-  </p>
+  {% blocktrans %}or check out some{% endblocktrans %}
+  <a class="simple-link" href="{% url 'main_app:useful_soft' %}">{% trans "useful software" %}</a>
+  {% blocktrans %}— simple desktop applications built with Tkinter.{% endblocktrans %}
+</p>
+
 
   <p>
     {% blocktrans %}
