@@ -34,6 +34,14 @@ def simple_sitemap(request):
 
 
 
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Sitemap: https://liuba.web.cloudcenter.ovh/sitemap.xml"
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
 
 
 def page_view(request):
