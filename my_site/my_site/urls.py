@@ -12,8 +12,6 @@ from main_app.views import simple_sitemap
 
 
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sitemap.xml', simple_sitemap, name='sitemap'),  # подключаем sitemap.xml
