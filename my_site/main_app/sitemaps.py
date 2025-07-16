@@ -1,4 +1,4 @@
-#sitemaps.py
+## main_app/sitemaps.py
 
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
