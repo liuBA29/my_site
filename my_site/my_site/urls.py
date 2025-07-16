@@ -9,28 +9,29 @@ from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 
 from main_app.views import robots_txt
-from main_app.sitemaps import StaticViewSitemap, ProjectSitemap
+from main_app.sitemaps import StaticViewSitemap, ProjectSitemap, UsefulSoftwareSitemap
 
 
 from django.contrib.sitemaps.views import sitemap as django_sitemap
 from django.http import HttpResponse
 
 
-def sitemap_with_encoding(request, sitemaps, **kwargs):
-    response = django_sitemap(request, sitemaps, **kwargs)
-    # Если это TemplateResponse, нужно сначала отрендерить
-    if hasattr(response, 'render') and callable(response.render):
-        response.render()
-    xml_prolog = b'<?xml version="1.0" encoding="UTF-8"?>\n'
-    content = response.content
-    if not content.startswith(xml_prolog):
-        content = xml_prolog + content
-    return HttpResponse(content, content_type='application/xml; charset=utf-8')
+# def sitemap_with_encoding(request, sitemaps, **kwargs):
+#     response = django_sitemap(request, sitemaps, **kwargs)
+#     # Если это TemplateResponse, нужно сначала отрендерить
+#     if hasattr(response, 'render') and callable(response.render):
+#         response.render()
+#     xml_prolog = b'<?xml version="1.0" encoding="UTF-8"?>\n'
+#     content = response.content
+#     if not content.startswith(xml_prolog):
+#         content = xml_prolog + content
+#     return HttpResponse(content, content_type='application/xml; charset=utf-8')
 
 
 sitemaps = {
     'static': StaticViewSitemap,
     'projects': ProjectSitemap,
+    'useful_soft': UsefulSoftwareSitemap,
 }
 
 
@@ -38,8 +39,7 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sitemap.xml', sitemap_with_encoding, {'sitemaps': sitemaps}, name='sitemap'),
-
+    path('sitemap.xml', django_sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', robots_txt, name='robots_txt'),
 ] + i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
