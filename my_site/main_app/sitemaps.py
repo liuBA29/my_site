@@ -7,6 +7,7 @@ from .models import Project
 class StaticViewSitemap(Sitemap):
     priority = 0.8
     changefreq = 'monthly'
+    protocol = 'https'
 
     def items(self):
         return ['main_app:home', 'main_app:my_projects', 'main_app:useful_soft', 'main_app:contact']
@@ -17,6 +18,7 @@ class StaticViewSitemap(Sitemap):
 class ProjectSitemap(Sitemap):
     priority = 0.6
     changefreq = 'monthly'
+    protocol = 'https'
 
     def items(self):
         return Project.objects.all()
