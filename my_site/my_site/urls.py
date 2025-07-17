@@ -10,9 +10,8 @@ from django.views.i18n import JavaScriptCatalog
 
 from main_app.views import robots_txt
 from main_app.sitemaps import StaticViewSitemap, ProjectSitemap, UsefulSoftwareSitemap
+from django.contrib.sitemaps.views import sitemap
 
-
-from django.contrib.sitemaps.views import sitemap as django_sitemap
 from django.http import HttpResponse
 
 
@@ -34,12 +33,16 @@ sitemaps = {
     'useful_soft': UsefulSoftwareSitemap,
 }
 
-
+def sitemap_view(request):
+    response = sitemap(request, sitemaps)
+    response["X-Robots-Tag"] = "index, follow"
+    return response
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sitemap.xml', django_sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('sitemap.xml', sitemap_view, name='sitemap'),
+
     path('robots.txt', robots_txt, name='robots_txt'),
 ] + i18n_patterns(
     path("jsi18n/", JavaScriptCatalog.as_view(), name="javascript-catalog"),
