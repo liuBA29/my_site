@@ -15,16 +15,6 @@ from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponse
 
 
-# def sitemap_with_encoding(request, sitemaps, **kwargs):
-#     response = django_sitemap(request, sitemaps, **kwargs)
-#     # Если это TemplateResponse, нужно сначала отрендерить
-#     if hasattr(response, 'render') and callable(response.render):
-#         response.render()
-#     xml_prolog = b'<?xml version="1.0" encoding="UTF-8"?>\n'
-#     content = response.content
-#     if not content.startswith(xml_prolog):
-#         content = xml_prolog + content
-#     return HttpResponse(content, content_type='application/xml; charset=utf-8')
 
 
 sitemaps = {

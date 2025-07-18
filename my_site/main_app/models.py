@@ -38,6 +38,7 @@ class Project(models.Model):
     demo_link_en = models.URLField(blank=True, null=True, verbose_name="Ссылка на демо (en)")
     image = CloudinaryField('image', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)  # 👈 Добавлено
 
     def __str__(self):
         return self.title
@@ -60,6 +61,7 @@ class UsefulSoftware(models.Model):
         verbose_name="Автор"
     )  # Новое поле
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)  # 👈 Добавлено.
     image = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
