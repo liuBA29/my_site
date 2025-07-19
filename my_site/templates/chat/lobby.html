@@ -1,81 +1,195 @@
 <!--  templates/chat/lobby.html -->
-
-
+{% load i18n static %}
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Чат</title>
+  <meta charset="UTF-8" />
+  <title>{% trans "Chat Lobby" %}</title>
+
   <style>
-  .message-left {
-    text-align: left;
-    background-color: #eee;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    max-width: 70%;
-  }
+    /* Стили из _lobby_partial.html, адаптированы */
+    .btn-login {
+      position: relative;
+      overflow: hidden;
+      padding: 5px 10px;
+      font-weight: bold;
+      color: #FF69B4;
+      background-color: transparent;
+      border: 2px solid #FF69B4;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-  .message-right {
-    text-align: right;
-    background-color: #d0f0c0;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    margin-left: auto;
-    max-width: 70%;
-  }
+    .btn-login::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 105, 180, 0.4) 50%,
+        transparent 100%
+      );
+      transform: skewX(-20deg);
+      animation: shimmer 2.5s infinite;
+    }
 
-  .message {
-    clear: both;
-  }
+    @keyframes shimmer {
+      0% {
+        left: -150%;
+      }
+      50% {
+        left: 100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
 
-  .timestamp {
-    font-size: 0.75em;
-    color: #888;
-    text-align: right;
-    display: block;
-  }
+    .btn-login:hover {
+      background-color: #FF69B4;
+      color: white;
+    }
 
-  #chat-log {
-    border: 1px solid #ccc;
-    height: 300px;
-    overflow-y: auto;
-    padding: 10px;
-    background: #f9f9f9;
-    margin-bottom: 10px;
-  }
-</style>
+    .btn-login:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.3);
+    }
+
+    .message-left {
+      text-align: left;
+      background-color: #ffe4b5;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      max-width: 70%;
+    }
+
+    .message-right {
+      text-align: right;
+      background-color: #d0f0c0;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      margin-left: auto;
+      max-width: 70%;
+    }
+
+    .message-server {
+      text-align: center;
+      background-color: transparent;
+      margin: 5px;
+      padding: 3px;
+      font-size: 0.90em;
+      font-weight: normal;
+      color: #999999;
+      max-width: 100%;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .message {
+      clear: both;
+    }
+
+    .timestamp {
+      font-size: 0.75em;
+      color: #888;
+      text-align: right;
+      display: block;
+    }
+
+    #chat-log {
+      border: 1px solid #ccc;
+      height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .chat-log {
+      color: #2e2e2e;
+    }
+
+    .chat-input-area {
+      display: flex;
+    }
+
+    #chat-message-input {
+      flex: 1;
+      padding: 5px;
+      font-size: 1em;
+    }
+
+    #chat-message-submit {
+      padding: 5px 10px;
+      font-size: 1em;
+      margin-left: 5px;
+    }
+
+  </style>
 </head>
 <body>
 
-  <h2>Добро пожаловать в чат</h2>
-
-  <label>Имя пользователя:</label>
-  <input id="username-input" type="text" value="{{ username }}" {% if username %}readonly{% endif %} placeholder="YourName" />
-
-  <!--<label>Имя комнаты:</label>
-  <input id="room-name-input" type="text" value="{{ room_name }}" />  -->
-
+  <!-- Скрытое поле с username -->
+  <input id="username-input" type="hidden" value="{{ username }}" />
 
   {% if user.is_authenticated %}
-  <label>Имя комнаты:</label>
-  <input id="room-name-input" type="text" value="{{ room_name|default:"test" }}" />
-{% else %}
-  <input id="room-name-input" type="hidden" value="{{ room_name|default:"test" }}" />
-{% endif %}
+    {% if user.is_superuser %}
+      <label for="room-name-input">{% trans "Room name:" %}</label>
+      <select id="room-name-input" name="room">
+        {% for name in room_names %}
+          <option value="{{ name }}">{{ name }}</option>
+        {% endfor %}
+      </select>
+    {% else %}
+      <input id="room-name-input" type="hidden" value="{{ room_name|default:'myroom' }}" />
+    {% endif %}
+  {% else %}
+    <p>{% trans "To join the chat, please" %} <a href="{% url 'login' %}">{% trans "log in" %}</a> {% trans "or" %} <a href="{% url 'signup' %}">{% trans "sign up" %}</a>.</p>
+  {% endif %}
 
+  <!-- Блок с кнопкой Войти -->
+  <div id="lobby-area" style="text-align: center;">
+    <button class="btn-login" id="room-join">{% trans "Join Chat" %}</button>
+  </div>
 
-  <button id="room-join">Войти</button>
+  <!-- Блок с надписью "Вы в чате" и кнопкой Выйти, изначально скрыт -->
+  <div id="in-chat-area" style="display: none; text-align: center;">
+    <p>{% trans "You are in chat," %} <strong><span id="chat-username">{{ username }}</span></strong></p>
+    <button id="room-leave" class="btn-login">{% trans "Leave Chat" %}</button>
+  </div>
 
+  <!-- Область чата, изначально скрыта -->
   <div id="chat-area" style="display: none;">
-    <div id="chat-log"></div>
-    <input id="chat-message-input" type="text" placeholder="Введите сообщение">
-    <button id="chat-message-submit">Отправить</button>
+    <div class="chat-log" id="chat-log"></div>
+
+    <div class="chat-input-area">
+      <input id="chat-message-input" type="text" placeholder="{% trans 'Enter message' %}">
+      <button id="chat-message-submit">{% trans "Send" %}</button>
+    </div>
   </div>
 
   <script>
+    window.addEventListener('load', function () {
+      fetch('/chat/check-user/')
+        .then(response => response.json())
+        .then(data => {
+          if (data.username) {
+            document.getElementById('username-input').value = data.username;
+            document.getElementById('username-input').readOnly = true;
+          } else {
+            alert("{% trans "You are a new user. Please? enter your name." %}");
+          }
+        });
+    });
+
     let chatSocket;
     let username;
 
@@ -94,39 +208,40 @@
         return;
       }
 
+      // Показать чат, скрыть лобби
       document.getElementById('chat-area').style.display = 'block';
+
+      const isSuperUser = {{ user.is_superuser|yesno:"true,false" }};
+      if (!isSuperUser) {
+        document.getElementById('lobby-area').style.display = 'none';
+      }
+
+      document.getElementById('in-chat-area').style.display = 'block';
       document.getElementById('chat-message-input').focus();
 
       const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
       chatSocket = new WebSocket(
-      wsScheme + '://' + window.location.host +
-      '/ws/socket-server/' + roomName + '/'
+        wsScheme + '://' + window.location.host +
+        '/ws/socket-server/' + roomName + '/'
       );
 
-
-      // Отправим имя на сервер для сохранения в сессии
-    fetch('/chat/set-username/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': getCookie('csrftoken')
-      },
-      body: JSON.stringify({ username })
-    });
-
-    document.getElementById('chat-area').style.display = 'block';
-
-
-      chatSocket.onmessage = function(e) {
+      chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
         const chatLog = document.getElementById('chat-log');
-        const user = data.username || "Сервер";
+        const user = data.username || "{% trans 'Server' %}";
         const isOwnMessage = (user === username);
         const time = formatTime(new Date());
 
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
-        messageDiv.classList.add(isOwnMessage ? 'message-right' : 'message-left');
+
+        if (user === "{% trans 'Server' %}") {
+          messageDiv.classList.add('message-server');
+        } else if (isOwnMessage) {
+          messageDiv.classList.add('message-right');
+        } else {
+          messageDiv.classList.add('message-left');
+        }
 
         messageDiv.innerHTML = `
           <strong>${user}</strong>
@@ -138,11 +253,14 @@
         chatLog.scrollTop = chatLog.scrollHeight;
       };
 
-      chatSocket.onclose = function(e) {
+      chatSocket.onclose = function (e) {
         alert('Соединение с чатом потеряно.');
+        document.getElementById('chat-area').style.display = 'none';
+        document.getElementById('in-chat-area').style.display = 'none';
+        document.getElementById('lobby-area').style.display = 'block';
       };
 
-      document.getElementById('chat-message-submit').onclick = function() {
+      document.getElementById('chat-message-submit').onclick = function () {
         const messageInput = document.getElementById('chat-message-input');
         const message = messageInput.value;
         if (message.trim() !== '') {
@@ -153,30 +271,6 @@
           messageInput.value = '';
         }
       };
-    };
 
-    document.getElementById('chat-message-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        document.getElementById('chat-message-submit').click();
-      }
-    });
+      document.getElementById('room-leave').onclick = function () {
 
-
-    // Функция для получения CSRF-токена
-  function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim();
-        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-          break;
-        }
-      }
-    }
-    return cookieValue;
-  }
-  </script>
-</body>
-</html>
