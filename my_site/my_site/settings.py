@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'main_app.apps.MainAppConfig',
     'chat.apps.ChatConfig',
     'accounts.apps.AccountsConfig',
+    'agregator',
 
     'cloudinary',
     'cloudinary_storage',

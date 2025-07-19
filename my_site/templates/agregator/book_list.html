@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Агрегатор популярных книг</title>
+</head>
+<body>
+    <h1>Популярные книги с Knigalit.ru</h1>
+
+    <form method="get">
+        <input type="text" name="q" placeholder="Поиск по названию" value="{{ query }}">
+        <button type="submit">Искать</button>
+    </form>
+
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{{ book.link }}" target="_blank">{{ book.title }}</a>
+            </li>
+        {% empty %}
+            <li>Ничего не найдено.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

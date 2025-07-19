@@ -41,6 +41,8 @@ urlpatterns = [
     path('notes/', include('notes_app.urls', namespace='notes')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('chat/', include('chat.urls', namespace='chat')),
+    path('agregator/', include('agregator.urls')),
+
     prefix_default_language=False,
 )
 
