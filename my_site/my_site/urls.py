@@ -32,6 +32,7 @@ def sitemap_view(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sitemap.xml', sitemap_view, name='sitemap'),
+    path('mysitemap.xml', sitemap, {'sitemaps': sitemaps}, name='mysitemap'),
 
     path('robots.txt', robots_txt, name='robots_txt'),
 ] + i18n_patterns(
