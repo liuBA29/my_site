@@ -1,5 +1,5 @@
 /*  styles.css  */
-/* Основные стили */
+/* ================== БАЗА ================== */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
@@ -14,7 +14,23 @@ body {
     max-width: 1200px;
 }
 
-/* Стили для шапки */
+h1,h2 {
+    color: #FF69B4;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+
+h4 {
+    color: #FF69B4;
+}
+
+p {
+    line-height: 1.8;
+}
+
+/* ================== HEADER ================== */
 header {
     background: #FFB6C1;
     color: #fff;
@@ -23,7 +39,7 @@ header {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: -10px;
+
 }
 
 header .nav-container {
@@ -41,13 +57,6 @@ header h1 a {
     color: white;
     text-decoration: none;
 }
-
-h4 {
-    color: #FF69B4;
-}
-
-
-
 
 
 nav ul {
@@ -86,10 +95,195 @@ nav ul li a.active {
     text-decoration: underline;
 }
 
+/* ================== AUTH ================== */
 
 
 
-/*=================================.tech-stack===========================================*/
+.auth {
+    position: absolute;
+    top: 2vh;
+    right: 0vh;
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.auth a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+/*==================*/
+.login-form p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* label сверху, input снизу */
+    gap: 2px;
+}
+
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* выравниваем поля строго по левой границе */
+    gap: 4px;
+    margin-top: 10px;
+    margin-left: 20px; /* отступ слева для всей формы */
+}
+
+.login-form input {
+    width: 250px;  /* фиксированная ширина, чтобы все поля были одинаковыми */
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.login-button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    align-self: flex-start; /* чтобы кнопка тоже вровень с полями была */
+}
+
+.login-button:hover {
+    background-color: #ff85c1;
+    transform: scale(1.05);
+}
+
+
+
+
+.logout {
+    font-size: 0.8rem; /* чуть меньше */
+    color: #bbbbbb; /* блеклый серый */
+}
+
+/* ================== LANGUAGE SWITCH ================== */
+
+.language-buttons {
+    position: absolute;
+    top: 10vh; /* Размещаем чуть выше бегунка */
+    right: 6vh;
+    display: flex;
+    gap: 8px;
+}
+
+
+.language-button {
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #FF69B4;
+    background-color: transparent;
+    border: 2px solid #FF69B4;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-button:hover {
+    background-color: #FF69B4;
+    color: white;
+}
+
+.language-button.active {
+    background-color: #FF69B4;
+    color: white;
+}
+/* ================== TOGGLE THEME ================== */
+
+.toggle {
+            --width: 40px;
+            --height: calc(var(--width) / 2);
+            --border-radius: calc(var(--height) / 2);
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+            top: 20vh; /* Поднимаем на 15% */
+            right: 18vh; /* Размещаем справа */
+        }
+
+        .toggle__input {
+            display: none;
+        }
+
+        .toggle__fill {
+            position: absolute;
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--border-radius);
+            background: black;
+            transition: background 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill {
+            background: #FFB6C1;
+        }
+
+        .toggle__fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: var(--height);
+            width: var(--height);
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border-radius: var(--border-radius);
+            transition: transform 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill::after {
+            transform: translateX(var(--height));
+        }
+/* ================== MAIN ================== */
+
+.section-description {
+    font-size: 1.2rem; /* Увеличиваем размер шрифта */
+    margin: 1rem 0 2rem 0;
+    color: #8F8F8F;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+
+main.container {
+    background: #FFF;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ================== FOOTER ================== */
+/* Подвал */
+footer {
+    background: #FFB6C1;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+/* ================== TECH STACK ================== */
+
 
 .tech-stack {
   float: right;
@@ -105,73 +299,7 @@ nav ul li a.active {
 }
 
 
-.tech-stack-box {
-  border: 2px solid var(--theme-accent, #F77CA3);
-  border-radius: 12px;
-  padding: 12px 18px;
-  max-width: 220px;
-  background-color: transparent;
-  box-shadow: none;
-  font-size: 0.9em;
-  line-height: 1.1;
-  float: right;
-  margin: 0 0 15px 15px;
-}
 
-body.dark-mode .tech-stack-box {
-  border-color: var(--theme-accent-dark, #bb5b85);
-  background-color: transparent;
-}
-
-/* Убираем лишние отступы у списка, делаем компактно */
-.tech-stack-list {
-  list-style: none;
-  padding: 0;
-  margin: 6px 0 0 0;
-}
-
-.tech-stack-list li {
-  margin-bottom: 4px;
-  display: flex;
-  font-size: 0.9em;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Иконки — аккуратный размер и цвет */
-.tech-stack-list li i {
-  font-size: 1.1em;
-  color: var(--theme-accent, #F77CA3);
-}
-
-* 📱 На экранах до 900px — компактнее, но без потери читаемости */
-@media (max-width: 900px) {
-  .tech-stack-box {
-    float: none;
-    margin: 10px 0;
-    max-width: 100%;
-    font-size: 0.8em;
-    padding: 10px 12px;
-    line-height: 1.05;
-  }
-  .tech-stack-list li i {
-    font-size: 1em;
-  }
-}
-
-/* 🧸 Ещё компактнее на совсем маленьких устройствах */
-.tech-stack-box {
-  border: 2px solid var(--theme-accent, #F77CA3);
-  border-radius: 12px;
-  padding: 8px 12px;
-  max-width: 220px;
-  background-color: transparent;
-  box-shadow: none;
-  font-size: 0.9em;
-  line-height: 1.1;
-  float: right;
-  margin: 0 0 15px 15px;
-}
 
 .tech-stack-box h3 {
   text-align: center;
@@ -180,9 +308,8 @@ body.dark-mode .tech-stack-box {
   color: var(--theme-accent, #F77CA3);
 }
 
-body.dark-mode .tech-stack-box {
-  border-color: var(--theme-accent-dark, #bb5b85);
-}
+
+
 
 .tech-stack-list {
   list-style: none;
@@ -191,23 +318,71 @@ body.dark-mode .tech-stack-box {
   line-height: 1;
 }
 
+
+
+
 .tech-stack-list li {
   display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
+  font-size: 0.9em;
   line-height: 1;
   gap: 6px;
 }
 
+
+
+
 .tech-stack-list li i {
-  font-size: 1.05em;
+  font-size: 1.1em;
   color: var(--theme-accent, #F77CA3);
   margin-right: 3px;
   vertical-align: middle;
 }
 
-/* 📱 Меньше ширина и отступы на маленьких экранах */
+
+.tech-stack-icons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-stack-icons li {
+  margin: 8px 0;
+  font-size: 1.05em;
+  display: flex;
+
+}
+
+.tech-stack-icons i {
+  color: #F77CA3; /* нежно-розовый акцент */
+  margin-right: 10px;
+  font-size: 1.2em;
+  min-width: 20px;
+  align-items: center;
+}
+
+
+
+.tech-stack-box {
+  border: 2px solid var(--theme-accent, #F77CA3);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  float: right;
+  max-width: 220px;
+  line-height: 1.1;
+  font-size: 0.8em;
+  background-color: transparent; /* прозрачный фон */
+  box-shadow: none; /* убираем тень для чистоты */
+  transition: border-color 0.3s ease;
+}
+
+
+
+
+/* 📱 Компактнее, но без потери читаемости */
 @media (max-width: 900px) {
   .tech-stack-box {
     float: none;
@@ -215,83 +390,16 @@ body.dark-mode .tech-stack-box {
     max-width: 100%;
     font-size: 0.8em;
     padding: 6px 10px;
-  }
-}
-
-@media (max-width: 500px) {
-  .tech-stack-box {
-    font-size: 0.52em;
-    padding: 4px 6px;
-    max-width: 100%;
+    line-height: 1.05;
   }
 
-  .tech-stack-list li {
-    gap: 3px;
-    line-height: 0.95;
-  }
-
-  .tech-stack-box h3 {
-    font-size: 0.95em;
-    margin-bottom: 6px;
+  .tech-stack-list li i {
+    font-size: 1em;
   }
 }
 
 
-/*=================================.tech-stack===========================================*/
-
-
-/* Основной контент */
-main.container {
-    background: #FFF;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1,h2 {
-    color: #FF69B4;
-    text-align: center;
-    font-size: 1.5em;
-}
-
-p {
-    line-height: 1.8;
-}
-
-/* Подвал */
-footer {
-    background: #FFB6C1;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-/* Блок статуса Asterisk */
-#json-data {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 300px;
-    background: #FFF5E1;
-    border: 2px solid #FF69B4;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 14px;
-    color: #4A4A4A;
-    z-index: 1000;
-}
-
-#json-data pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin: 0;
-}
+/* ================== THEMES ================== */
 
 
 
@@ -366,151 +474,61 @@ footer {
 }
 
 
+
+/* Светлая тема */
+body.light-theme .soft-item-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Темная тема */
+body.dark-theme .soft-item-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* стрелочка */
+/* Стрелочка для кнопки в светлой теме */
+.light-theme .back-btn {
+
+    color: pink;
+    border: 1px solid #ddd;
+}
+
+.light-theme .back-btn:hover {
+    background-color: pink;
+    color: white;
+}
+
+/* Стрелочка для кнопки в темной теме */
+.dark-theme .back-btn {
+    background-color: #333;
+    color: #ff69b4;
+    border: 1px solid #555;
+}
+
+.dark-theme .back-btn:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+/* Увеличение размера стрелочки */
+.back-btn span {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+
 /*======================tech stack========================*/
 /* Новый блок с твоим стеком навыков */
 .section-description {
   position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
 }
 
-.tech-stack-icons ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tech-stack-icons li {
-  margin: 8px 0;
-  font-size: 1.05em;
-  display: flex;
-  align-items: center;
-}
-
-.tech-stack-icons i {
-  color: #F77CA3; /* нежно-розовый акцент */
-  margin-right: 10px;
-  font-size: 1.2em;
-  min-width: 20px;
-}
-
-.tech-stack-box {
-  border: 2px solid var(--theme-accent, #F77CA3);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 30px 0;
-  background-color: transparent; /* прозрачный фон */
-  box-shadow: none; /* убираем тень для чистоты */
-  transition: border-color 0.3s ease;
-}
-
-body.dark-mode .tech-stack-box {
-  border-color: var(--theme-accent-dark, #bb5b85);
-  background-color: transparent; /* тоже прозрачный */
-}
 
 
 
 
 
-/*------------toggle-----------*/
 
-.toggle {
-            --width: 40px;
-            --height: calc(var(--width) / 2);
-            --border-radius: calc(var(--height) / 2);
-            display: inline-block;
-            cursor: pointer;
-            position: absolute;
-            top: 20vh; /* Поднимаем на 15% */
-            right: 18vh; /* Размещаем справа */
-        }
-
-        .toggle__input {
-            display: none;
-        }
-
-        .toggle__fill {
-            position: absolute;
-            width: var(--width);
-            height: var(--height);
-            border-radius: var(--border-radius);
-            background: black;
-            transition: background 0.2s;
-        }
-
-        .toggle__input:checked ~ .toggle__fill {
-            background: #FFB6C1;
-        }
-
-        .toggle__fill::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: var(--height);
-            width: var(--height);
-            background: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-            border-radius: var(--border-radius);
-            transition: transform 0.2s;
-        }
-
-        .toggle__input:checked ~ .toggle__fill::after {
-            transform: translateX(var(--height));
-        }
-
-/*------------auth----------*/
-.auth {
-    position: absolute;
-    top: 2vh;
-    right: 0vh;
-    display: flex;
-    font-size: 1rem;
-    align-items: center;
-}
-
-.auth a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.logout {
-    font-size: 0.8rem; /* чуть меньше */
-    color: #bbbbbb; /* блеклый серый */
-}
-
-
-
-/*------------language----------*/
-.language-buttons {
-    position: absolute;
-    top: 10vh; /* Размещаем чуть выше бегунка */
-    right: 6vh;
-    display: flex;
-    gap: 8px;
-}
-
-
-.language-button {
-    padding: 5px 10px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #FF69B4;
-    background-color: transparent;
-    border: 2px solid #FF69B4;
-    border-radius: 5px;
-    margin: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.language-button:hover {
-    background-color: #FF69B4;
-    color: white;
-}
-
-.language-button.active {
-    background-color: #FF69B4;
-    color: white;
-}
 
 
 /*------------------------*/
@@ -540,7 +558,7 @@ body.dark-mode .tech-stack-box {
     gap: 20px;
 }
 
-/* Ссылка оборачивает всю карточку */
+/* ================== SOFT ITEMS ================== */
 .soft-item-link {
     text-decoration: none;
     color: inherit;
@@ -700,54 +718,9 @@ a.btn:hover {
     transition: background-color 0.3s ease;
 }
 
-/* Светлая тема */
-body.light-theme .soft-item-link:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
 
-/* Темная тема */
-body.dark-theme .soft-item-link:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
 
-/* стрелочка */
-/* Стрелочка для кнопки в светлой теме */
-.light-theme .back-btn {
 
-    color: pink;
-    border: 1px solid #ddd;
-}
-
-.light-theme .back-btn:hover {
-    background-color: pink;
-    color: white;
-}
-
-/* Стрелочка для кнопки в темной теме */
-.dark-theme .back-btn {
-    background-color: #333;
-    color: #ff69b4;
-    border: 1px solid #555;
-}
-
-.dark-theme .back-btn:hover {
-    background-color: #ff69b4;
-    color: white;
-}
-
-/* Увеличение размера стрелочки */
-.back-btn span {
-    margin-right: 8px;
-    font-size: 18px;
-}
-
-.section-description {
-    font-size: 1.2rem; /* Увеличиваем размер шрифта */
-    margin: 1rem 0 2rem 0;
-    color: #8F8F8F;
-    line-height: 1.6;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
-}
 
 
 
@@ -756,64 +729,13 @@ body.dark-theme .soft-item-link:hover {
   --gap-large: 20px;
 }
 
-/*==================*/
-.login-form p {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* label сверху, input снизу */
-    gap: 2px;
-}
-
-
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* выравниваем поля строго по левой границе */
-    gap: 4px;
-    margin-top: 10px;
-    margin-left: 20px; /* отступ слева для всей формы */
-}
-
-.login-form input {
-    width: 250px;  /* фиксированная ширина, чтобы все поля были одинаковыми */
-    margin: 0;
-    padding: 8px 12px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.login-button {
-    background-color: #FF69B4;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 150px;
-    align-self: flex-start; /* чтобы кнопка тоже вровень с полями была */
-}
-
-.login-button:hover {
-    background-color: #ff85c1;
-    transform: scale(1.05);
-}
 
 /* Адаптация для больших экранов (если нужно) */
 @media (min-width: 992px) {
     .login-form {
         gap: 3px;
-
-
-    /*   ================= messages ======================   */
- /* Отдельный контейнер для тостов */
+    }}
+/* ================== TOAST ================== */
 .toast-container {
   position: fixed;
   top: 20%;
@@ -824,6 +746,31 @@ body.dark-theme .soft-item-link:hover {
 }
 
 
+
+
+
+/* Блок статуса Asterisk */
+#json-data {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    background: #FFF5E1;
+    border: 2px solid #FF69B4;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    color: #4A4A4A;
+    z-index: 1000;
+}
+
+#json-data pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
 
 
 
