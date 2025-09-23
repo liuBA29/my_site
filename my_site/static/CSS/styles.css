@@ -1,4 +1,28 @@
 /*  styles.css  */
+
+
+
+:root {
+    /* Основные цвета */
+    --pink-pink: #FF69B4;                /* 💖 ярко-розовый */
+    --pink-light-pink: #FFB6C1;          /* 🌸 светло-розовый */
+    --pink-dark-pink: #D16B8A;           /* 🌺 тёмно-розовый */
+    --white: #ffffff;                     /* ⚪ белый */
+    --black: #000000;                     /* ⚫ черный */
+    --pink-gray-very-light: #f5f5f5;            /* 🌫 очень светло-серый */
+    --pink-gray-medium: #8F8F8F;           /* 🌁 средний серый */
+    --pink-gray-light: #bbbbbb;             /* 🪨 светло-серый */
+    --pink-gray-bg: #2b2b2b;               /* темный кофе */
+    --pink-gray-header-footer: #3a3a3a;     /* темный gray */
+    --pink-link-blue: #4169E1;             /* 🔵 синий для ссылок */
+    --pink-link-blue-hover: #27408B;       /* 🟦 синий при наведении */
+    --pink-toast-bg: #FFF5E1;             /* 🍯 фон всплывающих уведомлений beige*/
+    --pink-tech-bg: #f9f0ff;              /* 🟪 фон блока "технологии" */
+    --pink-tech-accent: #F77CA3;          /* 💗 акцент в блоке "технологии" */
+    --pink-border-tech: #d19cd6;         /* 🟪 граница блока "технологии" */
+    --pink-shadow: rgba(0, 0, 0, 0.1);     /* 🌑 тень для элементов */
+
+
 /* ================== БАЗА ================== */
 body {
     font-family: 'Poppins', Arial, sans-serif;
@@ -15,7 +39,7 @@ body {
 }
 
 h1,h2 {
-    color: #FF69B4;
+    color: var(--pink-pink);
     text-align: center;
     font-size: 1.5em;
 }
@@ -23,7 +47,7 @@ h1,h2 {
 
 
 h4 {
-    color: #FF69B4;
+    color: var(--pink-pink);
 }
 
 p {
@@ -32,13 +56,13 @@ p {
 
 /* ================== HEADER ================== */
 header {
-    background: #FFB6C1;
+    background: var(--pink-light-pink);
     color: #fff;
     padding: 30px 0;
     text-align: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--pink-shadow);
 
 }
 
@@ -109,7 +133,7 @@ nav ul li a.active {
 }
 
 .auth a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -145,7 +169,7 @@ nav ul li a.active {
 }
 
 .login-button {
-    background-color: #FF69B4;
+    background-color: var(--pink-pink);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -169,7 +193,7 @@ nav ul li a.active {
 
 .logout {
     font-size: 0.8rem; /* чуть меньше */
-    color: #bbbbbb; /* блеклый серый */
+    color: var(--pink-gray-light);/* блеклый серый */
 }
 
 /* ================== LANGUAGE SWITCH ================== */
@@ -187,21 +211,21 @@ nav ul li a.active {
     padding: 5px 10px;
     text-decoration: none;
     font-weight: bold;
-    color: #FF69B4;
+    color: var(--pink-pink);
     background-color: transparent;
-    border: 2px solid #FF69B4;
+    border: 2px solid var(--pink-pink);
     border-radius: 5px;
     margin: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .language-button:hover {
-    background-color: #FF69B4;
+    background-color: var(--pink-pink);
     color: white;
 }
 
 .language-button.active {
-    background-color: #FF69B4;
+    background-color: var(--pink-pink);
     color: white;
 }
 /* ================== TOGGLE THEME ================== */
@@ -231,7 +255,7 @@ nav ul li a.active {
         }
 
         .toggle__input:checked ~ .toggle__fill {
-            background: #FFB6C1;
+            background: var(--pink-light-pink);
         }
 
         .toggle__fill::after {
@@ -241,7 +265,7 @@ nav ul li a.active {
             left: 0;
             height: var(--height);
             width: var(--height);
-            background: #ffffff;
+            background: var(--white);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
             border-radius: var(--border-radius);
             transition: transform 0.2s;
@@ -255,7 +279,7 @@ nav ul li a.active {
 .section-description {
     font-size: 1.2rem; /* Увеличиваем размер шрифта */
     margin: 1rem 0 2rem 0;
-    color: #8F8F8F;
+    color: var(--pink-gray-medium);
     line-height: 1.6;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
 }
@@ -266,13 +290,13 @@ main.container {
     padding: 30px;
     margin-top: 20px;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--pink-shadow);
 }
 
 /* ================== FOOTER ================== */
 /* Подвал */
 footer {
-    background: #FFB6C1;
+    background: var(--pink-light-pink);
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -291,7 +315,7 @@ footer {
   margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
   margin-bottom: 20px;
   /* дополнительные стили для оформления */
-  background-color: #f9f0ff;
+  background-color: var(--pink-tech-bg);
   margin-top: 140px;  /* вот этот отступ опустит блок ниже */
   padding: 15px;
   border-radius: 10px;
@@ -356,7 +380,7 @@ footer {
 }
 
 .tech-stack-icons i {
-  color: #F77CA3; /* нежно-розовый акцент */
+  color: var(--pink-tech-accent);/* нежно-розовый акцент */
   margin-right: 10px;
   font-size: 1.2em;
   min-width: 20px;
@@ -406,13 +430,13 @@ footer {
 
 /* Темная и светлая темы */
 .light-theme {
-    --background-color: #ffffff;
-    --text-color: #000000;
+    --background-color: var(--white);
+    --text-color: var(--black);
 
 }
 
 .light-theme h3{
-    color: #FFB6C1;
+    color: --pink-light-pink;
 
 }
 
@@ -424,21 +448,21 @@ footer {
 
 .dark-theme {
     --background-color: #1e1e1e;
-    --text-color: #ffffff;
+    --text-color: var(--white);
 }
 
 .dark-theme main.container {
-    background: #2b2b2b;
-    color: #ffffff;
+    background: var(--pink-gray-bg);
+    color: var(--white);
 }
 
 .dark-theme header,
 .dark-theme footer {
-    background: #3a3a3a;
+    background: var(--pink-gray-header-footer);
 }
 
 .dark-theme a {
-    color: #ffffff;
+    color: var(--white);
 }
 
 .light-theme main.container .simple-link {
@@ -463,7 +487,7 @@ footer {
     right: 20px;
     top: 20px;
     transform: translateY(-50%);
-    background-color: #FF69B4;
+    background-color: var(--pink-pink);
     color: white;
     border: none;
     border-radius: 20px;
@@ -501,12 +525,12 @@ body.dark-theme .soft-item-link:hover {
 /* Стрелочка для кнопки в темной теме */
 .dark-theme .back-btn {
     background-color: #333;
-    color: #ff69b4;
+    color: var(--pink-pink);
     border: 1px solid #555;
 }
 
 .dark-theme .back-btn:hover {
-    background-color: #ff69b4;
+    background-color: var(--pink-pink);
     color: white;
 }
 
@@ -590,13 +614,13 @@ body.dark-theme .soft-item-link:hover {
     height: 250px;
     border-radius: 5px;
     object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--pink-shadow);
 }
 
 .soft-item .no-image {
     width: 150px;
     height: 150px;
-    background-color: #f5f5f5;
+    background-color: var(--pink-gray-light);
 
     display: flex;
     align-items: center;
@@ -608,7 +632,7 @@ body.dark-theme .soft-item-link:hover {
 
 .soft-item .right {
     flex: 1;
-    color: #8F8F8F;
+    color: var(--pink-gray-medium);
     font-size: 1rem;
 
 
@@ -616,7 +640,7 @@ body.dark-theme .soft-item-link:hover {
 
 .soft-item h3 {
     margin: 0 0 10px 0;
-    color: #FF69B4;
+    color: var(--pink-pink);
 }
 
 .soft-item h3:hover {
@@ -624,7 +648,7 @@ body.dark-theme .soft-item-link:hover {
 }
 
 .download-link {
-    color: #4169E1;
+    color: var(--pink-link-blue);
     font-weight: bold;
 }
 
@@ -657,23 +681,23 @@ body.dark-theme .soft-item-link:hover {
 
 
 .soft-item h3 a {
-    color: #FF69B4;
+    color: var(--pink-pink);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .soft-item h3 a:hover {
-    color: #D16B8A;
+    color: var(--pink-dark-pink);
 }
 
 .download-link {
-    color: #4169E1;
+    color: var(--pink-link-blue);
     text-decoration: underline;
 }
 
 .download-link:hover {
-    color: #27408B;
+    color: var(--pink-link-blue-hover);
 }
 
 /* Адаптация под маленькие экраны */
@@ -699,7 +723,7 @@ body.dark-theme .soft-item-link:hover {
 a.btn {
     display: inline-block;
     background-color: #FF00;
-    color: #FF69B4;
+    color: var(--pink-pink);
     padding: 10px 20px;
     border-radius: 12px;
     text-decoration: none;
@@ -707,7 +731,7 @@ a.btn {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 a.btn:hover {
-    background-color: #FFB6C1;
+    background-color: var(--pink-light-pink);
 }
 
 
@@ -755,8 +779,8 @@ a.btn:hover {
     top: 10px;
     right: 10px;
     width: 300px;
-    background: #FFF5E1;
-    border: 2px solid #FF69B4;
+    background: var(--pink-toast-bg);
+    border: 2px solid var(--pink-pink);
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

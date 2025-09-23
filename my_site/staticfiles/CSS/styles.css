@@ -1,5 +1,29 @@
 /*  styles.css  */
-/* Основные стили */
+
+
+
+:root {
+    /* Основные цвета */
+    --pink-pink: #FF69B4;                /* 💖 ярко-розовый */
+    --pink-light-pink: #FFB6C1;          /* 🌸 светло-розовый */
+    --pink-dark-pink: #D16B8A;           /* 🌺 тёмно-розовый */
+    --white: #ffffff;                     /* ⚪ белый */
+    --black: #000000;                     /* ⚫ черный */
+    --pink-gray-very-light: #f5f5f5;            /* 🌫 очень светло-серый */
+    --pink-gray-medium: #8F8F8F;           /* 🌁 средний серый */
+    --pink-gray-light: #bbbbbb;             /* 🪨 светло-серый */
+    --pink-gray-bg: #2b2b2b;               /* темный кофе */
+    --pink-gray-header-footer: #3a3a3a;     /* темный gray */
+    --pink-link-blue: #4169E1;             /* 🔵 синий для ссылок */
+    --pink-link-blue-hover: #27408B;       /* 🟦 синий при наведении */
+    --pink-toast-bg: #FFF5E1;             /* 🍯 фон всплывающих уведомлений beige*/
+    --pink-tech-bg: #f9f0ff;              /* 🟪 фон блока "технологии" */
+    --pink-tech-accent: #F77CA3;          /* 💗 акцент в блоке "технологии" */
+    --pink-border-tech: #d19cd6;         /* 🟪 граница блока "технологии" */
+    --pink-shadow: rgba(0, 0, 0, 0.1);     /* 🌑 тень для элементов */
+
+
+/* ================== БАЗА ================== */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
@@ -14,16 +38,32 @@ body {
     max-width: 1200px;
 }
 
-/* Стили для шапки */
+h1,h2 {
+    color: var(--pink-pink);
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+
+h4 {
+    color: var(--pink-pink);
+}
+
+p {
+    line-height: 1.8;
+}
+
+/* ================== HEADER ================== */
 header {
-    background: #FFB6C1;
+    background: var(--pink-light-pink);
     color: #fff;
     padding: 30px 0;
     text-align: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: -10px;
+    box-shadow: 0 4px 8px var(--pink-shadow);
+
 }
 
 header .nav-container {
@@ -41,13 +81,6 @@ header h1 a {
     color: white;
     text-decoration: none;
 }
-
-h4 {
-    color: #FF69B4;
-}
-
-
-
 
 
 nav ul {
@@ -86,379 +119,10 @@ nav ul li a.active {
     text-decoration: underline;
 }
 
+/* ================== AUTH ================== */
 
 
 
-/*=================================.tech-stack===========================================*/
-
-.tech-stack {
-  float: right;
-  width: 250px; /* ширина блока с твоим стеком */
-  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
-  margin-bottom: 20px;
-  /* дополнительные стили для оформления */
-  background-color: #f9f0ff;
-  margin-top: 140px;  /* вот этот отступ опустит блок ниже */
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #d19cd6;
-}
-
-
-.tech-stack-box {
-  border: 2px solid var(--theme-accent, #F77CA3);
-  border-radius: 12px;
-  padding: 12px 18px;
-  max-width: 220px;
-  background-color: transparent;
-  box-shadow: none;
-  font-size: 0.9em;
-  line-height: 1.1;
-  float: right;
-  margin: 0 0 15px 15px;
-}
-
-body.dark-mode .tech-stack-box {
-  border-color: var(--theme-accent-dark, #bb5b85);
-  background-color: transparent;
-}
-
-/* Убираем лишние отступы у списка, делаем компактно */
-.tech-stack-list {
-  list-style: none;
-  padding: 0;
-  margin: 6px 0 0 0;
-}
-
-.tech-stack-list li {
-  margin-bottom: 4px;
-  display: flex;
-  font-size: 0.9em;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Иконки — аккуратный размер и цвет */
-.tech-stack-list li i {
-  font-size: 1.1em;
-  color: var(--theme-accent, #F77CA3);
-}
-
-* 📱 На экранах до 900px — компактнее, но без потери читаемости */
-@media (max-width: 900px) {
-  .tech-stack-box {
-    float: none;
-    margin: 10px 0;
-    max-width: 100%;
-    font-size: 0.8em;
-    padding: 10px 12px;
-    line-height: 1.05;
-  }
-  .tech-stack-list li i {
-    font-size: 1em;
-  }
-}
-
-/* 🧸 Ещё компактнее на совсем маленьких устройствах */
-.tech-stack-box {
-  border: 2px solid var(--theme-accent, #F77CA3);
-  border-radius: 12px;
-  padding: 8px 12px;
-  max-width: 220px;
-  background-color: transparent;
-  box-shadow: none;
-  font-size: 0.9em;
-  line-height: 1.1;
-  float: right;
-  margin: 0 0 15px 15px;
-}
-
-.tech-stack-box h3 {
-  text-align: center;
-  font-size: 1em;
-  margin: 4px 0 8px 0;
-  color: var(--theme-accent, #F77CA3);
-}
-
-body.dark-mode .tech-stack-box {
-  border-color: var(--theme-accent-dark, #bb5b85);
-}
-
-.tech-stack-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  line-height: 1;
-}
-
-.tech-stack-list li {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  gap: 6px;
-}
-
-.tech-stack-list li i {
-  font-size: 1.05em;
-  color: var(--theme-accent, #F77CA3);
-  margin-right: 3px;
-  vertical-align: middle;
-}
-
-/* 📱 Меньше ширина и отступы на маленьких экранах */
-@media (max-width: 900px) {
-  .tech-stack-box {
-    float: none;
-    margin: 10px 0;
-    max-width: 100%;
-    font-size: 0.8em;
-    padding: 6px 10px;
-  }
-}
-
-@media (max-width: 500px) {
-  .tech-stack-box {
-    font-size: 0.52em;
-    padding: 4px 6px;
-    max-width: 100%;
-  }
-
-  .tech-stack-list li {
-    gap: 3px;
-    line-height: 0.95;
-  }
-
-  .tech-stack-box h3 {
-    font-size: 0.95em;
-    margin-bottom: 6px;
-  }
-}
-
-
-/*=================================.tech-stack===========================================*/
-
-
-/* Основной контент */
-main.container {
-    background: #FFF;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1,h2 {
-    color: #FF69B4;
-    text-align: center;
-    font-size: 1.5em;
-}
-
-p {
-    line-height: 1.8;
-}
-
-/* Подвал */
-footer {
-    background: #FFB6C1;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-/* Блок статуса Asterisk */
-#json-data {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 300px;
-    background: #FFF5E1;
-    border: 2px solid #FF69B4;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Poppins', Arial, sans-serif;
-    font-size: 14px;
-    color: #4A4A4A;
-    z-index: 1000;
-}
-
-#json-data pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    margin: 0;
-}
-
-
-
-
-/* Темная и светлая темы */
-.light-theme {
-    --background-color: #ffffff;
-    --text-color: #000000;
-
-}
-
-.light-theme h3{
-    color: #FFB6C1;
-
-}
-
-
-.dark-theme h3{
-    color: white;
-
-}
-
-.dark-theme {
-    --background-color: #1e1e1e;
-    --text-color: #ffffff;
-}
-
-.dark-theme main.container {
-    background: #2b2b2b;
-    color: #ffffff;
-}
-
-.dark-theme header,
-.dark-theme footer {
-    background: #3a3a3a;
-}
-
-.dark-theme a {
-    color: #ffffff;
-}
-
-.light-theme main.container .simple-link {
-    color: #888; /* светло-серый, но не слишком бледный */
-    font-weight: bold;
-    font-size: 1.1em; /* немного больше обычного */
-    text-decoration: underline;
-    #text-decoration-color: pink; /* подчёркивание розовым */
-}
-
-.dark-theme main.container .simple-link {
-    color: #ccc; /* светло-серый, но не слишком бледный */
-    font-weight: bold;
-    font-size: 1.1em; /* немного больше обычного */
-    text-decoration: underline;
-    #text-decoration-color: pink; /* подчёркивание розовым */
-}
-
-
-.theme-button {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    transform: translateY(-50%);
-    background-color: #FF69B4;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-
-/*======================tech stack========================*/
-/* Новый блок с твоим стеком навыков */
-.section-description {
-  position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
-}
-
-.tech-stack-icons ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tech-stack-icons li {
-  margin: 8px 0;
-  font-size: 1.05em;
-  display: flex;
-  align-items: center;
-}
-
-.tech-stack-icons i {
-  color: #F77CA3; /* нежно-розовый акцент */
-  margin-right: 10px;
-  font-size: 1.2em;
-  min-width: 20px;
-}
-
-.tech-stack-box {
-  border: 2px solid var(--theme-accent, #F77CA3);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 30px 0;
-  background-color: transparent; /* прозрачный фон */
-  box-shadow: none; /* убираем тень для чистоты */
-  transition: border-color 0.3s ease;
-}
-
-body.dark-mode .tech-stack-box {
-  border-color: var(--theme-accent-dark, #bb5b85);
-  background-color: transparent; /* тоже прозрачный */
-}
-
-
-
-
-
-/*------------toggle-----------*/
-
-.toggle {
-            --width: 40px;
-            --height: calc(var(--width) / 2);
-            --border-radius: calc(var(--height) / 2);
-            display: inline-block;
-            cursor: pointer;
-            position: absolute;
-            top: 20vh; /* Поднимаем на 15% */
-            right: 18vh; /* Размещаем справа */
-        }
-
-        .toggle__input {
-            display: none;
-        }
-
-        .toggle__fill {
-            position: absolute;
-            width: var(--width);
-            height: var(--height);
-            border-radius: var(--border-radius);
-            background: black;
-            transition: background 0.2s;
-        }
-
-        .toggle__input:checked ~ .toggle__fill {
-            background: #FFB6C1;
-        }
-
-        .toggle__fill::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: var(--height);
-            width: var(--height);
-            background: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-            border-radius: var(--border-radius);
-            transition: transform 0.2s;
-        }
-
-        .toggle__input:checked ~ .toggle__fill::after {
-            transform: translateX(var(--height));
-        }
-
-/*------------auth----------*/
 .auth {
     position: absolute;
     top: 2vh;
@@ -469,292 +133,10 @@ body.dark-mode .tech-stack-box {
 }
 
 .auth a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
 }
 
-.logout {
-    font-size: 0.8rem; /* чуть меньше */
-    color: #bbbbbb; /* блеклый серый */
-}
-
-
-
-/*------------language----------*/
-.language-buttons {
-    position: absolute;
-    top: 10vh; /* Размещаем чуть выше бегунка */
-    right: 6vh;
-    display: flex;
-    gap: 8px;
-}
-
-
-.language-button {
-    padding: 5px 10px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #FF69B4;
-    background-color: transparent;
-    border: 2px solid #FF69B4;
-    border-radius: 5px;
-    margin: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.language-button:hover {
-    background-color: #FF69B4;
-    color: white;
-}
-
-.language-button.active {
-    background-color: #FF69B4;
-    color: white;
-}
-
-
-/*------------------------*/
-
-@media (max-width: 768px) {
-    .theme-button {
-        top: 10px;
-        right: 10px;
-        transform: none;
-    }
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Меню в столбик */
-        gap: 10px;
-    }
-
-    nav ul li {
-        flex: none; /* Убрать равномерное растяжение пунктов меню */
-    }
-}
-
-.list-elements {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Ссылка оборачивает всю карточку */
-.soft-item-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: background-color 0.3s ease;
-    border-radius: 10px;
-}
-
-.soft-item-link:hover {
-    background-color: #f9f9f9;
-}
-
-/* Остальное как раньше */
-.soft-item {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 15px;
-    flex-wrap: wrap;
-}
-
-.soft-item .left {
-    flex: 0 0 150px;
-}
-
-.soft-item .left img {
-    width: 250px;
-    height: 250px;
-    border-radius: 5px;
-    object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.soft-item .no-image {
-    width: 150px;
-    height: 150px;
-    background-color: #f5f5f5;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 0.9rem;
-    border-radius: 5px;
-}
-
-.soft-item .right {
-    flex: 1;
-    color: #8F8F8F;
-    font-size: 1rem;
-
-
-}
-
-.soft-item h3 {
-    margin: 0 0 10px 0;
-    color: #FF69B4;
-}
-
-.soft-item h3:hover {
-    text-decoration: underline;
-}
-
-.download-link {
-    color: #4169E1;
-    font-weight: bold;
-}
-
-
-.soft-item .left .image-small img {
-    width: 150px;
-    height: 150px;
-}
-
-
-
-@media (max-width: 768px) {
-    .soft-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .soft-item .left,
-    .soft-item .right {
-        width: 100%;
-    }
-
-    .soft-item .right {
-        text-align: left;
-    }
-}
-
-
-
-
-.soft-item h3 a {
-    color: #FF69B4;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.soft-item h3 a:hover {
-    color: #D16B8A;
-}
-
-.download-link {
-    color: #4169E1;
-    text-decoration: underline;
-}
-
-.download-link:hover {
-    color: #27408B;
-}
-
-/* Адаптация под маленькие экраны */
-@media (max-width: 768px) {
-    .soft-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .soft-item .left,
-    .soft-item .right {
-        width: 100%;
-    }
-
-    .soft-item .right {
-        text-align: left;
-    }
-}
-
-
-/* downolads styles */
-a.btn {
-    display: inline-block;
-    background-color: #FF00;
-    color: #FF69B4;
-    padding: 10px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-}
-a.btn:hover {
-    background-color: #FFB6C1;
-}
-
-
-.soft-item-link {
-    text-decoration: none;
-    display: block;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-/* Светлая тема */
-body.light-theme .soft-item-link:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* Темная тема */
-body.dark-theme .soft-item-link:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* стрелочка */
-/* Стрелочка для кнопки в светлой теме */
-.light-theme .back-btn {
-
-    color: pink;
-    border: 1px solid #ddd;
-}
-
-.light-theme .back-btn:hover {
-    background-color: pink;
-    color: white;
-}
-
-/* Стрелочка для кнопки в темной теме */
-.dark-theme .back-btn {
-    background-color: #333;
-    color: #ff69b4;
-    border: 1px solid #555;
-}
-
-.dark-theme .back-btn:hover {
-    background-color: #ff69b4;
-    color: white;
-}
-
-/* Увеличение размера стрелочки */
-.back-btn span {
-    margin-right: 8px;
-    font-size: 18px;
-}
-
-.section-description {
-    font-size: 1.2rem; /* Увеличиваем размер шрифта */
-    margin: 1rem 0 2rem 0;
-    color: #8F8F8F;
-    line-height: 1.6;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
-}
-
-
-
-:root {
-  --main-padding: 30px;
-  --gap-large: 20px;
-}
 
 /*==================*/
 .login-form p {
@@ -787,7 +169,7 @@ body.dark-theme .soft-item-link:hover {
 }
 
 .login-button {
-    background-color: #FF69B4;
+    background-color: var(--pink-pink);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -806,14 +188,578 @@ body.dark-theme .soft-item-link:hover {
     transform: scale(1.05);
 }
 
+
+
+
+.logout {
+    font-size: 0.8rem; /* чуть меньше */
+    color: var(--pink-gray-light);/* блеклый серый */
+}
+
+/* ================== LANGUAGE SWITCH ================== */
+
+.language-buttons {
+    position: absolute;
+    top: 10vh; /* Размещаем чуть выше бегунка */
+    right: 6vh;
+    display: flex;
+    gap: 8px;
+}
+
+
+.language-button {
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--pink-pink);
+    background-color: transparent;
+    border: 2px solid var(--pink-pink);
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-button:hover {
+    background-color: var(--pink-pink);
+    color: white;
+}
+
+.language-button.active {
+    background-color: var(--pink-pink);
+    color: white;
+}
+/* ================== TOGGLE THEME ================== */
+
+.toggle {
+            --width: 40px;
+            --height: calc(var(--width) / 2);
+            --border-radius: calc(var(--height) / 2);
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+            top: 20vh; /* Поднимаем на 15% */
+            right: 18vh; /* Размещаем справа */
+        }
+
+        .toggle__input {
+            display: none;
+        }
+
+        .toggle__fill {
+            position: absolute;
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--border-radius);
+            background: black;
+            transition: background 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill {
+            background: var(--pink-light-pink);
+        }
+
+        .toggle__fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: var(--height);
+            width: var(--height);
+            background: var(--white);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            border-radius: var(--border-radius);
+            transition: transform 0.2s;
+        }
+
+        .toggle__input:checked ~ .toggle__fill::after {
+            transform: translateX(var(--height));
+        }
+/* ================== MAIN ================== */
+
+.section-description {
+    font-size: 1.2rem; /* Увеличиваем размер шрифта */
+    margin: 1rem 0 2rem 0;
+    color: var(--pink-gray-medium);
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+
+main.container {
+    background: #FFF;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px var(--pink-shadow);
+}
+
+/* ================== FOOTER ================== */
+/* Подвал */
+footer {
+    background: var(--pink-light-pink);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+/* ================== TECH STACK ================== */
+
+
+.tech-stack {
+  float: right;
+  width: 250px; /* ширина блока с твоим стеком */
+  margin-left: 20px; /* отступ слева, чтобы текст не прилипал */
+  margin-bottom: 20px;
+  /* дополнительные стили для оформления */
+  background-color: var(--pink-tech-bg);
+  margin-top: 140px;  /* вот этот отступ опустит блок ниже */
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #d19cd6;
+}
+
+
+
+
+.tech-stack-box h3 {
+  text-align: center;
+  font-size: 1em;
+  margin: 4px 0 8px 0;
+  color: var(--theme-accent, #F77CA3);
+}
+
+
+
+
+.tech-stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+
+
+
+.tech-stack-list li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em;
+  line-height: 1;
+  gap: 6px;
+}
+
+
+
+
+.tech-stack-list li i {
+  font-size: 1.1em;
+  color: var(--theme-accent, #F77CA3);
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+
+.tech-stack-icons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-stack-icons li {
+  margin: 8px 0;
+  font-size: 1.05em;
+  display: flex;
+
+}
+
+.tech-stack-icons i {
+  color: var(--pink-tech-accent);/* нежно-розовый акцент */
+  margin-right: 10px;
+  font-size: 1.2em;
+  min-width: 20px;
+  align-items: center;
+}
+
+
+
+.tech-stack-box {
+  border: 2px solid var(--theme-accent, #F77CA3);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  float: right;
+  max-width: 220px;
+  line-height: 1.1;
+  font-size: 0.8em;
+  background-color: transparent; /* прозрачный фон */
+  box-shadow: none; /* убираем тень для чистоты */
+  transition: border-color 0.3s ease;
+}
+
+
+
+
+/* 📱 Компактнее, но без потери читаемости */
+@media (max-width: 900px) {
+  .tech-stack-box {
+    float: none;
+    margin: 10px 0;
+    max-width: 100%;
+    font-size: 0.8em;
+    padding: 6px 10px;
+    line-height: 1.05;
+  }
+
+  .tech-stack-list li i {
+    font-size: 1em;
+  }
+}
+
+
+/* ================== THEMES ================== */
+
+
+
+
+/* Темная и светлая темы */
+.light-theme {
+    --background-color: var(--white);
+    --text-color: var(--black);
+
+}
+
+.light-theme h3{
+    color: --pink-light-pink;
+
+}
+
+
+.dark-theme h3{
+    color: white;
+
+}
+
+.dark-theme {
+    --background-color: #1e1e1e;
+    --text-color: var(--white);
+}
+
+.dark-theme main.container {
+    background: var(--pink-gray-bg);
+    color: var(--white);
+}
+
+.dark-theme header,
+.dark-theme footer {
+    background: var(--pink-gray-header-footer);
+}
+
+.dark-theme a {
+    color: var(--white);
+}
+
+.light-theme main.container .simple-link {
+    color: #888; /* светло-серый, но не слишком бледный */
+    font-weight: bold;
+    font-size: 1.1em; /* немного больше обычного */
+    text-decoration: underline;
+    #text-decoration-color: pink; /* подчёркивание розовым */
+}
+
+.dark-theme main.container .simple-link {
+    color: #ccc; /* светло-серый, но не слишком бледный */
+    font-weight: bold;
+    font-size: 1.1em; /* немного больше обычного */
+    text-decoration: underline;
+    #text-decoration-color: pink; /* подчёркивание розовым */
+}
+
+
+.theme-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transform: translateY(-50%);
+    background-color: var(--pink-pink);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+
+
+/* Светлая тема */
+body.light-theme .soft-item-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Темная тема */
+body.dark-theme .soft-item-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* стрелочка */
+/* Стрелочка для кнопки в светлой теме */
+.light-theme .back-btn {
+
+    color: pink;
+    border: 1px solid #ddd;
+}
+
+.light-theme .back-btn:hover {
+    background-color: pink;
+    color: white;
+}
+
+/* Стрелочка для кнопки в темной теме */
+.dark-theme .back-btn {
+    background-color: #333;
+    color: var(--pink-pink);
+    border: 1px solid #555;
+}
+
+.dark-theme .back-btn:hover {
+    background-color: var(--pink-pink);
+    color: white;
+}
+
+/* Увеличение размера стрелочки */
+.back-btn span {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+
+/*======================tech stack========================*/
+/* Новый блок с твоим стеком навыков */
+.section-description {
+  position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
+}
+
+
+
+
+
+
+
+
+
+/*------------------------*/
+
+@media (max-width: 768px) {
+    .theme-button {
+        top: 10px;
+        right: 10px;
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Меню в столбик */
+        gap: 10px;
+    }
+
+    nav ul li {
+        flex: none; /* Убрать равномерное растяжение пунктов меню */
+    }
+}
+
+.list-elements {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================== SOFT ITEMS ================== */
+.soft-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.soft-item-link:hover {
+    background-color: #f9f9f9;
+}
+
+/* Остальное как раньше */
+.soft-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.soft-item .left {
+    flex: 0 0 150px;
+}
+
+.soft-item .left img {
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: 0 2px 5px var(--pink-shadow);
+}
+
+.soft-item .no-image {
+    width: 150px;
+    height: 150px;
+    background-color: var(--pink-gray-light);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.soft-item .right {
+    flex: 1;
+    color: var(--pink-gray-medium);
+    font-size: 1rem;
+
+
+}
+
+.soft-item h3 {
+    margin: 0 0 10px 0;
+    color: var(--pink-pink);
+}
+
+.soft-item h3:hover {
+    text-decoration: underline;
+}
+
+.download-link {
+    color: var(--pink-link-blue);
+    font-weight: bold;
+}
+
+
+.soft-item .left .image-small img {
+    width: 150px;
+    height: 150px;
+}
+
+
+
+@media (max-width: 768px) {
+    .soft-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .soft-item .left,
+    .soft-item .right {
+        width: 100%;
+    }
+
+    .soft-item .right {
+        text-align: left;
+    }
+}
+
+
+
+
+.soft-item h3 a {
+    color: var(--pink-pink);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.soft-item h3 a:hover {
+    color: var(--pink-dark-pink);
+}
+
+.download-link {
+    color: var(--pink-link-blue);
+    text-decoration: underline;
+}
+
+.download-link:hover {
+    color: var(--pink-link-blue-hover);
+}
+
+/* Адаптация под маленькие экраны */
+@media (max-width: 768px) {
+    .soft-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .soft-item .left,
+    .soft-item .right {
+        width: 100%;
+    }
+
+    .soft-item .right {
+        text-align: left;
+    }
+}
+
+
+/* downolads styles */
+a.btn {
+    display: inline-block;
+    background-color: #FF00;
+    color: var(--pink-pink);
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+a.btn:hover {
+    background-color: var(--pink-light-pink);
+}
+
+
+.soft-item-link {
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+
+
+
+:root {
+  --main-padding: 30px;
+  --gap-large: 20px;
+}
+
+
 /* Адаптация для больших экранов (если нужно) */
 @media (min-width: 992px) {
     .login-form {
         gap: 3px;
-
-
-    /*   ================= messages ======================   */
- /* Отдельный контейнер для тостов */
+    }}
+/* ================== TOAST ================== */
 .toast-container {
   position: fixed;
   top: 20%;
@@ -824,6 +770,31 @@ body.dark-theme .soft-item-link:hover {
 }
 
 
+
+
+
+/* Блок статуса Asterisk */
+#json-data {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    background: var(--pink-toast-bg);
+    border: 2px solid var(--pink-pink);
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    color: #4A4A4A;
+    z-index: 1000;
+}
+
+#json-data pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
 
 
 
