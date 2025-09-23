@@ -1,0 +1,444 @@
+/*  styles_mint.css  */
+
+:root {
+    /* Основные цвета */
+    --mint-mint: #3DDAD7;                /* 💎 основной мятно-голубой */
+    --mint-light: #A0F0EF;               /* 🌿 светло-мятный */
+    --mint-dark: #2BA9A7;                /* 🌊 тёмно-бирюзовый */
+    --white: #ddd0c0;                    /* ⚪ белый */
+    --black: #000000;                     /* ⚫ черный */
+    --mint-gray-very-light: #f5fdfd;     /* 🌫 очень светлый мятный */
+    --mint-gray-medium: #7fbebe;         /* 🌁 средний серо-мятный */
+    --mint-gray-light: #aad6d6;          /* 🪨 светло-серый с мятным */
+    --mint-gray-bg: #2b3a3a;             /* тёмно-бирюзовый фон */
+    --mint-gray-header-footer: #3a4b4b;  /* тёмный бирюзовый для header/footer */
+    --mint-link-blue: #40E0D0;           /* 🔵 бирюзовый для ссылок */
+    --mint-link-blue-hover: #20B2AA;     /* 🟦 темная бирюза при наведении */
+    --mint-toast-bg: #E0FFFA;            /* 🍯 фон всплывающих уведомлений */
+    --mint-tech-bg: #e0f9f9;             /* 🟪 фон блока "технологии" */
+    --mint-tech-accent: #3DDAD7;         /* 💗 акцент в блоке "технологии" */
+    --mint-border-tech: #7EE3E0;         /* 🟪 граница блока "технологии" */
+    --mint-shadow: rgba(0, 0, 0, 0.1);   /* 🌑 тень для элементов */
+}
+
+/* ================== БАЗА ================== */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+h1,h2 {
+    color: var(--mint-mint);
+    text-align: center;
+    font-size: 1.5em;
+}
+
+h4 {
+    color: var(--mint-mint);
+}
+
+p {
+    line-height: 1.8;
+}
+
+/* ================== HEADER ================== */
+header {
+    background: var(--mint-light);
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 8px var(--mint-shadow);
+}
+
+header .nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+header nav {
+    padding-right: 45px;
+}
+
+header h1 a {
+    color: #ddd0c0;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    width: 120px;
+    color: white;
+    white-space: nowrap;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out;
+}
+
+nav ul li a:hover {
+    transform: scale(1.3);
+    text-decoration: underline;
+}
+
+nav ul li a.active {
+    text-decoration: underline;
+}
+
+/* ================== AUTH ================== */
+.auth {
+    position: absolute;
+    top: 2vh;
+    right: 0vh;
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+}
+
+.auth a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+/*==================*/
+.login-form p {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.login-form input {
+    width: 250px;
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.login-button {
+    background-color: var(--mint-mint);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    align-self: flex-start;
+}
+
+.login-button:hover {
+    background-color: #63e7e5;
+    transform: scale(1.05);
+}
+
+.logout {
+    font-size: 0.8rem;
+    color: var(--mint-gray-light);
+}
+
+/* ================== LANGUAGE SWITCH ================== */
+.language-buttons {
+    position: absolute;
+    top: 10vh;
+    right: 6vh;
+    display: flex;
+    gap: 8px;
+}
+
+.language-button {
+    padding: 5px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--mint-mint);
+    background-color: transparent;
+    border: 2px solid var(--mint-mint);
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-button:hover {
+    background-color: var(--mint-mint);
+    color: white;
+}
+
+.language-button.active {
+    background-color: var(--mint-mint);
+    color: white;
+}
+
+/* ================== TOGGLE THEME ================== */
+.toggle {
+    --width: 40px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 20vh;
+    right: 18vh;
+}
+
+.toggle__input {
+    display: none;
+}
+
+.toggle__fill {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background: black;
+    transition: background 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+    background: var(--mint-light);
+}
+
+.toggle__fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--height);
+    width: var(--height);
+    background: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+    transform: translateX(var(--height));
+}
+
+/* ================== MAIN ================== */
+.section-description {
+    font-size: 1.2rem;
+    margin: 1rem 0 2rem 0;
+    color: var(--mint-gray-medium);
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+main.container {
+    background: #FFF;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px var(--mint-shadow);
+}
+
+/* ================== FOOTER ================== */
+footer {
+    background: var(--mint-light);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* ================== TECH STACK ================== */
+.tech-stack {
+    float: right;
+    width: 250px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color: var(--mint-tech-bg);
+    margin-top: 140px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--mint-border-tech);
+}
+
+.tech-stack-box h3 {
+    text-align: center;
+    font-size: 1em;
+    margin: 4px 0 8px 0;
+    color: var(--theme-accent, var(--mint-tech-accent));
+}
+
+.tech-stack-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.tech-stack-list li {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+    line-height: 1;
+    gap: 6px;
+}
+
+.tech-stack-list li i {
+    font-size: 1.1em;
+    color: var(--theme-accent, var(--mint-tech-accent));
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+.tech-stack-icons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-stack-icons li {
+    margin: 8px 0;
+    font-size: 1.05em;
+    display: flex;
+}
+
+.tech-stack-icons i {
+    color: var(--mint-tech-accent);
+    margin-right: 10px;
+    font-size: 1.2em;
+    min-width: 20px;
+    align-items: center;
+}
+
+.tech-stack-box {
+    border: 2px solid var(--theme-accent, var(--mint-tech-accent));
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    float: right;
+    max-width: 220px;
+    line-height: 1.1;
+    font-size: 0.8em;
+    background-color: transparent;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+}
+
+@media (max-width: 900px) {
+    .tech-stack-box {
+        float: none;
+        margin: 10px 0;
+        max-width: 100%;
+        font-size: 0.8em;
+        padding: 6px 10px;
+        line-height: 1.05;
+    }
+
+    .tech-stack-list li i {
+        font-size: 1em;
+    }
+}
+
+/* ================== THEMES ================== */
+.light-theme {
+    --background-color: var(--white);
+    --text-color: var(--black);
+}
+
+.light-theme h3 {
+    color: var(--mint-light);
+}
+
+.dark-theme h3 {
+    color: white;
+}
+
+.dark-theme {
+    --background-color: #1e1e1e;
+    --text-color: var(--white);
+}
+
+.dark-theme main.container {
+    background: var(--mint-gray-bg);
+    color: var(--white);
+}
+
+.dark-theme header,
+.dark-theme footer {
+    background: var(--mint-gray-header-footer);
+}
+
+.dark-theme a {
+    color: var(--white);
+}
+
+.light-theme main.container .simple-link {
+    color: #888;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+}
+
+.dark-theme main.container .simple-link {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+}
+
+.theme-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transform: translateY(-50%);
+    background-color: var(--mint-mint);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* Остальные блоки и адаптивность (soft-item, login-form, back-btn, toast и т.д.) тоже заменяем var(--pink-*) на var(--mint-*) */
+
