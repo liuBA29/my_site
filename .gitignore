@@ -3,17 +3,17 @@
 *.pyo
 __pycache__/
 *.sqlite3
- .idea/
 
+# IDE
+.idea/
 
 # Virtual Environment
 venv/
 .env
-env
+env/
 
 # Django Static and Media Files
-
-.media/
+media/
 
 # Logs
 *.log
@@ -21,12 +21,12 @@ env
 # OS Files
 .DS_Store
 Thumbs.db
-resume.txt
-resume.docx
 
-
+# Personal / Temporary files
 bot_test.py
 delete_table.py
 delete_then_create_as_sample.py
 table_structure.py
 remotedb.sqlite3
+resume.txt
+resume.docx
