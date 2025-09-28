@@ -51,6 +51,7 @@
                         </div>
                     </li>
                     <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Useful Software" %}</a></li>
+                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Skills" %}</a></li>
                     <li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">{% trans "My Projects" %}</a></li>
                     <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
 
