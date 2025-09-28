@@ -14,7 +14,7 @@
 
     <meta name="description" content="{% block meta_description %}{% trans "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, contact for collaboration." %}{% endblock %}">
     <meta name="keywords" content="{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}">
-
+    <meta name="author" content="Liubov Kovaleva">
     <meta name="robots" content="index, follow">
 
 
@@ -37,18 +37,31 @@
 
 
     <header>
+
         <div class="container">
+            <div class="auth">
+    <nav>
+        {% if user.is_authenticated %}
+            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
+            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
+        {% else %}
+            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
+            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+        {% endif %}
+    </nav>
+</div>
+
             <nav>
                 <ul>
                     <li>
-                        <div class="">
+
               <a href="{% url 'main_app:home' %}" id="logo-link">
                 <img id="logo-img"
                      src="{% if request.resolver_match.url_name == 'home' %}https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png{% else %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endif %}"
                      alt="Обо мне"
                      style="width: 100px; height: auto;">
               </a>
-                        </div>
+
                     </li>
                     <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Useful Software" %}</a></li>
 <!--                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Мои услуги" %}</a></li>-->
@@ -66,6 +79,9 @@
                 </label>
             </form>
         </div>
+
+
+
 
         <!-- block authentication -->
 <div class="auth">
@@ -98,6 +114,18 @@
             </div>
         </form>
     </header>
+
+    <div class="auth">
+    <nav>
+        {% if user.is_authenticated %}
+            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
+            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
+        {% else %}
+            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
+            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+        {% endif %}
+    </nav>
+</div>
 
     <main class="container">
         {% block content %}{% endblock %}
