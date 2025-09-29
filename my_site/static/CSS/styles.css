@@ -136,15 +136,13 @@ nav ul li a.active {
 
 
 .auth {
-   position: sticky;
-    top: 10px;   /* отступ сверху */
-    right: 0;
+    position: absolute;
+    top: 2vh;
+    right: 0vh;
     display: flex;
     font-size: 1rem;
     align-items: center;
-    z-index: 1100; /* чуть выше хедера */
-
-}
+    }
 
 .auth a {
     color: var(--pink-pink);

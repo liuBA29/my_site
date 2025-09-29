@@ -34,22 +34,22 @@
 
 
 <body class="light-theme">
-
+<!--<div class="auth">-->
+<!--    <nav>-->
+<!--        {% if user.is_authenticated %}-->
+<!--            {% trans "Hello" %}, <strong>{{ user.username }}</strong>-->
+<!--            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>-->
+<!--        {% else %}-->
+<!--            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |-->
+<!--            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>-->
+<!--        {% endif %}-->
+<!--    </nav>-->
+<!--</div>-->
 
     <header>
 
         <div class="container">
-            <div class="auth">
-    <nav>
-        {% if user.is_authenticated %}
-            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
-            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
-        {% else %}
-            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
-            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
-        {% endif %}
-    </nav>
-</div>
+
 
             <nav>
                 <ul>
@@ -115,17 +115,7 @@
         </form>
     </header>
 
-    <div class="auth">
-    <nav>
-        {% if user.is_authenticated %}
-            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
-            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
-        {% else %}
-            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
-            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
-        {% endif %}
-    </nav>
-</div>
+   
 
     <main class="container">
         {% block content %}{% endblock %}
