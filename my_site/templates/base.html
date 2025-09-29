@@ -179,6 +179,65 @@ if (!isHomePage) {
 
 {% endblock %}
 
+<div id="cookie-banner" style="
+    display:none;
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    max-width:600px;
+    width:90%;
+    background:rgba(34,34,34,0.9);
+    color:#fff;
+    padding:15px 20px;
+    border-radius:12px;
+    text-align:center;
+    z-index:1000;
+    opacity:0;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    transition: opacity 0.8s, bottom 0.8s;
+">
+    <span>{% trans "This site uses cookies to improve your experience." %}</span>
+    <button id="accept-cookies" style="
+        margin-left:15px;
+        padding:6px 14px;
+        background:#4CAF50;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        font-weight:bold;
+        transition: background 0.3s;
+    ">
+        {% trans "Accept" %}
+    </button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!localStorage.getItem("cookiesAccepted")) {
+            setTimeout(() => {
+                const banner = document.getElementById("cookie-banner");
+                banner.style.display = "block";
+                setTimeout(() => {
+                    banner.style.opacity = "1";
+                    banner.style.bottom = "30px"; // лёгкий подъём при появлении
+                }, 50);
+            }, 2000); // задержка 2 секунды
+        }
+        document.getElementById("accept-cookies").onclick = function() {
+            localStorage.setItem("cookiesAccepted", "true");
+            const banner = document.getElementById("cookie-banner");
+            banner.style.opacity = "0";
+            banner.style.bottom = "0px"; // уезжает вниз
+            setTimeout(() => banner.style.display = "none", 800);
+        };
+    });
+</script>
+
+
+
+
 
 
 

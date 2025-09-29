@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-14 13:08+0300\n"
+"POT-Creation-Date: 2025-09-29 16:27+0300\n"
 "PO-Revision-Date: 2025-07-11 13:00+0300\n"
 "Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,7 +128,8 @@ msgstr ""
 "Django, утилиты и контакты."
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:26
-#: .\templates\accounts\register.html:28 .\templates\base.html:79
+#: .\templates\accounts\register.html:28 .\templates\base.html:44
+#: .\templates\base.html:94
 msgid "Login"
 msgstr "Войти"
 
@@ -137,7 +138,8 @@ msgid "Don't have an account?"
 msgstr "Нет аккаунта?"
 
 #: .\templates\accounts\login.html:29 .\templates\accounts\register.html:18
-#: .\templates\accounts\register.html:24 .\templates\base.html:78
+#: .\templates\accounts\register.html:24 .\templates\base.html:43
+#: .\templates\base.html:93
 msgid "Register"
 msgstr "Регистрация"
 
@@ -198,75 +200,96 @@ msgstr "Портфолио Любови Ковалёвой"
 msgid "Web development, projects, task automation. Portfolio site of LiuBA29."
 msgstr "Веб-разработка, проекты, автоматизация задач. Сайт-портфолио LiuBA29."
 
-#: .\templates\base.html:55
+#: .\templates\base.html:40 .\templates\base.html:90
+msgid "Hello"
+msgstr "Привет"
+
+#: .\templates\base.html:41 .\templates\base.html:91
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\templates\base.html:66
 msgid "Useful Software"
 msgstr "Полезный софт"
 
-#: .\templates\base.html:56 .\templates\main_app\my_projects.html:6
+#: .\templates\base.html:67
+msgid "Мои услуги"
+msgstr ""
+
+#: .\templates\base.html:68 .\templates\main_app\my_projects.html:6
 #: .\templates\main_app\my_projects.html:12
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:57 .\templates\main_app\contact.html:4
+#: .\templates\base.html:69 .\templates\main_app\contact.html:4
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\templates\base.html:75
-msgid "Hello"
-msgstr "Привет"
-
-#: .\templates\base.html:76
-msgid "Logout"
-msgstr "Выйти"
-
-#: .\templates\base.html:109
+#: .\templates\base.html:126
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
-#: .\templates\chat\_lobby_partial.html:12
+#: .\templates\base.html:200
+msgid "This site uses cookies to improve your experience."
+msgstr "Чтобы сделать работу удобнее сайт использует cookies."
+
+#: .\templates\base.html:212
+msgid "Accept"
+msgstr "Согласиться"
+
+#: .\templates\chat\_lobby_partial.html:12 .\templates\chat\lobby.html:145
 msgid "Room name:"
 msgstr "Название комнаты:"
 
-#: .\templates\chat\_lobby_partial.html:22
+#: .\templates\chat\_lobby_partial.html:22 .\templates\chat\lobby.html:155
 msgid "To join the chat, please"
 msgstr "Чтобы присоединиться к чату, пожалуйста,"
 
-#: .\templates\chat\_lobby_partial.html:22
+#: .\templates\chat\_lobby_partial.html:22 .\templates\chat\lobby.html:155
 msgid "log in"
 msgstr "войдите"
 
-#: .\templates\chat\_lobby_partial.html:22
+#: .\templates\chat\_lobby_partial.html:22 .\templates\chat\lobby.html:155
 msgid "or"
 msgstr "или"
 
-#: .\templates\chat\_lobby_partial.html:22
+#: .\templates\chat\_lobby_partial.html:22 .\templates\chat\lobby.html:155
 msgid "sign up"
 msgstr "зарегистрируйтесь"
 
-#: .\templates\chat\_lobby_partial.html:27
+#: .\templates\chat\_lobby_partial.html:27 .\templates\chat\lobby.html:160
 msgid "Join Chat"
 msgstr "Войти в чат"
 
-#: .\templates\chat\_lobby_partial.html:33
+#: .\templates\chat\_lobby_partial.html:33 .\templates\chat\lobby.html:165
 msgid "You are in chat,"
 msgstr "Вы в чате"
 
-#: .\templates\chat\_lobby_partial.html:42
+#: .\templates\chat\_lobby_partial.html:42 .\templates\chat\lobby.html:174
 msgid "Enter message"
 msgstr "Вести сообщение"
 
-#: .\templates\chat\_lobby_partial.html:43
+#: .\templates\chat\_lobby_partial.html:43 .\templates\chat\lobby.html:175
 msgid "Send"
 msgstr "Отправить"
 
-#: .\templates\chat\_lobby_partial.html:239
+#: .\templates\chat\_lobby_partial.html:239 .\templates\chat\lobby.html:188
 msgid "You are a new user. Please? enter your name."
 msgstr "Вы новый пользователь. Пожалуйста, введите своё имя."
 
 #: .\templates\chat\_lobby_partial.html:300
-#: .\templates\chat\_lobby_partial.html:310
+#: .\templates\chat\_lobby_partial.html:310 .\templates\chat\lobby.html:231
+#: .\templates\chat\lobby.html:238
 msgid "Server"
 msgstr "Сервер"
+
+#: .\templates\chat\lobby.html:8
+msgid "Chat Lobby"
+msgstr ""
+
+#: .\templates\chat\lobby.html:166
+msgid "Leave Chat"
+msgstr ""
 
 #: .\templates\main_app\contact.html:19
 msgid "My contacts"
@@ -415,18 +438,11 @@ msgstr ""
 msgid ""
 "I have experience integrating Google Search API for enhanced search and data "
 "retrieval capabilities."
-msgstr "Имею опыт интеграции Google Search API для расширения возможностей поиска и извлечения данных."
-
-#: .\templates\main_app\index.html:91
-msgid ""
-"\n"
-"  Working with the Google Search API allows me to build features that "
-"interact with Google's search services programmatically — useful for SEO "
-"tools, data aggregation, and building smarter search functionalities.\n"
-"  "
 msgstr ""
+"Имею опыт интеграции Google Search API для расширения возможностей поиска и "
+"извлечения данных."
 
-#: .\templates\main_app\index.html:99
+#: .\templates\main_app\index.html:95
 msgid ""
 "\n"
 "  Even if you're just browsing, I sincerely appreciate your visit — and I "
@@ -439,23 +455,23 @@ msgstr ""
 "будет очень приятно, если вы взглянете на вышеупомянутые проекты:\n"
 "  "
 
-#: .\templates\main_app\index.html:103
+#: .\templates\main_app\index.html:99
 msgid "my projects"
 msgstr "мои проекты"
 
-#: .\templates\main_app\index.html:105
+#: .\templates\main_app\index.html:101
 msgid "or check out some"
 msgstr "или посмотрите"
 
-#: .\templates\main_app\index.html:106
+#: .\templates\main_app\index.html:102
 msgid "useful software"
 msgstr "полезный софт"
 
-#: .\templates\main_app\index.html:107
+#: .\templates\main_app\index.html:103
 msgid "— simple desktop applications built with Tkinter."
 msgstr "— десктопные приложения, созданные с помощью Tkinter."
 
-#: .\templates\main_app\index.html:112
+#: .\templates\main_app\index.html:108
 msgid ""
 "\n"
 "    I'm open to communication and collaboration — looking forward to "
