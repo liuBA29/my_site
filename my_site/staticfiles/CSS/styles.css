@@ -60,11 +60,21 @@ header {
     color: #fff;
     padding: 30px 0;
     text-align: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
     box-shadow: 0 4px 8px var(--pink-shadow);
 
+      /* 🔹 всегда поверх содержимого */
 }
+
+/* Липкая верхушка хедера (только логотип и меню) */
+.sticky-header {
+ position: sticky;   /* 🔹 сделает хедер прилипшим */
+  top: 0;             /* 🔹 прилипает к верхнему краю окна */
+    z-index: 1000;   }
+
+
+
 
 header .nav-container {
     display: flex;
@@ -81,6 +91,8 @@ header h1 a {
     color: white;
     text-decoration: none;
 }
+
+
 
 
 nav ul {
@@ -130,10 +142,10 @@ nav ul li a.active {
     display: flex;
     font-size: 1rem;
     align-items: center;
-}
+    }
 
 .auth a {
-    color: var(--white);
+    color: var(--pink-pink);
     text-decoration: none;
 }
 
@@ -320,6 +332,7 @@ footer {
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #d19cd6;
+
 }
 
 

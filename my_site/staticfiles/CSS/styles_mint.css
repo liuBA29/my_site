@@ -1,11 +1,11 @@
-/*  styles_mint.css  */
+/*  styles.css  */
 
 :root {
     /* Основные цвета */
     --mint-mint: #3DDAD7;                /* 💎 основной мятно-голубой */
     --mint-light: #A0F0EF;               /* 🌿 светло-мятный */
     --mint-dark: #2BA9A7;                /* 🌊 тёмно-бирюзовый */
-    --white: #ddd0c0;                    /* ⚪ белый */
+    --white: #fce7cc;                    /* ⚪ белый */
     --black: #000000;                     /* ⚫ черный */
     --mint-gray-very-light: #f5fdfd;     /* 🌫 очень светлый мятный */
     --mint-gray-medium: #7fbebe;         /* 🌁 средний серо-мятный */
@@ -95,7 +95,7 @@ nav ul li {
 nav ul li a {
     display: block;
     width: 120px;
-    color: white;
+    color: #ddd0c0;
     white-space: nowrap;
     font-size: 20px;
     text-decoration: none;
@@ -157,7 +157,9 @@ nav ul li a.active {
 
 .login-button {
     background-color: var(--mint-mint);
-    color: white;
+    color: #ddd0c0;
+
+
     border: none;
     padding: 12px 30px;
     font-size: 1rem;
@@ -203,12 +205,12 @@ nav ul li a.active {
 
 .language-button:hover {
     background-color: var(--mint-mint);
-    color: white;
+    color: #ddd0c0;
 }
 
 .language-button.active {
     background-color: var(--mint-mint);
-    color: white;
+    color: #ddd0c0;
 }
 
 /* ================== TOGGLE THEME ================== */
