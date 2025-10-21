@@ -57,24 +57,32 @@ p {
 /* ================== HEADER ================== */
 
 .preheader {
-
-
   position: relative;
-  height: 90px;
+  display: flex;
+  height: 60px;
+  justify-content: flex-end; /* элементы справа */
+  align-items: center;
   background: var(--pink-gray-very-light);
   padding: 10px 20px;
-  border-bottom: 2px solid var(--pink-light-pink);
+
 }
 
 
 /* Хедер будет прилипать сверху */
+.right-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 36px; /* расстояние между языковыми кнопками и тогглом */
+}
+
 
 
 
 header {
     background: var(--pink-light-pink);
     color: #fff;
-    padding: 30px 0;
+    padding: 10px 0;
     text-align: center;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
@@ -148,17 +156,32 @@ nav ul li a.active {
 
 
 .auth {
-    position: absolute;
-    top: 2vh;
-    right: 0vh;
+    position: static;
     display: flex;
-    font-size: 1rem;
     align-items: center;
-    }
+    justify-content: flex-end;
+    font-size: 0.95rem;
+    gap: 8px;
+    flex-shrink: 0;
+    min-width: 180px; /* 💎 фиксируем ширину блока авторизации */
+    text-align: right; /* выравниваем текст по правому краю */
+}
+
+
 
 .auth a {
     color: var(--pink-pink);
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.auth a:hover {
+    color: var(--pink-dark-pink);
+}
+
+.auth strong {
+    color: var(--pink-dark-pink);
 }
 
 
@@ -222,17 +245,18 @@ nav ul li a.active {
 
 /* ================== LANGUAGE SWITCH ================== */
 
+
+
+
+
 .language-buttons {
-    position: absolute;
-    top: 10px; /* Размещаем чуть выше бегунка */
-    right: 120px;
     display: flex;
-    gap: 8px;
+    gap: 6px;
 }
 
 
 .language-button {
-    padding: 5px 10px;
+    padding: 0px 5px;
     text-decoration: none;
     font-weight: bold;
     color: var(--pink-pink);
@@ -253,17 +277,20 @@ nav ul li a.active {
     color: white;
 }
 /* ================== TOGGLE THEME ================== */
+.language-buttons,
+.toggle {
+  position: static;
+}
 
 .toggle {
-    --width: 40px;
+    --width: 36px;
     --height: calc(var(--width) / 2);
     --border-radius: calc(var(--height) / 2);
     display: inline-block;
     cursor: pointer;
-    position: absolute;
-    top: 10px;     /* 🔸 теперь внутри preheader */
-    right: 60px;   /* 🔸 аккуратно справа */
+    position: static; /* ✅ вместо absolute */
 }
+
 
 
         .toggle__input {
@@ -283,6 +310,18 @@ nav ul li a.active {
             background: var(--pink-light-pink);
         }
 
+        .toggle__fill {
+            position: relative; /* ✅ было absolute */
+            width: var(--width);
+            height: var(--height);
+            border-radius: var(--border-radius);
+            background: black;
+            transition: background 0.2s;
+            display: inline-block; /* чтобы занимал место в потоке */
+            overflow: hidden; /* чтобы кружочек не вылезал */
+            flex-shrink: 0; /* не сжимался */
+        }
+
         .toggle__fill::after {
             content: "";
             position: absolute;
@@ -291,10 +330,12 @@ nav ul li a.active {
             height: var(--height);
             width: var(--height);
             background: var(--white);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
             border-radius: var(--border-radius);
-            transition: transform 0.2s;
+            box-shadow: 0 0 14px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease;
         }
+
+
 
         .toggle__input:checked ~ .toggle__fill::after {
             transform: translateX(var(--height));
@@ -482,7 +523,10 @@ footer {
     color: var(--white);
 }
 
+.dark-theme .preheader {
+    background: var(--pink-gray-header-footer);
 
+}
 .dark-theme header,
 .dark-theme footer {
     background: var(--pink-gray-header-footer);

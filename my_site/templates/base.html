@@ -46,6 +46,8 @@
 <!--    </nav>-->
 <!--</div>-->
 <div class="preheader">
+    <div class="right-controls">
+
      <form action="{% url 'set_language' %}" method="post">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -59,6 +61,7 @@
                     </button>
                 {% endfor %}
             </div>
+
         </form>
 
 
@@ -70,8 +73,23 @@
                 </label>
             </form>
 
+     <!-- block authentication -->
+<div class="auth">
+    <nav>
+        {% if user.is_authenticated %}
+            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
+            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
+        {% else %}
+            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
+            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+        {% endif %}
+    </nav>
+</div>
+<!-- end block authentication -->
 
 
+
+</div>
 </div>
 
 
@@ -107,19 +125,7 @@
 
 
 
-        <!-- block authentication -->
-<div class="auth">
-    <nav>
-        {% if user.is_authenticated %}
-            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
-            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
-        {% else %}
-            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
-            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
-        {% endif %}
-    </nav>
-</div>
-<!-- end block authentication -->
+
 
 
 
