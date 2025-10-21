@@ -55,6 +55,22 @@ p {
 }
 
 /* ================== HEADER ================== */
+
+.preheader {
+
+
+  position: relative;
+  height: 90px;
+  background: var(--pink-gray-very-light);
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--pink-light-pink);
+}
+
+
+/* Хедер будет прилипать сверху */
+
+
+
 header {
     background: var(--pink-light-pink);
     color: #fff;
@@ -63,15 +79,11 @@ header {
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     box-shadow: 0 4px 8px var(--pink-shadow);
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
       /* 🔹 всегда поверх содержимого */
-}
-
-/* Липкая верхушка хедера (только логотип и меню) */
-.sticky-header {
- position: sticky;   /* 🔹 сделает хедер прилипшим */
-  top: 0;             /* 🔹 прилипает к верхнему краю окна */
-    z-index: 1000;   }
+ }
 
 
 
@@ -212,8 +224,8 @@ nav ul li a.active {
 
 .language-buttons {
     position: absolute;
-    top: 10vh; /* Размещаем чуть выше бегунка */
-    right: 6vh;
+    top: 10px; /* Размещаем чуть выше бегунка */
+    right: 120px;
     display: flex;
     gap: 8px;
 }
@@ -243,15 +255,16 @@ nav ul li a.active {
 /* ================== TOGGLE THEME ================== */
 
 .toggle {
-            --width: 40px;
-            --height: calc(var(--width) / 2);
-            --border-radius: calc(var(--height) / 2);
-            display: inline-block;
-            cursor: pointer;
-            position: absolute;
-            top: 20vh; /* Поднимаем на 15% */
-            right: 18vh; /* Размещаем справа */
-        }
+    --width: 40px;
+    --height: calc(var(--width) / 2);
+    --border-radius: calc(var(--height) / 2);
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;     /* 🔸 теперь внутри preheader */
+    right: 60px;   /* 🔸 аккуратно справа */
+}
+
 
         .toggle__input {
             display: none;
@@ -468,6 +481,7 @@ footer {
     background: var(--pink-gray-bg);
     color: var(--white);
 }
+
 
 .dark-theme header,
 .dark-theme footer {
