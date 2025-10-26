@@ -230,8 +230,8 @@ msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
 #: .\templates\base.html:223
-msgid "This site uses cookies to improve your experience."
-msgstr "Чтобы сделать работу удобнее сайт использует cookies."
+msgid "This site uses cookies to improve your experience"
+msgstr "Чтобы сделать работу удобнее сайт использует cookies"
 
 #: .\templates\base.html:235
 msgid "Accept"

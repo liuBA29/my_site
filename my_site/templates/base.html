@@ -220,7 +220,7 @@ if (!isHomePage) {
     box-shadow:0 4px 12px rgba(0,0,0,0.3);
     transition: opacity 0.8s, bottom 0.8s;
 ">
-    <span>{% trans "This site uses cookies to improve your experience." %}</span>
+    <span>{% trans "This site uses cookies to improve your experience" %}</span>
     <button id="accept-cookies" style="
         margin-left:15px;
         padding:6px 14px;
@@ -258,28 +258,7 @@ if (!isHomePage) {
     });
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const preheader = document.querySelector(".preheader");
 
-    // Сначала проверяем, первый ли это заход
-    if (!sessionStorage.getItem("preheaderShown")) {
-        preheader.classList.remove("hidden"); // показываем при первом заходе
-        sessionStorage.setItem("preheaderShown", "true");
-    } else {
-        preheader.classList.add("hidden"); // скрываем при переходах по ссылкам
-    }
-
-    // Показываем при прокрутке вверх до самого верха
-    window.addEventListener("scroll", function() {
-        if (window.scrollY === 0) {
-            preheader.classList.remove("hidden");
-        } else {
-            preheader.classList.add("hidden");
-        }
-    });
-});
-</script>
 
 
 
