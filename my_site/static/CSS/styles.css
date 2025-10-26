@@ -22,6 +22,9 @@
     --pink-border-tech: #d19cd6;         /* 🟪 граница блока "технологии" */
     --pink-shadow: rgba(0, 0, 0, 0.1);     /* 🌑 тень для элементов */
 
+    /* Добавляем недостающие переменные для тем */
+    --background-color: #ffffff;
+    --text-color: #000000;
 
     --main-padding: 30px;
     --gap-large: 20px;
@@ -63,25 +66,45 @@ p {
 
 
 .preheader {
+  display: -webkit-box; /* iOS Safari fallback */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-pack: justify; /* iOS Safari fallback */
+  -webkit-justify-content: space-between; /* iOS Safari fallback */
   justify-content: space-between;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
   padding: 6px 16px;
   background-color: var(--pink-gray-very-light);
+  background-color: #f5f5f5; /* fallback для iOS */
+  position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
   z-index: 1000;
+  /* Исправление для iOS 16.7.12 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Имя слева */
 .name-logo {
+  display: -webkit-box; /* iOS Safari fallback */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  gap: 8px;
+  /* gap: 8px; - убираем gap для iOS совместимости */
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1em;
   color: var(--pink-light-pink);
+  color: #FFB6C1; /* fallback для iOS */
+}
+
+.name-logo > * + * {
+  margin-left: 8px; /* заменяем gap на margin для iOS */
 }
 
 .name-logo .first-name {
@@ -224,11 +247,18 @@ nav ul li a.active {
 
 .auth {
     position: static;
+    display: -webkit-box; /* iOS Safari fallback */
+    display: -webkit-flex; /* iOS Safari fallback */
     display: flex;
+    -webkit-box-align: center; /* iOS Safari fallback */
+    -webkit-align-items: center; /* iOS Safari fallback */
     align-items: center;
+    -webkit-box-pack: end; /* iOS Safari fallback */
+    -webkit-justify-content: flex-end; /* iOS Safari fallback */
     justify-content: flex-end;
     font-size: 0.95rem;
-    gap: 8px;
+    /* gap: 8px; - убираем gap для iOS совместимости */
+    -webkit-flex-shrink: 0; /* iOS Safari fallback */
     flex-shrink: 0;
     min-width: 180px; /* 💎 фиксируем ширину блока авторизации */
     text-align: right; /* выравниваем текст по правому краю */
@@ -247,6 +277,11 @@ nav ul li a.active {
     color: var(--pink-dark-pink);
 }
 
+/* Заменяем gap на margin для iOS совместимости */
+.auth > * + * {
+    margin-left: 8px;
+}
+
 .auth strong {
     color: var(--pink-dark-pink);
 }
@@ -256,20 +291,38 @@ nav ul li a.active {
 .login-form p {
     margin: 0;
     padding: 0;
+    display: -webkit-box; /* iOS Safari fallback */
+    display: -webkit-flex; /* iOS Safari fallback */
     display: flex;
+    -webkit-box-orient: vertical; /* iOS Safari fallback */
+    -webkit-flex-direction: column; /* iOS Safari fallback */
     flex-direction: column; /* label сверху, input снизу */
-    gap: 2px;
+    /* gap: 2px; - убираем gap для iOS совместимости */
+}
+
+.login-form p > * + * {
+    margin-top: 2px; /* заменяем gap на margin для iOS */
 }
 
 
 
 .login-form {
+    display: -webkit-box; /* iOS Safari fallback */
+    display: -webkit-flex; /* iOS Safari fallback */
     display: flex;
+    -webkit-box-orient: vertical; /* iOS Safari fallback */
+    -webkit-flex-direction: column; /* iOS Safari fallback */
     flex-direction: column;
+    -webkit-box-align: start; /* iOS Safari fallback */
+    -webkit-align-items: flex-start; /* iOS Safari fallback */
     align-items: flex-start; /* выравниваем поля строго по левой границе */
-    gap: 4px;
+    /* gap: 4px; - убираем gap для iOS совместимости */
     margin-top: 10px;
     margin-left: 20px; /* отступ слева для всей формы */
+}
+
+.login-form > * + * {
+    margin-top: 4px; /* заменяем gap на margin для iOS */
 }
 
 .login-form input {
@@ -1008,4 +1061,45 @@ a.btn:hover {
     font-size: 0.95em;
   }
 }
+}
+
+/* ================== iOS 16.7.12 FIXES ================== */
+
+/* Исправления для iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific fixes */
+  
+  /* Исправление для sticky positioning */
+  .preheader {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Исправление для flexbox */
+  .name-logo,
+  .auth,
+  .login-form,
+  .login-form p {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Исправление для CSS переменных */
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  /* Исправление для box-shadow */
+  .preheader {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Дополнительные fallback для старых версий iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .preheader {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+  }
 }
