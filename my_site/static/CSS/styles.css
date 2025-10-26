@@ -23,6 +23,9 @@
     --pink-shadow: rgba(0, 0, 0, 0.1);     /* 🌑 тень для элементов */
 
 
+    --main-padding: 30px;
+    --gap-large: 20px;
+
 /* ================== БАЗА ================== */
 body {
     font-family: 'Poppins', Arial, sans-serif;
@@ -56,43 +59,90 @@ p {
 
 /* ================== HEADER ================== */
 
+
+
+
 .preheader {
-  position: relative;
   display: flex;
-  height: 60px;
-  justify-content: flex-end; /* элементы справа */
+  justify-content: space-between;
   align-items: center;
-  background: var(--pink-gray-very-light);
-  padding: 10px 20px;
-
+  padding: 6px 16px;
+  background-color: var(--pink-gray-very-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* ================== PREHEADER SHOW/HIDE ================== */
-.preheader {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 1001; /* поверх всего */
+/* Имя слева */
+.name-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  color: var(--pink-light-pink);
 }
 
-.preheader.hidden {
-    opacity: 0;
-    transform: translateY(-100%);
-    pointer-events: none; /* чтобы не мешал кликам */
-    display: none;  /* полностью убираем из потока */
+.name-logo .first-name {
+  text-transform: uppercase;
 }
 
+.name-logo .last-name {
+  border: 1px solid var(--pink-light-pink);
+  border-radius: 6px;
+  padding: 2px 6px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
 
-
-/* Хедер будет прилипать сверху */
+/* Правая часть (тоггл + языки) */
 .right-controls {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 36px; /* расстояние между языковыми кнопками и тогглом */
+  gap: 12px;
+}
+
+/* Мобильная версия */
+@media (max-width: 600px) {
+  .name-logo {
+    font-size: 0.9em;
+  }
+
+  .name-logo .last-name {
+    padding: 1px 4px;
+  }
+
+  .right-controls {
+    gap: 8px;
+  }
 }
 
 
+
+.name-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 0.06em;
+  color: var(--pink-light-pink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.first-name {
+  text-transform: uppercase;
+}
+
+.last-name {
+  border: 2px solid var(--pink-light-pink);
+  border-radius: 8px;
+  padding: 6px 14px 4px;
+  text-transform: capitalize;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
 
 
 header {
@@ -139,6 +189,7 @@ nav ul {
     gap: 20px;
     flex-wrap: wrap; /* Добавлено для адаптивности */
     justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
@@ -148,7 +199,7 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    width: 120px; /* Указываем размер ссылки */
+    width: 100px; /* Указываем размер ссылки */
     color: white;
     white-space: nowrap;
     font-size: 20px;
@@ -272,7 +323,7 @@ nav ul li a.active {
 
 
 .language-button {
-    padding: 0px 5px;
+    padding: 0px 7px;
     text-decoration: none;
     font-weight: bold;
     color: var(--pink-pink);
@@ -299,7 +350,7 @@ nav ul li a.active {
 }
 
 .toggle {
-    --width: 36px;
+    --width: 33px;
     --height: calc(var(--width) / 2);
     --border-radius: calc(var(--height) / 2);
     display: inline-block;
@@ -336,6 +387,9 @@ nav ul li a.active {
             display: inline-block; /* чтобы занимал место в потоке */
             overflow: hidden; /* чтобы кружочек не вылезал */
             flex-shrink: 0; /* не сжимался */
+
+
+             margin-top: 3px;
         }
 
         .toggle__fill::after {
@@ -885,6 +939,74 @@ a.btn:hover {
 
 
 
+/* 📱 МОБИЛЬНАЯ ВЕРСИЯ ПРЕХЕДЕРА */
 
 
 
+@media (max-width: 600px) {
+
+  /* 🌸 Имя и фамилия остаются, просто меньше */
+  .name-logo {
+    font-size: 0.75em;
+    gap: 4px;
+  }
+
+  .name-logo .first-name {
+    color: var(--pink-light-pink);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .name-logo .last-name {
+    border: 1px solid var(--pink-light-pink);
+    border-radius: 5px;
+    padding: 2px 6px;
+    color: var(--pink-light-pink);
+    font-weight: 500;
+  }
+
+  /* 💫 Прячем блок регистрации */
+  .auth {
+    display: none !important;
+  }
+
+  /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе */
+  .language-buttons {
+    gap: 3px;
+  }
+
+  .language-button {
+    transform: scale(0.7);
+    margin: 0;
+    padding: 0 4px;
+  }
+
+  /* 🔘 Уменьшаем переключатель темы */
+  .toggle {
+    --width: 24px;
+  }
+
+
+
+/* 📱 Адаптивное уменьшение заголовков */
+
+
+  h1 {
+    font-size: 1.2em; /* было, вероятно, около 2em */
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+}

@@ -46,6 +46,13 @@
 <!--    </nav>-->
 <!--</div>-->
 <div class="preheader">
+   <div class="left-controls">
+       <div class="name-logo">
+          <span class="first-name">LIUBOV</span>
+          <span class="last-name">Kovaleva</span>
+        </div>
+   </div>
+
     <div class="right-controls">
 
      <form action="{% url 'set_language' %}" method="post">
@@ -106,7 +113,7 @@
                 <img id="logo-img"
                      src="{% if request.resolver_match.url_name == 'home' %}https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png{% else %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endif %}"
                      alt="Обо мне"
-                     style="width: 100px; height: auto;">
+                     style="width: 70px; height: auto;">
               </a>
 
                     </li>
