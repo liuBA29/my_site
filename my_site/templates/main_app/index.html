@@ -3,10 +3,9 @@
 {% load i18n %}
 
 {% block title %}{% trans "Portfolio website of web developer Liubov Kovaleva" %}{% endblock %}
-{% block meta_description %}Главная страница портфолио веб-разработчика Любови Ковалёвой. Python, Django, проекты, полезный софт.{% endblock %}
-{% block og_title %}Главная | Портфолио Любови Ковалёвой{% endblock %}
-{% block og_description %}Веб-разработка на Django. Проекты, полезные утилиты, услуги фрилансера Любови Ковалёвой.{% endblock %}
-
+{% block meta_description %}{% trans "Main page of Liubov Kovaleva’s web developer portfolio. Python, Django, projects, and useful software." %}{% endblock %}
+{% block og_title %}{% trans "Main | Portfolio of Liubov Kovaleva" %}{% endblock %}
+{% block og_description %}{% trans "Django web development. Projects, useful utilities, and freelance services by Liubov Kovaleva." %}{% endblock %}
 
 {% block content %}
   {% if messages %}
@@ -17,111 +16,100 @@
       </div>
     {% endfor %}
   </div>
-{% endif %}
+  {% endif %}
+
+  <!-- 1 -->
+  <h2>{% trans "Hello and welcome!" %}</h2>
+
+  <div class="section-description">
+    <!-- уменьшенный текст и межстрочный интервал на мобильных -->
+    <h1>{% blocktrans %}Hi! I'm Liubov, a Python & Django web developer {% endblocktrans %}</h1>
+
+    <div class="tech-stack-box">
+      <div class="tech-stack-icons">
+        <h3>{% trans "My tech stack" %}</h3>
+        <ul class="tech-stack-list">
+          <li><i class="fab fa-python"></i> Python & Django (Channels, ASGI, Daphne)</li>
+          <li><i class="fab fa-html5"></i> HTML5, CSS3, JavaScript</li>
+          <li><i class="fas fa-database"></i> PostgreSQL & Redis</li>
+          <li><i class="fab fa-docker"></i> Docker & Docker Compose</li>
+          <li><i class="fas fa-cloud-upload-alt"></i> Cloudinary + WhiteNoise</li>
+          <li><i class="fas fa-terminal"></i> Bash scripting & Linux terminal</li>
+          <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
+          <li><i class="fas fa-plug"></i> REST API integrations</li>
+          <li><i class="fas fa-globe"></i> i18n & django-modeltranslation</li>
+          <li><i class="fab fa-telegram-plane"></i> Telegram Bot API integration</li>
+          <li><i class="fas fa-server"></i> Gunicorn & Daphne</li>
+          <li><i class="fas fa-search"></i> SEO (meta tags, semantic HTML)</li>
+          <li><i class="fas fa-google"></i> Google Search API integration</li>
+          <li><i class="fas fa-brain"></i> AI agents & integrations (Open-Meteo, Wikipedia, OpenRouter, GitHub API)</li>
+          <li><i class="fas fa-database"></i> Knowledge Base with ChromaDB + SentenceTransformers</li>
+        </ul>
+      </div>
+    </div>
+
+  <p>{% blocktrans %}I create modern web applications — with authentication, chat, admin panels, and APIs. <br>I combine clean code, reliable architecture, and thoughtful user interface design.{% endblocktrans %}</p>
 
 
-
-
-<!-- 1 -->
-    <h2>{% trans "Hello and welcome!" %}</h2>
-
-<div class="section-description">
-<!--  эту фразу на маленьких экранах надо сделать помельче и расстояние между строчками в ней тоже уменьшить- а то на весь экран распросерлась -->
-<h1>{% blocktrans %}My name is Liubov Kovaleva, and I'm a Python web developer {% endblocktrans %}</h1>
-
-
-<div class="tech-stack-box">
-  <div class="tech-stack-icons">
-    <h3>{% trans "My tech stack" %}</h3>
-    <ul class="tech-stack-list">
-      <li><i class="fab fa-python"></i> Python & Django (Channels, ASGI, Daphne)</li>
-      <li><i class="fab fa-html5"></i> HTML5, CSS3, JavaScript</li>
-      <li><i class="fas fa-database"></i> PostgreSQL & Redis</li>
-      <li><i class="fab fa-docker"></i> Docker & Docker Compose</li>
-      <li><i class="fas fa-cloud-upload-alt"></i> Cloudinary + WhiteNoise</li>
-      <li><i class="fas fa-terminal"></i> Bash scripting & Linux terminal</li>
-      <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
-      <li><i class="fas fa-plug"></i> REST API integrations</li>
-      <li><i class="fas fa-globe"></i> i18n & django-modeltranslation</li>
-      <li><i class="fab fa-telegram-plane"></i> Telegram Bot API integration</li>
-      <li><i class="fas fa-server"></i> Gunicorn & Daphne</li>
-      <li><i class="fas fa-search"></i> SEO (meta tags, semantic HTML)</li>
-      <li><i class="fas fa-google"></i> Google Search API integration</li>
+    <h3>{% trans "What I do" %}</h3>
+    <ul>
+      <li>{% trans "Develop websites and web applications with Django" %}</li>
+      <li>{% trans "Set up Docker environments and deploy projects to servers" %}</li>
+      <li>{% trans "Build real-time chats and notifications using Django Channels and Redis" %}</li>
+      <li>{% trans "Write AI-powered Telegram bots and API-integrated assistants" %}</li>
+      <li>{% trans "Add multilingual support, SEO, and responsive interfaces" %}</li>
     </ul>
+
+    <h3>{% trans "About this site" %}</h3>
+    <p>{% trans "This website is my personal project. It’s deployed with Docker Compose, supports two languages, and includes a dark mode." %}</p>
+    <p>{% trans "The chat is built with Django Channels and connected to a Telegram bot that sends real-time notifications about new messages." %}</p>
+
+    <h3>{% trans "Free soft and projects" %}</h3>
+<p>{% trans "Visit the 'Projects' and 'Useful software' sections — you’ll find interesting things there: an AI assistant bot, Tkinter desktop applications, and other useful tools. All are available for free download — directly from this site or via GitHub." %}</p>
+
+  <h3>{% trans "Collaboration" %}</h3>
+{% blocktrans %}
+I'm open to new projects and collaborations.
+If my approach resonates with you — I’ll be glad to connect 🌷
+You can reach me via the chat on this website, by email, or on Telegram.
+{% endblocktrans %}
+
+    <p>{% blocktrans %}This website is an illustrative example of my work and creative approach. Here’s what’s “under the hood”:{% endblocktrans %}</p>
+
+    <ul>
+      <li>{% trans "The site is deployed using Docker Compose on a cloud server" %}</li>
+      <li>{% trans "It supports two languages — I use django-modeltranslation for that" %}</li>
+      <li>{% trans "You’ll find a day/night switch in the top right corner. If the white-and-pink design feels a bit too sweet for your taste, you can switch to the more reserved night mode. Though even there, the pink accents remain — it’s just the color that resonates with my artist’s soul right now. 😉🩰" %}</li>
+      <li>{% trans "A simple User registration is implemented — you’ll need it if you want to send me a message via the chat (in the “Contacts” section)" %}</li>
+      <li>{% trans "The chat itself is built using Django Channels, Redis, and Daphne. I replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it requires ASGI" %}</li>
+      <li>{% trans "There is also a Telegram bot seamlessly integrated with the Django Channels backend, leveraging the Telegram Bot API to send real-time alerts about new user messages, so I always stay informed" %}</li>
+      <li>{% trans "On other pages, you can explore my projects and helpful apps. They’re available for free download — either directly or via GitHub, no registration required." %}</li>
+    </ul>
+
+    <h3>{% trans "Additionally" %}</h3>
+    <ul>
+      <li>{% trans "I use meta tags for SEO" %}</li>
+      <li>{% trans "I work with Cloudinary (media) and WhiteNoise (static files)" %}</li>
+      <li>{% trans "I use JavaScript when necessary — mainly for interface interactivity" %}</li>
+      <li>{% trans "I also write Bash scripts for automation and know how to work with API integrations" %}</li>
+      <li>{% trans "I have experience integrating Google Search API for enhanced search and data retrieval capabilities" %}</li>
+    </ul>
+
+    <p>
+      {% blocktrans %}
+      Even if you're just browsing, I sincerely appreciate your visit — and I would be grateful if you took a moment to look at the projects I mentioned above:
+      {% endblocktrans %}
+      <a class="simple-link" href="{% url 'main_app:my_projects' %}"><span style="white-space: nowrap;">{% trans "my projects" %}</span></a>
+      {% blocktrans %}or check out some{% endblocktrans %}
+      <a class="simple-link" href="{% url 'main_app:useful_soft' %}"><span style="white-space: nowrap;">{% trans "useful software" %}</span></a>
+      {% blocktrans %}— simple desktop applications built with Tkinter.{% endblocktrans %}
+    </p>
+
+    <p>{% blocktrans %}I'm open to communication and collaboration — looking forward to connecting with you!{% endblocktrans %}</p>
   </div>
-</div>
 
-
-
-
-  <p>
-  {% blocktrans %}
-  I discovered Python programming out of curiosity, without any particular ambition.<br>
-  But to my surprise, I realized I genuinely enjoy it!<br>
-  Since then, coding has become a meaningful part of my life. I enjoy building things that are simple, useful, and thoughtful —
-  from web projects to small tools that help people in real life.
-  {% endblocktrans %}
-</p>
-
-  <p>{% blocktrans %}This website is the most illustrative example of my work and creative approach. Here’s what’s “under the hood”:{% endblocktrans %}</p>
-
-  <ul>
-    <li>{% trans "The site is deployed using Docker Compose on a cloud server" %}</li>
-    <li>{% trans "It supports two languages — I use django-modeltranslation for that" %}</li>
-
-
-
-    <li>{% trans "You’ll find a day/night switch in the top right corner. If the white-and-pink design feels a bit too sweet for your taste, you can switch to the more reserved night mode. Though even there, the pink accents remain — it’s just the color that resonates with my artist’s soul right now. 😉🩰" %}</li>
-    <li>{% trans "A simple User registration is implemented — you’ll need it if you want to send me a message via the chat (in the “Contacts” section)" %}</li>
-    <li>{% trans "The chat itself is built using Django Channels, Redis, and Daphne. I replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it requires ASGI" %}</li>
-    <li>{% trans "There is also a Telegram bot seamlessly integrated with the Django Channels backend, leveraging the Telegram Bot API to send real-time alerts about new user messages, so I always stay informed" %}</li>
-    <li>{% trans "On other pages, you can explore my projects and helpful apps. They’re available for free download — either directly or via GitHub, no registration required." %}</li>
-  </ul>
-
-  <h3>{% blocktrans %}Additionally:{% endblocktrans %}</h3>
-  <ul>
-    <li>{% trans "I use meta tags for SEO" %}</li>
-    <li>{% trans "I work with Cloudinary (media) and WhiteNoise (static files)" %}</li>
-    <li>{% trans "I use JavaScript when necessary — mainly for interface interactivity" %}</li>
-    <li>{% trans "I also write Bash scripts for automation and know how to work with API integrations." %}</li>
-    <li>{% trans "I have experience integrating Google Search API for enhanced search and data retrieval capabilities." %}</li>
-</ul>
-
-
-
-
-
-  <p>
-  {% blocktrans %}
-  Even if you're just browsing, I sincerely appreciate your visit — and I would be grateful if you took a moment to look at the projects I mentioned above:
-  {% endblocktrans %}
-
-    <a class="simple-link" href="{% url 'main_app:my_projects' %}"><span style="white-space: nowrap;">{% trans "my projects" %}</span></a>
-
-  {% blocktrans %}or check out some{% endblocktrans %}
-    <a class="simple-link" href="{% url 'main_app:useful_soft' %}"><span style="white-space: nowrap;">{% trans "useful software" %}</span></a>
-  {% blocktrans %}— simple desktop applications built with Tkinter.{% endblocktrans %}
-</p>
-
-
-  <p>
-    {% blocktrans %}
-    I'm open to communication and collaboration — looking forward to connecting with you!
-    {% endblocktrans %}
-  </p>
-
-
-
-
-
-
-</div>
-
-
-
-<style>
-
- h1 {
+  <style>
+    h1 {
       margin-top: 0;
       font-size: 1.3em;
       margin-bottom: 12px;
@@ -129,58 +117,56 @@
       color: #8F8F8F;
       line-height: 1.6;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 1em;
-      line-height: 1.3;
     }
-  }
 
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1em;
+        line-height: 1.3;
+        margin-bottom: 8px;
+      }
+      .section-description {
+        padding: 0 10px;
+      }
+    }
 
+    .page-messages {
+      margin: 20px 0;
+      text-align: center;
+    }
 
-.page-messages {
-    margin: 20px 0;
-    text-align: center;
-}
+    .page-message {
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin: 10px auto;
+      max-width: 600px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.page-message {
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px auto;
-    max-width: 600px;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+    .page-message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
 
-.page-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
+    .page-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
 
-.page-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
+    .page-message.warning {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+    }
 
-.page-message.warning {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
-}
-
-.page-message.info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
-}
-
-
-
-</style>
-
+    .page-message.info {
+      background-color: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+  </style>
 {% endblock %}
