@@ -14,7 +14,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import cloudinary
-import cloudinary
 
 from django.utils.translation import gettext_lazy as _
 
@@ -57,7 +56,7 @@ INSTALLED_APPS = [
     'main_app.apps.MainAppConfig',
     'chat.apps.ChatConfig',
     'accounts.apps.AccountsConfig',
-    'agregator',
+    'agregator.apps.AgregatorConfig',
 
     'cloudinary',
     'cloudinary_storage',

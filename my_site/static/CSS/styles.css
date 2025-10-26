@@ -611,7 +611,7 @@ footer {
     font-weight: bold;
     font-size: 1.1em; /* немного больше обычного */
     text-decoration: underline;
-    #text-decoration-color: pink; /* подчёркивание розовым */
+    /* text-decoration-color: pink; подчёркивание розовым */
 }
 
 .dark-theme main.container .simple-link {
@@ -619,7 +619,7 @@ footer {
     font-weight: bold;
     font-size: 1.1em; /* немного больше обычного */
     text-decoration: underline;
-    #text-decoration-color: pink; /* подчёркивание розовым */
+    text-decoration-color: pink; /* подчёркивание розовым */
 }
 
 
@@ -985,12 +985,10 @@ a.btn:hover {
   .toggle {
     --width: 24px;
   }
-
-
+}
 
 /* 📱 Адаптивное уменьшение заголовков */
-
-
+@media (max-width: 768px) {
   h1 {
     font-size: 1.2em; /* было, вероятно, около 2em */
     line-height: 1.2;
@@ -1009,4 +1007,5 @@ a.btn:hover {
   p {
     font-size: 0.95em;
   }
+}
 }

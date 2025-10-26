@@ -5,8 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
 from django.contrib.auth.decorators import login_required
-from accounts.models import CustomUser, Room
-import json
+from accounts.models import Room
 
 
 
@@ -61,5 +60,6 @@ def get_user_context(request):
         'room_names': room_names,
         'master': request.user.is_superuser
     }
+
 
 
