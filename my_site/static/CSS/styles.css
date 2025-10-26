@@ -573,7 +573,7 @@ footer {
 }
 
 .light-theme h3{
-    color: --pink-light-pink;
+    color: var(--pink-light-pink);
 
 }
 
