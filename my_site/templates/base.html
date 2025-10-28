@@ -10,7 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% trans "Portfolio website of Liubov Kovaleva" %}{% endblock %}</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dczzlelzw/image/upload/v1747063141/df83zssh8bli1agpk9bw.png">
-    <link rel="stylesheet" href="{% static 'CSS/styles_light.css' %}">
+    <link id="site-style" rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    <script>
+    (function() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        var isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        if (isiOS) {
+            var link = document.getElementById('site-style');
+            if (link) {
+                link.href = "{% static 'CSS/styles_light.css' %}";
+            }
+        }
+    })();
+    </script>
 
     <meta name="description" content="{% block meta_description %}{% trans "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, contact for collaboration." %}{% endblock %}">
     <meta name="keywords" content="{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}">
