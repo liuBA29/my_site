@@ -15,6 +15,4 @@ urlpatterns = [
     path('contact/', contact, name='contact'),  #
     path('page-view/', page_view, name='page_view'),  #
     path('visits-log/', visits_log, name='visits_log'),
-    path('safari-exit/', safari_exit_beacon, name='safari_exit'),
-    path('safari-css-status/', safari_css_status, name='safari_css_status'),
 ]
