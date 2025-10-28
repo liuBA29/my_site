@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% trans "Portfolio website of Liubov Kovaleva" %}{% endblock %}</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dczzlelzw/image/upload/v1747063141/df83zssh8bli1agpk9bw.png">
+    <link rel="stylesheet" href="{% static 'CSS/styles_light.css' %}">
 
     <meta name="description" content="{% block meta_description %}{% trans "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, contact for collaboration." %}{% endblock %}">
     <meta name="keywords" content="{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}">
@@ -24,45 +25,6 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<link rel="stylesheet" id="main-style" href="{% static 'CSS/styles.css' %}">
-<script>
-(function() {
-  const main = document.getElementById('main-style');
-  const addFallback = () => {
-    if (document.getElementById('fallback-style')) return;
-    const link = document.createElement('link');
-    link.id = 'fallback-style';
-    link.rel = 'stylesheet';
-    link.href = "{% static 'CSS/styles_mint.css' %}";
-    document.head.appendChild(link);
-    console.warn('styles.css не загрузился/невалиден — подключён styles_mint.css');
-  };
-
-  let loaded = false;
-  if (main) {
-    main.addEventListener('load', () => { loaded = true; });
-    main.addEventListener('error', addFallback);
-  }
-
-  // Таймаут на случай, если load/error не сработают
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      if (!loaded) { addFallback(); return; }
-      try {
-        const sheet = Array.from(document.styleSheets).find(s => s.href && s.href.includes('styles.css'));
-        // Если таблица стилей отсутствует или пуста, включаем fallback
-        if (!sheet || (sheet.cssRules && sheet.cssRules.length === 0)) {
-          addFallback();
-        }
-      } catch (e) {
-        // На всякий случай страхуемся
-        addFallback();
-      }
-    }, 1500);
-  });
-})();
-</script>
 
 
 

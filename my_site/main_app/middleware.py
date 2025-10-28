@@ -26,7 +26,7 @@ class PageViewMiddleware:
         if ip in EXCLUDED_IPS:
             return self.get_response(request)
 
-        # Убрана логика, связанная с Safari
+        # Убрана логика обнаружения Safari и отправки уведомлений
 
         response = self.get_response(request)
 
