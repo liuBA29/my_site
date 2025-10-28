@@ -10,7 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% trans "Portfolio website of Liubov Kovaleva" %}{% endblock %}</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dczzlelzw/image/upload/v1747063141/df83zssh8bli1agpk9bw.png">
+    {% with ua=request.META.HTTP_USER_AGENT|default:''|lower %}
+    {% if 'safari' in ua and 'chrome' not in ua and 'crios' not in ua and 'chromium' not in ua and 'edg' not in ua and 'opr' not in ua %}
+    <link rel="stylesheet" href="{% static 'CSS/safari.css' %}">
+    {% else %}
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    {% endif %}
+    {% endwith %}
 
     <meta name="description" content="{% block meta_description %}{% trans "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, contact for collaboration." %}{% endblock %}">
     <meta name="keywords" content="{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}">
@@ -128,7 +134,6 @@
 
 
         </div>
-
 
 
 

@@ -22,6 +22,12 @@
     --pink-border-tech: #d19cd6;         /* 🟪 граница блока "технологии" */
     --pink-shadow: rgba(0, 0, 0, 0.1);     /* 🌑 тень для элементов */
 
+    /* Добавляем недостающие переменные для тем */
+    --background-color: #ffffff;
+    --text-color: #000000;
+
+    --main-padding: 30px;
+    --gap-large: 20px;
 
 /* ================== БАЗА ================== */
 body {
@@ -41,10 +47,13 @@ body {
 h1,h2 {
     color: var(--pink-pink);
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
-
+a {
+    color: inherit;           /* берём цвет текста родителя */
+    /* убираем подчёркивание */
+}
 
 h4 {
     color: var(--pink-pink);
@@ -56,43 +65,110 @@ p {
 
 /* ================== HEADER ================== */
 
+
+
+
 .preheader {
-  position: relative;
+  display: -webkit-box; /* iOS Safari fallback */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
-  height: 60px;
-  justify-content: flex-end; /* элементы справа */
+  -webkit-box-pack: justify; /* iOS Safari fallback */
+  -webkit-justify-content: space-between; /* iOS Safari fallback */
+  justify-content: space-between;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  background: var(--pink-gray-very-light);
-  padding: 10px 20px;
-
+  padding: 6px 16px;
+  background-color: var(--pink-gray-very-light);
+  background-color: #f5f5f5; /* fallback для iOS */
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* Исправление для iOS 16.7.12 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* ================== PREHEADER SHOW/HIDE ================== */
-.preheader {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 1001; /* поверх всего */
+/* Имя слева */
+.name-logo {
+  display: -webkit-box; /* iOS Safari fallback */
+  display: -webkit-flex; /* iOS Safari fallback */
+  display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
+  align-items: center;
+  /* gap: 8px; - убираем gap для iOS совместимости */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  color: var(--pink-light-pink);
+  color: #FFB6C1; /* fallback для iOS */
 }
 
-.preheader.hidden {
-    opacity: 0;
-    transform: translateY(-100%);
-    pointer-events: none; /* чтобы не мешал кликам */
-    display: none;  /* полностью убираем из потока */
+.name-logo > * + * {
+  margin-left: 8px; /* заменяем gap на margin для iOS */
 }
 
+.name-logo .first-name {
+  text-transform: uppercase;
+}
 
+.name-logo .last-name {
+  border: 1px solid var(--pink-light-pink);
+  border-radius: 6px;
+  padding: 2px 6px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
 
-/* Хедер будет прилипать сверху */
+/* Правая часть (тоггл + языки) */
 .right-controls {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 36px; /* расстояние между языковыми кнопками и тогглом */
+  gap: 12px;
+}
+
+/* Мобильная версия */
+@media (max-width: 600px) {
+  .name-logo {
+    font-size: 0.9em;
+  }
+
+  .name-logo .last-name {
+    padding: 1px 4px;
+  }
+
+  .right-controls {
+    gap: 8px;
+  }
 }
 
 
+
+.name-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 0.06em;
+  color: var(--pink-light-pink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.first-name {
+  text-transform: uppercase;
+}
+
+.last-name {
+  border: 2px solid var(--pink-light-pink);
+  border-radius: 8px;
+  padding: 6px 14px 4px;
+  text-transform: capitalize;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
 
 
 header {
@@ -139,6 +215,7 @@ nav ul {
     gap: 20px;
     flex-wrap: wrap; /* Добавлено для адаптивности */
     justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
@@ -148,7 +225,7 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    width: 120px; /* Указываем размер ссылки */
+    width: 100px; /* Указываем размер ссылки */
     color: white;
     white-space: nowrap;
     font-size: 20px;
@@ -158,7 +235,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    transform: scale(1.3);
+
     text-decoration: underline;
 }
 
@@ -173,11 +250,18 @@ nav ul li a.active {
 
 .auth {
     position: static;
+    display: -webkit-box; /* iOS Safari fallback */
+    display: -webkit-flex; /* iOS Safari fallback */
     display: flex;
+    -webkit-box-align: center; /* iOS Safari fallback */
+    -webkit-align-items: center; /* iOS Safari fallback */
     align-items: center;
+    -webkit-box-pack: end; /* iOS Safari fallback */
+    -webkit-justify-content: flex-end; /* iOS Safari fallback */
     justify-content: flex-end;
     font-size: 0.95rem;
-    gap: 8px;
+    /* gap: 8px; - убираем gap для iOS совместимости */
+    -webkit-flex-shrink: 0; /* iOS Safari fallback */
     flex-shrink: 0;
     min-width: 180px; /* 💎 фиксируем ширину блока авторизации */
     text-align: right; /* выравниваем текст по правому краю */
@@ -196,6 +280,11 @@ nav ul li a.active {
     color: var(--pink-dark-pink);
 }
 
+/* Заменяем gap на margin для iOS совместимости */
+.auth > * + * {
+    margin-left: 8px;
+}
+
 .auth strong {
     color: var(--pink-dark-pink);
 }
@@ -205,20 +294,38 @@ nav ul li a.active {
 .login-form p {
     margin: 0;
     padding: 0;
+    display: -webkit-box; /* iOS Safari fallback */
+    display: -webkit-flex; /* iOS Safari fallback */
     display: flex;
+    -webkit-box-orient: vertical; /* iOS Safari fallback */
+    -webkit-flex-direction: column; /* iOS Safari fallback */
     flex-direction: column; /* label сверху, input снизу */
-    gap: 2px;
+    /* gap: 2px; - убираем gap для iOS совместимости */
+}
+
+.login-form p > * + * {
+    margin-top: 2px; /* заменяем gap на margin для iOS */
 }
 
 
 
 .login-form {
+    display: -webkit-box; /* iOS Safari fallback */
+    display: -webkit-flex; /* iOS Safari fallback */
     display: flex;
+    -webkit-box-orient: vertical; /* iOS Safari fallback */
+    -webkit-flex-direction: column; /* iOS Safari fallback */
     flex-direction: column;
+    -webkit-box-align: start; /* iOS Safari fallback */
+    -webkit-align-items: flex-start; /* iOS Safari fallback */
     align-items: flex-start; /* выравниваем поля строго по левой границе */
-    gap: 4px;
+    /* gap: 4px; - убираем gap для iOS совместимости */
     margin-top: 10px;
     margin-left: 20px; /* отступ слева для всей формы */
+}
+
+.login-form > * + * {
+    margin-top: 4px; /* заменяем gap на margin для iOS */
 }
 
 .login-form input {
@@ -272,7 +379,7 @@ nav ul li a.active {
 
 
 .language-button {
-    padding: 0px 5px;
+    padding: 0px 7px;
     text-decoration: none;
     font-weight: bold;
     color: var(--pink-pink);
@@ -299,7 +406,7 @@ nav ul li a.active {
 }
 
 .toggle {
-    --width: 36px;
+    --width: 33px;
     --height: calc(var(--width) / 2);
     --border-radius: calc(var(--height) / 2);
     display: inline-block;
@@ -336,6 +443,9 @@ nav ul li a.active {
             display: inline-block; /* чтобы занимал место в потоке */
             overflow: hidden; /* чтобы кружочек не вылезал */
             flex-shrink: 0; /* не сжимался */
+
+
+             margin-top: 3px;
         }
 
         .toggle__fill::after {
@@ -364,6 +474,7 @@ nav ul li a.active {
     color: var(--pink-gray-medium);
     line-height: 1.6;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+    position: relative;
 }
 
 
@@ -383,8 +494,8 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 
@@ -519,7 +630,7 @@ footer {
 }
 
 .light-theme h3{
-    color: --pink-light-pink;
+    color: var(--pink-light-pink);
 
 }
 
@@ -557,7 +668,7 @@ footer {
     font-weight: bold;
     font-size: 1.1em; /* немного больше обычного */
     text-decoration: underline;
-    #text-decoration-color: pink; /* подчёркивание розовым */
+    /* text-decoration-color: pink; подчёркивание розовым */
 }
 
 .dark-theme main.container .simple-link {
@@ -565,7 +676,7 @@ footer {
     font-weight: bold;
     font-size: 1.1em; /* немного больше обычного */
     text-decoration: underline;
-    #text-decoration-color: pink; /* подчёркивание розовым */
+    text-decoration-color: pink; /* подчёркивание розовым */
 }
 
 
@@ -629,14 +740,6 @@ body.dark-theme .soft-item-link:hover {
 
 
 /*======================tech stack========================*/
-/* Новый блок с твоим стеком навыков */
-.section-description {
-  position: relative; /* чтобы внутренние абсолютные элементы не выбивались */
-}
-
-
-
-
 
 
 
@@ -662,6 +765,17 @@ body.dark-theme .soft-item-link:hover {
         flex: none; /* Убрать равномерное растяжение пунктов меню */
     }
 }
+
+
+@media (max-width: 600px) {
+  .section-description {
+    font-size: 1rem;      /* чуть меньше шрифт */
+    line-height: 1.4;     /* поменьше межстрочный интервал */
+    margin: 0.8rem 0 1.2rem 0;  /* чуть плотнее блоки */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* мягче тень */
+  }
+}
+
 
 .list-elements {
     display: flex;
@@ -745,6 +859,49 @@ body.dark-theme .soft-item-link:hover {
     height: 150px;
 }
 
+@media (max-width: 600px) {
+    .soft-item {
+        display: flex;
+        flex-direction: row; /* картинка слева, текст справа */
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .soft-item .left {
+        flex: 0 0 20%;
+         max-width: 150px;/* маленькая картинка */
+    }
+
+ .soft-item .left img {
+    width: 100%;     /* подстраивается под ширину блока */
+    height: auto;    /* сохраняем пропорции */
+    border-radius: 0.3rem;
+    object-fit: cover;
+    box-shadow: 0 0.2rem 0.5rem var(--pink-shadow);
+}
+
+    .soft-item .no-image {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8rem;
+    }
+
+    .soft-item .right {
+        flex: 1;
+        font-size: 0.9rem;
+    }
+
+    /* Заголовок проекта сверху над картинкой+текстом */
+    .soft-item h3 {
+        width: 100%;
+        margin: 0 0 5px 0;
+        text-align: left;
+        font-size: 1em;
+    }
+
+
+}
 
 
 @media (max-width: 768px) {
@@ -885,6 +1042,116 @@ a.btn:hover {
 
 
 
+/* 📱 МОБИЛЬНАЯ ВЕРСИЯ ПРЕХЕДЕРА */
 
+
+
+@media (max-width: 600px) {
+
+  /* 🌸 Имя и фамилия остаются, просто меньше */
+  .name-logo {
+    font-size: 0.75em;
+    gap: 4px;
+  }
+
+  .name-logo .first-name {
+    color: var(--pink-light-pink);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .name-logo .last-name {
+    border: 1px solid var(--pink-light-pink);
+    border-radius: 5px;
+    padding: 2px 6px;
+    color: var(--pink-light-pink);
+    font-weight: 500;
+  }
+
+  /* 💫 Прячем блок регистрации */
+  .auth {
+    display: none !important;
+  }
+
+  /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе */
+  .language-buttons {
+    gap: 3px;
+  }
+
+  .language-button {
+    transform: scale(0.7);
+    margin: 0;
+    padding: 0 4px;
+  }
+
+  /* 🔘 Уменьшаем переключатель темы */
+  .toggle {
+    --width: 24px;
+  }
+}
+
+/* 📱 Адаптивное уменьшение заголовков */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.0em; /* было, вероятно, около 2em */
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+}
+}
+
+/* ================== iOS 16.7.12 FIXES ================== */
+
+/* Исправления для iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific fixes */
+  
+  /* Исправление для sticky positioning */
+  .preheader {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Исправление для flexbox */
+  .name-logo,
+  .auth,
+  .login-form,
+  .login-form p {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Исправление для CSS переменных */
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  /* Исправление для box-shadow */
+  .preheader {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Дополнительные fallback для старых версий iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .preheader {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+  }
+}
 
 

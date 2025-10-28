@@ -1,6 +1,7 @@
 import os
 from django.utils.timezone import now
 from dotenv import load_dotenv
+from accounts.views import send_telegram_message
 
 load_dotenv()  # Загружает переменные из .env файла
 
@@ -25,6 +26,25 @@ class PageViewMiddleware:
         # Пропускаем, если IP в исключениях
         if ip in EXCLUDED_IPS:
             return self.get_response(request)
+
+        # Детектируем Safari по User-Agent и отправляем уведомление в Telegram
+        user_agent = (request.META.get('HTTP_USER_AGENT') or '').lower()
+        # Safari присутствует в UA как "safari", но исключаем Chrome/Chromium/Edge/Opera и iOS Chrome (CriOS)
+        is_safari = (
+            'safari' in user_agent
+            and 'chrome' not in user_agent
+            and 'crios' not in user_agent
+            and 'chromium' not in user_agent
+            and 'edg' not in user_agent
+            and 'opr' not in user_agent
+        )
+
+        if is_safari:
+            current_dt = now().strftime('%Y-%m-%d %H:%M:%S %Z')
+            try:
+                send_telegram_message(f"на сайт зашли с браузера сафари в такое-то время: {current_dt}")
+            except Exception:
+                pass
 
         response = self.get_response(request)
 
