@@ -3,7 +3,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.utils.deprecation import MiddlewareMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from accounts.views import send_telegram_message
+from django.utils.timezone import now
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
@@ -73,4 +76,36 @@ def project_detail(request, slug):
 def contact(request):
     #clients = Client.objects.all().values('id', 'name', 'is_active')
     return render(request, 'main_app/contact.html')
+
+
+@csrf_exempt
+def safari_exit_beacon(request):
+    if request.method == 'POST':
+        # Отправляем уведомление об уходе только если ранее был зафиксирован заход
+        if request.session.get('safari_enter_notified') and not request.session.get('safari_exit_notified'):
+            current_dt = now().strftime('%Y-%m-%d %H:%M:%S %Z')
+            try:
+                send_telegram_message(
+                    f"с сайта ВЫШЛИ (Safari) в такое-то время: {current_dt}"
+                )
+                request.session['safari_exit_notified'] = True
+            except Exception:
+                pass
+        return JsonResponse({'ok': True})
+    return JsonResponse({'ok': False}, status=405)
+
+@csrf_exempt
+def safari_css_status(request):
+    if request.method == 'POST':
+        status = request.POST.get('status')  # 'ok' | 'error'
+        href = request.POST.get('href') or ''
+        detail = request.POST.get('detail') or ''
+        try:
+            send_telegram_message(
+                f"Safari CSS статус: {status}; href: {href}; detail: {detail}"
+            )
+        except Exception:
+            pass
+        return JsonResponse({'ok': True})
+    return JsonResponse({'ok': False}, status=405)
 

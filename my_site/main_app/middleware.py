@@ -40,11 +40,18 @@ class PageViewMiddleware:
         )
 
         if is_safari:
-            current_dt = now().strftime('%Y-%m-%d %H:%M:%S %Z')
-            try:
-                send_telegram_message(f"на сайт зашли с браузера сафари в такое-то время: {current_dt}")
-            except Exception:
-                pass
+            # Отправляем только один раз за сессию при первом заходе
+            if not request.session.get('safari_enter_notified'):
+                current_dt = now().strftime('%Y-%m-%d %H:%M:%S %Z')
+                # Определяем, какой CSS подключается (логика как в шаблоне)
+                css_used = 'safari.css'
+                try:
+                    send_telegram_message(
+                        f"на сайт ЗАШЛИ с браузера сафари в такое-то время: {current_dt}; CSS: {css_used}"
+                    )
+                    request.session['safari_enter_notified'] = True
+                except Exception:
+                    pass
 
         response = self.get_response(request)
 

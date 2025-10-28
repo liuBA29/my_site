@@ -13,6 +13,48 @@
     {% with ua=request.META.HTTP_USER_AGENT|default:''|lower %}
     {% if 'safari' in ua and 'chrome' not in ua and 'crios' not in ua and 'chromium' not in ua and 'edg' not in ua and 'opr' not in ua %}
     <link rel="stylesheet" href="{% static 'CSS/safari.css' %}">
+    <script>
+      // Отправка beacon при закрытии/уходе со страницы только в Safari
+      window.addEventListener('pagehide', function() {
+        navigator.sendBeacon('{% url "main_app:safari_exit" %}');
+      });
+
+      // Проверка фактической загрузки safari.css
+      (function() {
+        try {
+          var links = document.styleSheets;
+          var hrefFound = '';
+          var rulesCount = -1;
+          for (var i = 0; i < links.length; i++) {
+            var ss = links[i];
+            if (!ss.href) continue;
+            if (ss.href.indexOf('/static/CSS/safari.css') !== -1 || ss.href.indexOf('CSS/safari.css') !== -1) {
+              hrefFound = ss.href;
+              try {
+                rulesCount = ss.cssRules ? ss.cssRules.length : (ss.rules ? ss.rules.length : -1);
+              } catch (e) {
+                rulesCount = -2; // запрещен доступ CORS
+              }
+              break;
+            }
+          }
+          var status = (hrefFound && rulesCount && rulesCount > 0) ? 'ok' : 'error';
+          var detail = 'rules=' + String(rulesCount);
+          var data = new FormData();
+          data.append('status', status);
+          data.append('href', hrefFound);
+          data.append('detail', detail);
+          navigator.sendBeacon('{% url "main_app:safari_css_status" %}', data);
+        } catch (e) {
+          var data2 = new FormData();
+          data2.append('status', 'error');
+          data2.append('href', '');
+          data2.append('detail', 'exception:' + e.message);
+          navigator.sendBeacon('{% url "main_app:safari_css_status" %}', data2);
+        }
+      })();
+    </script>
+    </script>
     {% else %}
     <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
     {% endif %}
