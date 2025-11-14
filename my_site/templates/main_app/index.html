@@ -48,7 +48,15 @@
       </div>
     </div>
 
-  <p>{% blocktrans %}I create modern web applications — with authentication, chat, admin panels, and APIs. <br>I combine clean code, reliable architecture, and thoughtful user interface design.{% endblocktrans %}</p>
+{% url 'main_app:business_soft' as business_url %}
+
+<p>
+{% blocktrans %}
+I create modern web applications — with authentication, chat, admin panels, and APIs.
+I also develop business applications — for example, a <a class="simple-link" href="{{ business_url }}">CRM system for a dental clinic</a>.
+I combine clean code, reliable architecture, and thoughtful user interface design.
+{% endblocktrans %}
+</p>
 
 
     <h3>{% trans "What I do" %}</h3>
@@ -101,7 +109,7 @@ You can reach me via the chat on this website, by email, or on Telegram.
       {% endblocktrans %}
       <a class="simple-link" href="{% url 'main_app:my_projects' %}"><span style="white-space: nowrap;">{% trans "my projects" %}</span></a>
       {% blocktrans %}or check out some{% endblocktrans %}
-      <a class="simple-link" href="{% url 'main_app:useful_soft' %}"><span style="white-space: nowrap;">{% trans "useful software" %}</span></a>
+      <a class="simple-link" href="{% url 'main_app:free_soft' %}"><span style="white-space: nowrap;">{% trans "free software" %}</span></a>
       {% blocktrans %}— simple desktop applications built with Tkinter.{% endblocktrans %}
     </p>
 

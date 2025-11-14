@@ -1,0 +1,43 @@
+<!-- templates/main_app/business_soft.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Business Software' %}{% endblock %}
+{% block meta_description %}Программные решения для бизнеса от Любови Ковалёвой. Инструменты для автоматизации бизнес-процессов и повышения эффективности.{% endblock %}
+{% block og_title %}Софт для бизнеса | Портфолио Любови Ковалёвой{% endblock %}
+{% block og_description %}Профессиональные инструменты и решения для бизнеса. Готовые к использованию программы для автоматизации и оптимизации процессов.{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Business Software' %}</h1>
+
+
+<p class="section-description">
+    {% blocktrans %}
+        Here you can find business software solutions I've developed for companies and entrepreneurs.<br>
+        These tools are designed to automate business processes, improve efficiency, and solve specific business tasks.<br>
+        Ready-to-use solutions for your business needs.
+    {% endblocktrans %}
+</p>
+
+<div class="list-elements">
+    {% for s in soft %}
+        <a href="{% url 'main_app:business_soft_detail' s.slug %}" class="soft-item-link">
+            <div class="soft-item">
+                <div class="left">
+                    {% if s.image %}
+                    <div class="image-small">
+                        <img src="{{ s.image.url }}" alt="{{ s.name }}"></div>
+                    {% else %}
+                        <div class="no-image">{% trans "No image available" %}</div>
+                    {% endif %}
+                </div>
+                <div class="right">
+                    <h3>{{ s.name }}</h3>
+                    <p>{{ s.description|safe|truncatewords:40  }}</p>
+
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
+

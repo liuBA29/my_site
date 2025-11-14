@@ -8,8 +8,13 @@ class ProjectTranslationOptions(TranslationOptions):
     required_languages = ('en', 'ru')
 
 
-@register(UsefulSoftware)
-class UsefulSoftwareTranslationOptions(TranslationOptions):
+@register(FreeSoftware)
+class FreeSoftwareTranslationOptions(TranslationOptions):
+    fields = ('name', 'description',)
+    required_languages = ('en', 'ru')
+
+@register(BusinessSoftware)
+class BusinessSoftwareTranslationOptions(TranslationOptions):
     fields = ('name', 'description',)
     required_languages = ('en', 'ru')
 

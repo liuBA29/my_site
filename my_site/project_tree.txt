@@ -1,0 +1,549 @@
+﻿╤ЄЁєъЄєЁр яряюъ
+╤хЁшщэ√щ эюьхЁ Єюьр: 704E-EA18
+C:.
+|   .dockerignore
+|   .env
+|   .gitignore
+|   db.sqlite3
+|   delete_table.py
+|   delete_then_create_as_sample.py
+|   docker-compose.yml
+|   Dockerfile
+|   env
+|   fucking_test.py
+|   get-pip.py
+|   insert_from_remoted.py
+|   main.json
+|   manage.py
+|   mysitemap.xml
+|   nginx.conf
+|   project_tree.txt
+|   remotedb.sqlite3
+|   requirements.txt
+|   requirements_all.txt
+|   robots.txt
+|   sitemap-handmade.xml
+|   
++---.idea
+|   |   modules.xml
+|   |   notes_project.iml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |   
+|   \---inspectionProfiles
+|           profiles_settings.xml
+|           Project_Default.xml
+|           
++---accounts
+|   |   admin.py
+|   |   apps.py
+|   |   forms.py
+|   |   models.py
+|   |   urls.py
+|   |   views.py
+|   |   __init__.py
+|   |   
+|   +---migrations
+|   |   |   0001_initial.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           0001_initial.cpython-310.pyc
+|   |           0001_initial.cpython-311.pyc
+|   |           __init__.cpython-310.pyc
+|   |           __init__.cpython-311.pyc
+|   |           
+|   \---__pycache__
+|           admin.cpython-310.pyc
+|           admin.cpython-311.pyc
+|           apps.cpython-310.pyc
+|           apps.cpython-311.pyc
+|           forms.cpython-310.pyc
+|           forms.cpython-311.pyc
+|           models.cpython-310.pyc
+|           models.cpython-311.pyc
+|           urls.cpython-310.pyc
+|           urls.cpython-311.pyc
+|           views.cpython-310.pyc
+|           views.cpython-311.pyc
+|           __init__.cpython-310.pyc
+|           __init__.cpython-311.pyc
+|           
++---agregator
+|   |   admin.py
+|   |   apps.py
+|   |   models.py
+|   |   tests.py
+|   |   urls.py
+|   |   views.py
+|   |   __init__.py
+|   |   
+|   +---migrations
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           __init__.cpython-310.pyc
+|   |           __init__.cpython-311.pyc
+|   |           
+|   \---__pycache__
+|           admin.cpython-310.pyc
+|           admin.cpython-311.pyc
+|           apps.cpython-310.pyc
+|           apps.cpython-311.pyc
+|           models.cpython-310.pyc
+|           models.cpython-311.pyc
+|           urls.cpython-310.pyc
+|           urls.cpython-311.pyc
+|           views.cpython-310.pyc
+|           views.cpython-311.pyc
+|           __init__.cpython-310.pyc
+|           __init__.cpython-311.pyc
+|           
++---chat
+|   |   admin.py
+|   |   apps.py
+|   |   bot_test.py
+|   |   consumers.py
+|   |   models.py
+|   |   routing.py
+|   |   tests.py
+|   |   urls.py
+|   |   views.py
+|   |   __init__.py
+|   |   
+|   +---migrations
+|   |   |   0001_initial.py
+|   |   |   0002_remove_message_guest_user_alter_message_room_and_more.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           0001_initial.cpython-310.pyc
+|   |           0001_initial.cpython-311.pyc
+|   |           0002_remove_guestuser_session_key_guestuser_ip_address_and_more.cpython-311.pyc
+|   |           0002_remove_message_guest_user_alter_message_room_and_more.cpython-310.pyc
+|   |           0002_remove_message_guest_user_alter_message_room_and_more.cpython-311.pyc
+|   |           0003_guestuser_slug.cpython-311.pyc
+|   |           0004_room_alter_message_options_and_more.cpython-311.pyc
+|   |           0005_remove_message_username_message_guest_user_and_more.cpython-311.pyc
+|   |           0006_remove_guestuser_room_name_guestuser_room.cpython-311.pyc
+|   |           0007_remove_message_guest_user_delete_guestuser.cpython-311.pyc
+|   |           0008_remove_message_room_remove_message_user_delete_room_and_more.cpython-311.pyc
+|   |           __init__.cpython-310.pyc
+|   |           __init__.cpython-311.pyc
+|   |           
+|   \---__pycache__
+|           admin.cpython-310.pyc
+|           admin.cpython-311.pyc
+|           apps.cpython-310.pyc
+|           apps.cpython-311.pyc
+|           consumers.cpython-310.pyc
+|           consumers.cpython-311.pyc
+|           models.cpython-310.pyc
+|           models.cpython-311.pyc
+|           routing.cpython-310.pyc
+|           routing.cpython-311.pyc
+|           urls.cpython-310.pyc
+|           urls.cpython-311.pyc
+|           views.cpython-310.pyc
+|           views.cpython-311.pyc
+|           __init__.cpython-310.pyc
+|           __init__.cpython-311.pyc
+|           
++---locale
+|   \---ru
+|       \---LC_MESSAGES
+|               django.mo
+|               django.po
+|               djangojs.mo
+|               djangojs.po
+|               
++---main_app
+|   |   admin.py
+|   |   apps.py
+|   |   middleware.py
+|   |   models.py
+|   |   sitemaps.py
+|   |   tests.py
+|   |   translation.py
+|   |   urls.py
+|   |   views.py
+|   |   __init__.py
+|   |   
+|   +---migrations
+|   |   |   0001_initial.py
+|   |   |   0002_project_updated_at_usefulsoftware_updated_at.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           0001_initial.cpython-310.pyc
+|   |           0001_initial.cpython-311.pyc
+|   |           0002_contactmessage_name_en_contactmessage_name_ru_and_more.cpython-311.pyc
+|   |           0002_project_updated_at_usefulsoftware_updated_at.cpython-310.pyc
+|   |           0002_project_updated_at_usefulsoftware_updated_at.cpython-311.pyc
+|   |           0003_alter_usefulsoftware_download_link.cpython-311.pyc
+|   |           0003_remove_usefulsoftware_download_link_project_author_and_more.cpython-311.pyc
+|   |           0004_alter_usefulsoftware_download_link.cpython-311.pyc
+|   |           0004_contactmessage_created_at_en_and_more.cpython-311.pyc
+|   |           0005_usefulsoftware_author_usefulsoftware_english_link.cpython-311.pyc
+|   |           0006_usefulsoftware_download_link_backup_and_more.cpython-311.pyc
+|   |           0007_rename_demo_link_project_demo_link_en_and_more.cpython-311.pyc
+|   |           0008_pageview_alter_project_demo_link_en_and_more.cpython-311.pyc
+|   |           0009_rename_view_count_pageview_views_count_and_more.cpython-311.pyc
+|   |           0010_pagevisitlog.cpython-311.pyc
+|   |           __init__.cpython-310.pyc
+|   |           __init__.cpython-311.pyc
+|   |           
+|   \---__pycache__
+|           admin.cpython-310.pyc
+|           admin.cpython-311.pyc
+|           apps.cpython-310.pyc
+|           apps.cpython-311.pyc
+|           middleware.cpython-310.pyc
+|           middleware.cpython-311.pyc
+|           models.cpython-310.pyc
+|           models.cpython-311.pyc
+|           sitemaps.cpython-310.pyc
+|           sitemaps.cpython-311.pyc
+|           translation.cpython-310.pyc
+|           translation.cpython-311.pyc
+|           urls.cpython-310.pyc
+|           urls.cpython-311.pyc
+|           views.cpython-310.pyc
+|           views.cpython-311.pyc
+|           __init__.cpython-310.pyc
+|           __init__.cpython-311.pyc
+|           
++---media
+|   |   django-site.png
+|   |   face.webp
+|   |   face1-re.png
+|   |   face1.png
+|   |   face2.webp
+|   |   face_smile1-re.png
+|   |   ico.png
+|   |   me.png
+|   |   nail-re.png
+|   |   smiling_face1.png
+|   |   sna.jpeg
+|   |   
+|   +---client_images
+|   |       5019342587_2.jpg
+|   |       5022423348_1.jpg
+|   |       5027813111_1.jpg
+|   |       zlo.jpeg
+|   |          5.jpg
+|   |          5_HYe14bQ.jpg
+|   |       
+|   +---downloads
+|   |       mantra-player-installer.zip
+|   |       mantra-player-installer_Yxt4pFu.zip
+|   |       
+|   \---projects
+|           contract_generator2.mp4
+|           crm.png
+|           customized_crm2.mp4
+|           email-s.png
+|           email-Ёрёё√ы№∙шъ.mp4
+|           email.png
+|           m2.jpg
+|           mantra.png
+|           mantra_player2.mp4
+|           oblozhka.png
+|           site_portfolio2.mp4
+|           
++---my_site
+|   |   asgi.py
+|   |   settings.py
+|   |   urls.py
+|   |   wsgi.py
+|   |   __init__.py
+|   |   
+|   \---__pycache__
+|           asgi.cpython-310.pyc
+|           asgi.cpython-311.pyc
+|           settings.cpython-310.pyc
+|           settings.cpython-311.pyc
+|           urls.cpython-310.pyc
+|           urls.cpython-311.pyc
+|           wsgi.cpython-310.pyc
+|           wsgi.cpython-311.pyc
+|           __init__.cpython-310.pyc
+|           __init__.cpython-311.pyc
+|           
++---notes_app
+|   |   admin.py
+|   |   apps.py
+|   |   forms.py
+|   |   models.py
+|   |   tests.py
+|   |   translation.py
+|   |   urls.py
+|   |   views.py
+|   |   __init__.py
+|   |   
+|   +---migrations
+|   |   |   0001_initial.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           0001_initial.cpython-310.pyc
+|   |           0001_initial.cpython-311.pyc
+|   |           0002_article.cpython-311.pyc
+|   |           0003_article_text_en_article_text_ru_article_title_en_and_more.cpython-311.pyc
+|   |           0004_alter_article_slug_alter_article_text_and_more.cpython-311.pyc
+|   |           __init__.cpython-310.pyc
+|   |           __init__.cpython-311.pyc
+|   |           
+|   \---__pycache__
+|           admin.cpython-310.pyc
+|           admin.cpython-311.pyc
+|           apps.cpython-310.pyc
+|           apps.cpython-311.pyc
+|           forms.cpython-310.pyc
+|           forms.cpython-311.pyc
+|           models.cpython-310.pyc
+|           models.cpython-311.pyc
+|           translation.cpython-310.pyc
+|           translation.cpython-311.pyc
+|           urls.cpython-310.pyc
+|           urls.cpython-311.pyc
+|           views.cpython-310.pyc
+|           views.cpython-311.pyc
+|           __init__.cpython-310.pyc
+|           __init__.cpython-311.pyc
+|           
++---static
+|   +---CSS
+|   |       styles.css
+|   |       styles_light.css
+|   |       styles_mint.css
+|   |       
+|   +---downloads
+|   |       mantra-player-installer.zip
+|   |       
+|   \---JS
+|           lobby.js
+|           main.js
+|           
++---staticfiles
+|   +---admin
+|   |   +---css
+|   |   |   |   autocomplete.css
+|   |   |   |   base.css
+|   |   |   |   changelists.css
+|   |   |   |   dark_mode.css
+|   |   |   |   dashboard.css
+|   |   |   |   forms.css
+|   |   |   |   login.css
+|   |   |   |   nav_sidebar.css
+|   |   |   |   responsive.css
+|   |   |   |   responsive_rtl.css
+|   |   |   |   rtl.css
+|   |   |   |   unusable_password_field.css
+|   |   |   |   widgets.css
+|   |   |   |   
+|   |   |   \---vendor
+|   |   |       \---select2
+|   |   |               LICENSE-SELECT2.md
+|   |   |               select2.css
+|   |   |               select2.min.css
+|   |   |               
+|   |   +---img
+|   |   |   |   calendar-icons.svg
+|   |   |   |   icon-addlink.svg
+|   |   |   |   icon-alert.svg
+|   |   |   |   icon-calendar.svg
+|   |   |   |   icon-changelink.svg
+|   |   |   |   icon-clock.svg
+|   |   |   |   icon-deletelink.svg
+|   |   |   |   icon-hidelink.svg
+|   |   |   |   icon-no.svg
+|   |   |   |   icon-unknown-alt.svg
+|   |   |   |   icon-unknown.svg
+|   |   |   |   icon-viewlink.svg
+|   |   |   |   icon-yes.svg
+|   |   |   |   inline-delete.svg
+|   |   |   |   LICENSE
+|   |   |   |   README.txt
+|   |   |   |   search.svg
+|   |   |   |   selector-icons.svg
+|   |   |   |   sorting-icons.svg
+|   |   |   |   tooltag-add.svg
+|   |   |   |   tooltag-arrowright.svg
+|   |   |   |   
+|   |   |   \---gis
+|   |   |           move_vertex_off.svg
+|   |   |           move_vertex_on.svg
+|   |   |           
+|   |   \---js
+|   |       |   actions.js
+|   |       |   autocomplete.js
+|   |       |   calendar.js
+|   |       |   cancel.js
+|   |       |   change_form.js
+|   |       |   core.js
+|   |       |   filters.js
+|   |       |   inlines.js
+|   |       |   jquery.init.js
+|   |       |   nav_sidebar.js
+|   |       |   popup_response.js
+|   |       |   prepopulate.js
+|   |       |   prepopulate_init.js
+|   |       |   SelectBox.js
+|   |       |   SelectFilter2.js
+|   |       |   theme.js
+|   |       |   unusable_password_field.js
+|   |       |   urlify.js
+|   |       |   
+|   |       +---admin
+|   |       |       DateTimeShortcuts.js
+|   |       |       RelatedObjectLookups.js
+|   |       |       
+|   |       \---vendor
+|   |           +---jquery
+|   |           |       jquery.js
+|   |           |       jquery.min.js
+|   |           |       LICENSE.txt
+|   |           |       
+|   |           +---select2
+|   |           |   |   LICENSE.md
+|   |           |   |   select2.full.js
+|   |           |   |   select2.full.min.js
+|   |           |   |   
+|   |           |   \---i18n
+|   |           |           af.js
+|   |           |           ar.js
+|   |           |           az.js
+|   |           |           bg.js
+|   |           |           bn.js
+|   |           |           bs.js
+|   |           |           ca.js
+|   |           |           cs.js
+|   |           |           da.js
+|   |           |           de.js
+|   |           |           dsb.js
+|   |           |           el.js
+|   |           |           en.js
+|   |           |           es.js
+|   |           |           et.js
+|   |           |           eu.js
+|   |           |           fa.js
+|   |           |           fi.js
+|   |           |           fr.js
+|   |           |           gl.js
+|   |           |           he.js
+|   |           |           hi.js
+|   |           |           hr.js
+|   |           |           hsb.js
+|   |           |           hu.js
+|   |           |           hy.js
+|   |           |           id.js
+|   |           |           is.js
+|   |           |           it.js
+|   |           |           ja.js
+|   |           |           ka.js
+|   |           |           km.js
+|   |           |           ko.js
+|   |           |           lt.js
+|   |           |           lv.js
+|   |           |           mk.js
+|   |           |           ms.js
+|   |           |           nb.js
+|   |           |           ne.js
+|   |           |           nl.js
+|   |           |           pl.js
+|   |           |           ps.js
+|   |           |           pt-BR.js
+|   |           |           pt.js
+|   |           |           ro.js
+|   |           |           ru.js
+|   |           |           sk.js
+|   |           |           sl.js
+|   |           |           sq.js
+|   |           |           sr-Cyrl.js
+|   |           |           sr.js
+|   |           |           sv.js
+|   |           |           th.js
+|   |           |           tk.js
+|   |           |           tr.js
+|   |           |           uk.js
+|   |           |           vi.js
+|   |           |           zh-CN.js
+|   |           |           zh-TW.js
+|   |           |           
+|   |           \---xregexp
+|   |                   LICENSE.txt
+|   |                   xregexp.js
+|   |                   xregexp.min.js
+|   |                   
+|   +---cloudinary
+|   |   +---html
+|   |   |       cloudinary_cors.html
+|   |   |       cloudinary_cors.html.py
+|   |   |       
+|   |   \---js
+|   |           canvas-to-blob.min.js
+|   |           jquery.cloudinary.js
+|   |           jquery.fileupload-image.js
+|   |           jquery.fileupload-process.js
+|   |           jquery.fileupload-validate.js
+|   |           jquery.fileupload.js
+|   |           jquery.iframe-transport.js
+|   |           jquery.ui.widget.js
+|   |           load-image.all.min.js
+|   |           
+|   +---CSS
+|   |       styles.css
+|   |       styles_light.css
+|   |       styles_mint.css
+|   |       
+|   +---downloads
+|   |       mantra-player-installer.zip
+|   |       
+|   +---JS
+|   |       lobby.js
+|   |       main.js
+|   |       
+|   \---modeltranslation
+|       +---css
+|       |       tabbed_translation_fields.css
+|       |       
+|       \---js
+|               clearable_inputs.js
+|               force_jquery.js
+|               tabbed_translation_fields.js
+|               
+\---templates
+    |   base.html
+    |   
+    +---accounts
+    |       login.html
+    |       register.html
+    |       
+    +---agregator
+    |       book_list.html
+    |       
+    +---chat
+    |       lobby.html
+    |       _lobby_partial.html
+    |       
+    +---main_app
+    |       contact.html
+    |       descriptions.html
+    |       index.html
+    |       my_projects.html
+    |       page_view.html
+    |       project_detail.html
+    |       test_useful.html
+    |       useful_soft.html
+    |       useful_soft_detail.html
+    |       visits_log.html
+    |       
+    \---notes
+            article_detail.html
+            index.html
+            note_confirm_delete.html
+            note_detail.html
+            note_form.html
+            note_list.html
+            

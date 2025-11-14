@@ -8,8 +8,10 @@ app_name = "main_app"
 urlpatterns = [
     path('', main_page, name='home'),  # Главная страница
 
-    path('useful-soft/', useful_soft, name='useful_soft'),  #
-    path('useful-soft/<slug:slug>/', useful_soft_detail, name='useful_soft_detail'),
+    path('free-soft/', free_soft, name='free_soft'),  # Бесплатный софт
+    path('free-soft/<slug:slug>/', free_soft_detail, name='free_soft_detail'),
+    path('business-soft/', business_soft, name='business_soft'),  # Софт для бизнеса
+    path('business-soft/<slug:slug>/', business_soft_detail, name='business_soft_detail'),
     path('my-projects/', my_projects, name='my_projects'),  #
     path('project/<slug:slug>/', project_detail, name='project_detail'),
     path('contact/', contact, name='contact'),  #

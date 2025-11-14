@@ -204,6 +204,11 @@ nav ul li a {
 nav ul li a:hover { text-decoration: underline; }
 nav ul li a.active { text-decoration: underline; }
 
+/* Отступ для последнего пункта меню (Контакты) */
+nav ul li:last-child {
+  margin-left: 30px; /* Отступ слева для Контактов */
+}
+
 /* AUTH */
 .auth {
   position: static;

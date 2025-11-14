@@ -1,0 +1,41 @@
+<!-- templates/main_app/free_soft.html -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Free Software' %}{% endblock %}
+{% block meta_description %}Бесплатные программы и утилиты от Любови Ковалёвой. Готовые решения для автоматизации и продуктивности.{% endblock %}
+{% block og_title %}Бесплатный софт | Портфолио Любови Ковалёвой{% endblock %}
+{% block og_description %}Готовые к использованию инструменты, созданные для повседневных задач. Скачивайте бесплатно!{% endblock %}
+
+{% block content %}
+<h1>{% trans 'Free Software' %}</h1>
+
+
+<p class="section-description">
+    {% blocktrans %}
+        Here you can find software I've developed that is fully completed and ready to use. <br>You can download and use it for free. <br>I hope these tools will be helpful in your daily tasks or projects.
+    {% endblocktrans %}
+</p>
+
+<div class="list-elements">
+    {% for s in soft %}
+        <a href="{% url 'main_app:free_soft_detail' s.slug %}" class="soft-item-link">
+            <div class="soft-item">
+                <div class="left">
+                    {% if s.image %}
+                    <div class="image-small">
+                        <img src="{{ s.image.url }}" alt="{{ s.name }}"></div>
+                    {% else %}
+                        <div class="no-image">{% trans "No image available" %}</div>
+                    {% endif %}
+                </div>
+                <div class="right">
+                    <h3>{{ s.name }}</h3>
+                    <p>{{ s.description|safe|truncatewords:40  }}</p>
+
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
+

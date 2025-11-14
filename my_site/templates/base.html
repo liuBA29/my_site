@@ -47,17 +47,7 @@
 
 
 <body class="light-theme">
-<!--<div class="auth">-->
-<!--    <nav>-->
-<!--        {% if user.is_authenticated %}-->
-<!--            {% trans "Hello" %}, <strong>{{ user.username }}</strong>-->
-<!--            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>-->
-<!--        {% else %}-->
-<!--            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |-->
-<!--            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>-->
-<!--        {% endif %}-->
-<!--    </nav>-->
-<!--</div>-->
+
 <div class="preheader">
    <div class="left-controls">
        <div class="name-logo">
@@ -130,9 +120,9 @@
               </a>
 
                     </li>
-                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Useful Software" %}</a></li>
-<!--                    <li><a href="{% url 'main_app:useful_soft' %}" class="{% if request.resolver_match.url_name == 'useful_soft' %}active{% endif %}">{% trans "Мои услуги" %}</a></li>-->
+                    <li><a href="{% url 'main_app:free_soft' %}" class="{% if request.resolver_match.url_name == 'free_soft' or request.resolver_match.url_name == 'free_soft_detail' %}active{% endif %}">{% trans "Free Software" %}</a></li>
                     <li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">{% trans "My Projects" %}</a></li>
+                    <li><a href="{% url 'main_app:business_soft' %}" class="{% if request.resolver_match.url_name == 'business_soft' or request.resolver_match.url_name == 'business_soft_detail' %}active{% endif %}">{% trans "Business Software" %}</a></li>
                     <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
 
                 </ul>

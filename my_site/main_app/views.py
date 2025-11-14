@@ -45,17 +45,29 @@ def visits_log(request):
 
 
 
-def useful_soft(request):
-    soft = UsefulSoftware.objects.all()
+def free_soft(request):
+    soft = FreeSoftware.objects.all()
     context = {'soft': soft}
 
-    return render(request, 'main_app/useful_soft.html', context)
+    return render(request, 'main_app/free_soft.html', context)
 
-def useful_soft_detail(request, slug):
-    soft = get_object_or_404(UsefulSoftware, slug=slug)
+def free_soft_detail(request, slug):
+    soft = get_object_or_404(FreeSoftware, slug=slug)
     context = {'soft': soft}
 
-    return render(request, 'main_app/useful_soft_detail.html', context)
+    return render(request, 'main_app/free_soft_detail.html', context)
+
+def business_soft(request):
+    soft = BusinessSoftware.objects.all()
+    context = {'soft': soft}
+
+    return render(request, 'main_app/business_soft.html', context)
+
+def business_soft_detail(request, slug):
+    soft = get_object_or_404(BusinessSoftware, slug=slug)
+    context = {'soft': soft}
+
+    return render(request, 'main_app/business_soft_detail.html', context)
 
 def my_projects(request):
     projects = Project.objects.all()

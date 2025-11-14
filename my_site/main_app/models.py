@@ -46,29 +46,62 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('main_app:project_detail', kwargs={'slug':self.slug})
 
-# 🔹 Модель для полезного софта
-class UsefulSoftware(models.Model):
+# 🔹 Модель для бесплатного софта
+class FreeSoftware(models.Model):
     name = models.CharField(max_length=200, verbose_name="Название софта")
     slug = models.SlugField(unique=True)
     description = models.TextField(verbose_name="Описание")
     download_link = models.URLField(verbose_name="Ссылка на скачивание", blank=True, null=True)
-    english_link = models.URLField(verbose_name="English version link", blank=True, null=True)  # Новое поле
+    english_link = models.URLField(verbose_name="English version link", blank=True, null=True)
     download_link_backup = models.URLField(verbose_name="Резервная ссылка (RU)", blank=True, null=True)
     english_link_backup = models.URLField(verbose_name="Резервная ссылка (EN)", blank=True, null=True)
     author = models.CharField(
         max_length=200,
         default="Liubov Kovaleva @LiuBA29",
         verbose_name="Автор"
-    )  # Новое поле
+    )
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)  # 👈 Добавлено.
+    updated_at = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('main_app:useful_soft_detail', kwargs={'slug': self.slug})
+        return reverse('main_app:free_soft_detail', kwargs={'slug': self.slug})
+
+    class Meta:
+        verbose_name = "Бесплатный софт"
+        verbose_name_plural = "Бесплатный софт"
+
+
+# 🔹 Модель для софта для бизнеса
+class BusinessSoftware(models.Model):
+    name = models.CharField(max_length=200, verbose_name="Название софта")
+    slug = models.SlugField(unique=True)
+    description = models.TextField(verbose_name="Описание")
+    download_link = models.URLField(verbose_name="Ссылка на скачивание", blank=True, null=True)
+    english_link = models.URLField(verbose_name="English version link", blank=True, null=True)
+    download_link_backup = models.URLField(verbose_name="Резервная ссылка (RU)", blank=True, null=True)
+    english_link_backup = models.URLField(verbose_name="Резервная ссылка (EN)", blank=True, null=True)
+    author = models.CharField(
+        max_length=200,
+        default="Liubov Kovaleva @LiuBA29",
+        verbose_name="Автор"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    image = CloudinaryField('image', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('main_app:business_soft_detail', kwargs={'slug': self.slug})
+
+    class Meta:
+        verbose_name = "Софт для бизнеса"
+        verbose_name_plural = "Софт для бизнеса"
 
 
 

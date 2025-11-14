@@ -242,6 +242,11 @@ nav ul li a.active {
     text-decoration: underline;
 }
 
+/* Отступ для последнего пункта меню (Контакты) */
+nav ul li:last-child {
+    margin-left: 30px; /* Отступ слева для Контактов */
+}
+
 /* ================== AUTH ================== */
 
 

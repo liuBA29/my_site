@@ -9,7 +9,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.views.i18n import JavaScriptCatalog
 
 from main_app.views import robots_txt
-from main_app.sitemaps import StaticViewSitemap, ProjectSitemap, UsefulSoftwareSitemap
+from main_app.sitemaps import StaticViewSitemap, ProjectSitemap, FreeSoftwareSitemap, BusinessSoftwareSitemap
 from django.contrib.sitemaps.views import sitemap
 
 from django.http import HttpResponse
@@ -20,7 +20,8 @@ from django.http import HttpResponse
 sitemaps = {
     'static': StaticViewSitemap,
     'projects': ProjectSitemap,
-    'useful_soft': UsefulSoftwareSitemap,
+    'free_soft': FreeSoftwareSitemap,
+    'business_soft': BusinessSoftwareSitemap,
 }
 
 def sitemap_view(request):

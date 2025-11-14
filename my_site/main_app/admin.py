@@ -18,8 +18,13 @@ class ProjectAdmin(TranslationAdmin):
     prepopulated_fields = {'slug': ('title',)}
     # pass
 
-@admin.register(UsefulSoftware)
-class UsefulSoftwareAdmin(TranslationAdmin):
+@admin.register(FreeSoftware)
+class FreeSoftwareAdmin(TranslationAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+    # pass
+
+@admin.register(BusinessSoftware)
+class BusinessSoftwareAdmin(TranslationAdmin):
     prepopulated_fields = {'slug': ('name',)}
     # pass
 
