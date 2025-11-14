@@ -13,6 +13,7 @@
     <link id="site-style" rel="stylesheet" href="{% static 'CSS/styles.css' %}">
     <script>
     (function() {
+        // Для iPhone и iPad применяем упрощенные стили styles_light.css
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         var isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
         if (isiOS) {

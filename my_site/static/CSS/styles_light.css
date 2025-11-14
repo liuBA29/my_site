@@ -35,7 +35,124 @@ p {
   line-height: 1.8;
 }
 
-/* ВНИМАНИЕ: правил для .preheader НЕТ по просьбе пользователя */
+/* PREHEADER (такие же стили как в хедере, БЕЗ sticky и z-index) */
+.preheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 16px;
+  background-color: #FFB6C1; /* светло-розовый, как в хедере */
+  position: static; /* БЕЗ sticky для совместимости */
+}
+
+.name-logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  color: #ffffff; /* белый текст */
+}
+
+.name-logo > * + * {
+  margin-left: 8px;
+}
+
+.name-logo .first-name {
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.name-logo .last-name {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 2px 6px;
+  text-transform: capitalize;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* LANGUAGE BUTTONS */
+.language-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.language-button {
+  padding: 0px 7px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #FF69B4; /* ярко-розовый */
+  background-color: transparent;
+  border: 2px solid #FF69B4;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.language-button:hover {
+  background-color: #FF69B4;
+  color: white;
+}
+
+.language-button.active {
+  background-color: #FF69B4;
+  color: white;
+}
+
+/* TOGGLE THEME */
+.toggle {
+  width: 33px;
+  height: 17px;
+  border-radius: 9px;
+  display: inline-block;
+  cursor: pointer;
+  position: static;
+}
+
+.toggle__input {
+  display: none;
+}
+
+.toggle__fill {
+  position: relative;
+  width: 33px;
+  height: 17px;
+  border-radius: 9px;
+  background: black;
+  transition: background 0.2s;
+  display: inline-block;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+  background: #FFB6C1; /* светло-розовый */
+}
+
+.toggle__fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  background: #ffffff;
+  border-radius: 9px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+  transform: translateX(16px);
+}
 
 /* HEADER (обычный, не липкий) */
 header {
@@ -100,9 +217,9 @@ nav ul li a.active { text-decoration: underline; }
 }
 
 .auth > * + * { margin-left: 8px; }
-.auth strong { color: #D16B8A; /* тёмно-розовый */ }
-.auth a { color: #FF69B4; font-weight: bold; }
-.auth a:hover { color: #D16B8A; }
+.auth strong { color: #ffffff; /* белый текст в прехедере */ }
+.auth a { color: #ffffff; font-weight: bold; } /* белый текст в прехедере */
+.auth a:hover { color: #FF69B4; } /* розовый при наведении */
 
 /* MAIN */
 main.container {
@@ -147,12 +264,235 @@ a.btn {
 
 a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 
+/* TECH STACK - розовая рамочка */
+.tech-stack {
+  float: right;
+  width: 250px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f0ff; /* светло-розовый фон */
+  margin-top: 140px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #d19cd6; /* розовая рамка */
+}
+
+.tech-stack-box {
+  border: 2px solid #F77CA3; /* розовая рамочка */
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  float: right;
+  max-width: 220px;
+  line-height: 1.1;
+  font-size: 0.8em;
+  background-color: transparent;
+  box-shadow: none;
+  transition: border-color 0.3s ease;
+}
+
+.tech-stack-box h3 {
+  text-align: center;
+  font-size: 1em;
+  margin: 4px 0 8px 0;
+  color: #F77CA3; /* розовый цвет */
+}
+
+.tech-stack-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.tech-stack-list li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em;
+  line-height: 1;
+  gap: 6px;
+}
+
+.tech-stack-list li i {
+  font-size: 1.1em;
+  color: #F77CA3; /* розовый цвет для иконок */
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.tech-stack-icons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-stack-icons li {
+  margin: 8px 0;
+  font-size: 1.05em;
+  display: flex;
+}
+
+.tech-stack-icons i {
+  color: #F77CA3; /* розовый цвет для иконок */
+  margin-right: 10px;
+  font-size: 1.2em;
+  min-width: 20px;
+  align-items: center;
+}
+
+/* Адаптивность для tech-stack */
+@media (max-width: 900px) {
+  .tech-stack-box {
+    float: none;
+    margin: 10px 0;
+    max-width: 100%;
+    font-size: 0.8em;
+    padding: 6px 10px;
+    line-height: 1.05;
+  }
+
+  .tech-stack-list li i {
+    font-size: 1em;
+  }
+}
+
+/* ИЗОБРАЖЕНИЯ - уменьшенный размер */
+.soft-item .left img {
+  width: 150px; /* было 250px, уменьшили */
+  height: 150px; /* было 250px, уменьшили */
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.soft-item .left {
+  flex: 0 0 150px;
+}
+
+.soft-item .no-image {
+  width: 120px; /* уменьшили */
+  height: 120px; /* уменьшили */
+  background-color: #bbbbbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.soft-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+.soft-item .right {
+  flex: 1;
+  color: #8F8F8F;
+  font-size: 1rem;
+}
+
+.soft-item h3 {
+  margin: 0 0 10px 0;
+  color: #FF69B4;
+}
+
+.soft-item h3:hover {
+  text-decoration: underline;
+}
+
 /* ПРОСТЫЕ МЕДИА-ЗАПРОСЫ */
 @media (max-width: 768px) {
   header .nav-container { gap: 10px; }
   nav ul { flex-direction: column; gap: 10px; }
   nav ul li { flex: none; }
   .section-description { font-size: 1rem; line-height: 1.4; margin: 0.8rem 0 1.2rem 0; }
+  
+  /* Мобильная версия прехедера */
+  .name-logo {
+    font-size: 0.9em;
+  }
+  
+  .name-logo .last-name {
+    padding: 1px 4px;
+  }
+  
+  .right-controls {
+    gap: 8px;
+  }
+  
+  /* Мобильная версия изображений */
+  .soft-item {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .soft-item .left {
+    flex: 0 0 20%;
+    max-width: 120px;
+  }
+  
+  .soft-item .left img {
+    width: 100%;
+    height: auto;
+    max-width: 120px;
+    max-height: 120px;
+  }
+  
+  .soft-item .no-image {
+    width: 80px;
+    height: 80px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .name-logo {
+    font-size: 0.75em;
+  }
+  
+  .auth {
+    display: none !important;
+  }
+  
+  .language-buttons {
+    gap: 3px;
+  }
+  
+  .language-button {
+    transform: scale(0.7);
+    margin: 0;
+    padding: 0 4px;
+  }
+  
+  .toggle {
+    width: 24px;
+    height: 12px;
+  }
+  
+  .toggle__fill {
+    width: 24px;
+    height: 12px;
+    border-radius: 6px;
+  }
+  
+  .toggle__fill::after {
+    height: 12px;
+    width: 12px;
+    border-radius: 6px;
+  }
+  
+  .toggle__input:checked ~ .toggle__fill::after {
+    transform: translateX(12px);
+  }
 }
 
 
