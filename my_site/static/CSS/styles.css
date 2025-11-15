@@ -674,6 +674,49 @@ footer {
     /* text-decoration-color: pink; подчёркивание розовым */
 }
 
+/* Логотип в светлой теме - темно-серый почти черный */
+.light-theme .name-logo {
+    color: #1a1a1a;
+}
+
+.light-theme .name-logo .first-name {
+    color: #1a1a1a;
+}
+
+.light-theme .name-logo .last-name {
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+/* Языковые кнопки в светлой теме - темно-серый почти черный */
+.light-theme .language-button {
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.light-theme .language-button:hover {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.light-theme .language-button.active {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* Блок авторизации в светлой теме - темно-серый, но светлее */
+.light-theme .auth strong {
+    color: #404040;
+}
+
+.light-theme .auth a {
+    color: #404040;
+}
+
+.light-theme .auth a:hover {
+    color: #404040;
+}
+
 .dark-theme main.container .simple-link {
     color: #ccc; /* светло-серый, но не слишком бледный */
     font-weight: bold;

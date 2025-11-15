@@ -51,7 +51,7 @@ p {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1em;
-  color: #ffffff; /* белый текст */
+  color: #1a1a1a; /* темно-серый почти черный */
 }
 
 .name-logo > * + * {
@@ -60,16 +60,16 @@ p {
 
 .name-logo .first-name {
   text-transform: uppercase;
-  color: #ffffff;
+  color: #1a1a1a; /* темно-серый почти черный */
 }
 
 .name-logo .last-name {
-  border: 1px solid #ffffff;
+  border: 1px solid #1a1a1a; /* темно-серый почти черный */
   border-radius: 6px;
   padding: 2px 6px;
   text-transform: capitalize;
   font-weight: 400;
-  color: #ffffff;
+  color: #1a1a1a; /* темно-серый почти черный */
 }
 
 .right-controls {
@@ -88,21 +88,21 @@ p {
   padding: 0px 7px;
   text-decoration: none;
   font-weight: bold;
-  color: #FF69B4; /* ярко-розовый */
+  color: #1a1a1a; /* темно-серый почти черный */
   background-color: transparent;
-  border: 2px solid #FF69B4;
+  border: 2px solid #1a1a1a; /* темно-серый почти черный */
   border-radius: 5px;
   margin: 5px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .language-button:hover {
-  background-color: #FF69B4;
+  background-color: #1a1a1a;
   color: white;
 }
 
 .language-button.active {
-  background-color: #FF69B4;
+  background-color: #1a1a1a;
   color: white;
 }
 
@@ -222,9 +222,9 @@ nav ul li:last-child {
 }
 
 .auth > * + * { margin-left: 8px; }
-.auth strong { color: #ffffff; /* белый текст в прехедере */ }
-.auth a { color: #ffffff; font-weight: bold; } /* белый текст в прехедере */
-.auth a:hover { color: #FF69B4; } /* розовый при наведении */
+.auth strong { color: #404040; /* темно-серый, но светлее */ }
+.auth a { color: #404040; font-weight: bold; } /* темно-серый, но светлее */
+.auth a:hover { color: #404040; } /* темно-серый при наведении */
 
 /* MAIN */
 main.container {
