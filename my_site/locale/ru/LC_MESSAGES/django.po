@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-15 00:52+0300\n"
+"POT-Creation-Date: 2025-11-15 18:24+0300\n"
 "PO-Revision-Date: 2025-07-11 13:00+0300\n"
 "Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,27 +348,37 @@ msgstr "Добро пожаловать в"
 msgid "What is it?"
 msgstr "Что это такое?"
 
-#: .\templates\main_app\business_soft_detail.html:41
+
+#: .\templates\main_app\business_soft_detail.html:43
+msgid "Watch a mini tutorial for Dental CRM:"
+msgstr "Посмотрите мини-видео инструкцию по использованию Dental CRM:"
+
+#: .\templates\main_app\business_soft_detail.html:45
+msgid "Watch on YouTube"
+msgstr "Смотреть на YouTube"
+
+
+#: .\templates\main_app\business_soft_detail.html:51
 #: .\templates\main_app\free_soft_detail.html:41
 #: .\templates\main_app\test_useful.html:24
 #: .\templates\main_app\useful_soft_detail.html:41
 msgid "Version"
 msgstr "Версия"
 
-#: .\templates\main_app\business_soft_detail.html:45
+#: .\templates\main_app\business_soft_detail.html:55
 #: .\templates\main_app\free_soft_detail.html:45
 #: .\templates\main_app\test_useful.html:28
 #: .\templates\main_app\useful_soft_detail.html:45
 msgid "Author"
 msgstr "Автор"
 
-#: .\templates\main_app\business_soft_detail.html:53
+#: .\templates\main_app\business_soft_detail.html:63
 #: .\templates\main_app\free_soft_detail.html:53
 #: .\templates\main_app\useful_soft_detail.html:53
 msgid "Download installer(RU)"
 msgstr "Загрузить установщик(RU)"
 
-#: .\templates\main_app\business_soft_detail.html:57
+#: .\templates\main_app\business_soft_detail.html:67
 #: .\templates\main_app\free_soft_detail.html:57
 #: .\templates\main_app\useful_soft_detail.html:57
 msgid "Download installer(EN)"
@@ -420,7 +430,9 @@ msgstr "Портфолио Любови Ковалёвой"
 msgid ""
 "Django web development. Projects, useful utilities, and freelance services "
 "by Liubov Kovaleva."
-msgstr "Веб-разработка на Django. Проекты, полезные утилиты и фриланс-услуги от Любови Ковалёвой."
+msgstr ""
+"Веб-разработка на Django. Проекты, полезные утилиты и фриланс-услуги от "
+"Любови Ковалёвой."
 
 #: .\templates\main_app\index.html:22
 msgid "Hello and welcome!"
@@ -429,6 +441,10 @@ msgstr "Приветствую Вас!"
 #: .\templates\main_app\index.html:26
 msgid "Hi! I'm Liubov, a Python & Django web developer "
 msgstr "Меня зовут Любовь, я веб-разработчик на Python"
+
+#: .\templates\main_app\index.html:30
+msgid "My tech stack"
+msgstr ""
 
 #: .\templates\main_app\index.html:54
 #, python-format
@@ -446,8 +462,8 @@ msgstr ""
 "и API.\n"
 "Я также разрабатываю бизнес-приложения — например, <a class=\"simple-link\" "
 "href=\"%(business_url)s\">CRM-систему для стоматологии</a>.\n"
-"Я совмещаю чистый код, надёжную архитектуру и продуманный дизайн интерфейса.\n"
-
+"Я совмещаю чистый код, надёжную архитектуру и продуманный дизайн "
+"интерфейса.\n"
 
 #: .\templates\main_app\index.html:62
 msgid "What I do"
@@ -582,8 +598,8 @@ msgid ""
 msgstr ""
 "Также в системе интегрирован Telegram-бот, тесно связанный с бэкендом на "
 "Django Channels и использующий Telegram Bot API для отправки уведомлений в "
-"реальном времени о новых сообщениях пользователей, чтобы я всегда была в курсе."
-
+"реальном времени о новых сообщениях пользователей, чтобы я всегда была в "
+"курсе."
 
 #: .\templates\main_app\index.html:94
 msgid ""

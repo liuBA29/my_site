@@ -37,13 +37,23 @@
     {{ soft.description|safe }}
 </div>
 
+
+
+ <div class="soft-video">
+    <h4>{% trans "Watch a mini tutorial for Dental CRM:" %}</h4>
+    <a href="https://youtu.be/q0fWO54Ea4s" target="_blank" class="btn btn-secondary">
+        {% trans "Watch on YouTube" %}
+    </a>
+</div>
+
+
              {% if soft.version %}
                 <p><strong>{% trans "Version" %}:</strong> {{ soft.version }}</p>
             {% endif %}
 
-            {% if soft.author %}
+            <!--   {% if soft.author %}
                 <p><strong>{% trans "Author" %}:</strong> {{ soft.author }}</p>
-            {% endif %}
+            {% endif %}-->
 
 
             <div class="downloads">
