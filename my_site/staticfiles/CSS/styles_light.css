@@ -9,6 +9,39 @@ body {
   color: #000000; /* чёрный текст */
 }
 
+/* Сброс стандартных стилей браузера для button и input */
+button {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  cursor: pointer !important;
+  /* Убираем стандартные стили iOS */
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+label {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -37,8 +70,14 @@ p {
 
 /* PREHEADER (такие же стили как в хедере, БЕЗ sticky и z-index) */
 .preheader {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-pack: justify; /* iOS Safari fallback */
+  -webkit-justify-content: space-between; /* iOS Safari fallback */
   justify-content: space-between;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
   padding: 6px 16px;
   background-color: #FFB6C1; /* светло-розовый, как в хедере */
@@ -46,7 +85,11 @@ p {
 }
 
 .name-logo {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -73,35 +116,67 @@ p {
 }
 
 .right-controls {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  gap: 12px;
+  /* gap: 12px; - не поддерживается в старых iOS */
+}
+
+.right-controls > * + * {
+  margin-left: 12px; /* fallback для старых iOS */
 }
 
 /* LANGUAGE BUTTONS */
 .language-buttons {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
-  gap: 6px;
+  /* gap: 6px; - не поддерживается в старых iOS */
+}
+
+.language-buttons > * + * {
+  margin-left: 6px; /* fallback для старых iOS */
 }
 
 .language-button {
-  padding: 0px 7px;
-  text-decoration: none;
-  font-weight: bold;
-  color: #1a1a1a; /* темно-серый почти черный */
-  background-color: transparent;
-  border: 2px solid #1a1a1a; /* темно-серый почти черный */
-  border-radius: 5px;
-  margin: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  /* Сброс стандартных стилей браузера для button */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  border: 2px solid #1a1a1a !important; /* темно-серый почти черный */
+  padding: 0px 7px !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  color: #1a1a1a !important; /* темно-серый почти черный */
+  border-radius: 5px !important;
+  margin: 5px !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  transition: background-color 0.3s, color 0.3s !important;
+  /* Убираем стандартные стили iOS */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 .language-button:hover {
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #1a1a1a !important;
+  color: white !important;
+  border-color: #1a1a1a !important;
 }
 
 .language-button.active {
+  background-color: #1a1a1a !important;
+  color: white !important;
+  border-color: #1a1a1a !important;
+}
+
+.language-button:focus {
+  outline: none;
   background-color: #1a1a1a;
   color: white;
 }
@@ -114,44 +189,75 @@ p {
   display: inline-block;
   cursor: pointer;
   position: static;
+  /* Сброс стандартных стилей для label */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
 }
 
 .toggle__input {
-  display: none;
+  display: none !important;
+  /* Дополнительный сброс для старых iOS */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .toggle__fill {
-  position: relative;
-  width: 33px;
-  height: 17px;
-  border-radius: 9px;
-  background: black;
-  transition: background 0.2s;
-  display: inline-block;
-  overflow: hidden;
-  flex-shrink: 0;
-  margin-top: 3px;
+  position: relative !important;
+  width: 33px !important;
+  height: 17px !important;
+  border-radius: 9px !important;
+  background: black !important;
+  transition: background 0.2s !important;
+  display: inline-block !important;
+  overflow: hidden !important;
+  -webkit-flex-shrink: 0 !important; /* iOS Safari fallback */
+  flex-shrink: 0 !important;
+  margin-top: 3px !important;
+  /* Убеждаемся, что это не стандартный элемент формы */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 .toggle__input:checked ~ .toggle__fill {
-  background: #FFB6C1; /* светло-розовый */
+  background: #FFB6C1 !important; /* светло-розовый */
 }
 
 .toggle__fill::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 17px;
-  width: 17px;
-  background: #ffffff;
-  border-radius: 9px;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 17px !important;
+  width: 17px !important;
+  background: #ffffff !important;
+  border-radius: 9px !important;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.25) !important;
+  transition: transform 0.2s ease !important;
+  /* Убеждаемся, что псевдоэлемент виден */
+  display: block !important;
+  z-index: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .toggle__input:checked ~ .toggle__fill::after {
-  transform: translateX(16px);
+  transform: translateX(16px) !important;
+  -webkit-transform: translateX(16px) !important;
 }
 
 /* HEADER (обычный, не липкий) */
@@ -167,10 +273,20 @@ header {
 }
 
 header .nav-container {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-pack: center; /* iOS Safari fallback */
+  -webkit-justify-content: center; /* iOS Safari fallback */
   justify-content: center;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  gap: 20px;
+  /* gap: 20px; - не поддерживается в старых iOS */
+}
+
+header .nav-container > * + * {
+  margin-left: 20px; /* fallback для старых iOS */
 }
 
 header nav { padding-right: 45px; }
@@ -181,11 +297,22 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
-  gap: 20px;
+  /* gap: 20px; - не поддерживается в старых iOS */
+  -webkit-flex-wrap: wrap; /* iOS Safari fallback */
   flex-wrap: wrap;
+  -webkit-box-pack: center; /* iOS Safari fallback */
+  -webkit-justify-content: center; /* iOS Safari fallback */
   justify-content: center;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
+}
+
+nav ul > * + * {
+  margin-left: 20px; /* fallback для старых iOS */
 }
 
 nav ul li { flex: 1; text-align: center; }
@@ -212,10 +339,17 @@ nav ul li:last-child {
 /* AUTH */
 .auth {
   position: static;
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
+  -webkit-box-pack: end; /* iOS Safari fallback */
+  -webkit-justify-content: flex-end; /* iOS Safari fallback */
   justify-content: flex-end;
   font-size: 0.95rem;
+  -webkit-flex-shrink: 0; /* iOS Safari fallback */
   flex-shrink: 0;
   min-width: 180px;
   text-align: right;
@@ -311,13 +445,21 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 }
 
 .tech-stack-list li {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
   margin: 0;
   padding: 0;
   font-size: 0.9em;
   line-height: 1;
-  gap: 6px;
+  /* gap: 6px; - не поддерживается в старых iOS */
+}
+
+.tech-stack-list li > * + * {
+  margin-left: 6px; /* fallback для старых iOS */
 }
 
 .tech-stack-list li i {
@@ -336,6 +478,8 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 .tech-stack-icons li {
   margin: 8px 0;
   font-size: 1.05em;
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
 }
 
@@ -368,6 +512,8 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
   width: 150px; /* было 250px, уменьшили */
   height: 150px; /* было 250px, уменьшили */
   border-radius: 5px;
+  /* object-fit поддерживается с iOS 10+, для старых версий изображение просто обрежется */
+  -webkit-object-fit: cover; /* iOS Safari fallback */
   object-fit: cover;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -380,8 +526,14 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
   width: 120px; /* уменьшили */
   height: 120px; /* уменьшили */
   background-color: #bbbbbb;
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-align: center; /* iOS Safari fallback */
+  -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
+  -webkit-box-pack: center; /* iOS Safari fallback */
+  -webkit-justify-content: center; /* iOS Safari fallback */
   justify-content: center;
   text-align: center;
   font-size: 0.9rem;
@@ -389,12 +541,23 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 }
 
 .soft-item {
+  display: -webkit-box; /* iOS Safari fallback для старых версий */
+  display: -webkit-flex; /* iOS Safari fallback */
   display: flex;
+  -webkit-box-orient: horizontal; /* iOS Safari fallback */
+  -webkit-flex-direction: row; /* iOS Safari fallback */
   flex-direction: row;
+  -webkit-box-align: start; /* iOS Safari fallback */
+  -webkit-align-items: flex-start; /* iOS Safari fallback */
   align-items: flex-start;
-  gap: 20px;
+  /* gap: 20px; - не поддерживается в старых iOS */
   padding: 15px;
+  -webkit-flex-wrap: wrap; /* iOS Safari fallback */
   flex-wrap: wrap;
+}
+
+.soft-item > * + * {
+  margin-left: 20px; /* fallback для старых iOS */
 }
 
 .soft-item .right {
@@ -414,8 +577,13 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 
 /* ПРОСТЫЕ МЕДИА-ЗАПРОСЫ */
 @media (max-width: 768px) {
-  header .nav-container { gap: 10px; }
-  nav ul { flex-direction: column; gap: 10px; }
+  header .nav-container > * + * { margin-left: 10px; }
+  nav ul { 
+    -webkit-box-orient: vertical; /* iOS Safari fallback */
+    -webkit-flex-direction: column; /* iOS Safari fallback */
+    flex-direction: column; 
+  }
+  nav ul > * + * { margin-left: 0; margin-top: 10px; }
   nav ul li { flex: none; }
   .section-description { font-size: 1rem; line-height: 1.4; margin: 0.8rem 0 1.2rem 0; }
   
@@ -428,16 +596,23 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
     padding: 1px 4px;
   }
   
-  .right-controls {
-    gap: 8px;
+  .right-controls > * + * {
+    margin-left: 8px;
   }
   
   /* Мобильная версия изображений */
   .soft-item {
+    -webkit-box-orient: horizontal; /* iOS Safari fallback */
+    -webkit-flex-direction: row; /* iOS Safari fallback */
     flex-direction: row;
+    -webkit-box-align: start; /* iOS Safari fallback */
+    -webkit-align-items: flex-start; /* iOS Safari fallback */
     align-items: flex-start;
-    gap: 10px;
     padding: 10px;
+  }
+  
+  .soft-item > * + * {
+    margin-left: 10px;
   }
   
   .soft-item .left {
@@ -468,8 +643,8 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
     display: none !important;
   }
   
-  .language-buttons {
-    gap: 3px;
+  .language-buttons > * + * {
+    margin-left: 3px;
   }
   
   .language-button {
