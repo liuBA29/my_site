@@ -18,9 +18,55 @@
 <h2>{% trans "Register" %}</h2>
 
 
-<form method="post" novalidate class="login-form">
+<form method="post" novalidate class="login-form" id="register-form">
     {% csrf_token %}
-    {{ form.as_p }}
+    <p>
+        <label for="{{ form.username.id_for_label }}">{% trans "Username" %}:</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+            <span class="error">{{ form.username.errors }}</span>
+        {% endif %}
+    </p>
+    <p>
+        <label for="{{ form.email.id_for_label }}">{% trans "Email" %}:</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+            <span class="error">{{ form.email.errors }}</span>
+        {% endif %}
+    </p>
+    <p>
+        <label for="{{ form.password1.id_for_label }}">{% trans "Password" %}:</label>
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+            <span class="error">{{ form.password1.errors }}</span>
+        {% endif %}
+    </p>
+    <p>
+        <label for="{{ form.password2.id_for_label }}">{% trans "Confirm password" %}:</label>
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+            <span class="error">{{ form.password2.errors }}</span>
+        {% endif %}
+    </p>
+    <p>
+        {% if CLOUDFLARE_TURNSTILE_SITE_KEY %}
+            <label>{% trans "Verification" %}:</label>
+            <div class="cf-turnstile" 
+                 data-sitekey="{{ CLOUDFLARE_TURNSTILE_SITE_KEY }}" 
+                 data-theme="light"
+                 data-callback="turnstileCallback"
+                 data-error-callback="turnstileErrorCallback"></div>
+            <small style="color: #666; font-size: 0.9em;">{% trans "Please complete the verification above" %}</small>
+        {% else %}
+            <div style="padding: 10px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 5px; margin: 10px 0;">
+                <strong>⚠️ {% trans "Warning" %}:</strong> {% trans "Cloudflare Turnstile is not configured. Registration is not protected from bots." %}
+            </div>
+        {% endif %}
+        {{ form.cf_turnstile_response }}
+        {% if form.cf_turnstile_response.errors %}
+            <span class="error">{{ form.cf_turnstile_response.errors }}</span>
+        {% endif %}
+    </p>
     <button type="submit" class="login-button">{% trans "Register" %}</button>
 </form>
 
@@ -28,4 +74,57 @@
   <a class="simple-link" href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
 </p>
 
+{% endblock %}
+
+{% block extra_js %}
+{% if CLOUDFLARE_TURNSTILE_SITE_KEY %}
+<!-- Cloudflare Turnstile -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('register-form');
+    const turnstileInput = document.querySelector('input[name="cf_turnstile_response"]');
+    const turnstileWidget = document.querySelector('.cf-turnstile');
+    
+    console.log('🔍 Cloudflare Turnstile Debug:');
+    console.log('Site Key:', '{{ CLOUDFLARE_TURNSTILE_SITE_KEY }}');
+    console.log('Form found:', !!form);
+    console.log('Turnstile input found:', !!turnstileInput);
+    console.log('Turnstile widget found:', !!turnstileWidget);
+    
+    if (form && turnstileInput && turnstileWidget) {
+        // Обработчик успешной проверки Turnstile
+        window.turnstileCallback = function(token) {
+            console.log('✅ Turnstile verification successful! Token:', token.substring(0, 20) + '...');
+            turnstileInput.value = token;
+        };
+        
+        // Обработчик ошибки Turnstile
+        window.turnstileErrorCallback = function() {
+            console.log('❌ Turnstile verification failed!');
+            turnstileInput.value = '';
+        };
+        
+        // Проверяем токен перед отправкой формы
+        form.addEventListener('submit', function(e) {
+            console.log('📤 Form submit attempt. Token present:', !!turnstileInput.value);
+            if (!turnstileInput.value || turnstileInput.value === '') {
+                console.log('⚠️ Blocking form submission - no Turnstile token');
+                e.preventDefault();
+                alert('{% trans "Please complete the verification." %}');
+                return false;
+            }
+            console.log('✅ Form submission allowed - Turnstile token present');
+        });
+    } else {
+        console.warn('⚠️ Turnstile elements not found!');
+    }
+});
+</script>
+{% else %}
+<script>
+console.log('⚠️ Cloudflare Turnstile Site Key not configured!');
+console.log('Add CLOUDFLARE_TURNSTILE_SITE_KEY to your .env file');
+</script>
+{% endif %}
 {% endblock %}

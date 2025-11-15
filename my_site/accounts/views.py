@@ -29,6 +29,27 @@ def send_telegram_message(text):
 def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
+        # Передаем request в форму для получения IP адреса
+        form.request = request
+        
+        # Отладочная информация
+        turnstile_token = request.POST.get('cf_turnstile_response', '')
+        site_key = settings.CLOUDFLARE_TURNSTILE_SITE_KEY
+        secret_key = settings.CLOUDFLARE_TURNSTILE_SECRET_KEY
+        
+        print(f"🔍 Turnstile Debug:")
+        print(f"   Site Key configured: {bool(site_key)}")
+        print(f"   Secret Key configured: {bool(secret_key)}")
+        print(f"   Token received: {bool(turnstile_token)}")
+        if turnstile_token:
+            print(f"   Token length: {len(turnstile_token)}")
+            print(f"   Token preview: {turnstile_token[:20]}...")
+        else:
+            if site_key and secret_key:
+                print(f"   ⚠️ WARNING: Keys are configured but no token received!")
+            else:
+                print(f"   ℹ️ INFO: Keys not configured - verification skipped")
+        
         if form.is_valid():
             user = form.save()
 
@@ -49,10 +70,17 @@ def register_view(request):
         else:
             print("❌ Ошибка валидации формы:")
             print(form.errors)
-            messages.error(request, f"Ошибка регистрации: {form.errors.as_text()}")
+            # Проверяем, есть ли ошибка Cloudflare Turnstile
+            if 'cf_turnstile_response' in form.errors:
+                messages.error(request, _('Please complete the verification to prove you are not a robot.'))
+            else:
+                messages.error(request, f"Ошибка регистрации: {form.errors.as_text()}")
     else:
         form = CustomUserCreationForm()
-    return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'accounts/register.html', {
+        'form': form,
+        'CLOUDFLARE_TURNSTILE_SITE_KEY': settings.CLOUDFLARE_TURNSTILE_SITE_KEY
+    })
 
 
 
