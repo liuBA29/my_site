@@ -13,14 +13,28 @@
     <link id="site-style" rel="stylesheet" href="{% static 'CSS/styles.css' %}">
     <script>
     (function() {
-        // Для iPhone и iPad применяем упрощенные стили styles_light.css
+        // Для СТАРЫХ iPhone и iPad применяем упрощенные стили styles_light.css
+        // На новых iOS используем styles.css
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         var isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        
         if (isiOS) {
-            var link = document.getElementById('site-style');
-            if (link) {
-                link.href = "{% static 'CSS/styles_light.css' %}";
+            // Определяем версию iOS из User-Agent
+            var iOSVersion = null;
+            var match = ua.match(/OS (\d+)[._](\d+)/);
+            if (match) {
+                iOSVersion = parseFloat(match[1] + '.' + match[2]);
             }
+            
+            // Применяем styles_light.css только для iOS < 12.0 (старые версии)
+            // iOS 12+ поддерживает все современные CSS свойства
+            if (iOSVersion && iOSVersion < 12.0) {
+                var link = document.getElementById('site-style');
+                if (link) {
+                    link.href = "{% static 'CSS/styles_light.css' %}";
+                }
+            }
+            // Для iOS 12+ и выше используем styles.css (по умолчанию)
         }
     })();
     </script>

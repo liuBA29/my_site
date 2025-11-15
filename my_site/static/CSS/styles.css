@@ -377,7 +377,11 @@ nav ul li:last-child {
 
 .language-buttons {
     display: flex;
-    gap: 6px;
+    gap: 6px; /* поддерживается с iOS 14.5+ */
+}
+
+.language-buttons > * + * {
+    margin-left: 6px; /* fallback для iOS < 14.5 */
 }
 
 
@@ -804,7 +808,11 @@ body.dark-theme .soft-item-link:hover {
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column; /* Меню в столбик */
-        gap: 10px;
+        gap: 10px; /* поддерживается с iOS 14.5+ */
+    }
+    
+    nav ul > * + * {
+        margin-top: 10px; /* fallback для iOS < 14.5 */
     }
 
     nav ul li {
@@ -826,7 +834,11 @@ body.dark-theme .soft-item-link:hover {
 .list-elements {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px; /* поддерживается с iOS 14.5+ */
+}
+
+.list-elements > * + * {
+    margin-top: 20px; /* fallback для iOS < 14.5 */
 }
 
 /* ================== SOFT ITEMS ================== */
@@ -847,9 +859,13 @@ body.dark-theme .soft-item-link:hover {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 20px;
+    gap: 20px; /* поддерживается с iOS 14.5+ */
     padding: 15px;
     flex-wrap: wrap;
+}
+
+.soft-item > * + * {
+    margin-left: 20px; /* fallback для iOS < 14.5 */
 }
 
 .soft-item .left {
@@ -1121,7 +1137,11 @@ a.btn:hover {
 
   /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе */
   .language-buttons {
-    gap: 3px;
+    gap: 3px; /* поддерживается с iOS 14.5+ */
+  }
+  
+  .language-buttons > * + * {
+    margin-left: 3px; /* fallback для iOS < 14.5 */
   }
 
   .language-button {
