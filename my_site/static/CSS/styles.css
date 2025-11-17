@@ -102,6 +102,12 @@ p {
   font-size: 1em;
   color: var(--pink-light-pink);
   color: #FFB6C1; /* fallback для iOS */
+  text-decoration: none; /* Убираем подчеркивание у ссылки */
+  transition: opacity 0.2s ease; /* Плавное изменение при наведении */
+}
+
+.name-logo:hover {
+  opacity: 0.8; /* Легкое затемнение при наведении */
 }
 
 .name-logo > * + * {
@@ -874,22 +880,30 @@ body.dark-theme .soft-item-link:hover {
 }
 
 @media (max-width: 768px) {
+    /* Убираем sticky-поведение хедера на малых экранах */
+    header {
+        position: static; /* Убираем прилипание, чтобы не занимало место */
+    }
+    
     nav ul {
         flex-direction: column; /* Меню в столбик */
-        gap: 8px; /* поддерживается с iOS 14.5+ - уменьшено для компактности */
+        gap: 4px; /* поддерживается с iOS 14.5+ - уменьшено в 2 раза */
+        padding-top: 0; /* Убираем отступ сверху */
+        margin-top: 0; /* Убираем отступ сверху */
     }
     
     nav ul > * + * {
-        margin-top: 8px; /* fallback для iOS < 14.5 - уменьшено */
+        margin-top: 4px; /* fallback для iOS < 14.5 - уменьшено в 2 раза */
     }
 
     nav ul li {
         flex: none; /* Убрать равномерное растяжение пунктов меню */
     }
     
-    /* Опускаем только логотип вниз на маленьких экранах */
+    /* Убираем маргины у первого элемента, используем только gap */
     nav ul li:first-child {
-        margin-top: 10px; /* Опускаем логотип вниз */
+        margin-top: 0; /* Убираем отступ сверху */
+        margin-bottom: 0; /* Убираем отступ снизу, gap уже работает */
     }
 }
 
