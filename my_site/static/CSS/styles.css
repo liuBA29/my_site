@@ -210,20 +210,40 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px;
     flex-wrap: wrap; /* Добавлено для адаптивности */
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    gap: 0; /* По умолчанию без gap, используем space-between */
+}
+
+/* Для мобильных устройств, когда меню в ряд и элементы переносятся */
+@media (max-width: 1024px) {
+    nav ul {
+        gap: 1.5%; /* Компактное расстояние между элементами на мобильных */
+        justify-content: space-around; /* Более равномерное распределение */
+    }
+    
+    /* Опускаем только логотип вниз, чтобы он был ближе к остальным пунктам */
+    nav ul li:first-child {
+        margin-top: 8px; /* Опускаем логотип вниз */
+    }
+    
+    /* Уменьшаем расстояние от первого элемента (логотип) до второго */
+    /* Используем отрицательный margin, чтобы уменьшить gap */
+    nav ul li:first-child + li {
+        margin-left: -1% !important; /* Уменьшаем расстояние от gap на 1% */
+    }
 }
 
 nav ul li {
-    flex: 1;
+    flex: 0 0 auto;
     text-align: center;
 }
 
 nav ul li a {
     display: block;
-    width: 100px; /* Указываем размер ссылки */
+    padding: 0 8px;
     color: white;
     white-space: nowrap;
     font-size: 20px;
@@ -242,10 +262,7 @@ nav ul li a.active {
     text-decoration: underline;
 }
 
-/* Отступ для последнего пункта меню (Контакты) */
-nav ul li:last-child {
-    margin-left: 30px; /* Отступ слева для Контактов */
-}
+/* Убираем специальный отступ для последнего пункта - gap работает для всех */
 
 /* ================== AUTH ================== */
 
@@ -666,8 +683,45 @@ footer {
     background: var(--pink-gray-header-footer);
 }
 
-.dark-theme a {
+/* Применяем белый цвет только к ссылкам в основном контенте, не в прехедере */
+.dark-theme main.container a,
+.dark-theme header a,
+.dark-theme footer a {
     color: var(--white);
+}
+
+/* Сохраняем розовые цвета для элементов в прехедере в темной теме */
+.dark-theme .name-logo {
+    color: var(--pink-light-pink) !important;
+}
+
+.dark-theme .name-logo .first-name {
+    color: var(--pink-light-pink) !important;
+}
+
+.dark-theme .name-logo .last-name {
+    color: var(--pink-light-pink) !important;
+    border: 1px solid var(--pink-light-pink) !important;
+}
+
+.dark-theme .language-button {
+    color: var(--pink-pink) !important;
+    border-color: var(--pink-pink) !important;
+}
+
+.dark-theme .language-button:hover {
+    background-color: var(--pink-pink) !important;
+    color: white !important;
+}
+
+.dark-theme .language-button.active {
+    background-color: var(--pink-pink) !important;
+    color: white !important;
+}
+
+/* Сохраняем розовый цвет для toggle в темной теме */
+.dark-theme .toggle__input:checked ~ .toggle__fill {
+    background: var(--pink-light-pink) !important;
 }
 
 .light-theme main.container .simple-link {
@@ -689,7 +743,8 @@ footer {
 
 .light-theme .name-logo .last-name {
     color: #1a1a1a;
-    border-color: #1a1a1a;
+    border: 2px solid var(--pink-light-pink);
+   
 }
 
 /* Языковые кнопки в светлой теме - темно-серый почти черный */
@@ -719,6 +774,19 @@ footer {
 
 .light-theme .auth a:hover {
     color: #404040;
+}
+
+/* Блок авторизации в темной теме - розовый */
+.dark-theme .auth a {
+    color: var(--pink-pink) !important;
+}
+
+.dark-theme .auth a:hover {
+    color: var(--pink-dark-pink) !important;
+}
+
+.dark-theme .auth strong {
+    color: var(--pink-dark-pink) !important;
 }
 
 .dark-theme main.container .simple-link {
@@ -808,17 +876,23 @@ body.dark-theme .soft-item-link:hover {
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column; /* Меню в столбик */
-        gap: 10px; /* поддерживается с iOS 14.5+ */
+        gap: 8px; /* поддерживается с iOS 14.5+ - уменьшено для компактности */
     }
     
     nav ul > * + * {
-        margin-top: 10px; /* fallback для iOS < 14.5 */
+        margin-top: 8px; /* fallback для iOS < 14.5 - уменьшено */
     }
 
     nav ul li {
         flex: none; /* Убрать равномерное растяжение пунктов меню */
     }
+    
+    /* Опускаем только логотип вниз на маленьких экранах */
+    nav ul li:first-child {
+        margin-top: 10px; /* Опускаем логотип вниз */
+    }
 }
+
 
 
 @media (max-width: 600px) {

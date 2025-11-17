@@ -689,7 +689,7 @@ footer {
 
 .light-theme .name-logo .last-name {
     color: #1a1a1a;
-    border-color: #1a1a1a;
+    border: 3px solid var(--pink-light-pink);
 }
 
 /* Языковые кнопки в светлой теме - темно-серый почти черный */
