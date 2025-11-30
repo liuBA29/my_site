@@ -92,6 +92,7 @@ class BusinessSoftware(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', blank=True, null=True)
+    youtube_link = models.URLField(verbose_name="YouTube видео (ссылка)", blank=True, null=True)
 
     def __str__(self):
         return self.name
