@@ -107,7 +107,7 @@ p {
 }
 
 .name-logo .last-name {
-  border: 1px solid #1a1a1a; /* темно-серый почти черный */
+  border: 1px solid #ffffff; /* белая обводка */
   border-radius: 6px;
   padding: 2px 6px;
   text-transform: capitalize;
@@ -585,6 +585,7 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
   }
   nav ul > * + * { margin-left: 0; margin-top: 10px; }
   nav ul li { flex: none; }
+  nav ul li:last-child { margin-left: 0; } /* Убираем лишний отступ для Контактов в мобильной версии */
   .section-description { font-size: 1rem; line-height: 1.4; margin: 0.8rem 0 1.2rem 0; }
   
   /* Мобильная версия прехедера */
@@ -675,4 +676,118 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
   }
 }
 
+/* ================== ТЕМНАЯ ТЕМА ================== */
+
+.dark-theme {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-theme body {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-theme main.container {
+  background: #2b2b2b;
+  color: #ffffff;
+}
+
+.dark-theme .preheader {
+  background: #3a3a3a;
+}
+
+.dark-theme header,
+.dark-theme footer {
+  background: #3a3a3a;
+}
+
+.dark-theme main.container a,
+.dark-theme header a,
+.dark-theme footer a {
+  color: #ffffff;
+}
+
+/* Логотип в темной теме - розовый */
+.dark-theme .name-logo {
+  color: #FFB6C1 !important; /* светло-розовый */
+}
+
+.dark-theme .name-logo .first-name {
+  color: #FFB6C1 !important; /* светло-розовый */
+}
+
+.dark-theme .name-logo .last-name {
+  color: #FFB6C1 !important; /* светло-розовый */
+  border: 1px solid #FFB6C1 !important; /* светло-розовая обводка */
+}
+
+/* Языковые кнопки в темной теме */
+.dark-theme .language-button {
+  color: #FF69B4 !important; /* ярко-розовый */
+  border-color: #FF69B4 !important;
+}
+
+.dark-theme .language-button:hover {
+  background-color: #FF69B4 !important;
+  color: white !important;
+  border-color: #FF69B4 !important;
+}
+
+.dark-theme .language-button.active {
+  background-color: #FF69B4 !important;
+  color: white !important;
+  border-color: #FF69B4 !important;
+}
+
+/* Toggle в темной теме */
+.dark-theme .toggle__input:checked ~ .toggle__fill {
+  background: #FFB6C1 !important; /* светло-розовый */
+}
+
+/* Заголовки в темной теме */
+.dark-theme h3 {
+  color: #ffffff;
+}
+
+.dark-theme h1,
+.dark-theme h2 {
+  color: #FF69B4; /* ярко-розовый */
+}
+
+/* Блок авторизации в темной теме */
+.dark-theme .auth a {
+  color: #FF69B4 !important; /* ярко-розовый */
+}
+
+.dark-theme .auth a:hover {
+  color: #D16B8A !important; /* тёмно-розовый */
+}
+
+.dark-theme .auth strong {
+  color: #D16B8A !important; /* тёмно-розовый */
+}
+
+/* Ссылки в основном контенте темной темы */
+.dark-theme main.container .simple-link {
+  color: #cccccc;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-decoration: underline;
+  text-decoration-color: pink;
+}
+
+/* Описание секций в темной теме */
+.dark-theme .section-description {
+  color: #bbbbbb;
+}
+
+/* Элементы списка в темной теме */
+.dark-theme .soft-item .right {
+  color: #bbbbbb;
+}
+
+.dark-theme .soft-item h3 {
+  color: #FFB6C1;
+}
 
