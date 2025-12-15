@@ -13,28 +13,67 @@
     <link id="site-style" rel="stylesheet" href="{% static 'CSS/styles.css' %}">
     <script>
     (function() {
-        // Для СТАРЫХ iPhone и iPad применяем упрощенные стили styles_light.css
-        // На новых iOS используем styles.css
+        // Определяем модель устройства Apple и применяем соответствующие стили
+        // Для СТАРЫХ моделей iPhone/iPad применяем упрощенные стили styles_light.css
+        // Для НОВЫХ моделей используем styles.css
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         var isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
         
         if (isiOS) {
-            // Определяем версию iOS из User-Agent
-            var iOSVersion = null;
-            var match = ua.match(/OS (\d+)[._](\d+)/);
-            if (match) {
-                iOSVersion = parseFloat(match[1] + '.' + match[2]);
+            var useLightStyles = false;
+            
+            // Проверяем iPod - всегда старые устройства
+            if (/iPod/.test(ua)) {
+                useLightStyles = true;
+            }
+            // Проверяем iPhone по модели (номер в User-Agent)
+            else if (/iPhone/.test(ua)) {
+                var modelMatch = ua.match(/iPhone(\d+),(\d+)/);
+                if (modelMatch) {
+                    var modelNumber = parseInt(modelMatch[1], 10);
+                    // iPhone 12 и старше (модели 13 и ниже) - используем упрощенные стили
+                    // iPhone 13 и новее (модели 14 и выше) - используем полные стили
+                    if (modelNumber <= 13) {
+                        useLightStyles = true;
+                    }
+                } else {
+                    // Если не удалось определить модель, используем упрощенные стили для безопасности
+                    useLightStyles = true;
+                }
+            }
+            // Проверяем iPad
+            else if (/iPad/.test(ua)) {
+                // Для iPad проверяем модель аналогично iPhone
+                var ipadModelMatch = ua.match(/iPad(\d+),(\d+)/);
+                if (ipadModelMatch) {
+                    var ipadModelNumber = parseInt(ipadModelMatch[1], 10);
+                    // iPad до 13-го поколения включительно - упрощенные стили
+                    if (ipadModelNumber <= 13) {
+                        useLightStyles = true;
+                    }
+                } else {
+                    // Старые iPad без номера модели - упрощенные стили
+                    // Также проверяем через OS версию как fallback для очень старых
+                    var iOSVersionMatch = ua.match(/OS (\d+)[._](\d+)/);
+                    if (iOSVersionMatch) {
+                        var iOSVersion = parseFloat(iOSVersionMatch[1] + '.' + iOSVersionMatch[2]);
+                        if (iOSVersion < 13.0) {
+                            useLightStyles = true;
+                        }
+                    } else {
+                        useLightStyles = true;
+                    }
+                }
             }
             
-            // Применяем styles_light.css только для iOS < 12.0 (старые версии)
-            // iOS 12+ поддерживает все современные CSS свойства
-            if (iOSVersion && iOSVersion < 12.0) {
+            // Применяем стили
+            if (useLightStyles) {
                 var link = document.getElementById('site-style');
                 if (link) {
                     link.href = "{% static 'CSS/styles_light.css' %}";
                 }
             }
-            // Для iOS 12+ и выше используем styles.css (по умолчанию)
+            // Для новых устройств используем styles.css (по умолчанию)
         }
     })();
     </script>
