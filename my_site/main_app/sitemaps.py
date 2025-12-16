@@ -17,7 +17,7 @@ class StaticViewSitemap(Sitemap):
         return reverse(item)
 
     def lastmod(self, item):
-        return datetime.date(2025, 7, 18) # вручную дата обновления страниц
+        return datetime.date.today()  # Автоматически текущая дата
 
 class ProjectSitemap(Sitemap):
     priority = 0.6

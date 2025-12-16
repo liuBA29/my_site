@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin/
-Sitemap: https://liuba.web.cloudcenter.ovh/sitemap.xml
-Sitemap: https://liuba.web.cloudcenter.ovh/mysitemap.xml
+Sitemap: https://liuba.site/sitemap.xml
+Sitemap: https://liuba.site/mysitemap.xml

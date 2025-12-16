@@ -16,8 +16,8 @@ def robots_txt(request):
     lines = [
         "User-agent: *",
         "Disallow: /admin/",
-        "Sitemap: https://liuba.web.cloudcenter.ovh/sitemap.xml",
-        "Sitemap: https://liuba.web.cloudcenter.ovh/mysitemap.xml"
+        "Sitemap: https://liuba.site/sitemap.xml",
+        "Sitemap: https://liuba.site/mysitemap.xml"
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
