@@ -4,12 +4,77 @@
 {% load i18n static %}
 {% block title %}{{ soft.name }} | {% trans "Business Software" %} {% trans "by" %} Liubov Kovaleva{% endblock %}
 {% block meta_description %}{{ soft.description|striptags|truncatechars:150 }}{% endblock %}
+{% block meta_keywords %}{{ soft.name }}, business software, {% trans "Business Software" %}, Liubov Kovaleva, LiuBA29, CRM, business application{% endblock %}
 {% block og_title %}{{ soft.name }} | LiuBA29 Business Software{% endblock %}
 {% block og_description %}{{ soft.description|striptags|truncatechars:150 }}{% endblock %}
 {% block og_image %}{{ soft.image.url }}{% endblock %}
+{% block og_type %}product{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ soft.name|escapejs }}",
+  "description": "{{ soft.description|striptags|escapejs|truncatechars:500 }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "image": "{% if soft.image %}{{ soft.image.url }}{% endif %}",
+  "author": {
+    "@type": "Person",
+    "name": "Liubov Kovaleva",
+    "alternateName": "LiuBA29"
+  },
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+  {% if soft.version %},
+  "softwareVersion": "{{ soft.version }}"{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{% trans "Home" %}",
+      "item": "{% url 'main_app:home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{% trans "Business Software" %}",
+      "item": "{% url 'main_app:business_soft' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ soft.name|escapejs }}",
+      "item": "{{ request.build_absolute_uri }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <main class="cont">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.9em;">
+            <li><a href="{% url 'main_app:home' %}">{% trans "Home" %}</a></li>
+            <li style="color: #888;">/</li>
+            <li><a href="{% url 'main_app:business_soft' %}">{% trans "Business Software" %}</a></li>
+            <li style="color: #888;">/</li>
+            <li style="color: #666;">{{ soft.name }}</li>
+        </ol>
+    </nav>
 
   <a href="{% url 'main_app:business_soft' %}" class="back-btn">
     <span>&larr;</span> {% trans "Back to list" %}

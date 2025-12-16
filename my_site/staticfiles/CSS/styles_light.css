@@ -494,12 +494,18 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 /* Адаптивность для tech-stack */
 @media (max-width: 900px) {
   .tech-stack-box {
-    float: none;
-    margin: 10px 0;
+    float: none !important;
+    margin: 10px auto;
     max-width: 100%;
+    width: 90%;
     font-size: 0.8em;
     padding: 6px 10px;
     line-height: 1.05;
+    display: block;
+    clear: both;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .tech-stack-list li i {

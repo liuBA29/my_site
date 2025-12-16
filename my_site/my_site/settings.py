@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',  # обязательно!
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main_app.context_processors.seo_keywords',  # SEO ключевые слова из проектов
                 #'asterisk_app.context_processors.asterisk_connection_status',
             ],
         },
@@ -241,5 +242,8 @@ TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 # Cloudflare Turnstile настройки
 CLOUDFLARE_TURNSTILE_SITE_KEY = os.getenv('CLOUDFLARE_TURNSTILE_SITE_KEY', '')
 CLOUDFLARE_TURNSTILE_SECRET_KEY = os.getenv('CLOUDFLARE_TURNSTILE_SECRET_KEY', '')
+
+# Google Analytics
+GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

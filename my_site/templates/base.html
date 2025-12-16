@@ -79,19 +79,55 @@
     </script>
 
     <meta name="description" content="{% block meta_description %}{% trans "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, contact for collaboration." %}{% endblock %}">
-    <meta name="keywords" content="{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% if seo_keywords %}{{ seo_keywords }}{% else %}{% trans "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, website development" %}{% endif %}{% endblock %}">
     <meta name="author" content="Liubov Kovaleva">
     <meta name="robots" content="index, follow">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}{{ request.build_absolute_uri }}{% endblock %}">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{% block og_title %}{% trans "Portfolio of Liubov Kovaleva" %}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{% trans "Web development, projects, task automation. Portfolio site of LiuBA29." %}{% endblock %}">
-    <meta property="og:image" content="https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png">
-    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% block og_image %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:site_name" content="{% trans "Liubov Kovaleva Portfolio" %}">
+    <meta property="og:locale" content="{% if LANGUAGE_CODE == 'ru' %}ru_RU{% else %}en_US{% endif %}">
+    {% get_available_languages as LANGUAGES %}
+    {% for lang_code, lang_name in LANGUAGES %}
+    <meta property="og:locale:alternate" content="{% if lang_code == 'ru' %}ru_RU{% else %}en_US{% endif %}">
+    {% endfor %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{% block og_title %}{% trans "Portfolio of Liubov Kovaleva" %}{% endblock %}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{% block og_description %}{% trans "Web development, projects, task automation. Portfolio site of LiuBA29." %}{% endblock %}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% block og_image %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endblock %}{% endblock %}">
+
+    <!-- Hreflang для мультиязычности -->
+    {% get_available_languages as LANGUAGES %}
+    {% for lang_code, lang_name in LANGUAGES %}
+    <link rel="alternate" hreflang="{{ lang_code }}" href="{% block hreflang_url %}{{ request.build_absolute_uri }}{% endblock %}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ request.build_absolute_uri }}">
+
+    <!-- Структурированные данные JSON-LD -->
+    {% block structured_data %}{% endblock %}
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <!-- Google Analytics -->
+    {% if GOOGLE_ANALYTICS_ID %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
+    </script>
+    {% endif %}
 
 
 

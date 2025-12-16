@@ -3,14 +3,82 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{{ project.title }} | Проект Любови Ковалёвой{% endblock %}
+{% block title %}{{ project.title }} | {% trans "Project" %} {% trans "by" %} Liubov Kovaleva{% endblock %}
 {% block meta_description %}{{ project.description|striptags|truncatechars:150 }}{% endblock %}
-{% block og_title %}{{ project.title }} | Портфолио LiuBA29{% endblock %}
+{% block meta_keywords %}{{ project.title }}, {% if project.tech_stack %}{{ project.tech_stack }}, {% endif %}Django, Python, web development, Liubov Kovaleva, LiuBA29{% endblock %}
+{% block og_title %}{{ project.title }} | {% trans "Portfolio" %} LiuBA29{% endblock %}
 {% block og_description %}{{ project.description|striptags|truncatechars:150 }}{% endblock %}
 {% block og_image %}{{ project.image.url }}{% endblock %}
+{% block og_type %}article{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ project.title|escapejs }}",
+  "description": "{{ project.description|striptags|escapejs|truncatechars:500 }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "image": "{% if project.image %}{{ project.image.url }}{% endif %}",
+  "author": {
+    "@type": "Person",
+    "name": "Liubov Kovaleva",
+    "alternateName": "LiuBA29"
+  },
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "datePublished": "{{ project.created_at|date:'c' }}",
+  "dateModified": "{{ project.updated_at|date:'c' }}"
+  {% if project.repo_link %},
+  "codeRepository": "{{ project.repo_link }}"{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{% trans "Home" %}",
+      "item": "{% url 'main_app:home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{% trans "My Projects" %}",
+      "item": "{% url 'main_app:my_projects' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ project.title|escapejs }}",
+      "item": "{{ request.build_absolute_uri }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <main class="cont">
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" style="margin-bottom: 20px;">
+        <ol style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.9em;">
+            <li><a href="{% url 'main_app:home' %}">{% trans "Home" %}</a></li>
+            <li style="color: #888;">/</li>
+            <li><a href="{% url 'main_app:my_projects' %}">{% trans "My Projects" %}</a></li>
+            <li style="color: #888;">/</li>
+            <li style="color: #666;">{{ project.title }}</li>
+        </ol>
+    </nav>
+
     <a href="{% url 'main_app:my_projects' %}" class="back-btn">
         <span>&larr;</span> {% trans "Back to list" %}
     </a>

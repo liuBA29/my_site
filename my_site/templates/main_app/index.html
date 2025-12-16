@@ -3,9 +3,42 @@
 {% load i18n %}
 
 {% block title %}{% trans "Portfolio website of web developer Liubov Kovaleva" %}{% endblock %}
-{% block meta_description %}{% trans "Main page of Liubov Kovaleva’s web developer portfolio. Python, Django, projects, and useful software." %}{% endblock %}
+{% block meta_description %}{% if seo_project_names %}{% trans "Portfolio of Liubov Kovaleva: Django developer. Projects:" %} {{ seo_project_names|join:", "|truncatewords:10 }}. {% trans "Technologies:" %} {{ seo_tech_stack|join:", "|truncatewords:8 }}.{% else %}{% trans "Main page of Liubov Kovaleva's web developer portfolio. Python, Django, projects, and useful software." %}{% endif %}{% endblock %}
 {% block og_title %}{% trans "Main | Portfolio of Liubov Kovaleva" %}{% endblock %}
 {% block og_description %}{% trans "Django web development. Projects, useful utilities, and freelance services by Liubov Kovaleva." %}{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Liubov Kovaleva",
+  "alternateName": "LiuBA29",
+  "jobTitle": "Web Developer",
+  "url": "{{ request.build_absolute_uri }}",
+  "email": "luba.sentino@gmail.com",
+  "sameAs": [
+    "https://t.me/liubakovaleva"
+  ],
+  "knowsAbout": {% if seo_tech_stack_json %}{{ seo_tech_stack_json|safe }}{% else %}["Python", "Django", "Web Development", "Docker", "PostgreSQL", "Redis", "JavaScript", "HTML5", "CSS3"]{% endif %},
+  "description": "{% trans "Python & Django web developer. Creating modern web applications with authentication, chat, admin panels, and APIs." %}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{% trans "Liubov Kovaleva Portfolio" %}",
+  "url": "{{ request.build_absolute_uri }}",
+  "description": "{% trans "Portfolio website of web developer Liubov Kovaleva" %}",
+  "inLanguage": ["ru", "en"],
+  "author": {
+    "@type": "Person",
+    "name": "Liubov Kovaleva"
+  }
+}
+</script>
+{% endblock %}
 
 {% block content %}
   {% if messages %}
