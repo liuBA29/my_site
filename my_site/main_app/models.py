@@ -156,6 +156,14 @@ class Order(models.Model):
     )
     description = models.TextField(verbose_name="Описание задачи")
     
+    # IP адрес для защиты от спама
+    ip_address = models.GenericIPAddressField(
+        blank=True, 
+        null=True, 
+        verbose_name="IP адрес",
+        help_text="IP адрес клиента (для защиты от спама)"
+    )
+    
     def __str__(self):
         return f"Заказ от {self.client_name} ({self.created_at.strftime('%d.%m.%Y')})"
     

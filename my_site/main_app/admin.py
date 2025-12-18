@@ -36,8 +36,8 @@ class ContactMessageAdmin(TranslationAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('client_name', 'client_email', 'service_type', 'status', 'created_at')
+    list_display = ('client_name', 'client_email', 'service_type', 'status', 'ip_address', 'created_at')
     list_filter = ('status', 'created_at', 'service_type')
-    search_fields = ('client_name', 'client_email', 'description')
+    search_fields = ('client_name', 'client_email', 'description', 'ip_address')
     readonly_fields = ('created_at', 'updated_at')
     ordering = ('-created_at',)  # Новые заказы сначала

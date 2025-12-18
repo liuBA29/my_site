@@ -8,7 +8,10 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from django.contrib import messages
 from django.conf import settings
+from django.utils import timezone
+from datetime import timedelta
 from .forms import OrderForm
+from accounts.views import send_telegram_message
 
 
 
@@ -90,21 +93,75 @@ def contact(request):
     return render(request, 'main_app/contact.html')
 
 
+def get_client_ip(request):
+    """Получение IP адреса клиента"""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
+def check_daily_order_limit(ip_address, max_orders_per_day=5):
+    """Проверка лимита заявок с одного IP в день"""
+    if not ip_address:
+        return True, None  # Если IP нет, пропускаем проверку
+    
+    today_start = timezone.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    orders_today = Order.objects.filter(
+        ip_address=ip_address,
+        created_at__gte=today_start
+    ).count()
+    
+    if orders_today >= max_orders_per_day:
+        return False, f"С одного IP адреса можно отправить не более {max_orders_per_day} заявок в день. Попробуйте завтра."
+    
+    return True, None
+
+
 def order_request(request):
     """Страница с формой заказа"""
     if request.method == 'POST':
-        form = OrderForm(request.POST)
-        # Передаем request в форму для получения IP адреса (для проверки Turnstile)
-        form.request = request
-        if form.is_valid():
-            order = form.save()  # Сохраняем заказ в базу данных
-            messages.success(
-                request, 
-                f'Спасибо, {order.client_name}! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.'
-            )
-            return redirect('main_app:order_request')  # Перенаправляем на ту же страницу с сообщением
+        # Проверяем лимит заявок с одного IP
+        ip_address = get_client_ip(request)
+        can_submit, limit_error = check_daily_order_limit(ip_address, max_orders_per_day=5)
+        
+        if not can_submit:
+            messages.error(request, limit_error)
+            form = OrderForm(request.POST)
         else:
-            messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
+            form = OrderForm(request.POST)
+            # Передаем request в форму для получения IP адреса (для проверки Turnstile)
+            form.request = request
+            if form.is_valid():
+                order = form.save(commit=False)  # Не сохраняем сразу
+                order.ip_address = ip_address  # Сохраняем IP адрес
+                order.save()  # Теперь сохраняем
+                
+                # Отправляем уведомление в Telegram
+                telegram_message = (
+                    f"🆕 Новая заявка!\n\n"
+                    f"👤 Имя: {order.client_name}\n"
+                    f"📧 Email: {order.client_email}\n"
+                    f"📞 Телефон: {order.client_phone or 'не указан'}\n"
+                    f"💼 Услуга: {order.service_type}\n"
+                    f"📝 Описание: {order.description[:200]}{'...' if len(order.description) > 200 else ''}\n"
+                    f"🌐 IP: {ip_address}\n"
+                    f"🆔 ID заказа: {order.id}"
+                )
+                try:
+                    send_telegram_message(telegram_message)
+                except Exception as e:
+                    print(f"Ошибка отправки в Telegram: {e}")
+                
+                messages.success(
+                    request, 
+                    f'Спасибо, {order.client_name}! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.'
+                )
+                return redirect('main_app:order_request')  # Перенаправляем на ту же страницу с сообщением
+            else:
+                messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
     else:
         form = OrderForm()
     
