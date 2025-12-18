@@ -117,3 +117,49 @@ class ContactMessage(models.Model):
     def __str__(self):
         return f"Сообщение от {self.name} ({self.email})"
 
+
+# 🔹 Модель для заказов (заявок)
+class Order(models.Model):
+    # Статусы заказа
+    STATUS_CHOICES = [
+        ('new', 'Новая заявка'),
+        ('in_progress', 'В работе'),
+        ('completed', 'Выполнено'),
+        ('cancelled', 'Отменён'),
+    ]
+    
+    # Основная информация
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES, 
+        default='new',
+        verbose_name="Статус"
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата обновления")
+    
+    # Данные клиента
+    client_name = models.CharField(max_length=200, verbose_name="Имя клиента")
+    client_email = models.EmailField(verbose_name="Email клиента")
+    client_phone = models.CharField(
+        max_length=20, 
+        blank=True, 
+        null=True,
+        verbose_name="Телефон"
+    )
+    
+    # Описание заказа
+    service_type = models.CharField(
+        max_length=200, 
+        verbose_name="Тип услуги",
+        help_text="Например: Разработка сайта, Разработка софта, и т.д."
+    )
+    description = models.TextField(verbose_name="Описание задачи")
+    
+    def __str__(self):
+        return f"Заказ от {self.client_name} ({self.created_at.strftime('%d.%m.%Y')})"
+    
+    class Meta:
+        verbose_name = "Заказ"
+        verbose_name_plural = "Заказы"
+        ordering = ['-created_at']  # Сортировка: новые сначала

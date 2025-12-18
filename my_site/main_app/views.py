@@ -6,6 +6,9 @@ from django.utils.deprecation import MiddlewareMixin
 from django.http import HttpResponse
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
+from django.contrib import messages
+from django.conf import settings
+from .forms import OrderForm
 
 
 
@@ -85,4 +88,28 @@ def project_detail(request, slug):
 def contact(request):
     #clients = Client.objects.all().values('id', 'name', 'is_active')
     return render(request, 'main_app/contact.html')
+
+
+def order_request(request):
+    """Страница с формой заказа"""
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        # Передаем request в форму для получения IP адреса (для проверки Turnstile)
+        form.request = request
+        if form.is_valid():
+            order = form.save()  # Сохраняем заказ в базу данных
+            messages.success(
+                request, 
+                f'Спасибо, {order.client_name}! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.'
+            )
+            return redirect('main_app:order_request')  # Перенаправляем на ту же страницу с сообщением
+        else:
+            messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
+    else:
+        form = OrderForm()
+    
+    return render(request, 'main_app/order_request.html', {
+        'form': form,
+        'CLOUDFLARE_TURNSTILE_SITE_KEY': settings.CLOUDFLARE_TURNSTILE_SITE_KEY
+    })
 

@@ -33,3 +33,11 @@ class BusinessSoftwareAdmin(TranslationAdmin):
 class ContactMessageAdmin(TranslationAdmin):
     pass
 
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('client_name', 'client_email', 'service_type', 'status', 'created_at')
+    list_filter = ('status', 'created_at', 'service_type')
+    search_fields = ('client_name', 'client_email', 'description')
+    readonly_fields = ('created_at', 'updated_at')
+    ordering = ('-created_at',)  # Новые заказы сначала
