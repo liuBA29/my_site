@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.conf import settings
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from datetime import timedelta
 from .forms import OrderForm
 from accounts.views import send_telegram_message
@@ -115,7 +116,7 @@ def check_daily_order_limit(ip_address, max_orders_per_day=5):
     ).count()
     
     if orders_today >= max_orders_per_day:
-        return False, f"С одного IP адреса можно отправить не более {max_orders_per_day} заявок в день. Попробуйте завтра."
+        return False, _("You can submit no more than %(max)d orders per day from one IP address. Please try again tomorrow.") % {'max': max_orders_per_day}
     
     return True, None
 
@@ -157,11 +158,11 @@ def order_request(request):
                 
                 messages.success(
                     request, 
-                    f'Спасибо, {order.client_name}! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.'
+                    _('Thank you, %(name)s! Your order has been received. We will contact you soon.') % {'name': order.client_name}
                 )
                 return redirect('main_app:order_request')  # Перенаправляем на ту же страницу с сообщением
             else:
-                messages.error(request, 'Пожалуйста, исправьте ошибки в форме.')
+                messages.error(request, _('Please correct the errors in the form.'))
     else:
         form = OrderForm()
     

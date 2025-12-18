@@ -8,60 +8,64 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     """Форма для создания заказа (заявки)"""
     
-    # Добавим варианты типов услуг для удобства
-    SERVICE_CHOICES = [
-        ('', 'Выберите тип услуги...'),
-        ('Разработка сайта', 'Разработка сайта'),
-        ('Разработка софта', 'Разработка софта'),
-        ('Доработка проекта', 'Доработка существующего проекта'),
-        ('Техническая поддержка', 'Техническая поддержка'),
-        ('Консультация', 'Консультация'),
-        ('Другое', 'Другое'),
-    ]
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Статус всегда будет 'new' для новых заказов, не показываем его в форме
+        # Динамически создаём choices для поддержки переводов
+        # Используем ключи на английском для сохранения в БД, но показываем переводы
+        self.fields['service_type'].choices = [
+            ('', _('Select service type...')),
+            ('Website development', _('Website development')),
+            ('Software development', _('Software development')),
+            ('Project modification', _('Existing project modification')),
+            ('Technical support', _('Technical support')),
+            ('Consultation', _('Consultation')),
+            ('Other', _('Other')),
+        ]
     
     service_type = forms.ChoiceField(
-        choices=SERVICE_CHOICES,
-        label="Тип услуги",
+        choices=[],  # Будет заполнено в __init__
+        label=_("Service type"),
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     
     client_name = forms.CharField(
         max_length=200,
-        label="Ваше имя",
+        label=_("Your name"),
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Иван Иванов'
+            'placeholder': _('John Doe')
         })
     )
     
     client_email = forms.EmailField(
-        label="Email",
+        label=_("Email"),
         required=True,
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
-            'placeholder': 'ivan@example.com'
+            'placeholder': 'john@example.com'
         })
     )
     
     client_phone = forms.CharField(
         max_length=20,
-        label="Телефон",
+        label=_("Phone"),
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': '+7 (999) 123-45-67'
+            'placeholder': '+1 (555) 123-45-67'
         })
     )
     
     description = forms.CharField(
-        label="Описание задачи",
+        label=_("Task description"),
         required=True,
         widget=forms.Textarea(attrs={
             'class': 'form-control',
             'rows': 5,
-            'placeholder': 'Опишите подробно, что вам нужно...'
+            'placeholder': _('Please describe in detail what you need...')
         })
     )
     
@@ -75,10 +79,6 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['client_name', 'client_email', 'client_phone', 'service_type', 'description']
-        
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Статус всегда будет 'new' для новых заказов, не показываем его в форме
     
     def clean_cf_turnstile_response(self):
         """Проверка Cloudflare Turnstile токена"""

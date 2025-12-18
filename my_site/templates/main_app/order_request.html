@@ -14,10 +14,10 @@
     </div>
   {% endif %}
 
-  <h1>{% trans "Оставить заявку" %}</h1>
+  <h1>{% trans "Place an order" %}</h1>
 
   <div class="section-description">
-    <p>{% trans "Заполните форму ниже, и я свяжусь с вами в ближайшее время для обсуждения деталей заказа." %}</p>
+    <p>{% trans "Fill out the form below, and I will contact you soon to discuss the details of your order." %}</p>
   </div>
 
   <form method="post" class="order-form">
@@ -85,7 +85,7 @@
       {% endif %}
     </div>
 
-    <button type="submit" class="submit-button">{% trans "Отправить заявку" %}</button>
+    <button type="submit" class="submit-button">{% trans "Submit order" %}</button>
   </form>
 
   <style>
@@ -136,10 +136,10 @@
     }
 
     .submit-button {
-      background-color: #A8E6CF;
-      color: #000;
+      background-color: #d4edda;
+      color: #155724;
       padding: 12px 30px;
-      border: none;
+      border: 1px solid #c3e6cb;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
@@ -148,7 +148,7 @@
     }
 
     .submit-button:hover {
-      background-color: #98D8C8;
+      background-color: #c3e6cb;
     }
 
     .page-messages {

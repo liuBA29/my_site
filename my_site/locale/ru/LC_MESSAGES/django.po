@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-15 18:24+0300\n"
+"POT-Creation-Date: 2025-12-18 23:22+0300\n"
 "PO-Revision-Date: 2025-07-11 13:00+0300\n"
 "Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,45 +24,61 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\accounts\forms.py:15
+#: .\accounts\forms.py:16 .\templates\accounts\register.html:24
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: .\accounts\forms.py:17
+#: .\accounts\forms.py:18
 msgid "Please enter a username"
 msgstr "Пожалуйста, введите ваше имя"
 
-#: .\accounts\forms.py:19
+#: .\accounts\forms.py:20
 msgid "Your username 💫"
 msgstr "Имя пользователя"
 
-#: .\accounts\forms.py:22
+#: .\accounts\forms.py:23 .\main_app\forms.py:44
+#: .\templates\accounts\register.html:31
 msgid "Email"
 msgstr "Email"
 
-#: .\accounts\forms.py:24
+#: .\accounts\forms.py:25
 msgid "Please enter your email address"
 msgstr "Пожалуйста, введите адрес электронной почты"
 
-#: .\accounts\forms.py:25
+#: .\accounts\forms.py:26
 msgid "Enter a valid email address"
 msgstr "Введите корректный email"
 
-#: .\accounts\forms.py:28
+#: .\accounts\forms.py:29
 msgid "Your email ✉"
 msgstr "Ваш Email"
 
-#: .\accounts\forms.py:32 .\accounts\forms.py:33
+#: .\accounts\forms.py:33 .\accounts\forms.py:34
+#: .\templates\accounts\register.html:38
 msgid "Password"
 msgstr "Пароль"
 
-#: .\accounts\forms.py:36
+#: .\accounts\forms.py:37 .\templates\accounts\register.html:45
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
 
-#: .\accounts\forms.py:37
+#: .\accounts\forms.py:38
 msgid "Repeat password"
 msgstr "Повторите пароль"
+
+#: .\accounts\forms.py:72 .\main_app\forms.py:100
+#: .\templates\accounts\register.html:114
+#: .\templates\main_app\order_request.html:208
+msgid "Please complete the verification."
+msgstr "Пожалуйста, пройдите проверку."
+
+#: .\accounts\forms.py:105 .\main_app\forms.py:130
+msgid "Verification failed. Please try again."
+msgstr "Проверка не прошла. Пожалуйста, попробуйте снова."
+
+#: .\accounts\views.py:75
+msgid "Please complete the verification to prove you are not a robot."
+msgstr "Пожалуйста, пройдите проверку, чтобы подтвердить, что вы не робот."
 
 #: .\chat\consumers.py:42
 #, python-format
@@ -83,11 +99,82 @@ msgstr "Вы присоединились к чату"
 msgid "%(username)s has joined the chat"
 msgstr "%(username)s уже в чате"
 
-#: .\my_site\settings.py:165
+#: .\main_app\forms.py:17
+msgid "Select service type..."
+msgstr "Выберите тип услуги…"
+
+#: .\main_app\forms.py:18
+msgid "Website development"
+msgstr "Разработка сайтов"
+
+#: .\main_app\forms.py:19
+msgid "Software development"
+msgstr "Разработка программного обеспечения"
+
+#: .\main_app\forms.py:20
+msgid "Existing project modification"
+msgstr "Модификация существующего проекта"
+
+#: .\main_app\forms.py:21
+msgid "Technical support"
+msgstr "Техническая поддержка"
+
+#: .\main_app\forms.py:22
+#, fuzzy
+#| msgid "Collaboration"
+msgid "Consultation"
+msgstr "Сотрудничество"
+
+#: .\main_app\forms.py:23
+msgid "Other"
+msgstr "Другое"
+
+#: .\main_app\forms.py:28
+msgid "Service type"
+msgstr "Тип услуги"
+
+#: .\main_app\forms.py:35
+msgid "Your name"
+msgstr "Ваше имя"
+
+#: .\main_app\forms.py:39
+msgid "John Doe"
+msgstr "Иван Иванов"
+
+#: .\main_app\forms.py:54
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\main_app\forms.py:63
+msgid "Task description"
+msgstr "Описание задачи"
+
+#: .\main_app\forms.py:68
+msgid "Please describe in detail what you need..."
+msgstr "Пожалуйста, подробно опишите, что вам нужно..."
+
+#: .\main_app\views.py:119
+#, python-format
+msgid ""
+"You can submit no more than %(max)d orders per day from one IP address. "
+"Please try again tomorrow."
+msgstr "Вы можете отправлять не более %(max)d заказов в день с одного IP-адреса. Попробуйте завтра."
+
+#: .\main_app\views.py:161
+#, python-format
+msgid ""
+"Thank you, %(name)s! Your order has been received. We will contact you soon."
+msgstr "Спасибо, %(name)s! Ваш заказ принят. Мы свяжемся с вами в ближайшее время."
+
+#: .\main_app\views.py:165
+msgid "Please correct the errors in the form."
+msgstr "Пожалуйста, исправьте ошибки в форме."
+
+#: .\my_site\settings.py:167
 msgid "Russian"
 msgstr "Русский"
 
-#: .\my_site\settings.py:166
+#: .\my_site\settings.py:168
 msgid "English"
 msgstr "English"
 
@@ -128,7 +215,7 @@ msgstr ""
 "Django, утилиты и контакты."
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:26
-#: .\templates\accounts\register.html:28 .\templates\base.html:94
+#: .\templates\accounts\register.html:74 .\templates\base.html:183
 msgid "Login"
 msgstr "Войти"
 
@@ -137,7 +224,7 @@ msgid "Don't have an account?"
 msgstr "Нет аккаунта?"
 
 #: .\templates\accounts\login.html:29 .\templates\accounts\register.html:18
-#: .\templates\accounts\register.html:24 .\templates\base.html:93
+#: .\templates\accounts\register.html:70 .\templates\base.html:182
 msgid "Register"
 msgstr "Регистрация"
 
@@ -165,7 +252,27 @@ msgstr ""
 "Создайте аккаунт, чтобы использовать инструменты и функции на сайте-"
 "портфолио Любови Ковалёвой."
 
-#: .\templates\accounts\register.html:27
+#: .\templates\accounts\register.html:53
+#: .\templates\main_app\order_request.html:74
+msgid "Verification"
+msgstr "Проверка"
+
+#: .\templates\accounts\register.html:59
+#: .\templates\main_app\order_request.html:80
+msgid "Please complete the verification above"
+msgstr "Пожалуйста, пройдите указанную выше проверку"
+
+#: .\templates\accounts\register.html:62
+msgid "Warning"
+msgstr "Внимание"
+
+#: .\templates\accounts\register.html:62
+msgid ""
+"Cloudflare Turnstile is not configured. Registration is not protected from "
+"bots."
+msgstr "Cloudflare Turnstile не настроен. Регистрация не защищена от ботов."
+
+#: .\templates\accounts\register.html:73
 msgid "Already have an account?"
 msgstr "Уже есть аккаунт?"
 
@@ -173,7 +280,7 @@ msgstr "Уже есть аккаунт?"
 msgid "Portfolio website of Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
-#: .\templates\base.html:28
+#: .\templates\base.html:81
 msgid ""
 "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, "
 "contact for collaboration."
@@ -181,7 +288,7 @@ msgstr ""
 "Портфолио веб-разработчицы Любови Ковалёвой: проекты, полезные утилиты, "
 "контакты для сотрудничества."
 
-#: .\templates\base.html:29
+#: .\templates\base.html:82
 msgid ""
 "web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, "
 "website development"
@@ -189,52 +296,66 @@ msgstr ""
 "веб-разработка, Python, Django, портфолио, фрилансер, Любовь Ковалёва, "
 "разработка сайтов"
 
-#: .\templates\base.html:35
+#: .\templates\base.html:90 .\templates\base.html:104
 msgid "Portfolio of Liubov Kovaleva"
 msgstr "Портфолио Любови Ковалёвой"
 
-#: .\templates\base.html:36
+#: .\templates\base.html:91 .\templates\base.html:105
 msgid "Web development, projects, task automation. Portfolio site of LiuBA29."
 msgstr "Веб-разработка, проекты, автоматизация задач. Сайт-портфолио LiuBA29."
 
-#: .\templates\base.html:90
+#: .\templates\base.html:95 .\templates\main_app\index.html:31
+#, fuzzy
+#| msgid "Login | Liubov Kovaleva Portfolio"
+msgid "Liubov Kovaleva Portfolio"
+msgstr "Вход | Портфолио Любови Ковалёвой"
+
+#: .\templates\base.html:179
 msgid "Hello"
 msgstr "Привет"
 
-#: .\templates\base.html:91
+#: .\templates\base.html:180
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\templates\base.html:123 .\templates\main_app\free_soft.html:4
+#: .\templates\base.html:212 .\templates\main_app\free_soft.html:4
 #: .\templates\main_app\free_soft.html:10
 #: .\templates\main_app\free_soft_detail.html:5
+#: .\templates\main_app\free_soft_detail.html:7
+#: .\templates\main_app\free_soft_detail.html:52
+#: .\templates\main_app\free_soft_detail.html:73
 msgid "Free Software"
 msgstr "Бесплатный софт"
 
-#: .\templates\base.html:124 .\templates\main_app\my_projects.html:6
+#: .\templates\base.html:213 .\templates\main_app\my_projects.html:6
 #: .\templates\main_app\my_projects.html:12
+#: .\templates\main_app\project_detail.html:55
+#: .\templates\main_app\project_detail.html:76
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:125 .\templates\main_app\business_soft.html:4
+#: .\templates\base.html:214 .\templates\main_app\business_soft.html:4
 #: .\templates\main_app\business_soft.html:10
 #: .\templates\main_app\business_soft_detail.html:5
+#: .\templates\main_app\business_soft_detail.html:7
+#: .\templates\main_app\business_soft_detail.html:52
+#: .\templates\main_app\business_soft_detail.html:73
 msgid "Business Software"
 msgstr "Софт для бизнеса"
 
-#: .\templates\base.html:126 .\templates\main_app\contact.html:4
+#: .\templates\base.html:215 .\templates\main_app\contact.html:4
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\templates\base.html:151
+#: .\templates\base.html:240
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
-#: .\templates\base.html:225
+#: .\templates\base.html:314
 msgid "This site uses cookies to improve your experience"
 msgstr "Чтобы сделать работу удобнее сайт использует cookies"
 
-#: .\templates\base.html:237
+#: .\templates\base.html:326
 msgid "Accept"
 msgstr "Согласиться"
 
@@ -319,67 +440,77 @@ msgstr "Изображение отсутствует"
 
 #: .\templates\main_app\business_soft_detail.html:5
 #: .\templates\main_app\free_soft_detail.html:5
+#: .\templates\main_app\project_detail.html:6
 msgid "by"
 msgstr "от"
 
-#: .\templates\main_app\business_soft_detail.html:15
-#: .\templates\main_app\free_soft_detail.html:15
-#: .\templates\main_app\project_detail.html:15
+#: .\templates\main_app\business_soft_detail.html:46
+#: .\templates\main_app\business_soft_detail.html:71
+#: .\templates\main_app\free_soft_detail.html:46
+#: .\templates\main_app\free_soft_detail.html:71
+#: .\templates\main_app\project_detail.html:49
+#: .\templates\main_app\project_detail.html:74
+msgid "Home"
+msgstr ""
+
+#: .\templates\main_app\business_soft_detail.html:80
+#: .\templates\main_app\free_soft_detail.html:80
+#: .\templates\main_app\project_detail.html:83
 #: .\templates\main_app\useful_soft_detail.html:15
 msgid "Back to list"
 msgstr "Назад к списку"
 
-#: .\templates\main_app\business_soft_detail.html:27
-#: .\templates\main_app\free_soft_detail.html:27
-#: .\templates\main_app\project_detail.html:26
+#: .\templates\main_app\business_soft_detail.html:92
+#: .\templates\main_app\free_soft_detail.html:92
+#: .\templates\main_app\project_detail.html:94
 #: .\templates\main_app\test_useful.html:16
 #: .\templates\main_app\useful_soft_detail.html:27
 msgid "No Image"
 msgstr "Изображение отсутствует"
 
-#: .\templates\main_app\business_soft_detail.html:33
-#: .\templates\main_app\free_soft_detail.html:33
+#: .\templates\main_app\business_soft_detail.html:98
+#: .\templates\main_app\free_soft_detail.html:98
 msgid "Welcome to"
 msgstr "Добро пожаловать в"
 
-#: .\templates\main_app\business_soft_detail.html:34
-#: .\templates\main_app\free_soft_detail.html:34
+#: .\templates\main_app\business_soft_detail.html:99
+#: .\templates\main_app\free_soft_detail.html:99
 #: .\templates\main_app\useful_soft_detail.html:34
 msgid "What is it?"
 msgstr "Что это такое?"
 
-
-#: .\templates\main_app\business_soft_detail.html:43
-msgid "Watch a mini tutorial for Dental CRM:"
+#: .\templates\main_app\business_soft_detail.html:109
+#, fuzzy, python-format
+#| msgid "Watch a mini tutorial for Dental CRM:"
+msgid "Watch a mini tutorial for %(soft.name)s:"
 msgstr "Посмотрите мини-видео инструкцию по использованию Dental CRM:"
 
-#: .\templates\main_app\business_soft_detail.html:45
+#: .\templates\main_app\business_soft_detail.html:111
 msgid "Watch on YouTube"
 msgstr "Смотреть на YouTube"
 
-
-#: .\templates\main_app\business_soft_detail.html:51
-#: .\templates\main_app\free_soft_detail.html:41
+#: .\templates\main_app\business_soft_detail.html:118
+#: .\templates\main_app\free_soft_detail.html:106
 #: .\templates\main_app\test_useful.html:24
 #: .\templates\main_app\useful_soft_detail.html:41
 msgid "Version"
 msgstr "Версия"
 
-#: .\templates\main_app\business_soft_detail.html:55
-#: .\templates\main_app\free_soft_detail.html:45
+#: .\templates\main_app\business_soft_detail.html:122
+#: .\templates\main_app\free_soft_detail.html:110
 #: .\templates\main_app\test_useful.html:28
 #: .\templates\main_app\useful_soft_detail.html:45
 msgid "Author"
 msgstr "Автор"
 
-#: .\templates\main_app\business_soft_detail.html:63
-#: .\templates\main_app\free_soft_detail.html:53
+#: .\templates\main_app\business_soft_detail.html:130
+#: .\templates\main_app\free_soft_detail.html:118
 #: .\templates\main_app\useful_soft_detail.html:53
 msgid "Download installer(RU)"
 msgstr "Загрузить установщик(RU)"
 
-#: .\templates\main_app\business_soft_detail.html:67
-#: .\templates\main_app\free_soft_detail.html:57
+#: .\templates\main_app\business_soft_detail.html:134
+#: .\templates\main_app\free_soft_detail.html:122
 #: .\templates\main_app\useful_soft_detail.html:57
 msgid "Download installer(EN)"
 msgstr "Загрузить установщик(EN)"
@@ -410,13 +541,27 @@ msgstr ""
 "будут вам полезны в работе или повседневной жизни.\n"
 "    "
 
-#: .\templates\main_app\index.html:5
+#: .\templates\main_app\index.html:5 .\templates\main_app\index.html:33
 msgid "Portfolio website of web developer Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
 #: .\templates\main_app\index.html:6
+#, fuzzy
+#| msgid "Portfolio of Liubov Kovaleva"
+msgid "Portfolio of Liubov Kovaleva: Django developer. Projects:"
+msgstr "Портфолио Любови Ковалёвой"
+
+#: .\templates\main_app\index.html:6
+msgid "Technologies:"
+msgstr "Технологии:"
+
+#: .\templates\main_app\index.html:6
+#, fuzzy
+#| msgid ""
+#| "Main page of Liubov Kovaleva’s web developer portfolio. Python, Django, "
+#| "projects, and useful software."
 msgid ""
-"Main page of Liubov Kovaleva’s web developer portfolio. Python, Django, "
+"Main page of Liubov Kovaleva's web developer portfolio. Python, Django, "
 "projects, and useful software."
 msgstr ""
 "Вход в личный кабинет на сайте-портфолио Любови Ковалёвой. Проекты на "
@@ -434,19 +579,25 @@ msgstr ""
 "Веб-разработка на Django. Проекты, полезные утилиты и фриланс-услуги от "
 "Любови Ковалёвой."
 
-#: .\templates\main_app\index.html:22
+#: .\templates\main_app\index.html:24
+msgid ""
+"Python & Django web developer. Creating modern web applications with "
+"authentication, chat, admin panels, and APIs."
+msgstr "Веб-разработчик на Python и Django. Создаю современные веб-приложения с авторизацией, чатом, админ-панелями и API."
+
+#: .\templates\main_app\index.html:55
 msgid "Hello and welcome!"
 msgstr "Приветствую Вас!"
 
-#: .\templates\main_app\index.html:26
+#: .\templates\main_app\index.html:59
 msgid "Hi! I'm Liubov, a Python & Django web developer "
 msgstr "Меня зовут Любовь, я веб-разработчик на Python"
 
-#: .\templates\main_app\index.html:30
+#: .\templates\main_app\index.html:63
 msgid "My tech stack"
-msgstr ""
+msgstr "Мой стек технологий"
 
-#: .\templates\main_app\index.html:54
+#: .\templates\main_app\index.html:87
 #, python-format
 msgid ""
 "\n"
@@ -465,37 +616,37 @@ msgstr ""
 "Я совмещаю чистый код, надёжную архитектуру и продуманный дизайн "
 "интерфейса.\n"
 
-#: .\templates\main_app\index.html:62
+#: .\templates\main_app\index.html:95
 msgid "What I do"
 msgstr "Что умею делать?"
 
-#: .\templates\main_app\index.html:64
+#: .\templates\main_app\index.html:97
 msgid "Develop websites and web applications with Django"
 msgstr "Разрабатывать веб-сайты и веб-приложения на Django"
 
-#: .\templates\main_app\index.html:65
+#: .\templates\main_app\index.html:98
 msgid "Set up Docker environments and deploy projects to servers"
 msgstr "Настраивать среды Docker и развёртывать проекты на серверах"
 
-#: .\templates\main_app\index.html:66
+#: .\templates\main_app\index.html:99
 msgid "Build real-time chats and notifications using Django Channels and Redis"
 msgstr ""
 "Создавать чаты и уведомления в реальном времени с использованием Django "
 "Channels и Redis"
 
-#: .\templates\main_app\index.html:67
+#: .\templates\main_app\index.html:100
 msgid "Write AI-powered Telegram bots and API-integrated assistants"
 msgstr "Разрабатывать Telegram-ботов с ИИ и ассистентов с интеграцией API"
 
-#: .\templates\main_app\index.html:68
+#: .\templates\main_app\index.html:101
 msgid "Add multilingual support, SEO, and responsive interfaces"
 msgstr "Добавлять поддержку нескольких языков, SEO и адаптивный интерфейс"
 
-#: .\templates\main_app\index.html:71
+#: .\templates\main_app\index.html:104
 msgid "About this site"
 msgstr "О сайте"
 
-#: .\templates\main_app\index.html:72
+#: .\templates\main_app\index.html:105
 msgid ""
 "This website is my personal project. It’s deployed with Docker Compose, "
 "supports two languages, and includes a dark mode."
@@ -503,7 +654,7 @@ msgstr ""
 "Этот сайт — мой личный проект. Он развёрнут с помощью Docker Compose, "
 "поддерживает два языка и имеет тёмную тему."
 
-#: .\templates\main_app\index.html:73
+#: .\templates\main_app\index.html:106
 msgid ""
 "The chat is built with Django Channels and connected to a Telegram bot that "
 "sends real-time notifications about new messages."
@@ -511,11 +662,11 @@ msgstr ""
 "Чат построен с использованием Django Channels и подключён к Telegram-боту, "
 "который отправляет уведомления о новых сообщениях в реальном времени."
 
-#: .\templates\main_app\index.html:75
+#: .\templates\main_app\index.html:108
 msgid "Free soft and projects"
 msgstr "Бесплатный софт и проекты"
 
-#: .\templates\main_app\index.html:76
+#: .\templates\main_app\index.html:109
 msgid ""
 "Visit the 'Projects' and 'Useful software' sections — you’ll find "
 "interesting things there: an AI assistant bot, Tkinter desktop applications, "
@@ -526,11 +677,11 @@ msgstr ""
 "приложениями. Их можно бесплатно скачать — прямо с сайта или через GitHub, "
 "без регистрации."
 
-#: .\templates\main_app\index.html:78
+#: .\templates\main_app\index.html:111
 msgid "Collaboration"
 msgstr "Сотрудничество"
 
-#: .\templates\main_app\index.html:79
+#: .\templates\main_app\index.html:112
 msgid ""
 "\n"
 "I'm open to new projects and collaborations.\n"
@@ -543,7 +694,7 @@ msgstr ""
 "Вы можете написать мне через чат на сайте, по электронной почте или в "
 "Telegram.\n"
 
-#: .\templates\main_app\index.html:85
+#: .\templates\main_app\index.html:118
 msgid ""
 "This website is an illustrative example of my work and creative approach. "
 "Here’s what’s “under the hood”:"
@@ -551,16 +702,16 @@ msgstr ""
 "Этот сайт — самый наглядный пример моей работы и творческого подхода. Вот "
 "что у него «под капотом»:"
 
-#: .\templates\main_app\index.html:88
+#: .\templates\main_app\index.html:121
 msgid "The site is deployed using Docker Compose on a cloud server"
 msgstr "Сайт развёрнут с использованием Docker Compose на облачном сервере"
 
-#: .\templates\main_app\index.html:89
+#: .\templates\main_app\index.html:122
 msgid "It supports two languages — I use django-modeltranslation for that"
 msgstr ""
 "Он поддерживает два языка — я использую для этого django-modeltranslation"
 
-#: .\templates\main_app\index.html:90
+#: .\templates\main_app\index.html:123
 msgid ""
 "You’ll find a day/night switch in the top right corner. If the white-and-"
 "pink design feels a bit too sweet for your taste, you can switch to the more "
@@ -572,7 +723,7 @@ msgstr ""
 "там розовые акценты остались — просто сейчас этот цвет откликается моей душе "
 "художника. 😉🩰"
 
-#: .\templates\main_app\index.html:91
+#: .\templates\main_app\index.html:124
 msgid ""
 "A simple User registration is implemented — you’ll need it if you want to "
 "send me a message via the chat (in the “Contacts” section)"
@@ -580,7 +731,7 @@ msgstr ""
 "Реализована несложная регистрация пользователей — она понадобится, если вы "
 "захотите написать мне сообщение в чате (в разделе «Контакты»)"
 
-#: .\templates\main_app\index.html:92
+#: .\templates\main_app\index.html:125
 msgid ""
 "The chat itself is built using Django Channels, Redis, and Daphne. I "
 "replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it "
@@ -590,7 +741,7 @@ msgstr ""
 "заменила Gunicorn на Daphne, потому что WebSocket не работает с WSGI — ему "
 "нужен ASGI"
 
-#: .\templates\main_app\index.html:93
+#: .\templates\main_app\index.html:126
 msgid ""
 "There is also a Telegram bot seamlessly integrated with the Django Channels "
 "backend, leveraging the Telegram Bot API to send real-time alerts about new "
@@ -601,7 +752,7 @@ msgstr ""
 "реальном времени о новых сообщениях пользователей, чтобы я всегда была в "
 "курсе."
 
-#: .\templates\main_app\index.html:94
+#: .\templates\main_app\index.html:127
 msgid ""
 "On other pages, you can explore my projects and helpful apps. They’re "
 "available for free download — either directly or via GitHub, no registration "
@@ -611,25 +762,25 @@ msgstr ""
 "приложениями. Их можно бесплатно скачать — прямо с сайта или через GitHub, "
 "без регистрации."
 
-#: .\templates\main_app\index.html:97
+#: .\templates\main_app\index.html:130
 msgid "Additionally"
 msgstr "Дополнительно:"
 
-#: .\templates\main_app\index.html:99
+#: .\templates\main_app\index.html:132
 msgid "I use meta tags for SEO"
 msgstr "Я использую мета-теги для SEO"
 
-#: .\templates\main_app\index.html:100
+#: .\templates\main_app\index.html:133
 msgid "I work with Cloudinary (media) and WhiteNoise (static files)"
 msgstr "Я работаю с Cloudinary (медиафайлы) и WhiteNoise (статические файлы)"
 
-#: .\templates\main_app\index.html:101
+#: .\templates\main_app\index.html:134
 msgid "I use JavaScript when necessary — mainly for interface interactivity"
 msgstr ""
 "Я использую JavaScript, когда это необходимо — в основном для "
 "интерактивности интерфейса"
 
-#: .\templates\main_app\index.html:102
+#: .\templates\main_app\index.html:135
 msgid ""
 "I also write Bash scripts for automation and know how to work with API "
 "integrations"
@@ -637,7 +788,7 @@ msgstr ""
 "Я также пишу Bash-скрипты для автоматизации и умею работать с API-"
 "интеграциями."
 
-#: .\templates\main_app\index.html:103
+#: .\templates\main_app\index.html:136
 msgid ""
 "I have experience integrating Google Search API for enhanced search and data "
 "retrieval capabilities"
@@ -645,7 +796,7 @@ msgstr ""
 "Имею опыт интеграции Google Search API для расширения возможностей поиска и "
 "извлечения данных."
 
-#: .\templates\main_app\index.html:107
+#: .\templates\main_app\index.html:140
 msgid ""
 "\n"
 "      Even if you're just browsing, I sincerely appreciate your visit — and "
@@ -658,23 +809,23 @@ msgstr ""
 "будет очень приятно, если вы взглянете на вышеупомянутые проекты:\n"
 "  "
 
-#: .\templates\main_app\index.html:110
+#: .\templates\main_app\index.html:143
 msgid "my projects"
 msgstr "мои проекты"
 
-#: .\templates\main_app\index.html:111
+#: .\templates\main_app\index.html:144
 msgid "or check out some"
 msgstr "или посмотрите"
 
-#: .\templates\main_app\index.html:112
+#: .\templates\main_app\index.html:145
 msgid "free software"
 msgstr "бесплатный софт"
 
-#: .\templates\main_app\index.html:113
+#: .\templates\main_app\index.html:146
 msgid "— simple desktop applications built with Tkinter."
 msgstr "— десктопные приложения, созданные с помощью Tkinter."
 
-#: .\templates\main_app\index.html:116
+#: .\templates\main_app\index.html:149
 msgid ""
 "I'm open to communication and collaboration — looking forward to connecting "
 "with you!"
@@ -696,15 +847,43 @@ msgstr ""
 "хорошо демонстрируют мои навыки и подход к разработке.\n"
 "    "
 
-#: .\templates\main_app\project_detail.html:39
+#: .\templates\main_app\order_request.html:4
+msgid "Order Request"
+msgstr "Запрос на заказ"
+
+#: .\templates\main_app\order_request.html:17
+msgid "Place an order"
+msgstr "Сделать заказ"
+
+#: .\templates\main_app\order_request.html:20
+msgid ""
+"Fill out the form below, and I will contact you soon to discuss the details "
+"of your order."
+msgstr "Заполните форму ниже, и я свяжусь с вами в ближайшее время для уточнения деталей заказа."
+
+#: .\templates\main_app\order_request.html:88
+msgid "Submit order"
+msgstr "Отправить заказ"
+
+#: .\templates\main_app\project_detail.html:6
+#, fuzzy
+#| msgid "My Projects"
+msgid "Project"
+msgstr "Мои проекты"
+
+#: .\templates\main_app\project_detail.html:9
+msgid "Portfolio"
+msgstr ""
+
+#: .\templates\main_app\project_detail.html:107
 msgid "Download DEMO(RU)"
 msgstr "Загрузить ДЕМО(RU)"
 
-#: .\templates\main_app\project_detail.html:44
+#: .\templates\main_app\project_detail.html:112
 msgid "Download DEMO(EN)"
 msgstr "Загрузить ДЕМО(EN)"
 
-#: .\templates\main_app\project_detail.html:50
+#: .\templates\main_app\project_detail.html:118
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -756,11 +935,6 @@ msgstr "Шаблон текста"
 
 #~ msgid "Мои услуги"
 #~ msgstr "Мои услуги"
-
-#, fuzzy
-#~| msgid "My Projects"
-#~ msgid "Projects"
-#~ msgstr "Мои проекты"
 
 #~ msgid ""
 #~ "\n"
