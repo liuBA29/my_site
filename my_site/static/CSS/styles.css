@@ -126,6 +126,34 @@ p {
   font-weight: 400;
 }
 
+/* Центральная часть (ссылка на заказ) */
+.center-controls {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.order-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: var(--pink-light-pink);
+  color: #FFB6C1; /* fallback для iOS */
+  text-decoration: none;
+  border: 1px solid var(--pink-light-pink);
+  border: 1px solid #FFB6C1; /* fallback для iOS */
+  border-radius: 6px;
+  padding: 4px 12px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.order-link:hover {
+  opacity: 0.8;
+  background-color: rgba(255, 182, 193, 0.1);
+}
+
 /* Правая часть (тоггл + языки) */
 .right-controls {
   display: flex;
@@ -145,6 +173,16 @@ p {
 
   .right-controls {
     gap: 8px;
+  }
+
+  .order-link {
+    font-size: 0.8em;
+    padding: 3px 8px;
+  }
+
+  .center-controls {
+    flex: 0 1 auto;
+    margin: 0 8px;
   }
 }
 
@@ -734,6 +772,17 @@ footer {
 /* Сохраняем розовый цвет для toggle в темной теме */
 .dark-theme .toggle__input:checked ~ .toggle__fill {
     background: var(--pink-light-pink) !important;
+}
+
+/* Стили для ссылки заказа в темной теме */
+.dark-theme .order-link {
+    color: var(--pink-light-pink) !important;
+    border-color: var(--pink-light-pink) !important;
+}
+
+.dark-theme .order-link:hover {
+    background-color: rgba(255, 182, 193, 0.15);
+    opacity: 0.9;
 }
 
 .light-theme main.container .simple-link {

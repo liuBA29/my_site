@@ -115,6 +115,40 @@ p {
   color: #1a1a1a; /* темно-серый почти черный */
 }
 
+/* Центральная часть (ссылка на заказ) */
+.center-controls {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.order-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #1a1a1a; /* темно-серый почти черный */
+  text-decoration: none;
+  border: 1px solid #ffffff; /* белая обводка */
+  border-radius: 6px;
+  padding: 4px 12px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.order-link:hover {
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 .right-controls {
   display: -webkit-box; /* iOS Safari fallback для старых версий */
   display: -webkit-flex; /* iOS Safari fallback */
@@ -759,6 +793,17 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 .dark-theme h1,
 .dark-theme h2 {
   color: #FF69B4; /* ярко-розовый */
+}
+
+/* Ссылка заказа в темной теме */
+.dark-theme .order-link {
+  color: #FFB6C1 !important; /* светло-розовый */
+  border-color: #FFB6C1 !important;
+}
+
+.dark-theme .order-link:hover {
+  background-color: rgba(255, 182, 193, 0.15);
+  opacity: 0.9;
 }
 
 /* Блок авторизации в темной теме */

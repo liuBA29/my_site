@@ -1,0 +1,1032 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# РљР РђРўРљРћР• РћРџРРЎРђРќРР•.
+# РђРІС‚РѕСЂСЃРєРёРµ РїСЂР°РІР° (C) Р“РћР” РџР РђР’РћРћР‘Р›РђР”РђРўР•Р›РЇ РџРђРљР•РўРђ
+# Р­С‚РѕС‚ С„Р°Р№Р» СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅСЏРµС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… С‚РѕР№ Р¶Рµ Р»РёС†РµРЅР·РёРё, С‡С‚Рѕ Рё РїР°РєРµС‚ PACKAGE.
+# РџР•Р Р’Р«Р™ РђР’РўРћР  <EMAIL@ADDRESS>, Р“РћР”.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-18 23:22+0300\n"
+"PO-Revision-Date: 2025-07-11 13:00+0300\n"
+"Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\accounts\forms.py:16 .\templates\accounts\register.html:24
+msgid "Username"
+msgstr "РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ"
+
+#: .\accounts\forms.py:18
+msgid "Please enter a username"
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ"
+
+#: .\accounts\forms.py:20
+msgid "Your username рџ’«"
+msgstr "РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ"
+
+#: .\accounts\forms.py:23 .\main_app\forms.py:44
+#: .\templates\accounts\register.html:31
+msgid "Email"
+msgstr "Email"
+
+#: .\accounts\forms.py:25
+msgid "Please enter your email address"
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ Р°РґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹"
+
+#: .\accounts\forms.py:26
+msgid "Enter a valid email address"
+msgstr "Р’РІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ email"
+
+#: .\accounts\forms.py:29
+msgid "Your email вњ‰"
+msgstr "Р’Р°С€ Email"
+
+#: .\accounts\forms.py:33 .\accounts\forms.py:34
+#: .\templates\accounts\register.html:38
+msgid "Password"
+msgstr "РџР°СЂРѕР»СЊ"
+
+#: .\accounts\forms.py:37 .\templates\accounts\register.html:45
+msgid "Confirm password"
+msgstr "РџРѕРґС‚РІРµСЂРґРёС‚Рµ РїР°СЂРѕР»СЊ"
+
+#: .\accounts\forms.py:38
+msgid "Repeat password"
+msgstr "РџРѕРІС‚РѕСЂРёС‚Рµ РїР°СЂРѕР»СЊ"
+
+#: .\accounts\forms.py:72 .\main_app\forms.py:100
+#: .\templates\accounts\register.html:114
+#: .\templates\main_app\order_request.html:208
+msgid "Please complete the verification."
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕР№РґРёС‚Рµ РїСЂРѕРІРµСЂРєСѓ."
+
+#: .\accounts\forms.py:105 .\main_app\forms.py:130
+msgid "Verification failed. Please try again."
+msgstr "РџСЂРѕРІРµСЂРєР° РЅРµ РїСЂРѕС€Р»Р°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°."
+
+#: .\accounts\views.py:75
+msgid "Please complete the verification to prove you are not a robot."
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕР№РґРёС‚Рµ РїСЂРѕРІРµСЂРєСѓ, С‡С‚РѕР±С‹ РїРѕРґС‚РІРµСЂРґРёС‚СЊ, С‡С‚Рѕ РІС‹ РЅРµ СЂРѕР±РѕС‚."
+
+#: .\chat\consumers.py:42
+#, python-format
+msgid "рџ’¬ User %(username)s has joined the chat!"
+msgstr "рџ’¬ %(username)s СѓР¶Рµ РІ С‡Р°С‚Рµ!"
+
+#: .\chat\consumers.py:48
+#, python-format
+msgid "You have joined room: %(room)s"
+msgstr "Р’С‹ РїСЂРёСЃРѕРµРґРёРЅРёР»РёСЃСЊ Рє РєРѕРјРЅР°С‚Рµ: %(room)s"
+
+#: .\chat\consumers.py:53
+msgid "You have joined the chat"
+msgstr "Р’С‹ РїСЂРёСЃРѕРµРґРёРЅРёР»РёСЃСЊ Рє С‡Р°С‚Сѓ"
+
+#: .\chat\consumers.py:140
+#, python-format
+msgid "%(username)s has joined the chat"
+msgstr "%(username)s СѓР¶Рµ РІ С‡Р°С‚Рµ"
+
+#: .\main_app\forms.py:17
+msgid "Select service type..."
+msgstr "Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї СѓСЃР»СѓРіРёвЂ¦"
+
+#: .\main_app\forms.py:18
+msgid "Website development"
+msgstr "Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ"
+
+#: .\main_app\forms.py:19
+msgid "Software development"
+msgstr "Р Р°Р·СЂР°Р±РѕС‚РєР° РїСЂРѕРіСЂР°РјРјРЅРѕРіРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЏ"
+
+#: .\main_app\forms.py:20
+msgid "Existing project modification"
+msgstr "РњРѕРґРёС„РёРєР°С†РёСЏ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РїСЂРѕРµРєС‚Р°"
+
+#: .\main_app\forms.py:21
+msgid "Technical support"
+msgstr "РўРµС…РЅРёС‡РµСЃРєР°СЏ РїРѕРґРґРµСЂР¶РєР°"
+
+#: .\main_app\forms.py:22
+msgid "Consultation"
+msgstr "Консультация"
+
+#: .\main_app\forms.py:23
+msgid "Other"
+msgstr "Р”СЂСѓРіРѕРµ"
+
+#: .\main_app\forms.py:28
+msgid "Service type"
+msgstr "РўРёРї СѓСЃР»СѓРіРё"
+
+#: .\main_app\forms.py:35
+msgid "Your name"
+msgstr "Р’Р°С€Рµ РёРјСЏ"
+
+#: .\main_app\forms.py:39
+msgid "John Doe"
+msgstr "РРІР°РЅ РРІР°РЅРѕРІ"
+
+#: .\main_app\forms.py:54
+msgid "Phone"
+msgstr "РўРµР»РµС„РѕРЅ"
+
+#: .\main_app\forms.py:63
+msgid "Task description"
+msgstr "РћРїРёСЃР°РЅРёРµ Р·Р°РґР°С‡Рё"
+
+#: .\main_app\forms.py:68
+msgid "Please describe in detail what you need..."
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ, С‡С‚Рѕ РІР°Рј РЅСѓР¶РЅРѕ..."
+
+#: .\main_app\views.py:119
+#, python-format
+msgid ""
+"You can submit no more than %(max)d orders per day from one IP address. "
+"Please try again tomorrow."
+msgstr "Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РїСЂР°РІР»СЏС‚СЊ РЅРµ Р±РѕР»РµРµ %(max)d Р·Р°РєР°Р·РѕРІ РІ РґРµРЅСЊ СЃ РѕРґРЅРѕРіРѕ IP-Р°РґСЂРµСЃР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ Р·Р°РІС‚СЂР°."
+
+#: .\main_app\views.py:161
+#, python-format
+msgid ""
+"Thank you, %(name)s! Your order has been received. We will contact you soon."
+msgstr "РЎРїР°СЃРёР±Рѕ, %(name)s! Р’Р°С€ Р·Р°РєР°Р· РїСЂРёРЅСЏС‚. РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ."
+
+#: .\main_app\views.py:165
+msgid "Please correct the errors in the form."
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РёСЃРїСЂР°РІСЊС‚Рµ РѕС€РёР±РєРё РІ С„РѕСЂРјРµ."
+
+#: .\my_site\settings.py:167
+msgid "Russian"
+msgstr "Р СѓСЃСЃРєРёР№"
+
+#: .\my_site\settings.py:168
+msgid "English"
+msgstr "English"
+
+#: .\notes_app\models.py:7
+msgid "title"
+msgstr "Р·Р°РіРѕР»РѕРІРѕРє"
+
+#: .\notes_app\models.py:8
+msgid "slug"
+msgstr "СЃР»Р°Рі"
+
+#: .\notes_app\models.py:9
+msgid "text"
+msgstr "С‚РµРєСЃС‚"
+
+#: .\templates\accounts\login.html:6
+msgid "Login | Portfolio website of web developer Liubov Kovaleva"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР° Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\accounts\login.html:8
+msgid ""
+"Login page of the portfolio website of web developer Liubov Kovaleva. "
+"Django, Python, freelance, useful tools."
+msgstr ""
+"РЎС‚СЂР°РЅРёС†Р° РІС…РѕРґР° РЅР° СЃР°Р№С‚-РїРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёС†С‹ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№. Django, "
+"Python, С„СЂРёР»Р°РЅСЃ, РїРѕР»РµР·РЅС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹."
+
+#: .\templates\accounts\login.html:10
+msgid "Login | Liubov Kovaleva Portfolio"
+msgstr "Р’С…РѕРґ | РџРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\accounts\login.html:12
+msgid ""
+"Login to the personal account of Liubov KovalevaвЂ™s portfolio site. Django "
+"projects, utilities, and contact."
+msgstr ""
+"Р’С…РѕРґ РІ Р»РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚ РЅР° СЃР°Р№С‚Рµ-РїРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№. РџСЂРѕРµРєС‚С‹ РЅР° "
+"Django, СѓС‚РёР»РёС‚С‹ Рё РєРѕРЅС‚Р°РєС‚С‹."
+
+#: .\templates\accounts\login.html:19 .\templates\accounts\login.html:26
+#: .\templates\accounts\register.html:74 .\templates\base.html:183
+msgid "Login"
+msgstr "Р’РѕР№С‚Рё"
+
+#: .\templates\accounts\login.html:29
+msgid "Don't have an account?"
+msgstr "РќРµС‚ Р°РєРєР°СѓРЅС‚Р°?"
+
+#: .\templates\accounts\login.html:29 .\templates\accounts\register.html:18
+#: .\templates\accounts\register.html:70 .\templates\base.html:182
+msgid "Register"
+msgstr "Р РµРіРёСЃС‚СЂР°С†РёСЏ"
+
+#: .\templates\accounts\register.html:7
+msgid "Register | Portfolio website of web developer Liubov Kovaleva"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР° Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\accounts\register.html:9
+msgid ""
+"Registration page for the portfolio website of web developer Liubov "
+"Kovaleva. Django, Python, tools, freelance projects."
+msgstr ""
+"РЎС‚СЂР°РЅРёС†Р° СЂРµРіРёСЃС‚СЂР°С†РёРё РЅР° СЃР°Р№С‚-РїРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёС†С‹ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№. "
+"Django, Python, С„СЂРёР»Р°РЅСЃ, РїРѕР»РµР·РЅС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹."
+
+#: .\templates\accounts\register.html:11
+msgid "Register | Liubov Kovaleva Portfolio"
+msgstr "Р’С…РѕРґ | РџРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\accounts\register.html:13
+msgid ""
+"Create an account to use tools and access features on Liubov KovalevaвЂ™s "
+"developer portfolio site."
+msgstr ""
+"РЎРѕР·РґР°Р№С‚Рµ Р°РєРєР°СѓРЅС‚, С‡С‚РѕР±С‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ Рё С„СѓРЅРєС†РёРё РЅР° СЃР°Р№С‚Рµ-"
+"РїРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№."
+
+#: .\templates\accounts\register.html:53
+#: .\templates\main_app\order_request.html:74
+msgid "Verification"
+msgstr "РџСЂРѕРІРµСЂРєР°"
+
+#: .\templates\accounts\register.html:59
+#: .\templates\main_app\order_request.html:80
+msgid "Please complete the verification above"
+msgstr "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕР№РґРёС‚Рµ СѓРєР°Р·Р°РЅРЅСѓСЋ РІС‹С€Рµ РїСЂРѕРІРµСЂРєСѓ"
+
+#: .\templates\accounts\register.html:62
+msgid "Warning"
+msgstr "Р’РЅРёРјР°РЅРёРµ"
+
+#: .\templates\accounts\register.html:62
+msgid ""
+"Cloudflare Turnstile is not configured. Registration is not protected from "
+"bots."
+msgstr "Cloudflare Turnstile РЅРµ РЅР°СЃС‚СЂРѕРµРЅ. Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРµ Р·Р°С‰РёС‰РµРЅР° РѕС‚ Р±РѕС‚РѕРІ."
+
+#: .\templates\accounts\register.html:73
+msgid "Already have an account?"
+msgstr "РЈР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚?"
+
+#: .\templates\base.html:11
+msgid "Portfolio website of Liubov Kovaleva"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР° Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\base.html:81
+msgid ""
+"Portfolio of web developer Liubov Kovaleva: projects, useful utilities, "
+"contact for collaboration."
+msgstr ""
+"РџРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёС†С‹ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№: РїСЂРѕРµРєС‚С‹, РїРѕР»РµР·РЅС‹Рµ СѓС‚РёР»РёС‚С‹, "
+"РєРѕРЅС‚Р°РєС‚С‹ РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°."
+
+#: .\templates\base.html:82
+msgid ""
+"web development, Python, Django, portfolio, freelancer, Liubov Kovaleva, "
+"website development"
+msgstr ""
+"РІРµР±-СЂР°Р·СЂР°Р±РѕС‚РєР°, Python, Django, РїРѕСЂС‚С„РѕР»РёРѕ, С„СЂРёР»Р°РЅСЃРµСЂ, Р›СЋР±РѕРІСЊ РљРѕРІР°Р»С‘РІР°, "
+"СЂР°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ"
+
+#: .\templates\base.html:90 .\templates\base.html:104
+msgid "Portfolio of Liubov Kovaleva"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\base.html:91 .\templates\base.html:105
+msgid "Web development, projects, task automation. Portfolio site of LiuBA29."
+msgstr "Р’РµР±-СЂР°Р·СЂР°Р±РѕС‚РєР°, РїСЂРѕРµРєС‚С‹, Р°РІС‚РѕРјР°С‚РёР·Р°С†РёСЏ Р·Р°РґР°С‡. РЎР°Р№С‚-РїРѕСЂС‚С„РѕР»РёРѕ LiuBA29."
+
+#: .\templates\base.html:95 .\templates\main_app\index.html:31
+#, fuzzy
+#| msgid "Login | Liubov Kovaleva Portfolio"
+msgid "Liubov Kovaleva Portfolio"
+msgstr "Р’С…РѕРґ | РџРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\base.html:179
+msgid "Hello"
+msgstr "РџСЂРёРІРµС‚"
+
+#: .\templates\base.html:180
+msgid "Logout"
+msgstr "Р’С‹Р№С‚Рё"
+
+#: .\templates\base.html:212 .\templates\main_app\free_soft.html:4
+#: .\templates\main_app\free_soft.html:10
+#: .\templates\main_app\free_soft_detail.html:5
+#: .\templates\main_app\free_soft_detail.html:7
+#: .\templates\main_app\free_soft_detail.html:52
+#: .\templates\main_app\free_soft_detail.html:73
+msgid "Free Software"
+msgstr "Р‘РµСЃРїР»Р°С‚РЅС‹Р№ СЃРѕС„С‚"
+
+#: .\templates\base.html:213 .\templates\main_app\my_projects.html:6
+#: .\templates\main_app\my_projects.html:12
+#: .\templates\main_app\project_detail.html:55
+#: .\templates\main_app\project_detail.html:76
+msgid "My Projects"
+msgstr "РњРѕРё РїСЂРѕРµРєС‚С‹"
+
+#: .\templates\base.html:214 .\templates\main_app\business_soft.html:4
+#: .\templates\main_app\business_soft.html:10
+#: .\templates\main_app\business_soft_detail.html:5
+#: .\templates\main_app\business_soft_detail.html:7
+#: .\templates\main_app\business_soft_detail.html:52
+#: .\templates\main_app\business_soft_detail.html:73
+msgid "Business Software"
+msgstr "РЎРѕС„С‚ РґР»СЏ Р±РёР·РЅРµСЃР°"
+
+#: .\templates\base.html:215 .\templates\main_app\contact.html:4
+msgid "Contacts"
+msgstr "РљРѕРЅС‚Р°РєС‚С‹"
+
+#: .\templates\base.html:240
+msgid "Thank you for visiting my site"
+msgstr "Р‘Р»Р°РіРѕРґР°СЂСЋ, С‡С‚Рѕ РїРѕСЃРµС‚РёР»Рё РјРѕР№ СЃР°Р№С‚"
+
+#: .\templates\base.html:314
+msgid "This site uses cookies to improve your experience"
+msgstr "Р§С‚РѕР±С‹ СЃРґРµР»Р°С‚СЊ СЂР°Р±РѕС‚Сѓ СѓРґРѕР±РЅРµРµ СЃР°Р№С‚ РёСЃРїРѕР»СЊР·СѓРµС‚ cookies"
+
+#: .\templates\base.html:326
+msgid "Accept"
+msgstr "РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ"
+
+#: .\templates\chat\_lobby_partial.html:11 .\templates\chat\lobby.html:145
+msgid "Room name:"
+msgstr "РќР°Р·РІР°РЅРёРµ РєРѕРјРЅР°С‚С‹:"
+
+#: .\templates\chat\_lobby_partial.html:21 .\templates\chat\lobby.html:155
+msgid "To join the chat, please"
+msgstr "Р§С‚РѕР±С‹ РїСЂРёСЃРѕРµРґРёРЅРёС‚СЊСЃСЏ Рє С‡Р°С‚Сѓ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°,"
+
+#: .\templates\chat\_lobby_partial.html:21 .\templates\chat\lobby.html:155
+msgid "log in"
+msgstr "РІРѕР№РґРёС‚Рµ"
+
+#: .\templates\chat\_lobby_partial.html:21 .\templates\chat\lobby.html:155
+msgid "or"
+msgstr "РёР»Рё"
+
+#: .\templates\chat\_lobby_partial.html:21 .\templates\chat\lobby.html:155
+msgid "sign up"
+msgstr "Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ"
+
+#: .\templates\chat\_lobby_partial.html:26 .\templates\chat\lobby.html:160
+msgid "Join Chat"
+msgstr "Р’РѕР№С‚Рё РІ С‡Р°С‚"
+
+#: .\templates\chat\_lobby_partial.html:32 .\templates\chat\lobby.html:165
+msgid "You are in chat,"
+msgstr "Р’С‹ РІ С‡Р°С‚Рµ"
+
+#: .\templates\chat\_lobby_partial.html:41 .\templates\chat\lobby.html:174
+msgid "Enter message"
+msgstr "Р’РµСЃС‚Рё СЃРѕРѕР±С‰РµРЅРёРµ"
+
+#: .\templates\chat\_lobby_partial.html:42 .\templates\chat\lobby.html:175
+msgid "Send"
+msgstr "РћС‚РїСЂР°РІРёС‚СЊ"
+
+#: .\templates\chat\_lobby_partial.html:238 .\templates\chat\lobby.html:188
+msgid "You are a new user. Please? enter your name."
+msgstr "Р’С‹ РЅРѕРІС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ СЃРІРѕС‘ РёРјСЏ."
+
+#: .\templates\chat\_lobby_partial.html:299
+#: .\templates\chat\_lobby_partial.html:309 .\templates\chat\lobby.html:231
+#: .\templates\chat\lobby.html:238
+msgid "Server"
+msgstr "РЎРµСЂРІРµСЂ"
+
+#: .\templates\chat\lobby.html:8
+msgid "Chat Lobby"
+msgstr "Р§Р°С‚-Р»РѕР±Р±Рё"
+
+#: .\templates\chat\lobby.html:166
+msgid "Leave Chat"
+msgstr "Р’С‹Р№С‚Рё РёР· С‡Р°С‚Р°"
+
+#: .\templates\main_app\business_soft.html:14
+msgid ""
+"\n"
+"        Here you can find business software solutions I've developed for "
+"companies and entrepreneurs.<br>\n"
+"        These tools are designed to automate business processes, improve "
+"efficiency, and solve specific business tasks.<br>\n"
+"        Ready-to-use solutions for your business needs.\n"
+"    "
+msgstr ""
+"\n"
+"        Р—РґРµСЃСЊ РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ РїСЂРѕРіСЂР°РјРјРЅС‹Рµ СЂРµС€РµРЅРёСЏ РґР»СЏ Р±РёР·РЅРµСЃР°, РєРѕС‚РѕСЂС‹Рµ СЏ "
+"СЂР°Р·СЂР°Р±РѕС‚Р°Р»Р°.<br>\n"
+"        Р­С‚Рё РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅС‹ РґР»СЏ Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё Р±РёР·РЅРµСЃ-РїСЂРѕС†РµСЃСЃРѕРІ, "
+"РїРѕРІС‹С€РµРЅРёСЏ СЌС„С„РµРєС‚РёРІРЅРѕСЃС‚Рё Рё СЂРµС€РµРЅРёСЏ РєРѕРЅРєСЂРµС‚РЅС‹С… Р±РёР·РЅРµСЃ-Р·Р°РґР°С‡.<br>\n"
+"        Р“РѕС‚РѕРІС‹Рµ Рє РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ СЂРµС€РµРЅРёСЏ РґР»СЏ РІР°С€РµРіРѕ Р±РёР·РЅРµСЃР°.\n"
+"    "
+
+#: .\templates\main_app\business_soft.html:30
+#: .\templates\main_app\free_soft.html:28
+#: .\templates\main_app\my_projects.html:30
+#: .\templates\main_app\useful_soft.html:26
+msgid "No image available"
+msgstr "РР·РѕР±СЂР°Р¶РµРЅРёРµ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚"
+
+#: .\templates\main_app\business_soft_detail.html:5
+#: .\templates\main_app\free_soft_detail.html:5
+#: .\templates\main_app\project_detail.html:6
+msgid "by"
+msgstr "РѕС‚"
+
+#: .\templates\main_app\business_soft_detail.html:46
+#: .\templates\main_app\business_soft_detail.html:71
+#: .\templates\main_app\free_soft_detail.html:46
+#: .\templates\main_app\free_soft_detail.html:71
+#: .\templates\main_app\project_detail.html:49
+#: .\templates\main_app\project_detail.html:74
+msgid "Home"
+msgstr ""
+
+#: .\templates\main_app\business_soft_detail.html:80
+#: .\templates\main_app\free_soft_detail.html:80
+#: .\templates\main_app\project_detail.html:83
+#: .\templates\main_app\useful_soft_detail.html:15
+msgid "Back to list"
+msgstr "РќР°Р·Р°Рґ Рє СЃРїРёСЃРєСѓ"
+
+#: .\templates\main_app\business_soft_detail.html:92
+#: .\templates\main_app\free_soft_detail.html:92
+#: .\templates\main_app\project_detail.html:94
+#: .\templates\main_app\test_useful.html:16
+#: .\templates\main_app\useful_soft_detail.html:27
+msgid "No Image"
+msgstr "РР·РѕР±СЂР°Р¶РµРЅРёРµ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚"
+
+#: .\templates\main_app\business_soft_detail.html:98
+#: .\templates\main_app\free_soft_detail.html:98
+msgid "Welcome to"
+msgstr "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ"
+
+#: .\templates\main_app\business_soft_detail.html:99
+#: .\templates\main_app\free_soft_detail.html:99
+#: .\templates\main_app\useful_soft_detail.html:34
+msgid "What is it?"
+msgstr "Р§С‚Рѕ СЌС‚Рѕ С‚Р°РєРѕРµ?"
+
+#: .\templates\main_app\business_soft_detail.html:109
+#, fuzzy, python-format
+#| msgid "Watch a mini tutorial for Dental CRM:"
+msgid "Watch a mini tutorial for %(soft.name)s:"
+msgstr "РџРѕСЃРјРѕС‚СЂРёС‚Рµ РјРёРЅРё-РІРёРґРµРѕ РёРЅСЃС‚СЂСѓРєС†РёСЋ РїРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ Dental CRM:"
+
+#: .\templates\main_app\business_soft_detail.html:111
+msgid "Watch on YouTube"
+msgstr "РЎРјРѕС‚СЂРµС‚СЊ РЅР° YouTube"
+
+#: .\templates\main_app\business_soft_detail.html:118
+#: .\templates\main_app\free_soft_detail.html:106
+#: .\templates\main_app\test_useful.html:24
+#: .\templates\main_app\useful_soft_detail.html:41
+msgid "Version"
+msgstr "Р’РµСЂСЃРёСЏ"
+
+#: .\templates\main_app\business_soft_detail.html:122
+#: .\templates\main_app\free_soft_detail.html:110
+#: .\templates\main_app\test_useful.html:28
+#: .\templates\main_app\useful_soft_detail.html:45
+msgid "Author"
+msgstr "РђРІС‚РѕСЂ"
+
+#: .\templates\main_app\business_soft_detail.html:130
+#: .\templates\main_app\free_soft_detail.html:118
+#: .\templates\main_app\useful_soft_detail.html:53
+msgid "Download installer(RU)"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ СѓСЃС‚Р°РЅРѕРІС‰РёРє(RU)"
+
+#: .\templates\main_app\business_soft_detail.html:134
+#: .\templates\main_app\free_soft_detail.html:122
+#: .\templates\main_app\useful_soft_detail.html:57
+msgid "Download installer(EN)"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ СѓСЃС‚Р°РЅРѕРІС‰РёРє(EN)"
+
+#: .\templates\main_app\contact.html:19
+msgid "My contacts"
+msgstr "РљРѕРЅС‚Р°РєС‚С‹"
+
+#: .\templates\main_app\contact.html:24
+msgid "Chat-online"
+msgstr "РћРЅР»Р°Р№РЅ С‡Р°С‚"
+
+#: .\templates\main_app\contact.html:32
+msgid "Loading..."
+msgstr "Р—Р°РіСЂСѓР¶Р°РµС‚СЃСЏ..."
+
+#: .\templates\main_app\free_soft.html:14
+msgid ""
+"\n"
+"        Here you can find software I've developed that is fully completed "
+"and ready to use. <br>You can download and use it for free. <br>I hope these "
+"tools will be helpful in your daily tasks or projects.\n"
+"    "
+msgstr ""
+"\n"
+"        Р—РґРµСЃСЊ СЂР°Р·РјРµС‰РµРЅС‹ РЅР°РїРёСЃР°РЅРЅС‹Рµ РјРЅРѕСЋ РїСЂРѕРіСЂР°РјРјС‹, РєРѕС‚РѕСЂС‹Рµ Р·Р°РІРµСЂС€РµРЅС‹ Рё "
+"РіРѕС‚РѕРІС‹ Рє РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ. <br>Р’С‹ РјРѕР¶РµС‚Рµ СЃРєР°С‡Р°С‚СЊ РёС… Р±РµСЃРїР»Р°С‚РЅРѕ. <br>РќР°РґРµСЋСЃСЊ, РѕРЅРё "
+"Р±СѓРґСѓС‚ РІР°Рј РїРѕР»РµР·РЅС‹ РІ СЂР°Р±РѕС‚Рµ РёР»Рё РїРѕРІСЃРµРґРЅРµРІРЅРѕР№ Р¶РёР·РЅРё.\n"
+"    "
+
+#: .\templates\main_app\index.html:5 .\templates\main_app\index.html:33
+msgid "Portfolio website of web developer Liubov Kovaleva"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёРєР° Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\main_app\index.html:6
+#, fuzzy
+#| msgid "Portfolio of Liubov Kovaleva"
+msgid "Portfolio of Liubov Kovaleva: Django developer. Projects:"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\main_app\index.html:6
+msgid "Technologies:"
+msgstr "РўРµС…РЅРѕР»РѕРіРёРё:"
+
+#: .\templates\main_app\index.html:6
+#, fuzzy
+#| msgid ""
+#| "Main page of Liubov KovalevaвЂ™s web developer portfolio. Python, Django, "
+#| "projects, and useful software."
+msgid ""
+"Main page of Liubov Kovaleva's web developer portfolio. Python, Django, "
+"projects, and useful software."
+msgstr ""
+"Р’С…РѕРґ РІ Р»РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚ РЅР° СЃР°Р№С‚Рµ-РїРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№. РџСЂРѕРµРєС‚С‹ РЅР° "
+"Django, СѓС‚РёР»РёС‚С‹ Рё РєРѕРЅС‚Р°РєС‚С‹."
+
+#: .\templates\main_app\index.html:7
+msgid "Main | Portfolio of Liubov Kovaleva"
+msgstr "РџРѕСЂС‚С„РѕР»РёРѕ Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№"
+
+#: .\templates\main_app\index.html:8
+msgid ""
+"Django web development. Projects, useful utilities, and freelance services "
+"by Liubov Kovaleva."
+msgstr ""
+"Р’РµР±-СЂР°Р·СЂР°Р±РѕС‚РєР° РЅР° Django. РџСЂРѕРµРєС‚С‹, РїРѕР»РµР·РЅС‹Рµ СѓС‚РёР»РёС‚С‹ Рё С„СЂРёР»Р°РЅСЃ-СѓСЃР»СѓРіРё РѕС‚ "
+"Р›СЋР±РѕРІРё РљРѕРІР°Р»С‘РІРѕР№."
+
+#: .\templates\main_app\index.html:24
+msgid ""
+"Python & Django web developer. Creating modern web applications with "
+"authentication, chat, admin panels, and APIs."
+msgstr "Р’РµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёРє РЅР° Python Рё Django. РЎРѕР·РґР°СЋ СЃРѕРІСЂРµРјРµРЅРЅС‹Рµ РІРµР±-РїСЂРёР»РѕР¶РµРЅРёСЏ СЃ Р°РІС‚РѕСЂРёР·Р°С†РёРµР№, С‡Р°С‚РѕРј, Р°РґРјРёРЅ-РїР°РЅРµР»СЏРјРё Рё API."
+
+#: .\templates\main_app\index.html:55
+msgid "Hello and welcome!"
+msgstr "РџСЂРёРІРµС‚СЃС‚РІСѓСЋ Р’Р°СЃ!"
+
+#: .\templates\main_app\index.html:59
+msgid "Hi! I'm Liubov, a Python & Django web developer "
+msgstr "РњРµРЅСЏ Р·РѕРІСѓС‚ Р›СЋР±РѕРІСЊ, СЏ РІРµР±-СЂР°Р·СЂР°Р±РѕС‚С‡РёРє РЅР° Python"
+
+#: .\templates\main_app\index.html:63
+msgid "My tech stack"
+msgstr "РњРѕР№ СЃС‚РµРє С‚РµС…РЅРѕР»РѕРіРёР№"
+
+#: .\templates\main_app\index.html:87
+#, python-format
+msgid ""
+"\n"
+"I create modern web applications вЂ” with authentication, chat, admin panels, "
+"and APIs.\n"
+"I also develop business applications вЂ” for example, a <a class=\"simple-"
+"link\" href=\"%(business_url)s\">CRM system for a dental clinic</a>.\n"
+"I combine clean code, reliable architecture, and thoughtful user interface "
+"design.\n"
+msgstr ""
+"\n"
+"РЇ СЃРѕР·РґР°СЋ СЃРѕРІСЂРµРјРµРЅРЅС‹Рµ РІРµР±-РїСЂРёР»РѕР¶РµРЅРёСЏ вЂ” СЃ Р°РІС‚РѕСЂРёР·Р°С†РёРµР№, С‡Р°С‚РѕРј, Р°РґРјРёРЅ-РїР°РЅРµР»СЏРјРё "
+"Рё API.\n"
+"РЇ С‚Р°РєР¶Рµ СЂР°Р·СЂР°Р±Р°С‚С‹РІР°СЋ Р±РёР·РЅРµСЃ-РїСЂРёР»РѕР¶РµРЅРёСЏ вЂ” РЅР°РїСЂРёРјРµСЂ, <a class=\"simple-link\" "
+"href=\"%(business_url)s\">CRM-СЃРёСЃС‚РµРјСѓ РґР»СЏ СЃС‚РѕРјР°С‚РѕР»РѕРіРёРё</a>.\n"
+"РЇ СЃРѕРІРјРµС‰Р°СЋ С‡РёСЃС‚С‹Р№ РєРѕРґ, РЅР°РґС‘Р¶РЅСѓСЋ Р°СЂС…РёС‚РµРєС‚СѓСЂСѓ Рё РїСЂРѕРґСѓРјР°РЅРЅС‹Р№ РґРёР·Р°Р№РЅ "
+"РёРЅС‚РµСЂС„РµР№СЃР°.\n"
+
+#: .\templates\main_app\index.html:95
+msgid "What I do"
+msgstr "Р§С‚Рѕ СѓРјРµСЋ РґРµР»Р°С‚СЊ?"
+
+#: .\templates\main_app\index.html:97
+msgid "Develop websites and web applications with Django"
+msgstr "Р Р°Р·СЂР°Р±Р°С‚С‹РІР°С‚СЊ РІРµР±-СЃР°Р№С‚С‹ Рё РІРµР±-РїСЂРёР»РѕР¶РµРЅРёСЏ РЅР° Django"
+
+#: .\templates\main_app\index.html:98
+msgid "Set up Docker environments and deploy projects to servers"
+msgstr "РќР°СЃС‚СЂР°РёРІР°С‚СЊ СЃСЂРµРґС‹ Docker Рё СЂР°Р·РІС‘СЂС‚С‹РІР°С‚СЊ РїСЂРѕРµРєС‚С‹ РЅР° СЃРµСЂРІРµСЂР°С…"
+
+#: .\templates\main_app\index.html:99
+msgid "Build real-time chats and notifications using Django Channels and Redis"
+msgstr ""
+"РЎРѕР·РґР°РІР°С‚СЊ С‡Р°С‚С‹ Рё СѓРІРµРґРѕРјР»РµРЅРёСЏ РІ СЂРµР°Р»СЊРЅРѕРј РІСЂРµРјРµРЅРё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Django "
+"Channels Рё Redis"
+
+#: .\templates\main_app\index.html:100
+msgid "Write AI-powered Telegram bots and API-integrated assistants"
+msgstr "Р Р°Р·СЂР°Р±Р°С‚С‹РІР°С‚СЊ Telegram-Р±РѕС‚РѕРІ СЃ РР Рё Р°СЃСЃРёСЃС‚РµРЅС‚РѕРІ СЃ РёРЅС‚РµРіСЂР°С†РёРµР№ API"
+
+#: .\templates\main_app\index.html:101
+msgid "Add multilingual support, SEO, and responsive interfaces"
+msgstr "Р”РѕР±Р°РІР»СЏС‚СЊ РїРѕРґРґРµСЂР¶РєСѓ РЅРµСЃРєРѕР»СЊРєРёС… СЏР·С‹РєРѕРІ, SEO Рё Р°РґР°РїС‚РёРІРЅС‹Р№ РёРЅС‚РµСЂС„РµР№СЃ"
+
+#: .\templates\main_app\index.html:104
+msgid "About this site"
+msgstr "Рћ СЃР°Р№С‚Рµ"
+
+#: .\templates\main_app\index.html:105
+msgid ""
+"This website is my personal project. ItвЂ™s deployed with Docker Compose, "
+"supports two languages, and includes a dark mode."
+msgstr ""
+"Р­С‚РѕС‚ СЃР°Р№С‚ вЂ” РјРѕР№ Р»РёС‡РЅС‹Р№ РїСЂРѕРµРєС‚. РћРЅ СЂР°Р·РІС‘СЂРЅСѓС‚ СЃ РїРѕРјРѕС‰СЊСЋ Docker Compose, "
+"РїРѕРґРґРµСЂР¶РёРІР°РµС‚ РґРІР° СЏР·С‹РєР° Рё РёРјРµРµС‚ С‚С‘РјРЅСѓСЋ С‚РµРјСѓ."
+
+#: .\templates\main_app\index.html:106
+msgid ""
+"The chat is built with Django Channels and connected to a Telegram bot that "
+"sends real-time notifications about new messages."
+msgstr ""
+"Р§Р°С‚ РїРѕСЃС‚СЂРѕРµРЅ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Django Channels Рё РїРѕРґРєР»СЋС‡С‘РЅ Рє Telegram-Р±РѕС‚Сѓ, "
+"РєРѕС‚РѕСЂС‹Р№ РѕС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… РІ СЂРµР°Р»СЊРЅРѕРј РІСЂРµРјРµРЅРё."
+
+#: .\templates\main_app\index.html:108
+msgid "Free soft and projects"
+msgstr "Р‘РµСЃРїР»Р°С‚РЅС‹Р№ СЃРѕС„С‚ Рё РїСЂРѕРµРєС‚С‹"
+
+#: .\templates\main_app\index.html:109
+msgid ""
+"Visit the 'Projects' and 'Useful software' sections вЂ” youвЂ™ll find "
+"interesting things there: an AI assistant bot, Tkinter desktop applications, "
+"and other useful tools. All are available for free download вЂ” directly from "
+"this site or via GitHub."
+msgstr ""
+"РќР° РґСЂСѓРіРёС… СЃС‚СЂР°РЅРёС†Р°С… РІС‹ РјРѕР¶РµС‚Рµ РїРѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РјРѕРёРјРё РїСЂРѕРµРєС‚Р°РјРё Рё РїРѕР»РµР·РЅС‹РјРё "
+"РїСЂРёР»РѕР¶РµРЅРёСЏРјРё. РС… РјРѕР¶РЅРѕ Р±РµСЃРїР»Р°С‚РЅРѕ СЃРєР°С‡Р°С‚СЊ вЂ” РїСЂСЏРјРѕ СЃ СЃР°Р№С‚Р° РёР»Рё С‡РµСЂРµР· GitHub, "
+"Р±РµР· СЂРµРіРёСЃС‚СЂР°С†РёРё."
+
+#: .\templates\main_app\index.html:111
+msgid "Collaboration"
+msgstr "РЎРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ"
+
+#: .\templates\main_app\index.html:112
+msgid ""
+"\n"
+"I'm open to new projects and collaborations.\n"
+"If my approach resonates with you вЂ” IвЂ™ll be glad to connect рџЊ·\n"
+"You can reach me via the chat on this website, by email, or on Telegram.\n"
+msgstr ""
+"\n"
+"РЇ РѕС‚РєСЂС‹С‚Р° РґР»СЏ РЅРѕРІС‹С… РїСЂРѕРµРєС‚РѕРІ Рё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°.\n"
+"Р•СЃР»Рё РјРѕР№ РїРѕРґС…РѕРґ РІР°Рј Р±Р»РёР·РѕРє вЂ” Р±СѓРґСѓ СЂР°РґР° СЃРІСЏР·Р°С‚СЊСЃСЏ СЃ РІР°РјРё рџЊ·\n"
+"Р’С‹ РјРѕР¶РµС‚Рµ РЅР°РїРёСЃР°С‚СЊ РјРЅРµ С‡РµСЂРµР· С‡Р°С‚ РЅР° СЃР°Р№С‚Рµ, РїРѕ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ РёР»Рё РІ "
+"Telegram.\n"
+
+#: .\templates\main_app\index.html:118
+msgid ""
+"This website is an illustrative example of my work and creative approach. "
+"HereвЂ™s whatвЂ™s вЂњunder the hoodвЂќ:"
+msgstr ""
+"Р­С‚РѕС‚ СЃР°Р№С‚ вЂ” СЃР°РјС‹Р№ РЅР°РіР»СЏРґРЅС‹Р№ РїСЂРёРјРµСЂ РјРѕРµР№ СЂР°Р±РѕС‚С‹ Рё С‚РІРѕСЂС‡РµСЃРєРѕРіРѕ РїРѕРґС…РѕРґР°. Р’РѕС‚ "
+"С‡С‚Рѕ Сѓ РЅРµРіРѕ В«РїРѕРґ РєР°РїРѕС‚РѕРјВ»:"
+
+#: .\templates\main_app\index.html:121
+msgid "The site is deployed using Docker Compose on a cloud server"
+msgstr "РЎР°Р№С‚ СЂР°Р·РІС‘СЂРЅСѓС‚ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Docker Compose РЅР° РѕР±Р»Р°С‡РЅРѕРј СЃРµСЂРІРµСЂРµ"
+
+#: .\templates\main_app\index.html:122
+msgid "It supports two languages вЂ” I use django-modeltranslation for that"
+msgstr ""
+"РћРЅ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ РґРІР° СЏР·С‹РєР° вЂ” СЏ РёСЃРїРѕР»СЊР·СѓСЋ РґР»СЏ СЌС‚РѕРіРѕ django-modeltranslation"
+
+#: .\templates\main_app\index.html:123
+msgid ""
+"YouвЂ™ll find a day/night switch in the top right corner. If the white-and-"
+"pink design feels a bit too sweet for your taste, you can switch to the more "
+"reserved night mode. Though even there, the pink accents remain вЂ” itвЂ™s just "
+"the color that resonates with my artistвЂ™s soul right now. рџ‰рџ©°"
+msgstr ""
+"Р’ РїСЂР°РІРѕРј РІРµСЂС…РЅРµРј СѓРіР»Сѓ РІС‹ РЅР°Р№РґС‘С‚Рµ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ С‚РµРјС‹ В«РґРµРЅСЊ/РЅРѕС‡СЊВ». Р•СЃР»Рё Р±РµР»Рѕ-"
+"СЂРѕР·РѕРІС‹Р№ СЃС‚РёР»СЊ РІР°Рј СЃР»РёС€РєРѕРј СЃР»Р°РґРѕРє, РїРµСЂРµР№РґРёС‚Рµ РЅР° СЃС‚СЂРѕРіСѓСЋ РЅРѕС‡РЅСѓСЋ РІРµСЂСЃРёСЋ. РҐРѕС‚СЏ Рё "
+"С‚Р°Рј СЂРѕР·РѕРІС‹Рµ Р°РєС†РµРЅС‚С‹ РѕСЃС‚Р°Р»РёСЃСЊ вЂ” РїСЂРѕСЃС‚Рѕ СЃРµР№С‡Р°СЃ СЌС‚РѕС‚ С†РІРµС‚ РѕС‚РєР»РёРєР°РµС‚СЃСЏ РјРѕРµР№ РґСѓС€Рµ "
+"С…СѓРґРѕР¶РЅРёРєР°. рџ‰рџ©°"
+
+#: .\templates\main_app\index.html:124
+msgid ""
+"A simple User registration is implemented вЂ” youвЂ™ll need it if you want to "
+"send me a message via the chat (in the вЂњContactsвЂќ section)"
+msgstr ""
+"Р РµР°Р»РёР·РѕРІР°РЅР° РЅРµСЃР»РѕР¶РЅР°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ вЂ” РѕРЅР° РїРѕРЅР°РґРѕР±РёС‚СЃСЏ, РµСЃР»Рё РІС‹ "
+"Р·Р°С…РѕС‚РёС‚Рµ РЅР°РїРёСЃР°С‚СЊ РјРЅРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ С‡Р°С‚Рµ (РІ СЂР°Р·РґРµР»Рµ В«РљРѕРЅС‚Р°РєС‚С‹В»)"
+
+#: .\templates\main_app\index.html:125
+msgid ""
+"The chat itself is built using Django Channels, Redis, and Daphne. I "
+"replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI вЂ” it "
+"requires ASGI"
+msgstr ""
+"РЎР°Рј С‡Р°С‚ РїРѕСЃС‚СЂРѕРµРЅ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Django Channels, Redis Рё Daphne. РЇ "
+"Р·Р°РјРµРЅРёР»Р° Gunicorn РЅР° Daphne, РїРѕС‚РѕРјСѓ С‡С‚Рѕ WebSocket РЅРµ СЂР°Р±РѕС‚Р°РµС‚ СЃ WSGI вЂ” РµРјСѓ "
+"РЅСѓР¶РµРЅ ASGI"
+
+#: .\templates\main_app\index.html:126
+msgid ""
+"There is also a Telegram bot seamlessly integrated with the Django Channels "
+"backend, leveraging the Telegram Bot API to send real-time alerts about new "
+"user messages, so I always stay informed"
+msgstr ""
+"РўР°РєР¶Рµ РІ СЃРёСЃС‚РµРјРµ РёРЅС‚РµРіСЂРёСЂРѕРІР°РЅ Telegram-Р±РѕС‚, С‚РµСЃРЅРѕ СЃРІСЏР·Р°РЅРЅС‹Р№ СЃ Р±СЌРєРµРЅРґРѕРј РЅР° "
+"Django Channels Рё РёСЃРїРѕР»СЊР·СѓСЋС‰РёР№ Telegram Bot API РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№ РІ "
+"СЂРµР°Р»СЊРЅРѕРј РІСЂРµРјРµРЅРё Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, С‡С‚РѕР±С‹ СЏ РІСЃРµРіРґР° Р±С‹Р»Р° РІ "
+"РєСѓСЂСЃРµ."
+
+#: .\templates\main_app\index.html:127
+msgid ""
+"On other pages, you can explore my projects and helpful apps. TheyвЂ™re "
+"available for free download вЂ” either directly or via GitHub, no registration "
+"required."
+msgstr ""
+"РќР° РґСЂСѓРіРёС… СЃС‚СЂР°РЅРёС†Р°С… РІС‹ РјРѕР¶РµС‚Рµ РїРѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РјРѕРёРјРё РїСЂРѕРµРєС‚Р°РјРё Рё РїРѕР»РµР·РЅС‹РјРё "
+"РїСЂРёР»РѕР¶РµРЅРёСЏРјРё. РС… РјРѕР¶РЅРѕ Р±РµСЃРїР»Р°С‚РЅРѕ СЃРєР°С‡Р°С‚СЊ вЂ” РїСЂСЏРјРѕ СЃ СЃР°Р№С‚Р° РёР»Рё С‡РµСЂРµР· GitHub, "
+"Р±РµР· СЂРµРіРёСЃС‚СЂР°С†РёРё."
+
+#: .\templates\main_app\index.html:130
+msgid "Additionally"
+msgstr "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ:"
+
+#: .\templates\main_app\index.html:132
+msgid "I use meta tags for SEO"
+msgstr "РЇ РёСЃРїРѕР»СЊР·СѓСЋ РјРµС‚Р°-С‚РµРіРё РґР»СЏ SEO"
+
+#: .\templates\main_app\index.html:133
+msgid "I work with Cloudinary (media) and WhiteNoise (static files)"
+msgstr "РЇ СЂР°Р±РѕС‚Р°СЋ СЃ Cloudinary (РјРµРґРёР°С„Р°Р№Р»С‹) Рё WhiteNoise (СЃС‚Р°С‚РёС‡РµСЃРєРёРµ С„Р°Р№Р»С‹)"
+
+#: .\templates\main_app\index.html:134
+msgid "I use JavaScript when necessary вЂ” mainly for interface interactivity"
+msgstr ""
+"РЇ РёСЃРїРѕР»СЊР·СѓСЋ JavaScript, РєРѕРіРґР° СЌС‚Рѕ РЅРµРѕР±С…РѕРґРёРјРѕ вЂ” РІ РѕСЃРЅРѕРІРЅРѕРј РґР»СЏ "
+"РёРЅС‚РµСЂР°РєС‚РёРІРЅРѕСЃС‚Рё РёРЅС‚РµСЂС„РµР№СЃР°"
+
+#: .\templates\main_app\index.html:135
+msgid ""
+"I also write Bash scripts for automation and know how to work with API "
+"integrations"
+msgstr ""
+"РЇ С‚Р°РєР¶Рµ РїРёС€Сѓ Bash-СЃРєСЂРёРїС‚С‹ РґР»СЏ Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё Рё СѓРјРµСЋ СЂР°Р±РѕС‚Р°С‚СЊ СЃ API-"
+"РёРЅС‚РµРіСЂР°С†РёСЏРјРё."
+
+#: .\templates\main_app\index.html:136
+msgid ""
+"I have experience integrating Google Search API for enhanced search and data "
+"retrieval capabilities"
+msgstr ""
+"РРјРµСЋ РѕРїС‹С‚ РёРЅС‚РµРіСЂР°С†РёРё Google Search API РґР»СЏ СЂР°СЃС€РёСЂРµРЅРёСЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№ РїРѕРёСЃРєР° Рё "
+"РёР·РІР»РµС‡РµРЅРёСЏ РґР°РЅРЅС‹С…."
+
+#: .\templates\main_app\index.html:140
+msgid ""
+"\n"
+"      Even if you're just browsing, I sincerely appreciate your visit вЂ” and "
+"I would be grateful if you took a moment to look at the projects I mentioned "
+"above:\n"
+"      "
+msgstr ""
+"\n"
+"    Р”Р°Р¶Рµ РµСЃР»Рё РІС‹ РїСЂРѕСЃС‚Рѕ Р·Р°РіР»СЏРЅСѓР»Рё РЅР° СЃР°Р№С‚, СЏ РІР°Рј Р±Р»Р°РіРѕРґР°СЂРЅР° Р·Р° РІРёР·РёС‚. РњРЅРµ "
+"Р±СѓРґРµС‚ РѕС‡РµРЅСЊ РїСЂРёСЏС‚РЅРѕ, РµСЃР»Рё РІС‹ РІР·РіР»СЏРЅРµС‚Рµ РЅР° РІС‹С€РµСѓРїРѕРјСЏРЅСѓС‚С‹Рµ РїСЂРѕРµРєС‚С‹:\n"
+"  "
+
+#: .\templates\main_app\index.html:143
+msgid "my projects"
+msgstr "РјРѕРё РїСЂРѕРµРєС‚С‹"
+
+#: .\templates\main_app\index.html:144
+msgid "or check out some"
+msgstr "РёР»Рё РїРѕСЃРјРѕС‚СЂРёС‚Рµ"
+
+#: .\templates\main_app\index.html:145
+msgid "free software"
+msgstr "Р±РµСЃРїР»Р°С‚РЅС‹Р№ СЃРѕС„С‚"
+
+#: .\templates\main_app\index.html:146
+msgid "вЂ” simple desktop applications built with Tkinter."
+msgstr "вЂ” РґРµСЃРєС‚РѕРїРЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ, СЃРѕР·РґР°РЅРЅС‹Рµ СЃ РїРѕРјРѕС‰СЊСЋ Tkinter."
+
+#: .\templates\main_app\index.html:149
+msgid ""
+"I'm open to communication and collaboration вЂ” looking forward to connecting "
+"with you!"
+msgstr "РЇ РѕС‚РєСЂС‹С‚Р° РґР»СЏ РѕР±С‰РµРЅРёСЏ Рё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°. Р‘СѓРґСѓ СЂР°РґР° РІСЃС‚СЂРµС‡Рё СЃ Р’Р°РјРё!"
+
+#: .\templates\main_app\my_projects.html:14
+msgid ""
+"\n"
+"        These are projects IвЂ™ve created either for specific clients or as my "
+"own ideas in progress.<br>\n"
+"        They are not meant for direct use without adaptation, but they give "
+"a good impression of my skills and development approach.\n"
+"    "
+msgstr ""
+"\n"
+"        Р­С‚Рѕ РїСЂРѕРµРєС‚С‹, СЃРѕР·РґР°РЅРЅС‹Рµ РјРЅРѕР№ РїРѕ Р·Р°РєР°Р·Сѓ РєР»РёРµРЅС‚РѕРІ РёР»Рё СЂРµР°Р»РёР·РѕРІР°РЅРЅС‹Рµ РєР°Рє "
+"СЃРѕР±СЃС‚РІРµРЅРЅС‹Рµ РёРґРµРё.<br>\n"
+"        РћРЅРё РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅС‹ РґР»СЏ РїСЂСЏРјРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Р±РµР· Р°РґР°РїС‚Р°С†РёРё, РЅРѕ "
+"С…РѕСЂРѕС€Рѕ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓСЋС‚ РјРѕРё РЅР°РІС‹РєРё Рё РїРѕРґС…РѕРґ Рє СЂР°Р·СЂР°Р±РѕС‚РєРµ.\n"
+"    "
+
+#: .\templates\main_app\order_request.html:4
+msgid "Order Request"
+msgstr "Р—Р°РїСЂРѕСЃ РЅР° Р·Р°РєР°Р·"
+
+#: .\templates\main_app\order_request.html:17
+msgid "Place an order"
+msgstr "РЎРґРµР»Р°С‚СЊ Р·Р°РєР°Р·"
+
+#: .\templates\main_app\order_request.html:20
+msgid ""
+"Fill out the form below, and I will contact you soon to discuss the details "
+"of your order."
+msgstr "Р—Р°РїРѕР»РЅРёС‚Рµ С„РѕСЂРјСѓ РЅРёР¶Рµ, Рё СЏ СЃРІСЏР¶СѓСЃСЊ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ РґР»СЏ СѓС‚РѕС‡РЅРµРЅРёСЏ РґРµС‚Р°Р»РµР№ Р·Р°РєР°Р·Р°."
+
+#: .\templates\main_app\order_request.html:88
+msgid "Submit order"
+msgstr "РћС‚РїСЂР°РІРёС‚СЊ Р·Р°РєР°Р·"
+
+#: .\templates\main_app\project_detail.html:6
+#, fuzzy
+#| msgid "My Projects"
+msgid "Project"
+msgstr "РњРѕРё РїСЂРѕРµРєС‚С‹"
+
+#: .\templates\main_app\project_detail.html:9
+msgid "Portfolio"
+msgstr ""
+
+#: .\templates\main_app\project_detail.html:107
+msgid "Download DEMO(RU)"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ Р”Р•РњРћ(RU)"
+
+#: .\templates\main_app\project_detail.html:112
+msgid "Download DEMO(EN)"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ Р”Р•РњРћ(EN)"
+
+#: .\templates\main_app\project_detail.html:118
+msgid "GitHub"
+msgstr "GitHub"
+
+#: .\templates\main_app\test_useful.html:32
+msgid "Download Options"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ РѕРїС†РёРё"
+
+#: .\templates\main_app\test_useful.html:37
+msgid "Download Russian version"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ СЂСѓСЃСЃРєСѓСЋ РІРµСЂСЃРёСЋ"
+
+#: .\templates\main_app\test_useful.html:43
+msgid "Download English version"
+msgstr "Р—Р°РіСЂСѓР·РёС‚СЊ Р°РЅРіР»РёР№СЃРєСѓСЋ РІРµСЂСЃРёСЋ"
+
+#: .\templates\main_app\useful_soft.html:4
+#: .\templates\main_app\useful_soft.html:10
+#, fuzzy
+#| msgid "useful software"
+msgid "Useful software"
+msgstr "РїРѕР»РµР·РЅС‹Р№ СЃРѕС„С‚"
+
+#: .\templates\main_app\useful_soft.html:14
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "        Here you can find software I've developed that is fully completed "
+#| "and ready to use. <br>You can download and use it for free. <br>I hope "
+#| "these tools will be helpful in your daily tasks or projects.\n"
+#| "    "
+msgid ""
+"Here you can find software IвЂ™ve developed that is fully completed and ready "
+"to use. <br>You can download and use it for free. <br>I hope these tools "
+"will be helpful in your daily tasks or projects."
+msgstr ""
+"\n"
+"        Р—РґРµСЃСЊ СЂР°Р·РјРµС‰РµРЅС‹ РЅР°РїРёСЃР°РЅРЅС‹Рµ РјРЅРѕСЋ РїСЂРѕРіСЂР°РјРјС‹, РєРѕС‚РѕСЂС‹Рµ Р·Р°РІРµСЂС€РµРЅС‹ Рё "
+"РіРѕС‚РѕРІС‹ Рє РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ. <br>Р’С‹ РјРѕР¶РµС‚Рµ СЃРєР°С‡Р°С‚СЊ РёС… Р±РµСЃРїР»Р°С‚РЅРѕ. <br>РќР°РґРµСЋСЃСЊ, РѕРЅРё "
+"Р±СѓРґСѓС‚ РІР°Рј РїРѕР»РµР·РЅС‹ РІ СЂР°Р±РѕС‚Рµ РёР»Рё РїРѕРІСЃРµРґРЅРµРІРЅРѕР№ Р¶РёР·РЅРё.\n"
+"    "
+
+#: .\templates\notes\article_detail.html:105
+msgid "Template title"
+msgstr "РЁР°Р±Р»РѕРЅ Р·Р°РіРѕР»РѕРІРєР°"
+
+#: .\templates\notes\article_detail.html:107
+msgid "Template text"
+msgstr "РЁР°Р±Р»РѕРЅ С‚РµРєСЃС‚Р°"
+
+#~ msgid "РњРѕРё СѓСЃР»СѓРіРё"
+#~ msgstr "РњРѕРё СѓСЃР»СѓРіРё"
+
+#~ msgid ""
+#~ "\n"
+#~ "    I continue growing in the Python field because I truly enjoy "
+#~ "programming вЂ” and I want to do it professionally.\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    РЇ РїСЂРѕРґРѕР»Р¶Р°СЋ СЂР°Р·РІРёРІР°С‚СЊСЃСЏ РІ РѕР±Р»Р°СЃС‚Рё Python, РїРѕС‚РѕРјСѓ С‡С‚Рѕ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ "
+#~ "РјРЅРµ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РЅСЂР°РІРёС‚СЃСЏ вЂ” Рё СЏ С…РѕС‡Сѓ Р·Р°РЅРёРјР°С‚СЊСЃСЏ СЌС‚РёРј РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕ.\n"
+#~ "    "
+
+#~ msgid "Take a look around"
+#~ msgstr "Р’Р·РіР»СЏРЅРёС‚Рµ РЅР°"
+
+#~ msgid "or you might find some"
+#~ msgstr "РёР»Рё "
+
+#~ msgid "youвЂ™ll like."
+#~ msgstr "."
+
+#~ msgid ""
+#~ "In the top-right corner, thereвЂ™s a theme switcher (day/night). I added it "
+#~ "just in case you absolutely canвЂ™t stand my marshmallow-pink design вЂ” so "
+#~ "you have a tougher alternative. Though even the night version still has "
+#~ "pink accents рџЉ"
+#~ msgstr ""
+#~ "Р’ РїСЂР°РІРѕРј РІРµСЂС…РЅРµРј СѓРіР»Сѓ РµСЃС‚СЊ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ С‚РµРјС‹ (РґРµРЅСЊ/РЅРѕС‡СЊ). РЇ РґРѕР±Р°РІРёР»Р° РµРіРѕ "
+#~ "РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё РІС‹ СЃРѕРІСЃРµРј РЅРµ РІС‹РЅРѕСЃРёС‚Рµ РјРѕР№ Р·РµС„РёСЂРЅРѕ-СЂРѕР·РѕРІС‹Р№ РґРёР·Р°Р№РЅ вЂ” С‚РѕРіРґР° "
+#~ "Сѓ РІР°СЃ РµСЃС‚СЊ Р±РѕР»РµРµ СЃС‚СЂРѕРіР°СЏ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІР°. РҐРѕС‚СЏ РґР°Р¶Рµ РІ РЅРѕС‡РЅРѕР№ РІРµСЂСЃРёРё СЂРѕР·РѕРІС‹Рµ "
+#~ "Р°РєС†РµРЅС‚С‹ РІСЃС‘ СЂР°РІРЅРѕ РѕСЃС‚Р°Р»РёСЃСЊ рџЉ"
+
+#~ msgid ""
+#~ "\n"
+#~ "    My name is Liubov Kovaleva.<br>\n"
+#~ "    IвЂ™m passionate about programming in Python, Django, Django REST "
+#~ "Framework, JS, and Bash, and I also enjoy working with databases and API "
+#~ "integrations.<br>\n"
+#~ "    I develop scripts and applications to automate tasks for businesses "
+#~ "and personal use.<br><br>\n"
+#~ "\n"
+#~ "    Need a small, functional, and SEO-friendly website?<br>\n"
+#~ "    Looking to automate routine tasks or connect APIs?<br>\n"
+#~ "    YouвЂ™re in the right place.<br><br>\n"
+#~ "\n"
+#~ "    I can help you create a custom website tailored to your needs вЂ” and "
+#~ "if necessary, I can take care of maintenance, content updates, and "
+#~ "security.\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    РњРµРЅСЏ Р·РѕРІСѓС‚ Р›СЋР±РѕРІСЊ РљРѕРІР°Р»РµРІР°.<br>\n"
+#~ "    РЇ СѓРІР»РµРєР°СЋСЃСЊ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµРј РЅР° Python, Django, Django REST "
+#~ "Framework, JS Рё Bash, Р»СЋР±Р»СЋ СЂР°Р±РѕС‚Р°С‚СЊ СЃ Р±Р°Р·Р°РјРё РґР°РЅРЅС‹С… Рё РёРЅС‚РµРіСЂР°С†РёСЏРјРё API."
+#~ "<br>\n"
+#~ "    Р Р°Р·СЂР°Р±Р°С‚С‹РІР°СЋ СЃРєСЂРёРїС‚С‹ Рё РїСЂРёР»РѕР¶РµРЅРёСЏ РґР»СЏ Р°РІС‚РѕРјР°С‚РёР·Р°С†РёРё Р·Р°РґР°С‡ вЂ” РєР°Рє РґР»СЏ "
+#~ "Р±РёР·РЅРµСЃР°, С‚Р°Рє Рё РґР»СЏ Р»РёС‡РЅРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ.<br><br>\n"
+#~ "\n"
+#~ "    РќСѓР¶РµРЅ РїСЂРѕСЃС‚РѕР№, С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅС‹Р№ Рё SEO-РѕРїС‚РёРјРёР·РёСЂРѕРІР°РЅРЅС‹Р№ СЃР°Р№С‚?<br>\n"
+#~ "    РҐРѕС‚РёС‚Рµ Р°РІС‚РѕРјР°С‚РёР·РёСЂРѕРІР°С‚СЊ СЂСѓС‚РёРЅРЅС‹Рµ РїСЂРѕС†РµСЃСЃС‹ РёР»Рё СЃРІСЏР·Р°С‚СЊ СЃРµСЂРІРёСЃС‹ С‡РµСЂРµР· "
+#~ "API?<br>\n"
+#~ "    Р’С‹ РїРѕ Р°РґСЂРµСЃСѓ.<br><br>\n"
+#~ "\n"
+#~ "    РЇ РїРѕРјРѕРіСѓ СЃРѕР·РґР°С‚СЊ СЃР°Р№С‚, Р°РґР°РїС‚РёСЂРѕРІР°РЅРЅС‹Р№ РїРѕРґ РІР°С€Рё С†РµР»Рё. РџСЂРё "
+#~ "РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РјРѕРіСѓ РІР·СЏС‚СЊ РЅР° СЃРµР±СЏ РїРѕРґРґРµСЂР¶РєСѓ, РѕР±РЅРѕРІР»РµРЅРёРµ РєРѕРЅС‚РµРЅС‚Р° Рё "
+#~ "РѕР±РµСЃРїРµС‡РµРЅРёРµ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.\n"
+#~ "    "
+
+#~ msgid ""
+#~ "\n"
+#~ "    I am open to working on various projects and job offers.\n"
+#~ "    <br>DonвЂ™t hesitate to reach out!\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    РЇ РѕС‚РєСЂС‹С‚Р° РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° Рё РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕ СЂР°Р±РѕС‚Рµ.\n"
+#~ "    <br>Р•СЃР»Рё Р’Р°Рј СЌС‚Рѕ С‚РѕР¶Рµ РёРЅС‚РµСЂРµСЃРЅРѕ, С‚Рѕ РЅР°РїРёС€РёС‚Рµ РјРЅРµ!\n"
+#~ "    "
+
+#~ msgid "My projects"
+#~ msgstr "РњРѕРё РїСЂРѕРµРєС‚С‹"
+
+#~ msgid "This password is too short. It must contain at least %d character."
+#~ msgid_plural ""
+#~ "This password is too short. It must contain at least %d characters."
+#~ msgstr[0] ""
+#~ "РџР°СЂРѕР»СЊ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№. РћРЅ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј %d СЃРёРјРІРѕР»."
+#~ msgstr[1] ""
+#~ "РџР°СЂРѕР»СЊ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№. РћРЅ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј %d СЃРёРјРІРѕР»Р°."
+#~ msgstr[2] ""
+#~ "РџР°СЂРѕР»СЊ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№. РћРЅ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РєР°Рє РјРёРЅРёРјСѓРј %d СЃРёРјРІРѕР»РѕРІ."
+
+#~ msgid "This password is too common."
+#~ msgstr "Р­С‚РѕС‚ РїР°СЂРѕР»СЊ СЃР»РёС€РєРѕРј СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅС‘РЅ."
+
+#~ msgid "This password is entirely numeric."
+#~ msgstr "РџР°СЂРѕР»СЊ РЅРµ РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ."
