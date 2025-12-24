@@ -759,6 +759,16 @@ footer {
    
 }
 
+/* Ссылка "Оставить заявку" в светлой теме - ярко-розовый */
+.light-theme .order-link {
+    color: #FF69B4 !important; /* ярко-розовый, как заголовки */
+    border-color: #FF69B4 !important; /* ярко-розовая обводка */
+}
+
+.light-theme .order-link:hover {
+    background-color: rgba(255, 105, 180, 0.1); /* светло-розовый фон при наведении */
+}
+
 /* Языковые кнопки в светлой теме - темно-серый почти черный */
 .light-theme .language-button {
     color: #1a1a1a;

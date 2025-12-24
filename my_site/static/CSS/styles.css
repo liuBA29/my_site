@@ -137,7 +137,8 @@ p {
 .order-link {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 0.9em;
+  font-size: 1.05em;
+  letter-spacing: 0.08em;
   color: var(--pink-light-pink);
   color: #FFB6C1; /* fallback для iOS */
   text-decoration: none;
@@ -176,8 +177,9 @@ p {
   }
 
   .order-link {
-    font-size: 0.8em;
+    font-size: 0.95em;
     padding: 3px 8px;
+    letter-spacing: 0.06em;
   }
 
   .center-controls {
@@ -806,6 +808,16 @@ footer {
     color: #1a1a1a;
     border: 2px solid var(--pink-light-pink);
    
+}
+
+/* Ссылка "Оставить заявку" в светлой теме - ярко-розовый */
+.light-theme .order-link {
+    color: #FF69B4 !important; /* ярко-розовый, как заголовки */
+    border-color: #FF69B4 !important; /* ярко-розовая обводка */
+}
+
+.light-theme .order-link:hover {
+    background-color: rgba(255, 105, 180, 0.1); /* светло-розовый фон при наведении */
 }
 
 /* Языковые кнопки в светлой теме - темно-серый почти черный */

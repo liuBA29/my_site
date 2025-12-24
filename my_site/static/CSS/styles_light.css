@@ -134,10 +134,11 @@ p {
 .order-link {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  font-size: 0.9em;
-  color: #1a1a1a; /* темно-серый почти черный */
+  font-size: 1.05em;
+  letter-spacing: 0.08em;
+  color: #FF69B4; /* ярко-розовый, как заголовки */
   text-decoration: none;
-  border: 1px solid #ffffff; /* белая обводка */
+  border: 1px solid #FF69B4; /* ярко-розовая обводка */
   border-radius: 6px;
   padding: 4px 12px;
   transition: opacity 0.2s ease, background-color 0.2s ease;
@@ -146,7 +147,7 @@ p {
 
 .order-link:hover {
   opacity: 0.8;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 105, 180, 0.1); /* светло-розовый фон при наведении */
 }
 
 .right-controls {
