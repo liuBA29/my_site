@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-19 01:17+0300\n"
+"POT-Creation-Date: 2025-12-25 01:28+0300\n"
 "PO-Revision-Date: 2025-07-11 13:00+0300\n"
 "Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,6 +66,9 @@ msgstr "Подтвердите пароль"
 msgid "Repeat password"
 msgstr "Повторите пароль"
 
+#: .\accounts\forms.py:72 .\main_app\forms.py:100
+#: .\templates\accounts\register.html:114
+#: .\templates\main_app\order_request.html:208
 msgid "Please complete the verification."
 msgstr "Пожалуйста, пройдите проверку."
 
@@ -76,7 +79,6 @@ msgstr "Проверка не пройдена. Пожалуйста, попро
 #: .\accounts\views.py:75
 msgid "Please complete the verification to prove you are not a robot."
 msgstr "Пожалуйста, пройдите проверку, чтобы подтвердить, что вы не робот."
-
 
 #: .\chat\consumers.py:42
 #, python-format
@@ -98,7 +100,6 @@ msgid "%(username)s has joined the chat"
 msgstr "%(username)s уже в чате"
 
 #: .\main_app\forms.py:17
-#: .\main_app\forms.py:17
 msgid "Select service type..."
 msgstr "Выберите тип услуги…"
 
@@ -117,7 +118,6 @@ msgstr "Доработка существующего проекта"
 #: .\main_app\forms.py:21
 msgid "Technical support"
 msgstr "Техническая поддержка"
-
 
 #: .\main_app\forms.py:22
 #, fuzzy
@@ -166,7 +166,8 @@ msgstr ""
 #, python-format
 msgid ""
 "Thank you, %(name)s! Your order has been received. We will contact you soon."
-msgstr "Спасибо, %(name)s! Ваша заявка получена. Я свяжусь с вами в ближайшее время."
+msgstr ""
+"Спасибо, %(name)s! Ваша заявка получена. Я свяжусь с вами в ближайшее время."
 
 #: .\main_app\views.py:165
 msgid "Please correct the errors in the form."
@@ -272,9 +273,7 @@ msgstr "Внимание"
 msgid ""
 "Cloudflare Turnstile is not configured. Registration is not protected from "
 "bots."
-msgstr ""
-"Cloudflare Turnstile не настроен. Регистрация не защищена от ботов."
-
+msgstr "Cloudflare Turnstile не настроен. Регистрация не защищена от ботов."
 
 #: .\templates\accounts\register.html:73
 msgid "Already have an account?"
@@ -488,7 +487,7 @@ msgid "What is it?"
 msgstr "Что это такое?"
 
 #: .\templates\main_app\business_soft_detail.html:109
-#, fuzzy, python-format
+
 #| msgid "Watch a mini tutorial for Dental CRM:"
 msgid "Watch a mini tutorial for %(soft.name)s:"
 msgstr "Посмотрите мини-видео инструкцию по использованию Dental CRM:"
@@ -549,12 +548,18 @@ msgstr ""
 "будут вам полезны в работе или повседневной жизни.\n"
 "    "
 
+#: .\templates\main_app\free_soft_detail.html:127
+#: .\templates\main_app\project_detail.html:117
+
+#| msgid "Free soft and projects"
+msgid "Order similar project"
+msgstr "Заказать похожий проект"
+
 #: .\templates\main_app\index.html:5 .\templates\main_app\index.html:33
 msgid "Portfolio website of web developer Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
 #: .\templates\main_app\index.html:6
-#, fuzzy
 #| msgid "Portfolio of Liubov Kovaleva"
 msgid "Portfolio of Liubov Kovaleva: Django developer. Projects:"
 msgstr "Портфолио Любови Ковалёвой"
@@ -564,7 +569,6 @@ msgid "Technologies:"
 msgstr ""
 
 #: .\templates\main_app\index.html:6
-#, fuzzy
 #| msgid ""
 #| "Main page of Liubov Kovaleva’s web developer portfolio. Python, Django, "
 #| "projects, and useful software."
@@ -863,12 +867,13 @@ msgstr "Заявка на услугу"
 msgid ""
 "Fill out the form below, and I will contact you soon to discuss the details "
 "of your order."
-msgstr "Заполните форму ниже, и я свяжусь с вами в ближайшее время, чтобы обсудить детали запроса."
+msgstr ""
+"Заполните форму ниже, и я свяжусь с вами в ближайшее время, чтобы обсудить "
+"детали запроса."
 
 #: .\templates\main_app\order_request.html:88
 msgid "Submit order"
 msgstr "Отправить заявку"
-
 
 #: .\templates\main_app\project_detail.html:6
 #, fuzzy
@@ -888,7 +893,7 @@ msgstr "Загрузить ДЕМО(RU)"
 msgid "Download DEMO(EN)"
 msgstr "Загрузить ДЕМО(EN)"
 
-#: .\templates\main_app\project_detail.html:118
+#: .\templates\main_app\project_detail.html:122
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -911,20 +916,24 @@ msgstr "Загрузить английскую версию"
 msgid "Useful software"
 msgstr "полезный софт"
 
-
+#: .\templates\main_app\useful_soft.html:14
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Here you can find software I’ve developed that is fully completed and "
+#| "ready to use. <br>You can download and use it for free. <br>I hope these "
+#| "tools will be helpful in your daily tasks or projects.\n"
+#| "    "
 msgid ""
-"\n"
 "Here you can find software I’ve developed that is fully completed and ready "
 "to use. <br>You can download and use it for free. <br>I hope these tools "
-"will be helpful in your daily tasks or projects.\n"
-"    "
+"will be helpful in your daily tasks or projects."
 msgstr ""
 "\n"
 "        Здесь размещены написанные мною программы, которые завершены и "
 "готовы к использованию. <br>Вы можете скачать их бесплатно. <br>Надеюсь, они "
 "будут вам полезны в работе или повседневной жизни.\n"
 "    "
-
 
 #: .\templates\notes\article_detail.html:105
 msgid "Template title"

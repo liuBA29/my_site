@@ -164,7 +164,23 @@ def order_request(request):
             else:
                 messages.error(request, _('Please correct the errors in the form.'))
     else:
-        form = OrderForm()
+        # Предзаполняем форму, если передан параметр service_type
+        initial_data = {}
+        service_type = request.GET.get('service_type', '')
+        if service_type:
+            # Проверяем, что значение валидно (существует в choices формы)
+            valid_service_types = [
+                'Website development',
+                'Software development',
+                'Project modification',
+                'Technical support',
+                'Consultation',
+                'Other'
+            ]
+            if service_type in valid_service_types:
+                initial_data['service_type'] = service_type
+        
+        form = OrderForm(initial=initial_data)
     
     return render(request, 'main_app/order_request.html', {
         'form': form,
