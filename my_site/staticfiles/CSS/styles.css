@@ -733,7 +733,18 @@ footer {
 
 /* Сохраняем розовый цвет для toggle в темной теме */
 .dark-theme .toggle__input:checked ~ .toggle__fill {
-    background: var(--pink-light-pink) !important;
+background: var(--pink-light-pink) !important;
+}
+
+/* Стили для ссылки заказа в темной теме */
+.dark-theme .order-link {
+    color: #FF69B4 !important; /* ярко-розовый для лучшей видимости на темном фоне */
+    border-color: #FF69B4 !important; /* ярко-розовая обводка */
+}
+
+.dark-theme .order-link:hover {
+    background-color: rgba(255, 105, 180, 0.2); /* ярко-розовый фон при наведении */
+    opacity: 1; /* убираем затемнение, цвет и так яркий */
 }
 
 .light-theme main.container .simple-link {

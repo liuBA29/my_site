@@ -778,13 +778,13 @@ footer {
 
 /* Стили для ссылки заказа в темной теме */
 .dark-theme .order-link {
-    color: var(--pink-light-pink) !important;
-    border-color: var(--pink-light-pink) !important;
+    color: #FF69B4 !important; /* ярко-розовый для лучшей видимости на темном фоне */
+    border-color: #FF69B4 !important; /* ярко-розовая обводка */
 }
 
 .dark-theme .order-link:hover {
-    background-color: rgba(255, 182, 193, 0.15);
-    opacity: 0.9;
+    background-color: rgba(255, 105, 180, 0.2); /* ярко-розовый фон при наведении */
+    opacity: 1; /* убираем затемнение, цвет и так яркий */
 }
 
 .light-theme main.container .simple-link {
