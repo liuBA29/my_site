@@ -642,6 +642,13 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
     margin-left: 8px;
   }
   
+  /* 📱 Компактная ссылка "оставить заявку" для планшетов */
+  .order-link {
+    font-size: 0.85em !important;
+    padding: 3px 10px !important;
+    letter-spacing: 0.06em !important;
+  }
+  
   /* Мобильная версия изображений */
   .soft-item {
     -webkit-box-orient: horizontal; /* iOS Safari fallback */
@@ -714,6 +721,34 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
   
   .toggle__input:checked ~ .toggle__fill::after {
     transform: translateX(12px);
+  }
+
+  /* 📱 Компактная ссылка "оставить заявку" для маленьких экранов */
+  .order-link {
+    font-size: 0.75em !important;
+    padding: 2px 6px !important;
+    letter-spacing: 0.04em !important;
+    border-radius: 5px !important;
+    line-height: 1.3 !important;
+  }
+  
+  .center-controls {
+    flex: 0 1 auto !important;
+    margin: 0 4px !important;
+  }
+}
+
+/* 📱 Очень маленькие экраны (старые iPhone) */
+@media (max-width: 375px) {
+  .order-link {
+    font-size: 0.7em !important;
+    padding: 2px 5px !important;
+    letter-spacing: 0.03em !important;
+    border-radius: 4px !important;
+  }
+  
+  .center-controls {
+    margin: 0 2px !important;
   }
 }
 

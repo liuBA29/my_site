@@ -1269,6 +1269,13 @@ a.btn:hover {
   .toggle {
     --width: 24px;
   }
+
+  /* 📱 Уменьшаем ссылку "оставить заявку" */
+  .order-link {
+    font-size: 0.8em !important;
+    padding: 3px 8px !important;
+    letter-spacing: 0.05em !important;
+  }
 }
 
 /* 📱 Адаптивное уменьшение заголовков */
