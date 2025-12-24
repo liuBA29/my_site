@@ -73,3 +73,4 @@ if __name__ == '__main__':
         print(f"Файл {po_file} не найден!")
         sys.exit(1)
 
+
