@@ -158,13 +158,11 @@ I combine clean code, reliable architecture, and thoughtful user interface desig
     <p>{% blocktrans %}I am based in Minsk and collaborate with companies and entrepreneurs under a contract, using cashless (bank transfer) payments.{% endblocktrans %}</p>
 
     <p>
-      {% blocktrans %}
-      Even if you're just browsing, I sincerely appreciate your visit — and I would be grateful if you took a moment to look at the projects I mentioned above:
-      {% endblocktrans %}
+      {% trans "I would be grateful if you took a moment to look at the projects I mentioned above:" %}
       <a class="simple-link" href="{% url 'main_app:my_projects' %}"><span style="white-space: nowrap;">{% trans "my projects" %}</span></a>
-      {% blocktrans %}or check out some{% endblocktrans %}
+      {% trans "or check out some" %}
       <a class="simple-link" href="{% url 'main_app:free_soft' %}"><span style="white-space: nowrap;">{% trans "free software" %}</span></a>
-      {% blocktrans %}— simple desktop applications built with Tkinter.{% endblocktrans %}
+      {% trans "— simple desktop applications built with Tkinter." %}
     </p>
 
     <p>{% blocktrans %}I'm open to communication and collaboration — looking forward to connecting with you!{% endblocktrans %}</p>
@@ -246,14 +244,14 @@ I combine clean code, reliable architecture, and thoughtful user interface desig
       const content = header.nextElementSibling;
       
       if (icon.classList.contains('active')) {
-        // Сворачиваем
+        // Сворачиваем - возвращаем плюсик
         icon.classList.remove('active');
         icon.textContent = '+';
         content.style.display = 'none';
       } else {
-        // Разворачиваем
+        // Разворачиваем - меняем на треугольник вершиной вверх
         icon.classList.add('active');
-        icon.textContent = '▼';
+        icon.textContent = '▲';
         content.style.display = 'block';
       }
     }

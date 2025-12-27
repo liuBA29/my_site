@@ -903,6 +903,10 @@ msgstr ""
 "будет очень приятно, если вы взглянете на вышеупомянутые проекты:\n"
 "  "
 
+#: .\templates\main_app\index.html:161
+msgid "I would be grateful if you took a moment to look at the projects I mentioned above:"
+msgstr "Буду благодарна, если вы посмотрите на упомянутые выше проекты:"
+
 #: .\templates\main_app\index.html:164
 msgid "my projects"
 msgstr "мои проекты"
