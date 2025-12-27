@@ -126,6 +126,35 @@ p {
   font-weight: 400;
 }
 
+/* Центральная часть (ссылка на заказ) */
+.center-controls {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.order-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.05em;
+  letter-spacing: 0.08em;
+  color: var(--pink-light-pink);
+  color: #FFB6C1; /* fallback для iOS */
+  text-decoration: none;
+  border: 1px solid var(--pink-light-pink);
+  border: 1px solid #FFB6C1; /* fallback для iOS */
+  border-radius: 6px;
+  padding: 4px 12px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.order-link:hover {
+  opacity: 0.8;
+  background-color: rgba(255, 182, 193, 0.1);
+}
+
 /* Правая часть (тоггл + языки) */
 .right-controls {
   display: flex;
@@ -145,6 +174,17 @@ p {
 
   .right-controls {
     gap: 8px;
+  }
+
+  .order-link {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .center-controls {
+    flex: 0 1 auto;
+    margin: 0 8px;
   }
 }
 
@@ -501,9 +541,8 @@ nav ul li a.active {
 .section-description {
     font-size: 1.2rem; /* Увеличиваем размер шрифта */
     margin: 1rem 0 2rem 0;
-    color: var(--pink-gray-medium);
+    color: #6F6F6F; /* Затемненный серый цвет вместо среднего */
     line-height: 1.6;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Добавляем тень */
     position: relative;
 }
 
@@ -733,7 +772,7 @@ footer {
 
 /* Сохраняем розовый цвет для toggle в темной теме */
 .dark-theme .toggle__input:checked ~ .toggle__fill {
-background: var(--pink-light-pink) !important;
+    background: var(--pink-light-pink) !important;
 }
 
 /* Стили для ссылки заказа в темной теме */
@@ -745,6 +784,42 @@ background: var(--pink-light-pink) !important;
 .dark-theme .order-link:hover {
     background-color: rgba(255, 105, 180, 0.2); /* ярко-розовый фон при наведении */
     opacity: 1; /* убираем затемнение, цвет и так яркий */
+}
+
+/* 📱 Мобильная версия темной темы - белая кнопка "оставить заявку" для старых iPhone */
+@media (max-width: 600px) {
+  .dark-theme .order-link {
+    color: #ffffff !important; /* белый цвет для мобильной версии старых iPhone */
+    border-color: #ffffff !important; /* белая обводка */
+  }
+
+  .dark-theme .order-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* белый фон при наведении */
+    opacity: 1;
+  }
+}
+
+/* 📱 Очень маленькие экраны (375px) - белая кнопка в темной теме */
+@media (max-width: 375px) {
+  .dark-theme .order-link {
+    color: #ffffff !important; /* белый цвет для очень маленьких экранов */
+    border-color: #ffffff !important; /* белая обводка */
+  }
+
+  .dark-theme .order-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* белый фон при наведении */
+    opacity: 1;
+  }
+
+  .name-logo {
+    margin-right: 6px; /* Сдвигаем левее для очень маленьких экранов */
+  }
+
+  /* 📱 Кнопка "оставить заявку" центрирована горизонтально */
+  .center-controls {
+    margin: 0 auto;
+    justify-content: center;
+  }
 }
 
 .light-theme main.container .simple-link {
@@ -828,6 +903,38 @@ background: var(--pink-light-pink) !important;
     font-size: 1.1em; /* немного больше обычного */
     text-decoration: underline;
     text-decoration-color: pink; /* подчёркивание розовым */
+}
+
+/* Pricing cards в темной теме */
+.dark-theme .pricing-card {
+    background: #2b2b2b !important; /* темный фон как у main.container */
+    border-color: var(--pink-light-pink) !important; /* бледно-розовая граница */
+    color: #ffffff !important;
+}
+
+.dark-theme .pricing-card.pricing-featured {
+    background: #2b2b2b !important;
+    border-color: var(--pink-pink) !important; /* ярко-розовая граница для featured */
+}
+
+.dark-theme .pricing-section h4 {
+    color: var(--pink-pink) !important; /* розовый заголовок */
+}
+
+.dark-theme .pricing-header {
+    border-bottom-color: #3a3a3a !important; /* темная граница */
+}
+
+.dark-theme .pricing-header h3 {
+    color: var(--pink-pink) !important; /* розовый заголовок */
+}
+
+.dark-theme .pricing-price {
+    color: var(--pink-light-pink) !important; /* светло-розовый для цены */
+}
+
+.dark-theme .pricing-body p {
+    color: #bbbbbb !important; /* светло-серый текст */
 }
 
 
@@ -941,7 +1048,6 @@ body.dark-theme .soft-item-link:hover {
     font-size: 1rem;      /* чуть меньше шрифт */
     line-height: 1.4;     /* поменьше межстрочный интервал */
     margin: 0.8rem 0 1.2rem 0;  /* чуть плотнее блоки */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* мягче тень */
   }
 }
 
@@ -995,6 +1101,87 @@ body.dark-theme .soft-item-link:hover {
     box-shadow: 0 2px 5px var(--pink-shadow);
 }
 
+/* Обтекание изображения текстом для страницы деталей бизнес-софта */
+.soft-item.business-detail-layout {
+    display: block;
+    padding: 0;
+}
+
+.soft-item.business-detail-layout::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.soft-item.business-detail-layout .left {
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 20px;
+    flex: none;
+}
+
+.soft-item.business-detail-layout .left img {
+    width: 150px;
+    height: auto;
+    max-height: 200px;
+    border-radius: 5px;
+    object-fit: contain;
+    box-shadow: 0 2px 5px var(--pink-shadow);
+}
+
+.soft-item.business-detail-layout .left.no-image {
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 100px;
+}
+
+.soft-item.business-detail-layout .right {
+    flex: none;
+    display: block;
+    overflow: visible; /* Позволяем контенту обтекать изображение */
+    font-size: 1.1rem; /* Увеличенный размер шрифта для детальных страниц */
+    color: #6F6F6F; /* Затемненный серый цвет */
+}
+
+/* Медиа-запросы для обтекания на мобильных устройствах */
+@media (max-width: 768px) {
+    .soft-item.business-detail-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .soft-item.business-detail-layout .left {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .soft-item.business-detail-layout .left img {
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+    }
+    
+    .soft-item.business-detail-layout .left.no-image {
+        float: none;
+        margin-right: 0;
+        width: 100%;
+        max-width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .soft-item.business-detail-layout .right {
+        width: 100%;
+        overflow: visible;
+    }
+}
+
 .soft-item .no-image {
     width: 150px;
     height: 150px;
@@ -1010,8 +1197,8 @@ body.dark-theme .soft-item-link:hover {
 
 .soft-item .right {
     flex: 1;
-    color: var(--pink-gray-medium);
-    font-size: 1rem;
+    color: #6F6F6F; /* затемненный серый цвет */
+    font-size: 1.05rem; /* чуть увеличенный размер шрифта */
 
 
 }
@@ -1066,7 +1253,8 @@ body.dark-theme .soft-item-link:hover {
 
     .soft-item .right {
         flex: 1;
-        font-size: 0.9rem;
+        font-size: 0.95rem; /* чуть увеличенный размер для мобильных */
+        color: #6F6F6F; /* затемненный цвет для мобильных */
     }
 
     /* Заголовок проекта сверху над картинкой+текстом */
@@ -1155,6 +1343,21 @@ a.btn:hover {
     background-color: var(--pink-light-pink);
 }
 
+/* Кнопки btn-primary - белые в светлой теме */
+.light-theme .btn-primary,
+.light-theme a.btn.btn-primary {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+.light-theme .btn-primary:hover,
+.light-theme a.btn.btn-primary:hover {
+    background-color: #f5f5f5 !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
 
 .soft-item-link {
     text-decoration: none;
@@ -1229,6 +1432,7 @@ a.btn:hover {
   .name-logo {
     font-size: 0.75em;
     gap: 4px;
+    margin-right: 8px; /* Сдвигаем левее, чтобы было расстояние до кнопки "оставить заявку" */
   }
 
   .name-logo .first-name {
@@ -1250,13 +1454,13 @@ a.btn:hover {
     display: none !important;
   }
 
-  /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе */
+  /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе (ru ближе к en) */
   .language-buttons {
-    gap: 3px; /* поддерживается с iOS 14.5+ */
+    gap: 1px; /* поддерживается с iOS 14.5+ - уменьшено для сдвига ru ближе к en */
   }
   
   .language-buttons > * + * {
-    margin-left: 3px; /* fallback для iOS < 14.5 */
+    margin-left: 1px; /* fallback для iOS < 14.5 - уменьшено для сдвига ru ближе к en */
   }
 
   .language-button {
@@ -1270,11 +1474,11 @@ a.btn:hover {
     --width: 24px;
   }
 
-  /* 📱 Уменьшаем ссылку "оставить заявку" */
-  .order-link {
-    font-size: 0.8em !important;
-    padding: 3px 8px !important;
-    letter-spacing: 0.05em !important;
+  /* 📱 Кнопка "оставить заявку" центрирована горизонтально */
+  .center-controls {
+    flex: 0 1 auto;
+    margin: 0 auto;
+    justify-content: center;
   }
 }
 
@@ -1340,6 +1544,205 @@ a.btn:hover {
     position: -webkit-sticky !important;
     position: sticky !important;
   }
+}
+
+/* ================== PRICING CARDS ================== */
+.pricing-section {
+    margin: 40px 0;
+    padding: 30px 0;
+}
+
+.pricing-section h4 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    color: var(--pink-pink);
+}
+
+.pricing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pricing-card {
+    flex: 1;
+    min-width: 180px;
+    max-width: 240px;
+    background: var(--white);
+    border: 2px solid var(--pink-light-pink);
+    border-radius: 15px;
+    padding: 18px;
+    box-shadow: 0 4px 12px var(--pink-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+}
+
+.pricing-card.pricing-featured {
+    border-color: var(--pink-pink);
+    border-width: 3px;
+    background: linear-gradient(135deg, #fff5f9 0%, #ffffff 100%);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: var(--pink-pink);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--pink-light-pink);
+}
+
+.pricing-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+    color: var(--pink-pink);
+    font-weight: 600;
+}
+
+.pricing-price {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--pink-dark-pink);
+    margin-top: 8px;
+}
+
+.pricing-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pricing-body p {
+    margin: 0 0 15px 0;
+    color: var(--pink-gray-medium);
+    line-height: 1.5;
+    flex-grow: 1;
+    font-size: 0.9em;
+}
+
+.btn-pricing {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btn-pricing:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-demo {
+    background: var(--pink-light-pink);
+    color: var(--white);
+}
+
+.btn-demo:hover:not(:disabled) {
+    background: var(--pink-pink);
+    transform: scale(1.05);
+}
+
+.btn-standard {
+    background: var(--pink-pink);
+    color: var(--white);
+}
+
+.btn-standard:hover {
+    background: var(--pink-dark-pink);
+    transform: scale(1.05);
+}
+
+.btn-custom {
+    background: var(--pink-pink);
+    color: var(--white);
+}
+
+.btn-custom:hover {
+    background: var(--pink-dark-pink);
+    transform: scale(1.05);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .pricing-cards {
+        flex-direction: row; /* Горизонтальное расположение карточек */
+        align-items: stretch;
+        flex-wrap: wrap; /* Карточки переносятся на новую строку при необходимости */
+        gap: 10px; /* Уменьшенный gap на мобильных */
+    }
+    
+    .pricing-card {
+        flex: 1;
+        min-width: 160px; /* Уменьшенная минимальная ширина для карточек на мобильных */
+        max-width: 100%;
+    }
+    
+    .pricing-section h4 {
+        font-size: 1.2em;
+    }
+    
+    .pricing-header h3 {
+        font-size: 1em;
+    }
+    
+    .pricing-price {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-card {
+        padding: 15px;
+        min-width: 140px; /* Еще меньше для очень маленьких экранов */
+    }
+    
+    .pricing-section {
+        margin: 30px 0;
+        padding: 20px 0;
+    }
+    
+    .pricing-header h3 {
+        font-size: 0.95em;
+    }
+    
+    .pricing-price {
+        font-size: 1.2em;
+    }
+    
+    .btn-pricing {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
 }
 
 

@@ -83,13 +83,9 @@
 
 {% url 'main_app:business_soft' as business_url %}
 
-<p>
-{% blocktrans %}
-I create modern web applications — with authentication, chat, admin panels, and APIs.
-I also develop business applications — for example, a <a class="simple-link" href="{{ business_url }}">CRM system for a dental clinic</a>.
-I combine clean code, reliable architecture, and thoughtful user interface design.
-{% endblocktrans %}
-</p>
+<p>{% blocktrans %}I create modern web applications — with authentication, chat, admin panels, and APIs.{% endblocktrans %}</p>
+<p>{% blocktrans %}I also develop business applications — for example, a <a class="simple-link" href="{{ business_url }}">CRM system for a dental clinic</a>.{% endblocktrans %}</p>
+<p>{% blocktrans %}I combine clean code, reliable architecture, and thoughtful user interface design.{% endblocktrans %}</p>
 
 
     <h3 class="expandable-header">
