@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-25 01:28+0300\n"
+"POT-Creation-Date: 2025-12-18 23:22+0300\n"
 "PO-Revision-Date: 2025-07-11 13:00+0300\n"
 "Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,7 @@ msgstr "Пожалуйста, пройдите проверку."
 
 #: .\accounts\forms.py:105 .\main_app\forms.py:130
 msgid "Verification failed. Please try again."
-msgstr "Проверка не пройдена. Пожалуйста, попробуйте ещё раз."
+msgstr "Проверка не прошла. Пожалуйста, попробуйте снова."
 
 #: .\accounts\views.py:75
 msgid "Please complete the verification to prove you are not a robot."
@@ -113,17 +113,15 @@ msgstr "Разработка программного обеспечения"
 
 #: .\main_app\forms.py:20
 msgid "Existing project modification"
-msgstr "Доработка существующего проекта"
+msgstr "Модификация существующего проекта"
 
 #: .\main_app\forms.py:21
 msgid "Technical support"
 msgstr "Техническая поддержка"
 
 #: .\main_app\forms.py:22
-#, fuzzy
-#| msgid "Collaboration"
 msgid "Consultation"
-msgstr "Сотрудничество"
+msgstr "Консультация"
 
 #: .\main_app\forms.py:23
 msgid "Other"
@@ -151,23 +149,20 @@ msgstr "Описание задачи"
 
 #: .\main_app\forms.py:68
 msgid "Please describe in detail what you need..."
-msgstr "Пожалуйста, подробно опишите, что вам нужно…"
+msgstr "Пожалуйста, подробно опишите, что вам нужно..."
 
 #: .\main_app\views.py:119
 #, python-format
 msgid ""
 "You can submit no more than %(max)d orders per day from one IP address. "
 "Please try again tomorrow."
-msgstr ""
-"Вы можете отправить не более %(max)d заявок в день с одного IP-адреса. "
-"Пожалуйста, попробуйте завтра."
+msgstr "Вы можете отправлять не более %(max)d заказов в день с одного IP-адреса. Попробуйте завтра."
 
 #: .\main_app\views.py:161
 #, python-format
 msgid ""
 "Thank you, %(name)s! Your order has been received. We will contact you soon."
-msgstr ""
-"Спасибо, %(name)s! Ваша заявка получена. Я свяжусь с вами в ближайшее время."
+msgstr "Спасибо, %(name)s! Ваш заказ принят. Мы свяжемся с вами в ближайшее время."
 
 #: .\main_app\views.py:165
 msgid "Please correct the errors in the form."
@@ -218,7 +213,7 @@ msgstr ""
 "Django, утилиты и контакты."
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:26
-#: .\templates\accounts\register.html:74 .\templates\base.html:187
+#: .\templates\accounts\register.html:74 .\templates\base.html:183
 msgid "Login"
 msgstr "Войти"
 
@@ -227,7 +222,7 @@ msgid "Don't have an account?"
 msgstr "Нет аккаунта?"
 
 #: .\templates\accounts\login.html:29 .\templates\accounts\register.html:18
-#: .\templates\accounts\register.html:70 .\templates\base.html:186
+#: .\templates\accounts\register.html:70 .\templates\base.html:182
 msgid "Register"
 msgstr "Регистрация"
 
@@ -258,12 +253,12 @@ msgstr ""
 #: .\templates\accounts\register.html:53
 #: .\templates\main_app\order_request.html:74
 msgid "Verification"
-msgstr ""
+msgstr "Проверка"
 
 #: .\templates\accounts\register.html:59
 #: .\templates\main_app\order_request.html:80
 msgid "Please complete the verification above"
-msgstr "Пожалуйста, завершите проверку выше"
+msgstr "Пожалуйста, пройдите указанную выше проверку"
 
 #: .\templates\accounts\register.html:62
 msgid "Warning"
@@ -313,19 +308,15 @@ msgstr "Веб-разработка, проекты, автоматизация 
 msgid "Liubov Kovaleva Portfolio"
 msgstr "Вход | Портфолио Любови Ковалёвой"
 
-#: .\templates\base.html:149 .\templates\main_app\order_request.html:17
-msgid "Submit a request"
-msgstr "Оставить заявку"
-
-#: .\templates\base.html:183
+#: .\templates\base.html:179
 msgid "Hello"
 msgstr "Привет"
 
-#: .\templates\base.html:184
+#: .\templates\base.html:180
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\templates\base.html:216 .\templates\main_app\free_soft.html:4
+#: .\templates\base.html:212 .\templates\main_app\free_soft.html:4
 #: .\templates\main_app\free_soft.html:10
 #: .\templates\main_app\free_soft_detail.html:5
 #: .\templates\main_app\free_soft_detail.html:7
@@ -334,14 +325,14 @@ msgstr "Выйти"
 msgid "Free Software"
 msgstr "Бесплатный софт"
 
-#: .\templates\base.html:217 .\templates\main_app\my_projects.html:6
+#: .\templates\base.html:213 .\templates\main_app\my_projects.html:6
 #: .\templates\main_app\my_projects.html:12
 #: .\templates\main_app\project_detail.html:55
 #: .\templates\main_app\project_detail.html:76
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:218 .\templates\main_app\business_soft.html:4
+#: .\templates\base.html:214 .\templates\main_app\business_soft.html:4
 #: .\templates\main_app\business_soft.html:10
 #: .\templates\main_app\business_soft_detail.html:5
 #: .\templates\main_app\business_soft_detail.html:7
@@ -350,19 +341,19 @@ msgstr "Мои проекты"
 msgid "Business Software"
 msgstr "Софт для бизнеса"
 
-#: .\templates\base.html:219 .\templates\main_app\contact.html:4
+#: .\templates\base.html:215 .\templates\main_app\contact.html:4
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\templates\base.html:244
+#: .\templates\base.html:240
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
-#: .\templates\base.html:318
+#: .\templates\base.html:314
 msgid "This site uses cookies to improve your experience"
 msgstr "Чтобы сделать работу удобнее сайт использует cookies"
 
-#: .\templates\base.html:330
+#: .\templates\base.html:326
 msgid "Accept"
 msgstr "Согласиться"
 
@@ -487,7 +478,7 @@ msgid "What is it?"
 msgstr "Что это такое?"
 
 #: .\templates\main_app\business_soft_detail.html:109
-
+#, fuzzy, python-format
 #| msgid "Watch a mini tutorial for Dental CRM:"
 msgid "Watch a mini tutorial for %(soft.name)s:"
 msgstr "Посмотрите мини-видео инструкцию по использованию Dental CRM:"
@@ -548,27 +539,22 @@ msgstr ""
 "будут вам полезны в работе или повседневной жизни.\n"
 "    "
 
-#: .\templates\main_app\free_soft_detail.html:127
-#: .\templates\main_app\project_detail.html:117
-
-#| msgid "Free soft and projects"
-msgid "Order similar project"
-msgstr "Заказать похожий проект"
-
 #: .\templates\main_app\index.html:5 .\templates\main_app\index.html:33
 msgid "Portfolio website of web developer Liubov Kovaleva"
 msgstr "Портфолио веб-разработчика Любови Ковалёвой"
 
 #: .\templates\main_app\index.html:6
+#, fuzzy
 #| msgid "Portfolio of Liubov Kovaleva"
 msgid "Portfolio of Liubov Kovaleva: Django developer. Projects:"
 msgstr "Портфолио Любови Ковалёвой"
 
 #: .\templates\main_app\index.html:6
 msgid "Technologies:"
-msgstr ""
+msgstr "Технологии:"
 
 #: .\templates\main_app\index.html:6
+#, fuzzy
 #| msgid ""
 #| "Main page of Liubov Kovaleva’s web developer portfolio. Python, Django, "
 #| "projects, and useful software."
@@ -595,7 +581,7 @@ msgstr ""
 msgid ""
 "Python & Django web developer. Creating modern web applications with "
 "authentication, chat, admin panels, and APIs."
-msgstr ""
+msgstr "Веб-разработчик на Python и Django. Создаю современные веб-приложения с авторизацией, чатом, админ-панелями и API."
 
 #: .\templates\main_app\index.html:55
 msgid "Hello and welcome!"
@@ -607,7 +593,7 @@ msgstr "Меня зовут Любовь, я веб-разработчик на 
 
 #: .\templates\main_app\index.html:63
 msgid "My tech stack"
-msgstr ""
+msgstr "Мой стек технологий"
 
 #: .\templates\main_app\index.html:87
 #, python-format
@@ -861,19 +847,21 @@ msgstr ""
 
 #: .\templates\main_app\order_request.html:4
 msgid "Order Request"
-msgstr "Заявка на услугу"
+msgstr "Запрос на заказ"
+
+#: .\templates\main_app\order_request.html:17
+msgid "Place an order"
+msgstr "Сделать заказ"
 
 #: .\templates\main_app\order_request.html:20
 msgid ""
 "Fill out the form below, and I will contact you soon to discuss the details "
 "of your order."
-msgstr ""
-"Заполните форму ниже, и я свяжусь с вами в ближайшее время, чтобы обсудить "
-"детали запроса."
+msgstr "Заполните форму ниже, и я свяжусь с вами в ближайшее время для уточнения деталей заказа."
 
 #: .\templates\main_app\order_request.html:88
 msgid "Submit order"
-msgstr "Отправить заявку"
+msgstr "Отправить заказ"
 
 #: .\templates\main_app\project_detail.html:6
 #, fuzzy
@@ -893,7 +881,7 @@ msgstr "Загрузить ДЕМО(RU)"
 msgid "Download DEMO(EN)"
 msgstr "Загрузить ДЕМО(EN)"
 
-#: .\templates\main_app\project_detail.html:122
+#: .\templates\main_app\project_detail.html:118
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -920,9 +908,9 @@ msgstr "полезный софт"
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "Here you can find software I’ve developed that is fully completed and "
-#| "ready to use. <br>You can download and use it for free. <br>I hope these "
-#| "tools will be helpful in your daily tasks or projects.\n"
+#| "        Here you can find software I've developed that is fully completed "
+#| "and ready to use. <br>You can download and use it for free. <br>I hope "
+#| "these tools will be helpful in your daily tasks or projects.\n"
 #| "    "
 msgid ""
 "Here you can find software I’ve developed that is fully completed and ready "
@@ -942,3 +930,163 @@ msgstr "Шаблон заголовка"
 #: .\templates\notes\article_detail.html:107
 msgid "Template text"
 msgstr "Шаблон текста"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Available Versions"
+msgstr "Доступные версии"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Demo Version"
+msgstr "Демо версия"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Free"
+msgstr "Бесплатно"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Try the demo version for free"
+msgstr "Попробуйте демо версию бесплатно"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Try Demo"
+msgstr "Попробовать демо"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Coming Soon"
+msgstr "Скоро"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Popular"
+msgstr "Популярный"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Standard Version"
+msgstr "Стандартная версия"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Price on request"
+msgstr "Цена по запросу"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Full-featured standard version"
+msgstr "Полнофункциональная стандартная версия"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Order Now"
+msgstr "Заказать сейчас"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Custom Version"
+msgstr "Кастомная версия"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Custom"
+msgstr "Индивидуально"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Tailored solution for your business"
+msgstr "Индивидуальное решение для вашего бизнеса"
+
+#: .\templates\main_app\business_soft_detail.html
+msgid "Request a Quote"
+msgstr "Оставить заявку"
+
+#~ msgid "Мои услуги"
+#~ msgstr "Мои услуги"
+
+#~ msgid ""
+#~ "\n"
+#~ "    I continue growing in the Python field because I truly enjoy "
+#~ "programming — and I want to do it professionally.\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    Я продолжаю развиваться в области Python, потому что программирование "
+#~ "мне действительно нравится — и я хочу заниматься этим профессионально.\n"
+#~ "    "
+
+#~ msgid "Take a look around"
+#~ msgstr "Взгляните на"
+
+#~ msgid "or you might find some"
+#~ msgstr "или "
+
+#~ msgid "you’ll like."
+#~ msgstr "."
+
+#~ msgid ""
+#~ "In the top-right corner, there’s a theme switcher (day/night). I added it "
+#~ "just in case you absolutely can’t stand my marshmallow-pink design — so "
+#~ "you have a tougher alternative. Though even the night version still has "
+#~ "pink accents 😊"
+#~ msgstr ""
+#~ "В правом верхнем углу есть переключатель темы (день/ночь). Я добавила его "
+#~ "на случай, если вы совсем не выносите мой зефирно-розовый дизайн — тогда "
+#~ "у вас есть более строгая альтернатива. Хотя даже в ночной версии розовые "
+#~ "акценты всё равно остались 😊"
+
+#~ msgid ""
+#~ "\n"
+#~ "    My name is Liubov Kovaleva.<br>\n"
+#~ "    I’m passionate about programming in Python, Django, Django REST "
+#~ "Framework, JS, and Bash, and I also enjoy working with databases and API "
+#~ "integrations.<br>\n"
+#~ "    I develop scripts and applications to automate tasks for businesses "
+#~ "and personal use.<br><br>\n"
+#~ "\n"
+#~ "    Need a small, functional, and SEO-friendly website?<br>\n"
+#~ "    Looking to automate routine tasks or connect APIs?<br>\n"
+#~ "    You’re in the right place.<br><br>\n"
+#~ "\n"
+#~ "    I can help you create a custom website tailored to your needs — and "
+#~ "if necessary, I can take care of maintenance, content updates, and "
+#~ "security.\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    Меня зовут Любовь Ковалева.<br>\n"
+#~ "    Я увлекаюсь программированием на Python, Django, Django REST "
+#~ "Framework, JS и Bash, люблю работать с базами данных и интеграциями API."
+#~ "<br>\n"
+#~ "    Разрабатываю скрипты и приложения для автоматизации задач — как для "
+#~ "бизнеса, так и для личного использования.<br><br>\n"
+#~ "\n"
+#~ "    Нужен простой, функциональный и SEO-оптимизированный сайт?<br>\n"
+#~ "    Хотите автоматизировать рутинные процессы или связать сервисы через "
+#~ "API?<br>\n"
+#~ "    Вы по адресу.<br><br>\n"
+#~ "\n"
+#~ "    Я помогу создать сайт, адаптированный под ваши цели. При "
+#~ "необходимости могу взять на себя поддержку, обновление контента и "
+#~ "обеспечение безопасности.\n"
+#~ "    "
+
+#~ msgid ""
+#~ "\n"
+#~ "    I am open to working on various projects and job offers.\n"
+#~ "    <br>Don’t hesitate to reach out!\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    Я открыта для сотрудничества и предложений по работе.\n"
+#~ "    <br>Если Вам это тоже интересно, то напишите мне!\n"
+#~ "    "
+
+#~ msgid "My projects"
+#~ msgstr "Мои проекты"
+
+#~ msgid "This password is too short. It must contain at least %d character."
+#~ msgid_plural ""
+#~ "This password is too short. It must contain at least %d characters."
+#~ msgstr[0] ""
+#~ "Пароль слишком короткий. Он должен содержать как минимум %d символ."
+#~ msgstr[1] ""
+#~ "Пароль слишком короткий. Он должен содержать как минимум %d символа."
+#~ msgstr[2] ""
+#~ "Пароль слишком короткий. Он должен содержать как минимум %d символов."
+
+#~ msgid "This password is too common."
+#~ msgstr "Этот пароль слишком распространён."
+
+#~ msgid "This password is entirely numeric."
+#~ msgstr "Пароль не должен состоять только из цифр."

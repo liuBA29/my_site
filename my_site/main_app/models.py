@@ -93,6 +93,10 @@ class BusinessSoftware(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', blank=True, null=True)
     youtube_link = models.URLField(verbose_name="YouTube видео (ссылка)", blank=True, null=True)
+    # Поля для тарифов
+    demo_link = models.URLField(verbose_name="Ссылка на демо версию", blank=True, null=True, help_text="Ссылка на бесплатную демо версию")
+    standard_price = models.CharField(max_length=100, verbose_name="Цена стандартной версии", blank=True, null=True, help_text="Например: '10000 руб' или 'от 5000 руб'")
+    show_pricing = models.BooleanField(default=False, verbose_name="Показывать блок тарифов", help_text="Включить отображение блока с тарифами (демо/стандарт/кастом)")
 
     def __str__(self):
         return self.name

@@ -787,6 +787,42 @@ footer {
     opacity: 1; /* убираем затемнение, цвет и так яркий */
 }
 
+/* 📱 Мобильная версия темной темы - белая кнопка "оставить заявку" для старых iPhone */
+@media (max-width: 600px) {
+  .dark-theme .order-link {
+    color: #ffffff !important; /* белый цвет для мобильной версии старых iPhone */
+    border-color: #ffffff !important; /* белая обводка */
+  }
+
+  .dark-theme .order-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* белый фон при наведении */
+    opacity: 1;
+  }
+}
+
+/* 📱 Очень маленькие экраны (375px) - белая кнопка в темной теме */
+@media (max-width: 375px) {
+  .dark-theme .order-link {
+    color: #ffffff !important; /* белый цвет для очень маленьких экранов */
+    border-color: #ffffff !important; /* белая обводка */
+  }
+
+  .dark-theme .order-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* белый фон при наведении */
+    opacity: 1;
+  }
+
+  .name-logo {
+    margin-right: 6px; /* Сдвигаем левее для очень маленьких экранов */
+  }
+
+  /* 📱 Кнопка "оставить заявку" центрирована горизонтально */
+  .center-controls {
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
 .light-theme main.container .simple-link {
     color: #888; /* светло-серый, но не слишком бледный */
     font-weight: bold;
@@ -1269,6 +1305,7 @@ a.btn:hover {
   .name-logo {
     font-size: 0.75em;
     gap: 4px;
+    margin-right: 8px; /* Сдвигаем левее, чтобы было расстояние до кнопки "оставить заявку" */
   }
 
   .name-logo .first-name {
@@ -1290,13 +1327,13 @@ a.btn:hover {
     display: none !important;
   }
 
-  /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе */
+  /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе (ru ближе к en) */
   .language-buttons {
-    gap: 3px; /* поддерживается с iOS 14.5+ */
+    gap: 1px; /* поддерживается с iOS 14.5+ - уменьшено для сдвига ru ближе к en */
   }
   
   .language-buttons > * + * {
-    margin-left: 3px; /* fallback для iOS < 14.5 */
+    margin-left: 1px; /* fallback для iOS < 14.5 - уменьшено для сдвига ru ближе к en */
   }
 
   .language-button {
@@ -1308,6 +1345,13 @@ a.btn:hover {
   /* 🔘 Уменьшаем переключатель темы */
   .toggle {
     --width: 24px;
+  }
+
+  /* 📱 Кнопка "оставить заявку" центрирована горизонтально */
+  .center-controls {
+    flex: 0 1 auto;
+    margin: 0 auto;
+    justify-content: center;
   }
 }
 
@@ -1373,6 +1417,187 @@ a.btn:hover {
     position: -webkit-sticky !important;
     position: sticky !important;
   }
+}
+
+/* ================== PRICING CARDS ================== */
+.pricing-section {
+    margin: 40px 0;
+    padding: 30px 0;
+}
+
+.pricing-section h4 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    color: var(--pink-pink);
+}
+
+.pricing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pricing-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 320px;
+    background: var(--white);
+    border: 2px solid var(--pink-light-pink);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--pink-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+}
+
+.pricing-card.pricing-featured {
+    border-color: var(--pink-pink);
+    border-width: 3px;
+    background: linear-gradient(135deg, #fff5f9 0%, #ffffff 100%);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--pink-pink);
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--pink-light-pink);
+}
+
+.pricing-header h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+    color: var(--pink-pink);
+    font-weight: 600;
+}
+
+.pricing-price {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--pink-dark-pink);
+    margin-top: 10px;
+}
+
+.pricing-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pricing-body p {
+    margin: 0 0 20px 0;
+    color: var(--pink-gray-medium);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.btn-pricing {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.btn-pricing:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-demo {
+    background: var(--pink-light-pink);
+    color: var(--white);
+}
+
+.btn-demo:hover:not(:disabled) {
+    background: var(--pink-pink);
+    transform: scale(1.05);
+}
+
+.btn-standard {
+    background: var(--pink-pink);
+    color: var(--white);
+}
+
+.btn-standard:hover {
+    background: var(--pink-dark-pink);
+    transform: scale(1.05);
+}
+
+.btn-custom {
+    background: linear-gradient(135deg, var(--pink-pink) 0%, var(--pink-dark-pink) 100%);
+    color: var(--white);
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, var(--pink-dark-pink) 0%, var(--pink-pink) 100%);
+    transform: scale(1.05);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .pricing-section h4 {
+        font-size: 1.2em;
+    }
+    
+    .pricing-header h3 {
+        font-size: 1.1em;
+    }
+    
+    .pricing-price {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-card {
+        padding: 20px;
+    }
+    
+    .pricing-section {
+        margin: 30px 0;
+        padding: 20px 0;
+    }
 }
 
 

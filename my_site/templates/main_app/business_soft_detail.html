@@ -113,6 +113,67 @@
 </div>
 {% endif %}
 
+{% if soft.show_pricing %}
+<div class="pricing-section">
+    <h4>{% trans "Available Versions" %}</h4>
+    <div class="pricing-cards">
+        <!-- Демо версия -->
+        <div class="pricing-card">
+            <div class="pricing-header">
+                <h3>{% trans "Demo Version" %}</h3>
+                <div class="pricing-price">{% trans "Free" %}</div>
+            </div>
+            <div class="pricing-body">
+                <p>{% trans "Try the demo version for free" %}</p>
+                {% if soft.demo_link %}
+                    <a href="{{ soft.demo_link }}" target="_blank" class="btn btn-pricing btn-demo">
+                        {% trans "Try Demo" %}
+                    </a>
+                {% else %}
+                    <button class="btn btn-pricing btn-demo" disabled>
+                        {% trans "Coming Soon" %}
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Стандартная версия -->
+        <div class="pricing-card pricing-featured">
+            <div class="pricing-badge">{% trans "Popular" %}</div>
+            <div class="pricing-header">
+                <h3>{% trans "Standard Version" %}</h3>
+                <div class="pricing-price">
+                    {% if soft.standard_price %}
+                        {{ soft.standard_price }}
+                    {% else %}
+                        {% trans "Price on request" %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="pricing-body">
+                <p>{% trans "Full-featured standard version" %}</p>
+                <a href="{% url 'main_app:order_request' %}?service_type=Software development" class="btn btn-pricing btn-standard">
+                    {% trans "Order Now" %}
+                </a>
+            </div>
+        </div>
+
+        <!-- Кастомная версия -->
+        <div class="pricing-card">
+            <div class="pricing-header">
+                <h3>{% trans "Custom Version" %}</h3>
+                <div class="pricing-price">{% trans "Custom" %}</div>
+            </div>
+            <div class="pricing-body">
+                <p>{% trans "Tailored solution for your business" %}</p>
+                <a href="{% url 'main_app:order_request' %}?service_type=Software development" class="btn btn-pricing btn-custom">
+                    {% trans "Request a Quote" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 
              {% if soft.version %}
                 <p><strong>{% trans "Version" %}:</strong> {{ soft.version }}</p>
