@@ -1,13 +1,13 @@
 <!-- templates/main_app/business_soft_detail.html -->
 
 {% extends 'base.html' %}
-{% load i18n static %}
+{% load i18n static main_app_extras %}
 {% block title %}{{ soft.name }} | {% trans "Business Software" %} {% trans "by" %} Liubov Kovaleva{% endblock %}
 {% block meta_description %}{{ soft.description|striptags|truncatechars:150 }}{% endblock %}
 {% block meta_keywords %}{{ soft.name }}, business software, {% trans "Business Software" %}, Liubov Kovaleva, LiuBA29, CRM, business application{% endblock %}
 {% block og_title %}{{ soft.name }} | LiuBA29 Business Software{% endblock %}
 {% block og_description %}{{ soft.description|striptags|truncatechars:150 }}{% endblock %}
-{% block og_image %}{{ soft.image.url }}{% endblock %}
+{% block og_image %}{% if soft.image %}{{ soft.image.url }}{% endif %}{% endblock %}
 {% block og_type %}product{% endblock %}
 
 {% block structured_data %}
@@ -82,7 +82,7 @@
 
     <h1>{{ soft.name }}</h1>
 
-    <div class="soft-item">
+    <div class="soft-item business-detail-layout">
         {% if soft.image %}
             <div class="left">
                 <img src="{{ soft.image.url }}" alt="{{ soft.name }}">
@@ -99,19 +99,8 @@
             <h4>{% trans "What is it?" %}</h4>
 
 <div>
-    {{ soft.description|safe }}
+    {{ soft.description|replace_price:soft.standard_price }}
 </div>
-
-
-
-{% if soft.youtube_link %}
- <div class="soft-video">
-    <h4>{% blocktrans %}Watch a mini tutorial for {{ soft.name }}:{% endblocktrans %}</h4>
-    <a href="{{ soft.youtube_link }}" target="_blank" class="btn btn-secondary">
-        {% trans "Watch on YouTube" %}
-    </a>
-</div>
-{% endif %}
 
 {% if soft.show_pricing %}
 <div class="pricing-section">
@@ -144,7 +133,7 @@
                 <h3>{% trans "Standard Version" %}</h3>
                 <div class="pricing-price">
                     {% if soft.standard_price %}
-                        {{ soft.standard_price }}
+                        {{ soft.standard_price }} BYN
                     {% else %}
                         {% trans "Price on request" %}
                     {% endif %}
@@ -152,7 +141,7 @@
             </div>
             <div class="pricing-body">
                 <p>{% trans "Full-featured standard version" %}</p>
-                <a href="{% url 'main_app:order_request' %}?service_type=Software development" class="btn btn-pricing btn-standard">
+                <a href="{% url 'main_app:order_request' %}?service_type=Software development&product_name={{ soft.name|urlencode }}&product_version=Standard{% if soft.standard_price %}&product_price={{ soft.standard_price }} BYN{% endif %}" class="btn btn-pricing btn-standard">
                     {% trans "Order Now" %}
                 </a>
             </div>
@@ -166,12 +155,21 @@
             </div>
             <div class="pricing-body">
                 <p>{% trans "Tailored solution for your business" %}</p>
-                <a href="{% url 'main_app:order_request' %}?service_type=Software development" class="btn btn-pricing btn-custom">
+                <a href="{% url 'main_app:order_request' %}?service_type=Software development&product_name={{ soft.name|urlencode }}&product_version=Custom&product_price=Custom" class="btn btn-pricing btn-custom">
                     {% trans "Request a Quote" %}
                 </a>
             </div>
         </div>
     </div>
+</div>
+{% endif %}
+
+{% if soft.youtube_link %}
+ <div class="soft-video">
+    <h4>{% blocktrans %}Watch a mini tutorial for {{ soft.name }}:{% endblocktrans %}</h4>
+    <a href="{{ soft.youtube_link }}" target="_blank" class="btn btn-secondary">
+        {% trans "Watch on YouTube" %}
+    </a>
 </div>
 {% endif %}
 
@@ -183,21 +181,22 @@
                 <p><strong>{% trans "Author" %}:</strong> {{ soft.author }}</p>
             {% endif %}-->
 
-
+{% if soft.download_link or soft.english_link %}
             <div class="downloads">
                 <br>
+                {% if soft.download_link %}
+                    <a href="{{ soft.download_link }}" download class="btn btn-primary">
+                        {% trans "Download installer(RU)" %}
+                    </a>
+                {% endif %}
 
-                <a href="{{soft.download_link}}"   download class="btn btn-primary">
-    {% trans "Download installer(RU)" %}
-</a>
-{% if soft.english_link %}
-                 <a href="{{soft.english_link}}"   download class="btn btn-primary">
-    {% trans "Download installer(EN)" %}
-
-</a>{% endif %}
-
-
+                {% if soft.english_link %}
+                    <a href="{{ soft.english_link }}" download class="btn btn-primary">
+                        {% trans "Download installer(EN)" %}
+                    </a>
+                {% endif %}
             </div>
+{% endif %}
         </div>
     </div>
 </main>

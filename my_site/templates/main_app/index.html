@@ -92,8 +92,11 @@ I combine clean code, reliable architecture, and thoughtful user interface desig
 </p>
 
 
-    <h3>{% trans "What I do" %}</h3>
-    <ul>
+    <h3 class="expandable-header">
+      {% trans "What I do" %} 
+      <span class="expand-icon" onclick="toggleExpandable(this)">+</span>
+    </h3>
+    <ul class="expandable-content" style="display: none;">
       <li>{% trans "Develop websites and web applications with Django" %}</li>
       <li>{% trans "Set up Docker environments and deploy projects to servers" %}</li>
       <li>{% trans "Build real-time chats and notifications using Django Channels and Redis" %}</li>
@@ -101,40 +104,58 @@ I combine clean code, reliable architecture, and thoughtful user interface desig
       <li>{% trans "Add multilingual support, SEO, and responsive interfaces" %}</li>
     </ul>
 
-    <h3>{% trans "About this site" %}</h3>
-    <p>{% trans "This website is my personal project. It’s deployed with Docker Compose, supports two languages, and includes a dark mode." %}</p>
-    <p>{% trans "The chat is built with Django Channels and connected to a Telegram bot that sends real-time notifications about new messages." %}</p>
+    <h3 class="expandable-header">
+      {% trans "About this site" %} 
+      <span class="expand-icon" onclick="toggleExpandable(this)">+</span>
+    </h3>
+    <div class="expandable-content" style="display: none;">
+      <p>{% trans "This website is my personal project. It's deployed with Docker Compose, supports two languages, and includes a dark mode." %}</p>
+      <p>{% trans "The chat is built with Django Channels and connected to a Telegram bot that sends real-time notifications about new messages." %}</p>
+      <p>{% blocktrans %}This website is an illustrative example of my work and creative approach. Here's what's "under the hood":{% endblocktrans %}</p>
+      <ul>
+        <li>{% trans "The site is deployed using Docker Compose on a cloud server" %}</li>
+        <li>{% trans "It supports two languages — I use django-modeltranslation for that" %}</li>
+        <li>{% trans "You'll find a day/night switch in the top right corner. If the white-and-pink design feels a bit too sweet for your taste, you can switch to the more reserved night mode. Though even there, the pink accents remain — it's just the color that resonates with my artist's soul right now. 😉🩰" %}</li>
+        <li>{% blocktrans %}A simple User registration is implemented — you'll need it if you want to send me a message via the chat (in the "Contacts" section){% endblocktrans %}</li>
+        <li>{% trans "The chat itself is built using Django Channels, Redis, and Daphne. I replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it requires ASGI" %}</li>
+        <li>{% trans "There is also a Telegram bot seamlessly integrated with the Django Channels backend, leveraging the Telegram Bot API to send real-time alerts about new user messages, so I always stay informed" %}</li>
+        <li>{% trans "On other pages, you can explore my projects and helpful apps. They're available for free download — either directly or via GitHub, no registration required." %}</li>
+      </ul>
+    </div>
 
-    <h3>{% trans "Free soft and projects" %}</h3>
-<p>{% trans "Visit the 'Projects' and 'Useful software' sections — you’ll find interesting things there: an AI assistant bot, Tkinter desktop applications, and other useful tools. All are available for free download — directly from this site or via GitHub." %}</p>
+    <h3 class="expandable-header">
+      {% trans "Free soft and projects" %} 
+      <span class="expand-icon" onclick="toggleExpandable(this)">+</span>
+    </h3>
+    <div class="expandable-content" style="display: none;">
+      <p>{% trans "Visit the 'Projects' and 'Useful software' sections — you'll find interesting things there: an AI assistant bot, Tkinter desktop applications, and other useful tools. All are available for free download — directly from this site or via GitHub." %}</p>
+    </div>
 
-  <h3>{% trans "Collaboration" %}</h3>
-{% blocktrans %}
-I'm open to new projects and collaborations.
-If my approach resonates with you — I’ll be glad to connect 🌷
-You can reach me via the chat on this website, by email, or on Telegram.
-{% endblocktrans %}
+    <h3 class="expandable-header">
+      {% trans "Collaboration" %} 
+      <span class="expand-icon" onclick="toggleExpandable(this)">+</span>
+    </h3>
+    <div class="expandable-content" style="display: none;">
+      {% blocktrans %}
+      I'm open to new projects and collaborations.
+      If my approach resonates with you — I'll be glad to connect 🌷
+      You can reach me via the chat on this website, by email, or on Telegram.
+      {% endblocktrans %}
+    </div>
 
-    <p>{% blocktrans %}This website is an illustrative example of my work and creative approach. Here’s what’s “under the hood”:{% endblocktrans %}</p>
-
-    <ul>
-      <li>{% trans "The site is deployed using Docker Compose on a cloud server" %}</li>
-      <li>{% trans "It supports two languages — I use django-modeltranslation for that" %}</li>
-      <li>{% trans "You’ll find a day/night switch in the top right corner. If the white-and-pink design feels a bit too sweet for your taste, you can switch to the more reserved night mode. Though even there, the pink accents remain — it’s just the color that resonates with my artist’s soul right now. 😉🩰" %}</li>
-      <li>{% trans "A simple User registration is implemented — you’ll need it if you want to send me a message via the chat (in the “Contacts” section)" %}</li>
-      <li>{% trans "The chat itself is built using Django Channels, Redis, and Daphne. I replaced Gunicorn with Daphne because WebSocket doesn't work with WSGI — it requires ASGI" %}</li>
-      <li>{% trans "There is also a Telegram bot seamlessly integrated with the Django Channels backend, leveraging the Telegram Bot API to send real-time alerts about new user messages, so I always stay informed" %}</li>
-      <li>{% trans "On other pages, you can explore my projects and helpful apps. They’re available for free download — either directly or via GitHub, no registration required." %}</li>
-    </ul>
-
-    <h3>{% trans "Additionally" %}</h3>
-    <ul>
+    <h3 class="expandable-header">
+      {% trans "Additionally" %} 
+      <span class="expand-icon" onclick="toggleExpandable(this)">+</span>
+    </h3>
+    <ul class="expandable-content" style="display: none;">
       <li>{% trans "I use meta tags for SEO" %}</li>
       <li>{% trans "I work with Cloudinary (media) and WhiteNoise (static files)" %}</li>
       <li>{% trans "I use JavaScript when necessary — mainly for interface interactivity" %}</li>
       <li>{% trans "I also write Bash scripts for automation and know how to work with API integrations" %}</li>
       <li>{% trans "I have experience integrating Google Search API for enhanced search and data retrieval capabilities" %}</li>
     </ul>
+
+    <p>{% blocktrans %}I am based in Minsk and collaborate with companies and entrepreneurs under a contract, using cashless (bank transfer) payments.{% endblocktrans %}</p>
 
     <p>
       {% blocktrans %}
@@ -150,7 +171,34 @@ You can reach me via the chat on this website, by email, or on Telegram.
   </div>
 
   <style>
+    /* Стили для раскрывающегося заголовка */
+    .expandable-header {
+      position: relative;
+      display: block;
+      cursor: default;
+    }
 
+    .expand-icon {
+      color: var(--pink-pink, #FF69B4);
+      font-weight: bold;
+      font-size: 0.9em;
+      cursor: pointer;
+      user-select: none;
+      margin-left: 5px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: 20px;
+      text-align: center;
+    }
+
+    .expand-icon:hover {
+      transform: scale(1.2);
+    }
+
+    .expandable-content {
+      margin-top: 10px;
+      transition: opacity 0.3s ease;
+    }
 
     .page-messages {
       margin: 20px 0;
@@ -191,4 +239,23 @@ You can reach me via the chat on this website, by email, or on Telegram.
       border: 1px solid #bee5eb;
     }
   </style>
+
+  <script>
+    function toggleExpandable(icon) {
+      const header = icon.closest('.expandable-header');
+      const content = header.nextElementSibling;
+      
+      if (icon.classList.contains('active')) {
+        // Сворачиваем
+        icon.classList.remove('active');
+        icon.textContent = '+';
+        content.style.display = 'none';
+      } else {
+        // Разворачиваем
+        icon.classList.add('active');
+        icon.textContent = '▼';
+        content.style.display = 'block';
+      }
+    }
+  </script>
 {% endblock %}

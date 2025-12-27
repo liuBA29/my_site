@@ -128,6 +128,16 @@ def order_request(request):
         ip_address = get_client_ip(request)
         can_submit, limit_error = check_daily_order_limit(ip_address, max_orders_per_day=5)
         
+        # Сохраняем информацию о продукте для отображения в форме при ошибке
+        product_name = request.POST.get('product_name', '')
+        product_version = request.POST.get('product_version', '')
+        product_price = request.POST.get('product_price', '')
+        product_info = {
+            'product_name': product_name,
+            'product_version': product_version,
+            'product_price': product_price
+        } if product_name else None
+        
         if not can_submit:
             messages.error(request, limit_error)
             form = OrderForm(request.POST)
@@ -138,19 +148,36 @@ def order_request(request):
             if form.is_valid():
                 order = form.save(commit=False)  # Не сохраняем сразу
                 order.ip_address = ip_address  # Сохраняем IP адрес
+                # Сохраняем информацию о продукте из скрытых полей
+                order.product_name = request.POST.get('product_name', '')
+                order.product_version = request.POST.get('product_version', '')
+                order.product_price = request.POST.get('product_price', '')
                 order.save()  # Теперь сохраняем
                 
-                # Отправляем уведомление в Telegram
+                # Формируем сообщение для Telegram
                 telegram_message = (
                     f"🆕 Новая заявка!\n\n"
                     f"👤 Имя: {order.client_name}\n"
                     f"📧 Email: {order.client_email}\n"
                     f"📞 Телефон: {order.client_phone or 'не указан'}\n"
                     f"💼 Услуга: {order.service_type}\n"
+                )
+                
+                # Добавляем информацию о продукте, если она есть
+                if order.product_name:
+                    telegram_message += f"📦 Продукт: {order.product_name}\n"
+                    if order.product_version:
+                        telegram_message += f"🏷️ Версия: {order.product_version}\n"
+                    if order.product_price:
+                        telegram_message += f"💰 Цена: {order.product_price}\n"
+                    telegram_message += "\n"
+                
+                telegram_message += (
                     f"📝 Описание: {order.description[:200]}{'...' if len(order.description) > 200 else ''}\n"
                     f"🌐 IP: {ip_address}\n"
                     f"🆔 ID заказа: {order.id}"
                 )
+                
                 try:
                     send_telegram_message(telegram_message)
                 except Exception as e:
@@ -181,9 +208,20 @@ def order_request(request):
                 initial_data['service_type'] = service_type
         
         form = OrderForm(initial=initial_data)
+        
+        # Получаем информацию о продукте из GET параметров
+        product_name = request.GET.get('product_name', '')
+        product_version = request.GET.get('product_version', '')
+        product_price = request.GET.get('product_price', '')
+        product_info = {
+            'product_name': product_name,
+            'product_version': product_version,
+            'product_price': product_price
+        } if product_name else None
     
     return render(request, 'main_app/order_request.html', {
         'form': form,
+        'product_info': product_info,
         'CLOUDFLARE_TURNSTILE_SITE_KEY': settings.CLOUDFLARE_TURNSTILE_SITE_KEY
     })
 

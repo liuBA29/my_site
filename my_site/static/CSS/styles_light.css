@@ -407,9 +407,8 @@ main.container {
 .section-description {
   font-size: 1.2rem;
   margin: 1rem 0 2rem 0;
-  color: #8F8F8F; /* средне-серый */
+  color: #6F6F6F; /* затемненный серый цвет */
   line-height: 1.6;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
@@ -603,8 +602,89 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
 
 .soft-item .right {
   flex: 1;
-  color: #8F8F8F;
-  font-size: 1rem;
+  color: #6F6F6F; /* затемненный серый цвет */
+  font-size: 1.05rem; /* чуть увеличенный размер шрифта */
+}
+
+/* Обтекание изображения текстом для страницы деталей бизнес-софта */
+.soft-item.business-detail-layout {
+  display: block;
+  padding: 0;
+}
+
+.soft-item.business-detail-layout::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.soft-item.business-detail-layout .left {
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  flex: none;
+}
+
+.soft-item.business-detail-layout .left img {
+  width: 150px;
+  height: auto;
+  max-height: 200px;
+  border-radius: 5px;
+  object-fit: contain;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.soft-item.business-detail-layout .left.no-image {
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  width: 150px;
+  height: 100px;
+}
+
+.soft-item.business-detail-layout .right {
+  flex: none;
+  display: block;
+  overflow: visible; /* Позволяем контенту обтекать изображение */
+  font-size: 1.1rem; /* Увеличенный размер шрифта для детальных страниц */
+  color: #6F6F6F; /* Затемненный серый цвет */
+}
+
+/* Медиа-запросы для обтекания на мобильных устройствах */
+@media (max-width: 768px) {
+  .soft-item.business-detail-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .soft-item.business-detail-layout .left {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .soft-item.business-detail-layout .left img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+  
+  .soft-item.business-detail-layout .left.no-image {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .soft-item.business-detail-layout .right {
+    width: 100%;
+    overflow: visible;
+  }
 }
 
 .soft-item h3 {

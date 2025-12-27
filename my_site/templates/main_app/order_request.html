@@ -20,8 +20,34 @@
     <p>{% trans "Fill out the form below, and I will contact you soon to discuss the details of your order." %}</p>
   </div>
 
+  {% if product_info %}
+  <div class="product-info-box" style="background-color: #f0f8ff; border: 2px solid #4a90e2; border-radius: 10px; padding: 20px; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+    <h3 style="margin-top: 0; color: #4a90e2;">{% trans "Order details" %}:</h3>
+    <p style="margin: 10px 0; font-size: 1.1em;">
+      <strong>{% trans "Product" %}:</strong> {{ product_info.product_name }}<br>
+      {% if product_info.product_version %}
+      <strong>{% trans "Version" %}:</strong> {{ product_info.product_version }}<br>
+      {% endif %}
+      {% if product_info.product_price %}
+      <strong>{% trans "Price" %}:</strong> {{ product_info.product_price }}<br>
+      {% endif %}
+    </p>
+  </div>
+  {% endif %}
+
   <form method="post" class="order-form">
     {% csrf_token %}
+    
+    {% if product_info %}
+    <!-- Скрытые поля для сохранения информации о продукте -->
+    <input type="hidden" name="product_name" value="{{ product_info.product_name }}">
+    {% if product_info.product_version %}
+    <input type="hidden" name="product_version" value="{{ product_info.product_version }}">
+    {% endif %}
+    {% if product_info.product_price %}
+    <input type="hidden" name="product_price" value="{{ product_info.product_price }}">
+    {% endif %}
+    {% endif %}
     
     {% if form.non_field_errors %}
       <div class="form-errors">

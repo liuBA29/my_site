@@ -95,7 +95,7 @@ class BusinessSoftware(models.Model):
     youtube_link = models.URLField(verbose_name="YouTube видео (ссылка)", blank=True, null=True)
     # Поля для тарифов
     demo_link = models.URLField(verbose_name="Ссылка на демо версию", blank=True, null=True, help_text="Ссылка на бесплатную демо версию")
-    standard_price = models.CharField(max_length=100, verbose_name="Цена стандартной версии", blank=True, null=True, help_text="Например: '10000 руб' или 'от 5000 руб'")
+    standard_price = models.CharField(max_length=100, verbose_name="Цена стандартной версии", blank=True, null=True, help_text="Например: '10000' или 'от 5000' (BYN будет добавлен автоматически)")
     show_pricing = models.BooleanField(default=False, verbose_name="Показывать блок тарифов", help_text="Включить отображение блока с тарифами (демо/стандарт/кастом)")
 
     def __str__(self):
@@ -159,6 +159,29 @@ class Order(models.Model):
         help_text="Например: Разработка сайта, Разработка софта, и т.д."
     )
     description = models.TextField(verbose_name="Описание задачи")
+    
+    # Информация о продукте (если заказ на конкретный продукт)
+    product_name = models.CharField(
+        max_length=200,
+        blank=True,
+        null=True,
+        verbose_name="Название продукта",
+        help_text="Название продукта, на который оформлен заказ"
+    )
+    product_version = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name="Версия продукта",
+        help_text="Версия продукта (например: Standard, Custom, Demo)"
+    )
+    product_price = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        verbose_name="Цена продукта",
+        help_text="Цена продукта (например: 10000 BYN)"
+    )
     
     # IP адрес для защиты от спама
     ip_address = models.GenericIPAddressField(
