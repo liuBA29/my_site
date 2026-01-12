@@ -221,12 +221,24 @@ CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+    # Настройки для поддержки raw файлов (PDF, документы)
+    'API_ENVIRONMENT_VARIABLE': None,
+    'API_PROXY': None,
+    'SECURE': True,
+    'MEDIA_TAG': 'media',
+    'INVALID_IMAGE_TAG': 'invalid',
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr', 'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
+    'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'ogv'],
+    'STATIC_RAW_EXTENSIONS': ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt', 'zip', 'rar'],
 }
 
 cloudinary.config(
     cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
     api_key=CLOUDINARY_STORAGE['API_KEY'],
-    api_secret=CLOUDINARY_STORAGE['API_SECRET']
+    api_secret=CLOUDINARY_STORAGE['API_SECRET'],
+    secure=CLOUDINARY_STORAGE.get('SECURE', True),
+    # Увеличиваем таймауты для загрузки больших файлов
+    timeout=600,  # 10 минут для загрузки больших PDF
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

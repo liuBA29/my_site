@@ -102,6 +102,16 @@
     {{ soft.description|safe }}
 </div>
 
+{% if soft.instruction_pdf %}
+<div class="instruction-pdf">
+    <h4>{% trans "Instruction Manual" %}</h4>
+    <a href="{{ soft.get_pdf_url }}" target="_blank" download>
+        <i class="fas fa-download"></i>
+        <span>{% trans "Download PDF Instruction" %}</span>
+    </a>
+</div>
+{% endif %}
+
              {% if soft.version %}
                 <p><strong>{% trans "Version" %}:</strong> {{ soft.version }}</p>
             {% endif %}

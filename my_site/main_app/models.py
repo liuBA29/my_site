@@ -3,6 +3,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
+from django.conf import settings
 
 
 
@@ -64,7 +65,29 @@ class SoftwareBase(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = CloudinaryField('image', blank=True, null=True)
-    instruction_pdf = CloudinaryField("Инструкция в PDF", blank=True, null=True, resource_type='raw', help_text="Загрузите PDF файл с инструкцией")
+    instruction_pdf = models.CharField(
+        "Ссылка на PDF инструкцию",
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Введите прямую ссылку на PDF файл (например, из Cloudinary) или имя файла из директории assets/pdf (например: USER_GUIDE.pdf)"
+    )
+
+    def get_pdf_url(self):
+        """Получает URL для PDF файла - либо внешнюю ссылку, либо путь к статическому файлу"""
+        if self.instruction_pdf:
+            url = self.instruction_pdf.strip()
+            if url:
+                # Если это полный URL (начинается с http:// или https://), возвращаем его напрямую
+                if url.startswith('http://') or url.startswith('https://'):
+                    return url
+                # Если это путь, начинающийся с /, возвращаем как есть
+                elif url.startswith('/'):
+                    return url
+                # Иначе считаем это именем файла и формируем путь к статическим файлам
+                else:
+                    return f"{settings.STATIC_URL}assets/pdf/{url}"
+        return None
 
     def __str__(self):
         return self.name
