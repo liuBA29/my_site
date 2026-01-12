@@ -994,3 +994,205 @@ a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
   color: #FFB6C1;
 }
 
+
+/* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
+.instruction-pdf {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #0066cc;
+    border-radius: 4px;
+}
+
+.instruction-pdf h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #FF69B4;
+}
+
+.instruction-pdf a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    gap: 10px;
+    color: #0066cc;
+    text-decoration: underline;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+.instruction-pdf a:hover {
+    color: #0052a3;
+    text-decoration: underline;
+}
+
+.instruction-pdf a i.fa-download {
+    color: #28a745;
+    font-size: 1.1em;
+}
+
+.dark-theme .instruction-pdf {
+    background-color: #3a3a3a;
+    border-left-color: #FF69B4;
+}
+
+.dark-theme .instruction-pdf h4 {
+    color: #ffffff;
+}
+
+.dark-theme .instruction-pdf a {
+    color: #FFB6C1;
+}
+
+.dark-theme /* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+.instruction-pdf a:hover {
+    color: #FF69B4;
+}
+
+.dark-theme .instruction-pdf a i.fa-download {
+    color: #4CAF50;
+}
+
+/* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
+.instruction-pdf {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #0066cc;
+    border-radius: 4px;
+}
+
+.instruction-pdf h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #FF69B4;
+}
+
+.instruction-pdf a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    gap: 10px;
+    color: #0066cc;
+    text-decoration: underline;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+.instruction-pdf a:hover {
+    color: #0052a3;
+    text-decoration: underline;
+}
+
+.instruction-pdf a i.fa-download {
+    color: #28a745;
+    font-size: 1.1em;
+}
+
+.dark-theme .instruction-pdf {
+    background-color: #3a3a3a;
+    border-left-color: #FF69B4;
+}
+
+.dark-theme .instruction-pdf h4 {
+    color: #ffffff;
+}
+
+.dark-theme .instruction-pdf a {
+    color: #FFB6C1;
+}
+
+.dark-theme /* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+/* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
+.instruction-pdf a > * + * {
+    margin-left: 10px; /* fallback РґР»СЏ СЃС‚Р°СЂС‹С… iOS РІРјРµСЃС‚Рѕ gap */
+}
+
+.instruction-pdf a:hover {
+    color: #FF69B4;
+}
+
+.dark-theme .instruction-pdf a i.fa-download {
+    color: #4CAF50;
+}

@@ -799,6 +799,64 @@ footer {
   }
 }
 
+/* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
+.instruction-pdf {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--pink-link-blue);
+    border-radius: 4px;
+}
+
+.instruction-pdf h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--pink-pink);
+}
+
+.instruction-pdf a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--pink-link-blue);
+    text-decoration: underline;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.instruction-pdf a:hover {
+    color: var(--pink-link-blue-hover);
+    text-decoration: underline;
+}
+
+.instruction-pdf a i.fa-download {
+    color: #28a745;
+    font-size: 1.1em;
+}
+
+/* Стили для блока PDF инструкции в темной теме */
+.dark-theme .instruction-pdf {
+    background-color: #3a3a3a;
+    border-left-color: var(--pink-pink);
+}
+
+.dark-theme .instruction-pdf h4 {
+    color: #ffffff;
+}
+
+.dark-theme .instruction-pdf a {
+    color: var(--pink-light-pink);
+}
+
+.dark-theme .instruction-pdf a:hover {
+    color: var(--pink-pink);
+}
+
+.dark-theme .instruction-pdf a i.fa-download {
+    color: #4CAF50;
+}
+
 /* 📱 Очень маленькие экраны (375px) - белая кнопка в темной теме */
 @media (max-width: 375px) {
   .dark-theme .order-link {
