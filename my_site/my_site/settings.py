@@ -247,3 +247,9 @@ CLOUDFLARE_TURNSTILE_SECRET_KEY = os.getenv('CLOUDFLARE_TURNSTILE_SECRET_KEY', '
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Настройки для загрузки больших файлов (PDF инструкции)
+# Максимальный размер загружаемого файла: 100MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100MB в байтах
+FILE_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100MB в байтах
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240  # Увеличиваем лимит полей формы
