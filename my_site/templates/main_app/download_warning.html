@@ -1,0 +1,40 @@
+<!-- templates/main_app/download_warning.html -->
+
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Download Warning" %} | {% trans "Liubov Kovaleva" %}{% endblock %}
+
+{% block content %}
+<main class="cont">
+    <div style="max-width: 600px; margin: 50px auto; padding: 30px; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h1 style="color: #e74c3c; margin-bottom: 20px;">
+            <i class="fas fa-exclamation-triangle"></i> {% trans "Warning" %}
+        </h1>
+        
+        <div style="margin-bottom: 30px;">
+            <p style="font-size: 1.1em; line-height: 1.6;">
+                {% blocktrans with item_name=item_name file_name=file_name user_os=user_os %}You are trying to download <strong>{{ item_name }}</strong> ({{ file_name }}) on a <strong>{{ user_os }}</strong> system.{% endblocktrans %}
+            </p>
+            
+            <p style="font-size: 1.1em; line-height: 1.6; margin-top: 20px; color: #e74c3c;">
+                <strong>{% trans "This software is designed for Windows operating system only." %}</strong>
+            </p>
+            
+            <p style="font-size: 1em; line-height: 1.6; margin-top: 20px; color: #666;">
+                {% trans "If you are not concerned about this and want to download anyway, you can proceed. However, the software may not work correctly on your system." %}
+            </p>
+        </div>
+        
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="{% url 'main_app:track_download' file_type slug %}?confirm=yes" class="btn btn-primary" style="min-width: 150px;">
+                <i class="fas fa-download"></i> {% trans "Download Anyway" %}
+            </a>
+            
+            <a href="javascript:history.back()" class="btn btn-secondary" style="min-width: 150px;">
+                <i class="fas fa-arrow-left"></i> {% trans "Go Back" %}
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}

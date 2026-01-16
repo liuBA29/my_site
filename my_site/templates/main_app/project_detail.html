@@ -103,12 +103,12 @@
             <div class="downloads">
                 <br>
                 {% if project.demo_link_ru %}
-                    <a href="{{ project.demo_link_ru }}" download class="btn btn-primary">
+                    <a href="{% url 'main_app:track_download' 'demo_ru' project.slug %}" download class="btn btn-primary">
                         {% trans "Download DEMO(RU)" %}
                     </a>
                 {% endif %}
                 {% if project.demo_link_en %}
-                    <a href="{{ project.demo_link_en }}" download class="btn btn-primary">
+                    <a href="{% url 'main_app:track_download' 'demo_en' project.slug %}" download class="btn btn-primary">
                         {% trans "Download DEMO(EN)" %}
                     </a>
                 {% endif %}

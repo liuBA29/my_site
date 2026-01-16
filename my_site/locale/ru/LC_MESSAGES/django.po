@@ -486,11 +486,7 @@ msgstr "Добро пожаловать в"
 msgid "What is it?"
 msgstr "Что это такое?"
 
-#: .\templates\main_app\business_soft_detail.html:107
-#, fuzzy, python-format
-#| msgid "Watch a mini tutorial for %(soft.name)s:"
-msgid "Watch a mini tutorial for %(soft.name)s:"
-msgstr "Посмотрите мини-видео инструкцию по использованию Dental CRM:"
+
 
 #: .\templates\main_app\business_soft_detail.html:109
 msgid "Watch on YouTube"
@@ -498,13 +494,11 @@ msgstr "Смотреть на YouTube"
 
 #: .\templates\main_app\business_soft_detail.html:116
 msgid "Instruction Manual"
-msgstr ""
+msgstr "Инструкция"
 
 #: .\templates\main_app\business_soft_detail.html:119
-#, fuzzy
-#| msgid "Download Options"
 msgid "Download PDF Instruction"
-msgstr "Загрузить опции"
+msgstr "Загрузить инструкцию в PDF"
 
 #: .\templates\main_app\business_soft_detail.html:126
 msgid "Available Versions"
@@ -621,10 +615,10 @@ msgstr ""
 "b>.<br>Надеюсь, они будут вам полезны в работе или повседневной жизни.\n"
 "    "
 
-#: .\templates\main_app\free_soft_detail.html:127
+#: .\templates\main_app\free_soft_detail.html:137
 #: .\templates\main_app\project_detail.html:117
 msgid "Order similar project"
-msgstr "Бесплатный софт и проекты"
+msgstr "Заказать похожий проект"
 
 #: .\templates\main_app\index.html:5 .\templates\main_app\index.html:33
 msgid "Portfolio website of web developer Liubov Kovaleva"
@@ -1006,21 +1000,6 @@ msgstr "Загрузить английскую версию"
 msgid "Useful software"
 msgstr "полезный софт"
 
-#: .\templates\main_app\useful_soft.html:14
-#, fuzzy
-#| msgid ""
-#| "Here you can find software I've developed that is fully completed and "
-#| "ready to use. <br>You can download and use it for free. <br>I hope these "
-#| "tools will be helpful in your daily tasks or projects."
-msgid ""
-"Here you can find software I’ve developed that is fully completed and ready "
-"to use. <br>You can download and use it for free. <br>I hope these tools "
-"will be helpful in your daily tasks or projects."
-msgstr ""
-"Здесь размещены написанные мною программы, которые завершены и готовы к "
-"использованию. <br>Вы можете скачать их бесплатно. <br>Надеюсь, они будут "
-"вам полезны в работе или повседневной жизни."
-
 #: .\templates\notes\article_detail.html:105
 msgid "Template title"
 msgstr "Шаблон заголовка"
@@ -1029,51 +1008,26 @@ msgstr "Шаблон заголовка"
 msgid "Template text"
 msgstr "Шаблон текста"
 
-#~ msgid ""
-#~ "\n"
-#~ "      Even if you're just browsing, I sincerely appreciate your visit — "
-#~ "and I would be grateful if you took a moment to look at the projects I "
-#~ "mentioned above:\n"
-#~ "      "
-#~ msgstr ""
-#~ "\n"
-#~ "    Даже если вы просто заглянули на сайт, я вам благодарна за визит. Мне "
-#~ "будет очень приятно, если вы взглянете на вышеупомянутые проекты:\n"
-#~ "  "
+#: .\templates\main_app\download_warning.html:6
+msgid "Download Warning"
+msgstr "Предупреждение о скачивании"
 
-#~ msgid "Place an order"
-#~ msgstr "Сделать заказ"
+#: .\templates\main_app\download_warning.html:17
+msgid "You are trying to download <strong>%(item_name)s</strong> (%(file_name)s) on a <strong>%(user_os)s</strong> system."
+msgstr "Вы пытаетесь скачать <strong>%(item_name)s</strong> (%(file_name)s) на системе <strong>%(user_os)s</strong>."
 
-#~ msgid "Мои услуги"
-#~ msgstr "Мои услуги"
+#: .\templates\main_app\download_warning.html:21
+msgid "This software is designed for Windows operating system only."
+msgstr "Это программное обеспечение предназначено только для операционной системы Windows."
 
-#~ msgid ""
-#~ "\n"
-#~ "    I continue growing in the Python field because I truly enjoy "
-#~ "programming — and I want to do it professionally.\n"
-#~ "    "
-#~ msgstr ""
-#~ "\n"
-#~ "    Я продолжаю развиваться в области Python, потому что программирование "
-#~ "мне действительно нравится — и я хочу заниматься этим профессионально.\n"
-#~ "    "
+#: .\templates\main_app\download_warning.html:25
+msgid "If you are not concerned about this and want to download anyway, you can proceed. However, the software may not work correctly on your system."
+msgstr "Если это вас не смущает и вы все равно хотите скачать, вы можете продолжить. Однако программное обеспечение может работать некорректно на вашей системе."
 
-#~ msgid "Take a look around"
-#~ msgstr "Взгляните на"
+#: .\templates\main_app\download_warning.html:31
+msgid "Download Anyway"
+msgstr "Все равно скачать"
 
-#~ msgid "or you might find some"
-#~ msgstr "или "
-
-#~ msgid "you’ll like."
-#~ msgstr "."
-
-#~ msgid ""
-#~ "In the top-right corner, there’s a theme switcher (day/night). I added it "
-#~ "just in case you absolutely can’t stand my marshmallow-pink design — so "
-#~ "you have a tougher alternative. Though even the night version still has "
-#~ "pink accents 😊"
-#~ msgstr ""
-#~ "В правом верхнем углу есть переключатель темы (день/ночь). Я добавила его "
-#~ "на случай, если вы совсем не выносите мой зефирно-розовый дизайн — тогда "
-#~ "у вас есть более строгая альтернатива. Хотя даже в ночной версии розовые "
-#~ "акценты всё равно остались 😊"
+#: .\templates\main_app\download_warning.html:35
+msgid "Go Back"
+msgstr "Назад"

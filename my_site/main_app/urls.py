@@ -18,4 +18,7 @@ urlpatterns = [
     path('order/', order_request, name='order_request'),  # Страница заказа
     path('page-view/', page_view, name='page_view'),  #
     path('visits-log/', visits_log, name='visits_log'),
+    
+    # Отслеживание скачиваний
+    path('download/<str:file_type>/<slug:slug>/', track_download, name='track_download'),
 ]

@@ -114,7 +114,7 @@
 {% if soft.instruction_pdf %}
 <div class="instruction-pdf">
     <h4>{% trans "Instruction Manual" %}</h4>
-    <a href="{{ soft.get_pdf_url }}" target="_blank" download>
+    <a href="{% url 'main_app:track_download' 'pdf_instruction' soft.slug %}" target="_blank" download>
         <i class="fas fa-download"></i>
         <span>{% trans "Download PDF Instruction" %}</span>
     </a>
@@ -195,13 +195,13 @@
             <div class="downloads">
                 <br>
                 {% if soft.download_link %}
-                    <a href="{{ soft.download_link }}" download class="btn btn-primary">
+                    <a href="{% url 'main_app:track_download' 'installer_ru' soft.slug %}" download class="btn btn-primary">
                         {% trans "Download installer(RU)" %}
                     </a>
                 {% endif %}
 
                 {% if soft.english_link %}
-                    <a href="{{ soft.english_link }}" download class="btn btn-primary">
+                    <a href="{% url 'main_app:track_download' 'installer_en' soft.slug %}" download class="btn btn-primary">
                         {% trans "Download installer(EN)" %}
                     </a>
                 {% endif %}
