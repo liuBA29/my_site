@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-12 21:50+0300\n"
+"POT-Creation-Date: 2026-01-16 18:10+0300\n"
 "PO-Revision-Date: 2025-07-11 13:00+0300\n"
 "Last-Translator: Liubov Kovaleva <luba.sentino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +151,7 @@ msgstr "Описание задачи"
 msgid "Please describe in detail what you need..."
 msgstr "Пожалуйста, подробно опишите, что вам нужно..."
 
-#: .\main_app\views.py:119
+#: .\main_app\views.py:130
 #, python-format
 msgid ""
 "You can submit no more than %(max)d orders per day from one IP address. "
@@ -160,14 +160,14 @@ msgstr ""
 "Вы можете отправлять не более %(max)d заказов в день с одного IP-адреса. "
 "Попробуйте завтра."
 
-#: .\main_app\views.py:188
+#: .\main_app\views.py:199
 #, python-format
 msgid ""
 "Thank you, %(name)s! Your order has been received. We will contact you soon."
 msgstr ""
 "Спасибо, %(name)s! Ваш заказ принят. Мы свяжемся с вами в ближайшее время."
 
-#: .\main_app\views.py:192
+#: .\main_app\views.py:203
 msgid "Please correct the errors in the form."
 msgstr "Пожалуйста, исправьте ошибки в форме."
 
@@ -264,6 +264,7 @@ msgid "Please complete the verification above"
 msgstr "Пожалуйста, пройдите указанную выше проверку"
 
 #: .\templates\accounts\register.html:62
+#: .\templates\main_app\download_warning.html:12
 msgid "Warning"
 msgstr "Внимание"
 
@@ -486,17 +487,22 @@ msgstr "Добро пожаловать в"
 msgid "What is it?"
 msgstr "Что это такое?"
 
-
+#: .\templates\main_app\business_soft_detail.html:107
+#, python-format
+msgid "Watch a mini tutorial for %(soft.name)s:"
+msgstr ""
 
 #: .\templates\main_app\business_soft_detail.html:109
 msgid "Watch on YouTube"
 msgstr "Смотреть на YouTube"
 
 #: .\templates\main_app\business_soft_detail.html:116
+#: .\templates\main_app\free_soft_detail.html:107
 msgid "Instruction Manual"
 msgstr "Инструкция"
 
 #: .\templates\main_app\business_soft_detail.html:119
+#: .\templates\main_app\free_soft_detail.html:110
 msgid "Download PDF Instruction"
 msgstr "Загрузить инструкцию в PDF"
 
@@ -561,7 +567,7 @@ msgid "Request a Quote"
 msgstr "Оставить заявку"
 
 #: .\templates\main_app\business_soft_detail.html:187
-#: .\templates\main_app\free_soft_detail.html:106
+#: .\templates\main_app\free_soft_detail.html:116
 #: .\templates\main_app\order_request.html:29
 #: .\templates\main_app\test_useful.html:24
 #: .\templates\main_app\useful_soft_detail.html:41
@@ -569,20 +575,20 @@ msgid "Version"
 msgstr "Версия"
 
 #: .\templates\main_app\business_soft_detail.html:191
-#: .\templates\main_app\free_soft_detail.html:110
+#: .\templates\main_app\free_soft_detail.html:120
 #: .\templates\main_app\test_useful.html:28
 #: .\templates\main_app\useful_soft_detail.html:45
 msgid "Author"
 msgstr "Автор"
 
 #: .\templates\main_app\business_soft_detail.html:199
-#: .\templates\main_app\free_soft_detail.html:118
+#: .\templates\main_app\free_soft_detail.html:128
 #: .\templates\main_app\useful_soft_detail.html:53
 msgid "Download installer(RU)"
 msgstr "Загрузить установщик(RU)"
 
 #: .\templates\main_app\business_soft_detail.html:205
-#: .\templates\main_app\free_soft_detail.html:122
+#: .\templates\main_app\free_soft_detail.html:132
 #: .\templates\main_app\useful_soft_detail.html:57
 msgid "Download installer(EN)"
 msgstr "Загрузить установщик(EN)"
@@ -598,6 +604,48 @@ msgstr "Онлайн чат"
 #: .\templates\main_app\contact.html:32
 msgid "Loading..."
 msgstr "Загружается..."
+
+#: .\templates\main_app\download_warning.html:6
+msgid "Download Warning"
+msgstr "Предупреждение о скачивании"
+
+#: .\templates\main_app\download_warning.html:6
+#: .\templates\main_app\visits_log.html:5
+#, fuzzy
+#| msgid "Liubov Kovaleva Portfolio"
+msgid "Liubov Kovaleva"
+msgstr "Вход | Портфолио Любови Ковалёвой"
+
+#: .\templates\main_app\download_warning.html:17
+#, python-format
+msgid ""
+"You are trying to download <strong>%(item_name)s</strong> (%(file_name)s) on "
+"a <strong>%(user_os)s</strong> system."
+msgstr ""
+"Вы пытаетесь скачать <strong>%(item_name)s</strong> (%(file_name)s) на "
+"системе <strong>%(user_os)s</strong>."
+
+#: .\templates\main_app\download_warning.html:21
+msgid "This software is designed for Windows operating system only."
+msgstr ""
+"Это программное обеспечение предназначено только для операционной системы "
+"Windows."
+
+#: .\templates\main_app\download_warning.html:25
+msgid ""
+"If you are not concerned about this and want to download anyway, you can "
+"proceed. However, the software may not work correctly on your system."
+msgstr ""
+"Если это вас не смущает и вы все равно хотите скачать, вы можете продолжить. "
+"Однако программное обеспечение может работать некорректно на вашей системе."
+
+#: .\templates\main_app\download_warning.html:31
+msgid "Download Anyway"
+msgstr "Все равно скачать"
+
+#: .\templates\main_app\download_warning.html:35
+msgid "Go Back"
+msgstr "Назад"
 
 #: .\templates\main_app\free_soft.html:14
 msgid ""
@@ -952,6 +1000,7 @@ msgid "Order details"
 msgstr "Запрос на заказ"
 
 #: .\templates\main_app\order_request.html:27
+#: .\templates\main_app\visits_log.html:18
 msgid "Product"
 msgstr "Продукт"
 
@@ -1000,6 +1049,80 @@ msgstr "Загрузить английскую версию"
 msgid "Useful software"
 msgstr "полезный софт"
 
+#: .\templates\main_app\useful_soft.html:14
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "        Here you can find software I've developed that is fully completed "
+#| "and ready to use. <br>You can download and use it for free. "
+#| "<br>Currently, the software is available for the <b>Windows</b> operating "
+#| "system only.<br>I hope these tools will be helpful in your daily tasks or "
+#| "projects.\n"
+#| "    "
+msgid ""
+"Here you can find software I’ve developed that is fully completed and ready "
+"to use. <br>You can download and use it for free. <br>I hope these tools "
+"will be helpful in your daily tasks or projects."
+msgstr ""
+"\n"
+"        Здесь размещены написанные мною программы, которые завершены и "
+"готовы к использованию. <br>Вы можете скачать их бесплатно. <br>В настоящее "
+"время, программное обеспечение доступно для операционной системы <b>Windows</"
+"b>.<br>Надеюсь, они будут вам полезны в работе или повседневной жизни.\n"
+"    "
+
+#: .\templates\main_app\visits_log.html:5
+#: .\templates\main_app\visits_log.html:9
+msgid "Visit and Download Logs"
+msgstr "Логи посещений и скачиваний"
+
+#: .\templates\main_app\visits_log.html:12
+msgid "Downloads"
+msgstr "Скачивания"
+
+#: .\templates\main_app\visits_log.html:17
+#: .\templates\main_app\visits_log.html:73
+msgid "Date/Time"
+msgstr "Дата/Время"
+
+#: .\templates\main_app\visits_log.html:19
+msgid "File"
+msgstr "Файл"
+
+#: .\templates\main_app\visits_log.html:20
+msgid "File Type"
+msgstr "Тип файла"
+
+#: .\templates\main_app\visits_log.html:21
+msgid "OS"
+msgstr "ОС"
+
+#: .\templates\main_app\visits_log.html:22
+#: .\templates\main_app\visits_log.html:75
+msgid "IP Address"
+msgstr "IP адрес"
+
+#: .\templates\main_app\visits_log.html:23
+#: .\templates\main_app\visits_log.html:74
+msgid "URL"
+msgstr "URL"
+
+#: .\templates\main_app\visits_log.html:51
+msgid "Link"
+msgstr "Ссылка"
+
+#: .\templates\main_app\visits_log.html:58
+msgid "No downloads yet"
+msgstr "Пока нет скачиваний"
+
+#: .\templates\main_app\visits_log.html:68
+msgid "Page Visits"
+msgstr "Посещения страниц"
+
+#: .\templates\main_app\visits_log.html:88
+msgid "No visits yet"
+msgstr "Пока нет посещений"
+
 #: .\templates\notes\article_detail.html:105
 msgid "Template title"
 msgstr "Шаблон заголовка"
@@ -1007,27 +1130,3 @@ msgstr "Шаблон заголовка"
 #: .\templates\notes\article_detail.html:107
 msgid "Template text"
 msgstr "Шаблон текста"
-
-#: .\templates\main_app\download_warning.html:6
-msgid "Download Warning"
-msgstr "Предупреждение о скачивании"
-
-#: .\templates\main_app\download_warning.html:17
-msgid "You are trying to download <strong>%(item_name)s</strong> (%(file_name)s) on a <strong>%(user_os)s</strong> system."
-msgstr "Вы пытаетесь скачать <strong>%(item_name)s</strong> (%(file_name)s) на системе <strong>%(user_os)s</strong>."
-
-#: .\templates\main_app\download_warning.html:21
-msgid "This software is designed for Windows operating system only."
-msgstr "Это программное обеспечение предназначено только для операционной системы Windows."
-
-#: .\templates\main_app\download_warning.html:25
-msgid "If you are not concerned about this and want to download anyway, you can proceed. However, the software may not work correctly on your system."
-msgstr "Если это вас не смущает и вы все равно хотите скачать, вы можете продолжить. Однако программное обеспечение может работать некорректно на вашей системе."
-
-#: .\templates\main_app\download_warning.html:31
-msgid "Download Anyway"
-msgstr "Все равно скачать"
-
-#: .\templates\main_app\download_warning.html:35
-msgid "Go Back"
-msgstr "Назад"

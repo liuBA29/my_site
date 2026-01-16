@@ -1,26 +1,236 @@
 <!-- main_app/visits_log.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Логи посещений и активности</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        h2 {
+            margin: 40px 0 20px 0;
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 50px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        thead {
+            background: #34495e;
+            color: white;
+        }
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover {
+            background: #f9f9f9;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .badge-pdf {
+            background: #3498db;
+            color: white;
+        }
+        .badge-installer-ru {
+            background: #2ecc71;
+            color: white;
+        }
+        .badge-installer-en {
+            background: #27ae60;
+            color: white;
+        }
+        .badge-demo-ru {
+            background: #9b59b6;
+            color: white;
+        }
+        .badge-demo-en {
+            background: #8e44ad;
+            color: white;
+        }
+        .badge-youtube {
+            background: #e74c3c;
+            color: white;
+        }
+        .badge-repo {
+            background: #34495e;
+            color: white;
+        }
+        .badge-other {
+            background: #95a5a6;
+            color: white;
+        }
+        .link {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        .monospace {
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .empty {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>История посещений</h1>
-<table border="1">
-  <tr>
-    <th>Дата и время</th>
-    <th>URL</th>
-    <th>IP-адрес</th>
-  </tr>
-  {% for log in logs %}
-  <tr>
-    <td>{{ log.viewed_at }}</td>
-    <td>{{ log.path }}</td>
-    <td>{{ log.ip_address }}</td>
-  </tr>
-  {% endfor %}
-</table>
-
+    <h1>Логи посещений и активности</h1>
+    
+    <!-- Скачивания -->
+    <div class="section">
+        <h2>📥 Скачивания файлов</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата/Время</th>
+                    <th>Продукт</th>
+                    <th>Файл</th>
+                    <th>Тип</th>
+                    <th>ОС</th>
+                    <th>IP адрес</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in download_logs %}
+                <tr>
+                    <td>{{ log.downloaded_at|date:"d.m.Y H:i:s" }}</td>
+                    <td><strong>{{ log.product_name }}</strong></td>
+                    <td>{{ log.file_name }}</td>
+                    <td>
+                        {% if log.file_type == 'pdf_instruction' %}
+                            <span class="badge badge-pdf">PDF</span>
+                        {% elif log.file_type == 'installer_ru' %}
+                            <span class="badge badge-installer-ru">RU Installer</span>
+                        {% elif log.file_type == 'installer_en' %}
+                            <span class="badge badge-installer-en">EN Installer</span>
+                        {% elif log.file_type == 'demo_ru' %}
+                            <span class="badge badge-demo-ru">RU Demo</span>
+                        {% elif log.file_type == 'demo_en' %}
+                            <span class="badge badge-demo-en">EN Demo</span>
+                        {% else %}
+                            {{ log.file_type }}
+                        {% endif %}
+                    </td>
+                    <td>{{ log.user_os|default:"Unknown" }}</td>
+                    <td class="monospace">{{ log.ip_address }}</td>
+                    <td><a href="{{ log.download_url }}" target="_blank" class="link">🔗 Ссылка</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="empty">Пока нет скачиваний</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Внешние ссылки -->
+    <div class="section">
+        <h2>🔗 Переходы по внешним ссылкам</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата/Время</th>
+                    <th>Продукт</th>
+                    <th>Тип ссылки</th>
+                    <th>ОС</th>
+                    <th>IP адрес</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in external_link_logs %}
+                <tr>
+                    <td>{{ log.clicked_at|date:"d.m.Y H:i:s" }}</td>
+                    <td><strong>{{ log.product_name }}</strong></td>
+                    <td>
+                        {% if log.link_type == 'youtube' %}
+                            <span class="badge badge-youtube">YouTube</span>
+                        {% elif log.link_type == 'repo' %}
+                            <span class="badge badge-repo">Репозиторий</span>
+                        {% else %}
+                            <span class="badge badge-other">{{ log.link_type }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ log.user_os|default:"Unknown" }}</td>
+                    <td class="monospace">{{ log.ip_address }}</td>
+                    <td><a href="{{ log.link_url }}" target="_blank" class="link">🔗 Ссылка</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="empty">Пока нет переходов по внешним ссылкам</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Посещения страниц -->
+    <div class="section">
+        <h2>👁️ Посещения страниц</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Дата/Время</th>
+                    <th>URL</th>
+                    <th>IP адрес</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in visit_logs %}
+                <tr>
+                    <td>{{ log.viewed_at|date:"d.m.Y H:i:s" }}</td>
+                    <td>{{ log.path }}</td>
+                    <td class="monospace">{{ log.ip_address }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="empty">Пока нет посещений</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -6,12 +6,13 @@ load_dotenv()  # Загружает переменные из .env файла
 
 EXCLUDED_IPS = os.getenv('EXCLUDED_IPS', '').split(',')
 
-# Пути, по которым ведётся учёт просмотров
-TRACKED_PATHS = [
-    '/',
-    '/useful-soft/', '/useful-soft/mantra-player/', '/useful-soft/email-sender/',
-    '/my-projects/', '/project/asterisk-call-monitoring/',
-    '/contact/',
+# Пути, которые НЕ нужно логировать
+EXCLUDED_PATHS = [
+    '/admin/',
+    '/favicon.ico',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/mysitemap.xml',
 ]
 
 class PageViewMiddleware:
@@ -32,23 +33,36 @@ class PageViewMiddleware:
 
         path = request.path
 
-        if (
-            path in TRACKED_PATHS and
-            path not in ['/admin/', '/favicon.ico'] and
-            not path.startswith('/static/')
-        ):
-            # Импортируем модели внутри метода
-            from .models import PageView, PageVisitLog
+        # Логируем все страницы, кроме исключений
+        should_log = (
+            # Не статические файлы
+            not path.startswith('/static/') and
+            not path.startswith('/media/') and
+            # Не исключенные пути
+            path not in EXCLUDED_PATHS and
+            # Не начинается с исключенных префиксов
+            not any(path.startswith(excluded) for excluded in EXCLUDED_PATHS) and
+            # Только успешные ответы (200)
+            response.status_code == 200
+        )
 
-            # Обновление/создание записи просмотров
-            view, _ = PageView.objects.get_or_create(path=path)
-            view.views_count += 1
-            view.last_viewed_at = now()
-            view.last_viewed_ip = ip
-            view.save()
+        if should_log:
+            try:
+                # Импортируем модели внутри метода
+                from .models import PageView, PageVisitLog
 
-            # Запись в лог
-            PageVisitLog.objects.create(path=path, ip_address=ip)
+                # Обновление/создание записи просмотров
+                view, _ = PageView.objects.get_or_create(path=path)
+                view.views_count += 1
+                view.last_viewed_at = now()
+                view.last_viewed_ip = ip
+                view.save()
+
+                # Запись в лог
+                PageVisitLog.objects.create(path=path, ip_address=ip)
+            except Exception as e:
+                # Игнорируем ошибки логирования, чтобы не сломать сайт
+                print(f"Ошибка логирования посещения: {e}")
 
         return response
 

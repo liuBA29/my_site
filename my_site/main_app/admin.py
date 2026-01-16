@@ -13,6 +13,54 @@ class PageViewAdmin(admin.ModelAdmin):
     search_fields = ('path',)
 
 
+@admin.register(PageVisitLog)
+class PageVisitLogAdmin(admin.ModelAdmin):
+    list_display = ('viewed_at', 'path', 'ip_address')
+    ordering = ('-viewed_at',)
+    search_fields = ('path', 'ip_address')
+    list_filter = ('viewed_at',)
+
+
+@admin.register(ExternalLinkLog)
+class ExternalLinkLogAdmin(admin.ModelAdmin):
+    list_display = ('clicked_at', 'product_name', 'link_type', 'user_os', 'ip_address')
+    ordering = ('-clicked_at',)
+    search_fields = ('product_name', 'link_type', 'ip_address', 'user_os')
+    list_filter = ('link_type', 'user_os', 'clicked_at')
+    readonly_fields = ('clicked_at', 'link_type', 'product_name', 'link_url', 'ip_address', 'user_agent', 'referer', 'user_os')
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('clicked_at', 'link_type', 'product_name')
+        }),
+        ('Информация о ссылке', {
+            'fields': ('link_url',)
+        }),
+        ('Информация о пользователе', {
+            'fields': ('ip_address', 'user_os', 'user_agent', 'referer')
+        }),
+    )
+
+
+@admin.register(DownloadLog)
+class DownloadLogAdmin(admin.ModelAdmin):
+    list_display = ('downloaded_at', 'product_name', 'file_name', 'file_type', 'user_os', 'ip_address')
+    ordering = ('-downloaded_at',)
+    search_fields = ('product_name', 'file_name', 'ip_address', 'user_os')
+    list_filter = ('file_type', 'user_os', 'downloaded_at')
+    readonly_fields = ('downloaded_at', 'product_name', 'file_name', 'file_type', 'download_url', 'ip_address', 'user_agent', 'referer', 'user_os')
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('downloaded_at', 'product_name', 'file_name', 'file_type')
+        }),
+        ('Информация о файле', {
+            'fields': ('download_url',)
+        }),
+        ('Информация о пользователе', {
+            'fields': ('ip_address', 'user_os', 'user_agent', 'referer')
+        }),
+    )
+
+
 @admin.register(Project)
 class ProjectAdmin(TranslationAdmin):
     prepopulated_fields = {'slug': ('title',)}

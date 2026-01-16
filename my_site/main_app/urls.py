@@ -21,4 +21,6 @@ urlpatterns = [
     
     # Отслеживание скачиваний
     path('download/<str:file_type>/<slug:slug>/', track_download, name='track_download'),
+    # Отслеживание внешних ссылок
+    path('link/<str:link_type>/<slug:slug>/', track_link, name='track_link'),
 ]

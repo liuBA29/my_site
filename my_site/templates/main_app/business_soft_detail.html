@@ -105,7 +105,7 @@
 {% if soft.youtube_link %}
  <div class="soft-video">
     <h4>{% blocktrans %}Watch a mini tutorial for {{ soft.name }}:{% endblocktrans %}</h4>
-    <a href="{{ soft.youtube_link }}" target="_blank" class="btn btn-secondary">
+    <a href="{% url 'main_app:track_link' 'youtube' soft.slug %}" target="_blank" class="btn btn-secondary">
         {% trans "Watch on YouTube" %}
     </a>
 </div>
@@ -134,7 +134,7 @@
             <div class="pricing-body">
                 <p>{% trans "Try the demo version for free" %}</p>
                 {% if soft.demo_link %}
-                    <a href="{{ soft.demo_link }}" target="_blank" class="btn btn-pricing btn-demo">
+                    <a href="{% url 'main_app:track_download' 'demo_ru' soft.slug %}" target="_blank" class="btn btn-pricing btn-demo">
                         {% trans "Try Demo" %}
                     </a>
                 {% else %}

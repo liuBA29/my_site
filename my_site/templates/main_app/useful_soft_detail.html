@@ -49,11 +49,11 @@
             <div class="downloads">
                 <br>
 
-                <a href="{{soft.download_link}}"   download class="btn btn-primary">
+                <a href="{% url 'main_app:track_download' 'installer_ru' soft.slug %}" download class="btn btn-primary">
     {% trans "Download installer(RU)" %}
 </a>
 {% if soft.english_link %}
-                 <a href="{{soft.english_link}}"   download class="btn btn-primary">
+                 <a href="{% url 'main_app:track_download' 'installer_en' soft.slug %}" download class="btn btn-primary">
     {% trans "Download installer(EN)" %}
 
 </a>{% endif %}

@@ -120,7 +120,7 @@
 
             {% if project.repo_link %}
                 <h4><strong>{% trans "GitHub" %}:</strong></h4>
-                <a class="simple-link" href="{{ project.repo_link }}" target="_blank" rel="noopener noreferrer">{{ project.repo_link }}</a>
+                <a class="simple-link" href="{% url 'main_app:track_link' 'repo' project.slug %}" target="_blank" rel="noopener noreferrer">{{ project.repo_link }}</a>
             {% endif %}
         </div>
     </div>

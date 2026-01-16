@@ -27,6 +27,47 @@ class PageVisitLog(models.Model):
         return f"{self.viewed_at} - {self.path} - {self.ip_address}"
 
 
+class DownloadLog(models.Model):
+    """Модель для логирования скачиваний файлов"""
+    product_name = models.CharField(max_length=200, verbose_name="Название продукта")
+    file_name = models.CharField(max_length=200, verbose_name="Название файла")
+    file_type = models.CharField(max_length=50, verbose_name="Тип файла", help_text="pdf_instruction, installer_ru, installer_en, demo_ru, demo_en")
+    download_url = models.URLField(max_length=500, verbose_name="URL файла")
+    downloaded_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата скачивания")
+    ip_address = models.GenericIPAddressField(verbose_name="IP адрес")
+    user_agent = models.TextField(verbose_name="User-Agent", blank=True, null=True)
+    referer = models.CharField(max_length=500, verbose_name="Referer", blank=True, null=True)
+    user_os = models.CharField(max_length=50, verbose_name="ОС пользователя", blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.downloaded_at} - {self.product_name} - {self.file_name} ({self.ip_address})"
+    
+    class Meta:
+        verbose_name = "Лог скачивания"
+        verbose_name_plural = "Логи скачиваний"
+        ordering = ['-downloaded_at']
+
+
+class ExternalLinkLog(models.Model):
+    """Модель для логирования переходов по внешним ссылкам (YouTube, репозитории и т.д.)"""
+    link_type = models.CharField(max_length=50, verbose_name="Тип ссылки", help_text="youtube, repo, other")
+    product_name = models.CharField(max_length=200, verbose_name="Название продукта")
+    link_url = models.URLField(max_length=500, verbose_name="URL ссылки")
+    clicked_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата перехода")
+    ip_address = models.GenericIPAddressField(verbose_name="IP адрес")
+    user_agent = models.TextField(verbose_name="User-Agent", blank=True, null=True)
+    referer = models.CharField(max_length=500, verbose_name="Referer", blank=True, null=True)
+    user_os = models.CharField(max_length=50, verbose_name="ОС пользователя", blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.clicked_at} - {self.product_name} - {self.link_type} ({self.ip_address})"
+    
+    class Meta:
+        verbose_name = "Лог внешних ссылок"
+        verbose_name_plural = "Логи внешних ссылок"
+        ordering = ['-clicked_at']
+
+
 
 # 🔹 Модель для проектов
 class Project(models.Model):
