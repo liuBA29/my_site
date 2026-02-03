@@ -799,6 +799,64 @@ footer {
   }
 }
 
+/* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
+.instruction-pdf {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--pink-link-blue);
+    border-radius: 4px;
+}
+
+.instruction-pdf h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--pink-pink);
+}
+
+.instruction-pdf a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--pink-link-blue);
+    text-decoration: underline;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.instruction-pdf a:hover {
+    color: var(--pink-link-blue-hover);
+    text-decoration: underline;
+}
+
+.instruction-pdf a i.fa-download {
+    color: #28a745;
+    font-size: 1.1em;
+}
+
+/* Стили для блока PDF инструкции в темной теме */
+.dark-theme .instruction-pdf {
+    background-color: #3a3a3a;
+    border-left-color: var(--pink-pink);
+}
+
+.dark-theme .instruction-pdf h4 {
+    color: #ffffff;
+}
+
+.dark-theme .instruction-pdf a {
+    color: var(--pink-light-pink);
+}
+
+.dark-theme .instruction-pdf a:hover {
+    color: var(--pink-pink);
+}
+
+.dark-theme .instruction-pdf a i.fa-download {
+    color: #4CAF50;
+}
+
 /* 📱 Очень маленькие экраны (375px) - белая кнопка в темной теме */
 @media (max-width: 375px) {
   .dark-theme .order-link {
@@ -1341,6 +1399,32 @@ a.btn {
 }
 a.btn:hover {
     background-color: var(--pink-light-pink);
+}
+
+/* Кнопка YouTube — белый фон, красная иконка (#ff0033), чёрный текст */
+a.btn-youtube {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+a.btn-youtube:hover {
+    background-color: #f5f5f5 !important;
+    color: #000000 !important;
+    border-color: #ff0033;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 0, 51, 0.2);
+}
+a.btn-youtube i.fab.fa-youtube {
+    font-size: 1.4em;
+    color: #ff0033;
 }
 
 /* Кнопки btn-primary - белые в светлой теме */
