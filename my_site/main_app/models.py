@@ -154,6 +154,29 @@ class BusinessSoftware(SoftwareBase):
     demo_link = models.URLField(verbose_name="Ссылка на демо версию", blank=True, null=True, help_text="Ссылка на бесплатную демо версию")
     standard_price = models.CharField(max_length=100, verbose_name="Цена стандартной версии", blank=True, null=True, help_text="Например: '10000' или 'от 5000' (BYN будет добавлен автоматически)")
     show_pricing = models.BooleanField(default=False, verbose_name="Показывать блок тарифов", help_text="Включить отображение блока с тарифами (демо/стандарт/кастом)")
+    instruction_pdf_en = models.CharField(
+        "Ссылка на PDF инструкцию (EN)",
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Введите прямую ссылку на PDF файл (например, из Cloudinary) или имя файла из директории assets/pdf (например: USER_GUIDE_EN.pdf)"
+    )
+
+    def get_pdf_url_en(self):
+        """Получает URL для PDF файла английской версии - либо внешнюю ссылку, либо путь к статическому файлу"""
+        if self.instruction_pdf_en:
+            url = self.instruction_pdf_en.strip()
+            if url:
+                # Если это полный URL (начинается с http:// или https://), возвращаем его напрямую
+                if url.startswith('http://') or url.startswith('https://'):
+                    return url
+                # Если это путь, начинающийся с /, возвращаем как есть
+                elif url.startswith('/'):
+                    return url
+                # Иначе считаем это именем файла и формируем путь к статическим файлам
+                else:
+                    return f"{settings.STATIC_URL}assets/pdf/{url}"
+        return None
 
     def get_absolute_url(self):
         return reverse('main_app:business_soft_detail', kwargs={'slug': self.slug})

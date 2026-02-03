@@ -488,9 +488,8 @@ msgid "What is it?"
 msgstr "Что это такое?"
 
 #: .\templates\main_app\business_soft_detail.html:107
-#, python-format
-msgid "Watch a mini tutorial for %(soft.name)s:"
-msgstr ""
+msgid "Watch tutorial"
+msgstr "Смотреть туториал"
 
 #: .\templates\main_app\business_soft_detail.html:109
 msgid "Watch on YouTube"

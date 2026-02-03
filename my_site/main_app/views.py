@@ -309,6 +309,11 @@ def track_download(request, file_type, slug=None, file_id=None):
                 if file_type == 'pdf_instruction' and soft.instruction_pdf:
                     download_url = soft.get_pdf_url()
                     file_name = "PDF инструкция"
+                elif file_type == 'pdf_instruction_en':
+                    from .models import BusinessSoftware
+                    if isinstance(soft, BusinessSoftware) and soft.instruction_pdf_en:
+                        download_url = soft.get_pdf_url_en()
+                        file_name = "PDF Instruction (EN)"
                 elif file_type == 'installer_ru' and soft.download_link:
                     download_url = soft.download_link
                     file_name = "Установщик (RU)"

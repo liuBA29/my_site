@@ -103,21 +103,30 @@
 </div>
 
 {% if soft.youtube_link %}
- <div class="soft-video">
-    <h4>{% blocktrans %}Watch a mini tutorial for {{ soft.name }}:{% endblocktrans %}</h4>
-    <a href="{% url 'main_app:track_link' 'youtube' soft.slug %}" target="_blank" class="btn btn-secondary">
-        {% trans "Watch on YouTube" %}
+<div class="soft-video">
+    <h4>{% trans "Watch tutorial" %}</h4>
+    <a href="{% url 'main_app:track_link' 'youtube' soft.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">
+        <i class="fab fa-youtube"></i>
+        <span>{% trans "Watch on YouTube" %}</span>
     </a>
 </div>
 {% endif %}
 
-{% if soft.instruction_pdf %}
+{% if soft.instruction_pdf or soft.instruction_pdf_en %}
 <div class="instruction-pdf">
     <h4>{% trans "Instruction Manual" %}</h4>
-    <a href="{% url 'main_app:track_download' 'pdf_instruction' soft.slug %}" target="_blank" download>
-        <i class="fas fa-download"></i>
-        <span>{% trans "Download PDF Instruction" %}</span>
-    </a>
+    {% if soft.instruction_pdf %}
+        <a href="{% url 'main_app:track_download' 'pdf_instruction' soft.slug %}" target="_blank" download>
+            <i class="fas fa-download"></i>
+            <span>{% trans "Download PDF Instruction" %} (RU)</span>
+        </a>
+    {% endif %}
+    {% if soft.instruction_pdf_en %}
+        <a href="{% url 'main_app:track_download' 'pdf_instruction_en' soft.slug %}" target="_blank" download>
+            <i class="fas fa-download"></i>
+            <span>{% trans "Download PDF Instruction" %} (EN)</span>
+        </a>
+    {% endif %}
 </div>
 {% endif %}
 
