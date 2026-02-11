@@ -251,6 +251,10 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+# Бот @myregibot: кому отвечать (chat_id). Если не задано — используется TELEGRAM_CHAT_ID.
+# Укажи свой user id в личке с ботом (узнать: @userinfobot), если уведомления уходят в группу (другой chat_id).
+TELEGRAM_BOT_ALLOWED_CHAT_ID = os.getenv('TELEGRAM_BOT_ALLOWED_CHAT_ID')
+TELEGRAM_BOT_ALLOWED_CHAT_IDS = os.getenv('TELEGRAM_BOT_ALLOWED_CHAT_IDS')
 
 # Cloudflare Turnstile настройки
 CLOUDFLARE_TURNSTILE_SITE_KEY = os.getenv('CLOUDFLARE_TURNSTILE_SITE_KEY', '')

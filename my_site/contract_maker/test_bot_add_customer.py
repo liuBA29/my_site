@@ -4,7 +4,7 @@
 Запуск: из корня проекта (где manage.py)
   python -m contract_maker.test_bot_add_customer
   или с указанием базового URL:
-  python -m contract_maker.test_bot_add_customer https://your-site.com
+  python -m contract_maker.test_bot_add_customer https://liuba.site
 
 Потом в боте отправляешь запрос на тот же URL с телом JSON.
 """

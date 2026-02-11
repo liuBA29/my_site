@@ -71,26 +71,35 @@ class Command(BaseCommand):
             )
             return
 
-        allowed_chat_id = getattr(settings, "TELEGRAM_CHAT_ID", None)
-        if not allowed_chat_id:
+        # Разрешённые chat_id: для бота можно задать свой (личный чат), отдельно от TELEGRAM_CHAT_ID (уведомления в группу)
+        allowed_raw = (
+            getattr(settings, "TELEGRAM_BOT_ALLOWED_CHAT_IDS", None)
+            or getattr(settings, "TELEGRAM_BOT_ALLOWED_CHAT_ID", None)
+            or getattr(settings, "TELEGRAM_CHAT_ID", None)
+        )
+        if not allowed_raw:
             self.stderr.write(
                 self.style.ERROR(
-                    "TELEGRAM_CHAT_ID не задан в .env. Добавьте свой chat_id — бот будет отвечать только вам. "
-                    "Узнать id: напишите боту @userinfobot в Telegram или возьмите из TELEGRAM_CHAT_ID для уведомлений."
+                    "Не задан разрешённый chat_id. В .env укажите один из: TELEGRAM_BOT_ALLOWED_CHAT_ID (ваш user id в личке с ботом), "
+                    "TELEGRAM_BOT_ALLOWED_CHAT_IDS (несколько через запятую) или TELEGRAM_CHAT_ID. Узнать id: @userinfobot в Telegram."
                 )
             )
             return
-        try:
-            allowed_chat_id = str(int(allowed_chat_id))
-        except (TypeError, ValueError):
-            self.stderr.write(self.style.ERROR("TELEGRAM_CHAT_ID должен быть числом (ваш Telegram chat id)."))
+        allowed_ids = set()
+        for part in str(allowed_raw).replace(",", " ").split():
+            try:
+                allowed_ids.add(str(int(part.strip())))
+            except (TypeError, ValueError):
+                pass
+        if not allowed_ids:
+            self.stderr.write(self.style.ERROR("TELEGRAM_BOT_ALLOWED_CHAT_ID / TELEGRAM_CHAT_ID должны быть числом (или числа через запятую)."))
             return
 
         poll_interval = options["poll_interval"]
         url = f"https://api.telegram.org/bot{token}/getUpdates"
         offset = None
         self.stdout.write(
-            f"Бот @myregibot запущен. Отвечает только вам (chat_id={allowed_chat_id}). Ctrl+C — выход."
+            f"Бот @myregibot запущен. Отвечает только в чатах: {', '.join(sorted(allowed_ids))}. Ctrl+C — выход."
         )
 
         while True:
@@ -114,12 +123,21 @@ class Command(BaseCommand):
                     chat_id = msg.get("chat", {}).get("id")
                     if not text or chat_id is None:
                         continue
-                    # Отвечаем только разрешённому чату (хозяину бота)
-                    if str(chat_id) != allowed_chat_id:
+
+                    # Лог: каждое входящее сообщение (чтобы в docker logs видеть chat_id и текст)
+                    self.stdout.write(f"[msg] chat_id={chat_id} text={text[:50]!r}")
+
+                    # Отвечаем только разрешённым чатам (хозяину бота)
+                    if str(chat_id) not in allowed_ids:
+                        self.stdout.write(
+                            f"[skip] chat_id {chat_id} не в разрешённых (разрешены: {', '.join(sorted(allowed_ids))}). "
+                            "Добавь этот id в TELEGRAM_BOT_ALLOWED_CHAT_ID в .env и перезапусти бота."
+                        )
                         continue
 
                     org_name = (extract_org_name(text) or "").strip()
                     if not org_name:
+                        self.stdout.write(f"[skip] не команда «добавь клиента …»: {text[:50]!r}")
                         continue
                     org_name = org_name[:255]
                     try:
@@ -134,8 +152,10 @@ class Command(BaseCommand):
                             reply = f"Клиент «{customer.org_name}» добавлен в базу (id={customer.pk})."
                         else:
                             reply = f"Клиент «{customer.org_name}» уже есть в базе (id={customer.pk})."
+                        self.stdout.write(f"[ok] {reply}")
                     except Exception as e:
                         reply = f"Ошибка при добавлении клиента: {e}"
+                        self.stderr.write(f"[error] {e}")
                     send_telegram_reply(token, chat_id, reply)
 
             except requests.RequestException as e:
