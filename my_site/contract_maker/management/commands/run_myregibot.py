@@ -71,10 +71,27 @@ class Command(BaseCommand):
             )
             return
 
+        allowed_chat_id = getattr(settings, "TELEGRAM_CHAT_ID", None)
+        if not allowed_chat_id:
+            self.stderr.write(
+                self.style.ERROR(
+                    "TELEGRAM_CHAT_ID не задан в .env. Добавьте свой chat_id — бот будет отвечать только вам. "
+                    "Узнать id: напишите боту @userinfobot в Telegram или возьмите из TELEGRAM_CHAT_ID для уведомлений."
+                )
+            )
+            return
+        try:
+            allowed_chat_id = str(int(allowed_chat_id))
+        except (TypeError, ValueError):
+            self.stderr.write(self.style.ERROR("TELEGRAM_CHAT_ID должен быть числом (ваш Telegram chat id)."))
+            return
+
         poll_interval = options["poll_interval"]
         url = f"https://api.telegram.org/bot{token}/getUpdates"
         offset = None
-        self.stdout.write("Бот @myregibot запущен. Ожидаю сообщения (добавь клиента …). Ctrl+C — выход.")
+        self.stdout.write(
+            f"Бот @myregibot запущен. Отвечает только вам (chat_id={allowed_chat_id}). Ctrl+C — выход."
+        )
 
         while True:
             try:
@@ -96,6 +113,9 @@ class Command(BaseCommand):
                     text = (msg.get("text") or "").strip()
                     chat_id = msg.get("chat", {}).get("id")
                     if not text or chat_id is None:
+                        continue
+                    # Отвечаем только разрешённому чату (хозяину бота)
+                    if str(chat_id) != allowed_chat_id:
                         continue
 
                     org_name = (extract_org_name(text) or "").strip()
