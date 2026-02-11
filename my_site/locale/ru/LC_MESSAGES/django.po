@@ -762,8 +762,8 @@ msgstr ""
 "Channels и Redis"
 
 #: .\templates\main_app\index.html:99
-msgid "Write AI-powered Telegram bots and API-integrated assistants"
-msgstr "Разрабатывать Telegram-ботов с ИИ и ассистентов с интеграцией API"
+msgid "Write Telegram bots and API integrations"
+msgstr "Разрабатывать Telegram-ботов и API-интеграции"
 
 #: .\templates\main_app\index.html:100
 msgid "Add multilingual support, SEO, and responsive interfaces"
@@ -864,13 +864,13 @@ msgstr "Бесплатный софт и проекты"
 #: .\templates\main_app\index.html:127
 msgid ""
 "Visit the 'Projects' and 'Useful software' sections — you'll find "
-"interesting things there: an AI assistant bot, Tkinter desktop applications, "
-"and other useful tools. All are available for free download — directly from "
-"this site or via GitHub."
+"interesting things there: Telegram bots, Tkinter desktop applications, and "
+"other useful tools. All are available for free download — directly from this "
+"site or via GitHub."
 msgstr ""
-"На других страницах вы можете познакомиться с моими проектами и полезными "
-"приложениями. Их можно бесплатно скачать — прямо с сайта или через GitHub, "
-"без регистрации."
+"В разделах «Проекты» и «Полезный софт» — Telegram-боты, приложения на Tkinter "
+"и другие полезные инструменты. Всё можно бесплатно скачать — с сайта или "
+"через GitHub."
 
 #: .\templates\main_app\index.html:131
 msgid "Collaboration"
@@ -1129,3 +1129,83 @@ msgstr "Шаблон заголовка"
 #: .\templates\notes\article_detail.html:107
 msgid "Template text"
 msgstr "Шаблон текста"
+
+#: .\templates\base.html
+msgid "Contracts"
+msgstr "Договоры"
+
+#: .\templates\contract_maker\form.html
+msgid "Contract and act generator"
+msgstr "Генератор договоров и актов"
+
+#: .\templates\contract_maker\form.html
+msgid "Fill in the form to generate a contract (договор подряда) and an act (акт сдачи-приемки) in DOCX format."
+msgstr "Заполните форму для формирования договора подряда и акта сдачи-приёмки в формате DOCX."
+
+#: .\templates\contract_maker\form.html
+msgid "Contract parameters"
+msgstr "Параметры договора"
+
+#: .\templates\contract_maker\form.html
+msgid "Customer (organization)"
+msgstr "Заказчик (организация)"
+
+#: .\templates\contract_maker\form.html
+msgid "Generate contract and act"
+msgstr "Сформировать договор и акт"
+
+#: .\templates\contract_maker\success.html
+msgid "Documents generated"
+msgstr "Документы сформированы"
+
+#: .\templates\contract_maker\success.html
+msgid "You can download the contract and the act below."
+msgstr "Скачайте договор и акт по ссылкам ниже."
+
+#: .\templates\contract_maker\success.html
+msgid "Contract"
+msgstr "Договор"
+
+#: .\templates\contract_maker\success.html
+msgid "Act"
+msgstr "Акт"
+
+#: .\templates\contract_maker\success.html
+msgid "Generate another"
+msgstr "Сформировать ещё"
+
+#: .\templates\contract_maker\form.html
+msgid "Generate contract"
+msgstr "Сформировать договор"
+
+#: .\templates\contract_maker\form.html
+msgid "Generate act"
+msgstr "Сформировать акт"
+
+#: .\templates\contract_maker\preview.html
+msgid "Preview document"
+msgstr "Предпросмотр документа"
+
+#: .\templates\contract_maker\preview.html
+msgid "Document ready"
+msgstr "Документ готов"
+
+#: .\templates\contract_maker\preview.html
+msgid "Open the document to preview. Save when you are satisfied."
+msgstr "Откройте документ для просмотра. Сохраните, когда всё устраивает."
+
+#: .\templates\contract_maker\preview.html
+msgid "Open contract"
+msgstr "Открыть договор"
+
+#: .\templates\contract_maker\preview.html
+msgid "Open act"
+msgstr "Открыть акт"
+
+#: .\templates\contract_maker\preview.html
+msgid "Save and continue"
+msgstr "Сохранить и продолжить"
+
+#: .\templates\contract_maker\preview.html
+msgid "Back to form"
+msgstr "Вернуться к форме"

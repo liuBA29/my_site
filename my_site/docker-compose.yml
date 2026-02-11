@@ -6,26 +6,39 @@ services:
     ports:
       - "6379:6379"
 
-
   web:
     build: .
     command: daphne -b 0.0.0.0 -p 8000 my_site.asgi:application
-
+    env_file: .env
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles  # Том для статических файлов
+      - static_volume:/app/staticfiles
     ports:
       - "8001:8000"
     environment:
       DJANGO_SETTINGS_MODULE: my_site.settings
-      DEBUG: "0"  # В продакшене выключаем DEBUG
-      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
-      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
-      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+      DEBUG: "0"
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME:-}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY:-}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-}
       REDIS_HOST: redis
       REDIS_PORT: 6379
     depends_on:
       - redis
+
+  # Бот @myregibot: добавление клиента по сообщению в Telegram (тот же образ, та же БД)
+  bot:
+    build: .
+    command: python manage.py run_myregibot
+    env_file: .env
+    volumes:
+      - .:/app
+    environment:
+      DJANGO_SETTINGS_MODULE: my_site.settings
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - web
 
   nginx:
     image: nginx:latest

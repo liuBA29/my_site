@@ -395,6 +395,98 @@ nav ul li:last-child {
 .auth a { color: #404040; font-weight: bold; } /* темно-серый, но светлее */
 .auth a:hover { color: #404040; } /* темно-серый при наведении */
 
+/* Формы входа и регистрации — видимые кнопки и поля (переопределяют глобальный сброс button) */
+.login-form p {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.login-form p > * + * {
+  margin-top: 4px;
+}
+.login-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin-top: 10px;
+  margin-left: 0;
+}
+.login-form > * + * {
+  margin-top: 8px;
+}
+.login-form input {
+  width: 100%;
+  max-width: 280px;
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 16px; /* минимум 16px на iOS, чтобы не зумило при фокусе */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #fff;
+  color: #000;
+}
+.login-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: #FF69B4 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 12px 28px !important;
+  margin: 8px 0 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  border-radius: 30px !important;
+  cursor: pointer !important;
+  min-width: 140px !important;
+  min-height: 48px !important; /* удобная зона нажатия на мобильных */
+  display: -webkit-inline-flex !important;
+  display: inline-flex !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  align-items: center !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+.login-button:hover {
+  background: #ff85c1 !important;
+  opacity: 0.95;
+}
+.simple-link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #FF69B4;
+}
+.auth-link-inline {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #FF69B4;
+  padding: 4px 8px;
+  min-height: 44px;
+  display: inline-block;
+  line-height: 2;
+  -webkit-tap-highlight-color: rgba(255, 105, 180, 0.2);
+}
+.auth-link-inline:hover {
+  color: #ff85c1;
+}
+
 /* MAIN */
 main.container {
   background: #FFFFFF;
@@ -795,8 +887,32 @@ a.btn-youtube i.fab.fa-youtube {
     margin-right: 8px; /* Сдвигаем левее, чтобы было расстояние до кнопки "оставить заявку" */
   }
   
+  /* Блок Войти/Регистрация остаётся видимым на мобильных (исправление для старых iPhone) */
+  .preheader {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .right-controls {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+  }
   .auth {
-    display: none !important;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+    min-width: auto;
+    font-size: 0.85rem;
+  }
+  .auth nav a {
+    min-height: 44px; /* удобная зона нажатия для iOS */
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 6px 10px;
+    white-space: nowrap;
   }
   
   /* 🌷 Кнопки языков - ru ближе к en */

@@ -1,0 +1,103 @@
+{% extends 'contract_maker/base_contract.html' %}
+
+{% block title %}Генератор договора и акта{% endblock %}
+
+{% block content %}
+<div class="contract-maker-form">
+    <h1 class="contract-maker-title">Генератор договора и акта</h1>
+    <p class="contract-maker-intro">Выберите клиента из базы и заполните параметры договора. Для акта к уже созданному договору нажмите «Сформировать акт» ниже.</p>
+    <p class="contract-maker-intro contract-maker-links">
+        <a href="{% url 'contract_maker:contract_list' %}" class="cm-btn cm-btn-open">Список договоров — редактировать или удалить</a>
+        <a href="{% url 'contract_maker:contract_add_manual' %}" class="cm-btn cm-btn-open">Добавить договор/акт вручную (PDF)</a>
+    </p>
+
+    {% if messages %}
+        <ul class="messages contract-maker-messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" class="contract-form">
+        {% csrf_token %}
+
+        <fieldset class="customer-fields">
+            <legend>Заказчик</legend>
+            {% if not customers %}
+            <p class="no-customers-msg">В базе пока нет клиентов. <a href="{% url 'contract_maker:customer_add' %}">Добавьте клиента</a> — после сохранения вы вернётесь сюда и сможете создать договор.</p>
+            {% else %}
+            <div class="customer-select-row">
+                <div class="form-row">
+                    {{ form.customer.label_tag }}
+                    {{ form.customer }}
+                    {% if form.customer.errors %}<span class="error">{{ form.customer.errors }}</span>{% endif %}
+                </div>
+                <a href="{% url 'contract_maker:customer_add' %}" class="cm-btn cm-btn-add">Добавить клиента</a>
+            </div>
+            <p class="help-text">Клиент всегда выбирается из базы. Если нужного нет — нажмите «Добавить клиента», после сохранения вернётесь сюда с подставленным клиентом.</p>
+            {% endif %}
+        </fieldset>
+
+        {% if customers %}
+        <fieldset class="contract-fields">
+            <legend>Параметры договора</legend>
+            <div class="form-row">
+                {{ form.contract_number.label_tag }}
+                {{ form.contract_number }}
+                {% if form.contract_number.errors %}<span class="error">{{ form.contract_number.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row form-row-pair">
+                <div class="form-group">
+                    {{ form.doc_date.label_tag }}
+                    {{ form.doc_date }}
+                </div>
+                <div class="form-group">
+                    {{ form.act_date.label_tag }}
+                    {{ form.act_date }}
+                </div>
+            </div>
+            <div class="form-row">
+                {{ form.location.label_tag }}
+                {{ form.location }}
+            </div>
+            <div class="form-row">
+                {{ form.total_cost.label_tag }}
+                {{ form.total_cost }}
+                {% if form.total_cost.errors %}<span class="error">{{ form.total_cost.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row work-types-row">
+                <label>Перечень работ</label>
+                <p class="help-text">Выберите из справочника и/или добавьте новые (ниже). Новые сохранятся в справочник.</p>
+                <div class="work-types-checkboxes">
+                    {{ form.work_types }}
+                </div>
+                {% if form.work_types.errors %}<span class="error">{{ form.work_types.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row">
+                {{ form.work_list_extra.label_tag }}
+                {{ form.work_list_extra }}
+                {% if form.work_list_extra.errors %}<span class="error">{{ form.work_list_extra.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row form-row-pair form-row-check">
+                <div class="form-group">
+                    {{ form.payment_percent.label_tag }}
+                    {{ form.payment_percent }}
+                </div>
+                <div class="form-group form-group-checkbox">
+                    {{ form.is_prepay }}
+                    {{ form.is_prepay.label_tag }}
+                    {% if form.is_prepay.help_text %}<span class="help-text">({{ form.is_prepay.help_text }})</span>{% endif %}
+                </div>
+            </div>
+        </fieldset>
+
+        <p class="form-submit-wrap form-submit-buttons">
+            <button type="submit" name="action" value="contract" class="contract-submit-btn">Сформировать договор</button>
+            <a href="{% url 'contract_maker:act_for_contract' %}" class="contract-submit-btn cm-btn-link">Сформировать акт</a>
+        </p>
+        <p class="help-text">«Сформировать акт» — выбор имеющегося договора (у клиента), данные подставятся из договора, указываете только дату акта.</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

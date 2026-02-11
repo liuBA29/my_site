@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'accounts.apps.AccountsConfig',
     'agregator.apps.AgregatorConfig',
+    'contract_maker.apps.ContractMakerConfig',
 
     'cloudinary',
     'cloudinary_storage',
@@ -259,6 +260,9 @@ CLOUDFLARE_TURNSTILE_SECRET_KEY = os.getenv('CLOUDFLARE_TURNSTILE_SECRET_KEY', '
 GOOGLE_ANALYTICS_ID = os.getenv('GOOGLE_ANALYTICS_ID', '')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Тест: токен для API добавления клиента из бота (опционально; если задан — проверяется в api_add_customer)
+CONTRACT_MAKER_BOT_TOKEN = os.getenv('CONTRACT_MAKER_BOT_TOKEN', '')
 
 # Настройки для загрузки больших файлов (PDF инструкции)
 # Максимальный размер загружаемого файла: 100MB

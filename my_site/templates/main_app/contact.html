@@ -22,6 +22,9 @@
     <span>Email: luba.sentino@gmail.com</span><br>
     <span>Telegram: @liubakovaleva</span><br>
     <a href="#" id="open-chat" class="soft-item-link"><span>{% trans "Chat-online" %}</span></a><br>
+    {% if not user.is_authenticated %}
+    <span><a href="{% url 'accounts:login' %}" class="auth-link-inline">{% trans "Login" %}</a> | <a href="{% url 'accounts:register' %}" class="auth-link-inline">{% trans "Register" %}</a></span><br>
+    {% endif %}
   </p>
 
   <!-- Модальное окно -->

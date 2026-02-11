@@ -1,0 +1,53 @@
+{% extends 'contract_maker/base_contract.html' %}
+
+{% block title %}Предпросмотр документа{% endblock %}
+
+{% block content %}
+<div class="contract-maker-preview">
+    <h1>Документ готов</h1>
+    <p>Откройте документ для просмотра. Сохраните, когда всё устраивает.</p>
+    <div class="preview-actions">
+        {% if preview.contract_file %}
+        <a href="{% url 'contract_maker:download' filename=preview.contract_file %}?inline=1" class="cm-btn cm-btn-open" target="_blank" rel="noopener">
+            Открыть договор
+        </a>
+        {% endif %}
+        {% if preview.act_file %}
+        <a href="{% url 'contract_maker:download' filename=preview.act_file %}?inline=1" class="cm-btn cm-btn-open" target="_blank" rel="noopener">
+            Открыть акт
+        </a>
+        {% endif %}
+        {% if preview.contract_file and not preview.act_file %}
+        <div class="preview-act-choice">
+            <p class="preview-act-question">Сформировать акт к этому договору?</p>
+            {% if not show_act_form %}
+            <p class="preview-act-buttons">
+                <a href="{% url 'contract_maker:preview' %}?show_act=1" class="cm-btn cm-btn-open">Да</a>
+                <span class="preview-act-no">Нет</span>
+            </p>
+            {% else %}
+            <form action="{% url 'contract_maker:preview_generate_act' %}" method="post" class="preview-act-form">
+                {% csrf_token %}
+                <label for="id_act_date">Дата акта:</label>
+                <input type="text" name="act_date" id="id_act_date" value="{{ preview.doc_date }}" placeholder="ДД.ММ.ГГГГ" maxlength="20">
+                <button type="submit" class="cm-btn cm-btn-save">Сформировать акт</button>
+            </form>
+            <p class="help-text">Клиент, сумма и перечень работ подставятся из договора автоматически.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+        <form action="{% url 'contract_maker:save_preview' %}" method="post" class="preview-save-form">
+            {% csrf_token %}
+            <button type="submit" class="cm-btn cm-btn-save">Сохранить и продолжить</button>
+        </form>
+    </div>
+    {% if messages %}
+    <ul class="messages contract-maker-messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <p class="preview-back"><a href="{% url 'contract_maker:form' %}">Вернуться к форме</a></p>
+</div>
+{% endblock %}

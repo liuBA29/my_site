@@ -11,6 +11,7 @@
     <title>{% block title %}{% trans "Portfolio website of Liubov Kovaleva" %}{% endblock %}</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dczzlelzw/image/upload/v1747063141/df83zssh8bli1agpk9bw.png">
     <link id="site-style" rel="stylesheet" href="{% static 'CSS/styles.css' %}">
+    {% block extra_css %}{% endblock %}
     <script>
     (function() {
         // Определяем модель устройства Apple и применяем соответствующие стили
@@ -217,6 +218,9 @@
                     <li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">{% trans "My Projects" %}</a></li>
                     <li><a href="{% url 'main_app:business_soft' %}" class="{% if request.resolver_match.url_name == 'business_soft' or request.resolver_match.url_name == 'business_soft_detail' %}active{% endif %}">{% trans "Business Software" %}</a></li>
                     <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
+                    {% if user.is_staff or user.is_superuser %}
+                    <li><a href="{% url 'contract_maker:form' %}" class="{% if request.resolver_match.namespace == 'contract_maker' %}active{% endif %}">{% trans "Contracts" %}</a></li>
+                    {% endif %}
 
                 </ul>
             </nav>
@@ -241,7 +245,7 @@
 
     <footer>
         <div class="container">
-            <p>{% trans 'Thank you for visiting my site' %}<br> &copy;LiuBA29 2025</p>
+            <p>{% trans 'Thank you for visiting my site' %}<br> &copy;LiuBA29 {% now "Y" %}</p>
         </div>
     </footer>
 

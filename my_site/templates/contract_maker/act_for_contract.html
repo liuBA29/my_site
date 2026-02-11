@@ -1,0 +1,44 @@
+{% extends 'contract_maker/base_contract.html' %}
+
+{% block title %}Создать акт к договору{% endblock %}
+
+{% block content %}
+<div class="contract-maker-form">
+    <h1 class="contract-maker-title">Создать акт к договору</h1>
+    <p class="contract-maker-intro">Выберите имеющийся договор (у клиента) из списка. Данные для акта — клиент, сумма, перечень работ — подставятся из договора автоматически. Укажите только дату акта.</p>
+
+    {% if messages %}
+        <ul class="messages contract-maker-messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if form.fields.contract.queryset %}
+    <form method="post" class="contract-form">
+        {% csrf_token %}
+        <fieldset class="contract-fields">
+            <legend>Договор и дата акта</legend>
+            <div class="form-row">
+                {{ form.contract.label_tag }}
+                {{ form.contract }}
+                {% if form.contract.errors %}<span class="error">{{ form.contract.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row">
+                {{ form.act_date.label_tag }}
+                {{ form.act_date }}
+                {% if form.act_date.errors %}<span class="error">{{ form.act_date.errors }}</span>{% endif %}
+            </div>
+        </fieldset>
+        <p class="form-submit-wrap">
+            <button type="submit" class="contract-submit-btn">Создать акт</button>
+        </p>
+    </form>
+    {% else %}
+    <p class="no-contracts-msg">Нет договоров без акта. Все сохранённые договоры уже имеют акты. <a href="{% url 'contract_maker:form' %}">Создайте новый договор</a>.</p>
+    {% endif %}
+
+    <p class="form-back"><a href="{% url 'contract_maker:form' %}">← К форме договора</a></p>
+</div>
+{% endblock %}

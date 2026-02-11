@@ -1,0 +1,19 @@
+{% extends 'contract_maker/base_contract.html' %}
+
+{% block title %}Документы сформированы{% endblock %}
+
+{% block content %}
+<div class="contract-maker-success">
+    <h1>Документы сформированы</h1>
+    <p>Скачайте документы по ссылкам ниже.</p>
+    <ul class="download-links">
+        {% if last.contract_file %}
+        <li><a href="{% url 'contract_maker:download' filename=last.contract_file %}">{{ last.contract_file }}</a> (Договор)</li>
+        {% endif %}
+        {% if last.act_file %}
+        <li><a href="{% url 'contract_maker:download' filename=last.act_file %}">{{ last.act_file }}</a> (Акт)</li>
+        {% endif %}
+    </ul>
+    <p><a href="{% url 'contract_maker:form' %}">Сформировать ещё</a></p>
+</div>
+{% endblock %}

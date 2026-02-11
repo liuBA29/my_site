@@ -1,0 +1,18 @@
+{% extends 'contract_maker/base_contract.html' %}
+
+{% block title %}Удалить договор{% endblock %}
+
+{% block content %}
+<div class="contract-maker-form">
+    <h1 class="contract-maker-title">Удалить договор?</h1>
+    <p class="contract-maker-intro">Будет удалён договор № {{ contract.contract_number }} от {{ contract.doc_date }}{% if contract.customer %} — {{ contract.customer.org_name }}{% elif contract.customer_data %} — {{ contract.customer_data.org_name }}{% endif %}. Файлы договора и акта также будут удалены с сервера.</p>
+
+    <form method="post" action="{% url 'contract_maker:contract_delete' pk=contract.pk %}" class="contract-form">
+        {% csrf_token %}
+        <p class="form-submit-wrap form-submit-buttons">
+            <button type="submit" class="contract-submit-btn cm-btn-danger">Удалить</button>
+            <a href="{% url 'contract_maker:contract_list' %}" class="contract-submit-btn cm-btn-link cm-btn-secondary">Отмена</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

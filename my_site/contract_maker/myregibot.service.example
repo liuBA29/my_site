@@ -1,0 +1,36 @@
+# Пример unit для systemd: автозапуск бота @myregibot при загрузке сервера.
+#
+# Установка (на сервере с Linux):
+# 1. Скопируй файл в systemd:
+#      sudo cp contract_maker/myregibot.service.example /etc/systemd/system/myregibot.service
+# 2. Отредактируй пути и пользователя:
+#      sudo nano /etc/systemd/system/myregibot.service
+#    - WorkingDirectory и ExecStart должны указывать на каталог с manage.py.
+#    - User= — пользователь, под которым крутится Django (например www-data или твой юзер).
+# 3. Подгрузи конфиг и включи автозапуск:
+#      sudo systemctl daemon-reload
+#      sudo systemctl enable myregibot
+#      sudo systemctl start myregibot
+# 4. Проверка:
+#      sudo systemctl status myregibot
+#      sudo journalctl -u myregibot -f
+#
+# Перезапуск после обновления кода:
+#      sudo systemctl restart myregibot
+
+[Unit]
+Description=Telegram bot @myregibot (add customer to contract_maker)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/path/to/your/project
+EnvironmentFile=/path/to/your/project/.env
+ExecStart=/path/to/your/venv/bin/python manage.py run_myregibot
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Договоры{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/contract_maker.css' %}">
+</head>
+<body class="cm-app">
+    <header class="cm-bar">
+        <span class="cm-bar-title">Договоры</span>
+        <div class="cm-bar-links">
+            <a href="{% url 'contract_maker:form' %}">Создать</a>
+            <a href="{% url 'contract_maker:contract_list' %}">Список (редактировать)</a>
+            <a href="{% url 'main_app:home' %}">На сайт</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'accounts:logout' %}">Выйти</a>
+            {% endif %}
+        </div>
+    </header>
+    <main class="cm-main">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

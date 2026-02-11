@@ -18,12 +18,11 @@ RUN pip install --upgrade pip \
 # Копируем все файлы проекта
 COPY . /app
 
-# Загружаем переменные окружения из .env (если используешь .env для Cloudinary)
-# Устанавливаем переменные окружения для Cloudinary
-ENV CLOUDINARY_CLOUD_NAME=your_cloud_name
-ENV CLOUDINARY_API_KEY=your_api_key
-ENV CLOUDINARY_API_SECRET=your_api_secret
-
+# Минимальные переменные для collectstatic при сборке (в рантайме переопределяются через env_file)
+ENV DJANGO_SETTINGS_MODULE=my_site.settings
+ENV SECRET_KEY=build-time-placeholder
+ENV ALLOWED_HOSTS=*
+ENV DEBUG=0
 
 # Собираем статические файлы (при сборке контейнера)
 RUN python manage.py collectstatic --noinput

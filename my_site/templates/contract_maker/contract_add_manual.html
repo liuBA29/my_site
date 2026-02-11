@@ -1,0 +1,73 @@
+{% extends 'contract_maker/base_contract.html' %}
+
+{% block title %}Добавить договор и акт (PDF){% endblock %}
+
+{% block content %}
+<div class="contract-maker-form">
+    <h1 class="contract-maker-title">Добавить договор и акт вручную</h1>
+    <p class="contract-maker-intro">Загрузите готовые PDF договора и (по желанию) акта, заполните данные — запись появится в списке договоров.</p>
+
+    {% if messages %}
+    <ul class="messages contract-maker-messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post" class="contract-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="contract-fields">
+            <legend>Данные и файлы</legend>
+            <div class="form-row">
+                {{ form.customer.label_tag }}
+                {{ form.customer }}
+                {% if form.customer.errors %}<span class="error">{{ form.customer.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row">
+                {{ form.contract_number.label_tag }}
+                {{ form.contract_number }}
+            </div>
+            <div class="form-row form-row-pair">
+                <div class="form-group">
+                    {{ form.doc_date.label_tag }}
+                    {{ form.doc_date }}
+                </div>
+                <div class="form-group">
+                    {{ form.act_date.label_tag }}
+                    {{ form.act_date }}
+                </div>
+            </div>
+            <div class="form-row">
+                {{ form.location.label_tag }}
+                {{ form.location }}
+            </div>
+            <div class="form-row">
+                {{ form.total_cost.label_tag }}
+                {{ form.total_cost }}
+                {% if form.total_cost.errors %}<span class="error">{{ form.total_cost.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row">
+                {{ form.work_list.label_tag }}
+                {{ form.work_list }}
+            </div>
+            <div class="form-row">
+                {{ form.contract_file.label_tag }}
+                {{ form.contract_file }}
+                {% if form.contract_file.help_text %}<span class="help-text">{{ form.contract_file.help_text }}</span>{% endif %}
+                {% if form.contract_file.errors %}<span class="error">{{ form.contract_file.errors }}</span>{% endif %}
+            </div>
+            <div class="form-row">
+                {{ form.act_file.label_tag }}
+                {{ form.act_file }}
+                {% if form.act_file.help_text %}<span class="help-text">{{ form.act_file.help_text }}</span>{% endif %}
+                {% if form.act_file.errors %}<span class="error">{{ form.act_file.errors }}</span>{% endif %}
+            </div>
+        </fieldset>
+        <p class="form-submit-wrap">
+            <button type="submit" class="contract-submit-btn">Добавить в базу</button>
+            <a href="{% url 'contract_maker:contract_list' %}" class="cm-btn cm-btn-secondary">Отмена</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

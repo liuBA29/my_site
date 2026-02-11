@@ -44,6 +44,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('chat/', include('chat.urls', namespace='chat')),
     path('agregator/', include('agregator.urls')),
+    path('contract-maker/', include('contract_maker.urls', namespace='contract_maker')),
 
     prefix_default_language=False,
 )
