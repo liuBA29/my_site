@@ -1533,9 +1533,18 @@ a.btn-youtube i.fab.fa-youtube {
     font-weight: 500;
   }
 
-  /* 💫 Прячем блок регистрации */
+  /* Блок Войти/Регистрация остаётся видимым на мобильных */
   .auth {
-    display: none !important;
+    display: flex !important;
+    min-width: auto;
+    font-size: 0.9rem;
+  }
+  .auth nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    white-space: nowrap;
   }
 
   /* 🌷 Уменьшаем языковые кнопки и сдвигаем ближе (ru ближе к en) */
