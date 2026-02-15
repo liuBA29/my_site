@@ -26,6 +26,12 @@ ADD_CUSTOMER_PATTERNS = [
 ]
 COMPILED = [re.compile(p, re.IGNORECASE) for p in ADD_CUSTOMER_PATTERNS]
 
+# «Добавь договор» и похожее — подсказать, что пока только клиенты
+ADD_CONTRACT_HINT = re.compile(
+    r"^(добавь|добавить|создай|создать)\s+(договор|акт|контракт)",
+    re.IGNORECASE,
+)
+
 
 def extract_org_name(text):
     """Если текст — запрос на добавление клиента, вернуть название; иначе None."""
@@ -137,7 +143,12 @@ class Command(BaseCommand):
 
                     org_name = (extract_org_name(text) or "").strip()
                     if not org_name:
-                        self.stdout.write(f"[skip] не команда «добавь клиента …»: {text[:50]!r}")
+                        if ADD_CONTRACT_HINT.match(text):
+                            hint = "Пока умею только добавлять клиентов. Напиши, например: «Добавь клиента ООО Ромашка». Договор создаётся на сайте liuba.site в разделе Договоры."
+                            send_telegram_reply(token, chat_id, hint)
+                            self.stdout.write(f"[hint] отправлена подсказка про договор")
+                        else:
+                            self.stdout.write(f"[skip] не команда «добавь клиента …»: {text[:50]!r}")
                         continue
                     org_name = org_name[:255]
                     try:

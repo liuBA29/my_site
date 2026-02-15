@@ -1,0 +1,2 @@
+NAME                                   ID              SIZE      MODIFIED      
+deepseek-coder:6.7b-instruct-q4_K_M    af6da0444f84    4.1 GB    2 minutes ago    
