@@ -5,6 +5,7 @@ from datetime import date
 from pathlib import Path
 
 import json
+from django.core.files.storage import default_storage
 
 from django.conf import settings
 from django.contrib import messages
@@ -167,36 +168,18 @@ def contract_maker_form(request):
 @login_required
 @user_passes_test(_staff_required, login_url="/accounts/login/")
 def customer_add(request):
-    """Добавить клиента в базу. После сохранения — редирект на форму договора с подставленным клиентом."""
-    if request.method == "POST":
-        form = CustomerForm(request.POST)
-        if form.is_valid():
-            cust = Customer(
-                client_type=form.cleaned_data.get("client_type") or Customer.CLIENT_TYPE_LEGAL,
-                org_name=form.cleaned_data["org_name"].strip(),
-                rep_position=form.cleaned_data.get("rep_position") or "",
-                rep_name=form.cleaned_data.get("rep_name") or "",
-                basis=form.cleaned_data.get("basis") or "Устава",
-                short_name=form.cleaned_data.get("short_name") or "",
-                address=form.cleaned_data.get("address") or "",
-                unp=form.cleaned_data.get("unp") or "",
-                okpo=form.cleaned_data.get("okpo") or "",
-                iban=form.cleaned_data.get("iban") or "",
-                created_by=request.user,
-            )
-            cust.save()
-            messages.success(request, "Клиент добавлен в базу.")
-            return redirect(reverse("contract_maker:form") + f"?customer={cust.pk}")
-        return render(request, "contract_maker/customer_add.html", {"form": form})
-
-    form = CustomerForm()
-    return render(request, "contract_maker/customer_add.html", {"form": form})
+    # Manual PDF uploads are deprecated/disabled. Redirect to the main form.
+    messages.info(request, "Загрузка PDF отключена: используйте генератор (DOCX) через форму.")
+    return redirect(reverse("contract_maker:form"))
 
 
 @login_required
 @user_passes_test(_staff_required, login_url="/accounts/login/")
 def act_for_contract(request):
-    """Создать акт к выбранному договору (у которого ещё нет акта)."""
+    """
+    Создать акт к выбранному договору (выбор договора + дата акта).
+    Эта вьюха остаётся для генерации актов из существующих договоров.
+    """
     if request.method == "POST":
         form = ActForContractForm(request.POST)
         if form.is_valid():
@@ -313,18 +296,11 @@ def contract_maker_save_preview(request):
 
 def _save_uploaded_pdf(file_obj, prefix):
     """Сохранить загруженный PDF в OUTPUT_DIR, вернуть имя файла."""
-    suffix = (file_obj.name or "file.pdf").lower()
-    if not suffix.endswith(".pdf"):
-        suffix = "upload.pdf"
-    else:
-        suffix = suffix[-4:]  # .pdf
-    name = f"{prefix}_upload_{uuid.uuid4().hex[:12]}{suffix}"
-    path = Path(generator_config.OUTPUT_DIR) / name
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "wb") as f:
-        for chunk in file_obj.chunks():
-            f.write(chunk)
-    return name
+    # Determine extension (force .pdf)
+    # Temporarily disable saving uploaded PDFs. Return empty string so callers
+    # store no filename. This keeps forms and flows unchanged while avoiding
+    # persistence of PDF files until a better storage strategy is decided.
+    return ""
 
 
 @login_required
@@ -400,22 +376,7 @@ def contract_edit(request, pk):
             contract.work_list = form.cleaned_data["work_list"]
             contract.payment_percent = form.cleaned_data.get("payment_percent") or 100
             contract.is_prepay = form.cleaned_data.get("is_prepay", True)
-            if form.cleaned_data.get("contract_file"):
-                old_path = Path(generator_config.OUTPUT_DIR) / contract.contract_filename if contract.contract_filename else None
-                contract.contract_filename = _save_uploaded_pdf(form.cleaned_data["contract_file"], "contract")
-                if old_path and old_path.is_file():
-                    try:
-                        old_path.unlink()
-                    except OSError:
-                        pass
-            if form.cleaned_data.get("act_file"):
-                old_path = Path(generator_config.OUTPUT_DIR) / contract.act_filename if contract.act_filename else None
-                contract.act_filename = _save_uploaded_pdf(form.cleaned_data["act_file"], "act")
-                if old_path and old_path.is_file():
-                    try:
-                        old_path.unlink()
-                    except OSError:
-                        pass
+            # PDF upload/replace disabled — keep existing filenames unchanged.
             contract.save()
             messages.success(request, "Договор сохранён.")
             return redirect(reverse("contract_maker:contract_list"))
@@ -448,14 +409,17 @@ def contract_delete(request, pk):
         messages.error(request, "Договор не найден.")
         return redirect(reverse("contract_maker:contract_list"))
     if request.method == "POST":
+        # Delete files using default storage (works with Cloudinary, S3, local)
         for name in (contract.contract_filename, contract.act_filename):
             if name:
-                path = Path(generator_config.OUTPUT_DIR) / name
-                if path.is_file():
-                    try:
-                        path.unlink()
-                    except OSError:
-                        pass
+                # stored names are basenames -> possible path under OUTPUT_DIR
+                storage_path = str(Path(generator_config.OUTPUT_DIR).name + "/" + name)
+                try:
+                    if default_storage.exists(storage_path):
+                        default_storage.delete(storage_path)
+                except Exception:
+                    # best-effort: ignore storage deletion issues
+                    pass
         contract.delete()
         messages.success(request, "Договор удалён.")
         return redirect(reverse("contract_maker:contract_list"))
@@ -491,16 +455,19 @@ def contract_maker_download(request, filename):
     if not (filename.lower().endswith(".docx") or filename.lower().endswith(".pdf")):
         raise Http404("File not found")
 
-    file_path = Path(generator_config.OUTPUT_DIR) / filename
-    if not file_path.is_file():
-        raise Http404("File not found")
-    try:
-        file_path.resolve().relative_to(Path(generator_config.OUTPUT_DIR).resolve())
-    except ValueError:
+    # Build storage path under OUTPUT_DIR name and try to serve via default_storage
+    storage_path = str(Path(generator_config.OUTPUT_DIR).name + "/" + filename)
+    if not default_storage.exists(storage_path):
         raise Http404("File not found")
 
     as_attachment = request.GET.get("inline") != "1"
-    response = FileResponse(open(file_path, "rb"), as_attachment=as_attachment, filename=filename)
+
+    try:
+        f = default_storage.open(storage_path, "rb")
+    except Exception:
+        raise Http404("File not found")
+
+    response = FileResponse(f, as_attachment=as_attachment, filename=filename)
     response["Content-Type"] = _get_content_type(filename)
     if not as_attachment:
         response["Content-Disposition"] = "inline; filename=\"" + filename + "\""

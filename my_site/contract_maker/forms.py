@@ -237,25 +237,11 @@ class ContractEditForm(forms.Form):
     )
     payment_percent = forms.IntegerField(label="Процент предоплаты", min_value=0, max_value=100, required=False)
     is_prepay = forms.BooleanField(label="Предоплата", required=False)
-    contract_file = forms.FileField(label="Заменить договор (PDF)", required=False)
-    act_file = forms.FileField(label="Заменить акт (PDF)", required=False)
 
     def __init__(self, customers_queryset=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if customers_queryset is not None:
             self.fields["customer"].queryset = customers_queryset
-
-    def clean_contract_file(self):
-        f = self.cleaned_data.get("contract_file")
-        if f and not (getattr(f, "name", "") or "").lower().endswith(".pdf"):
-            raise forms.ValidationError("Допускаются только PDF.")
-        return f
-
-    def clean_act_file(self):
-        f = self.cleaned_data.get("act_file")
-        if f and not (getattr(f, "name", "") or "").lower().endswith(".pdf"):
-            raise forms.ValidationError("Допускаются только PDF.")
-        return f
 
     def clean_work_list(self):
         data = self.cleaned_data.get("work_list", "") or ""
@@ -263,16 +249,12 @@ class ContractEditForm(forms.Form):
         return lines if lines else ["Услуги по договору"]
 
 
-def _validate_pdf(file_obj):
-    if not file_obj:
-        return
-    name = getattr(file_obj, "name", "") or ""
-    if not name.lower().endswith(".pdf"):
-        raise forms.ValidationError("Допускаются только файлы PDF.")
-
-
 class ContractManualForm(forms.Form):
-    """Добавление договора/акта вручную: загрузка PDF и данные записи."""
+    """Добавление договора/акта вручную с загрузкой PDF (поля, ожидаемые `views.contract_add_manual`).
+
+    Загрузка PDF фактически отключена в проекте: сохранение файла возвращает пустую строку,
+    но форма должна присутствовать для совместимости с логикой вьюхи.
+    """
 
     customer = forms.ModelChoiceField(
         queryset=Customer.objects.none(),
@@ -286,37 +268,26 @@ class ContractManualForm(forms.Form):
     location = forms.CharField(label="Место проведения работ", max_length=255, required=False)
     total_cost = forms.DecimalField(label="Стоимость (руб.)", min_value=0, max_digits=12, decimal_places=2, required=False)
     work_list = forms.CharField(
-        label="Перечень работ (каждая с новой строки)",
-        widget=forms.Textarea(attrs={"rows": 3}),
+        label="Перечень работ (каждая с новой строке)",
+        widget=forms.Textarea(attrs={"rows": 5}),
         required=False,
     )
-    contract_file = forms.FileField(
-        label="Файл договора (PDF)",
-        help_text="Загрузите PDF договора.",
-        required=True,
-    )
-    act_file = forms.FileField(
-        label="Файл акта (PDF)",
-        help_text="Необязательно. Загрузите PDF акта, если есть.",
-        required=False,
-    )
+    contract_file = forms.FileField(label="PDF договора", required=False)
+    act_file = forms.FileField(label="PDF акта", required=False)
 
     def __init__(self, customers_queryset=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if customers_queryset is not None:
             self.fields["customer"].queryset = customers_queryset
-
-    def clean_contract_file(self):
-        f = self.cleaned_data.get("contract_file")
-        _validate_pdf(f)
-        return f
-
-    def clean_act_file(self):
-        f = self.cleaned_data.get("act_file")
-        _validate_pdf(f)
-        return f
+        # По умолчанию дата договора — сегодня
+        if not self.initial.get("doc_date"):
+            self.fields["doc_date"].initial = date.today().strftime("%d.%m.%Y")
 
     def clean_work_list(self):
         data = self.cleaned_data.get("work_list", "") or ""
         lines = [line.strip() for line in data.replace(";", "\n").split("\n") if line.strip()]
         return lines if lines else ["Услуги по договору"]
+
+
+
+

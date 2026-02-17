@@ -8,7 +8,7 @@
     <p class="contract-maker-intro">Выберите клиента из базы и заполните параметры договора. Для акта к уже созданному договору нажмите «Сформировать акт» ниже.</p>
     <p class="contract-maker-intro contract-maker-links">
         <a href="{% url 'contract_maker:contract_list' %}" class="cm-btn cm-btn-open">Список договоров — редактировать или удалить</a>
-        <a href="{% url 'contract_maker:contract_add_manual' %}" class="cm-btn cm-btn-open">Добавить договор/акт вручную (PDF)</a>
+           <!-- Загрузка PDF отключена -->
     </p>
 
     {% if messages %}

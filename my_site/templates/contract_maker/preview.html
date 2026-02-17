@@ -7,16 +7,7 @@
     <h1>Документ готов</h1>
     <p>Откройте документ для просмотра. Сохраните, когда всё устраивает.</p>
     <div class="preview-actions">
-        {% if preview.contract_file %}
-        <a href="{% url 'contract_maker:download' filename=preview.contract_file %}?inline=1" class="cm-btn cm-btn-open" target="_blank" rel="noopener">
-            Открыть договор
-        </a>
-        {% endif %}
-        {% if preview.act_file %}
-        <a href="{% url 'contract_maker:download' filename=preview.act_file %}?inline=1" class="cm-btn cm-btn-open" target="_blank" rel="noopener">
-            Открыть акт
-        </a>
-        {% endif %}
+        <!-- Просмотр PDF отключён; используйте сгенерированный DOCX в медиа/contract_output -->
         {% if preview.contract_file and not preview.act_file %}
         <div class="preview-act-choice">
             <p class="preview-act-question">Сформировать акт к этому договору?</p>

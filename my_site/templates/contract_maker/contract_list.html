@@ -8,7 +8,7 @@
     <p class="contract-maker-intro">
         <a href="{% url 'contract_maker:form' %}">Создать договор</a> —
         <a href="{% url 'contract_maker:act_for_contract' %}">Сформировать акт</a> —
-        <a href="{% url 'contract_maker:contract_add_manual' %}">Добавить договор/акт вручную (PDF)</a>
+    <!-- Добавление PDF отключено; используйте форму генерации (DOCX) -->
     </p>
 
     {% if messages %}
