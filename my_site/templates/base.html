@@ -256,7 +256,7 @@
                 <div class="footer-col">
                     <a href="{% url 'main_app:cooperation' %}#ai-agents">{% trans "AI agents" %}</a>
                     <a href="{% url 'main_app:business_soft' %}">{% trans "CRM for dentistry" %}</a>
-                    <a href="{% url 'main_app:cooperation' %}#email-sender">{% trans "Email sender" %}</a>
+                    <a href="{% url 'main_app:free_soft_detail' slug='email-sender' %}">{% trans "Email sender" %}</a>
                     <a href="{% url 'main_app:requisites' %}">{% trans "Requisites" %}</a>
                 </div>
             </nav>
@@ -270,19 +270,34 @@
         document.body.classList.add(currentTheme);
         themeToggle.checked = currentTheme === 'dark-theme';
 
-        themeToggle.addEventListener('change', () => {
-            const newTheme = themeToggle.checked ? 'dark-theme' : 'light-theme';
-            document.body.classList.remove('light-theme', 'dark-theme');
-            document.body.classList.add(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-
         // Скрипт изменения картинки логотипа при наведении и клике
     const logoLink = document.getElementById('logo-link');
     const logoImg = document.getElementById('logo-img');
 
     const originalSrc = 'https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png';
     const altSrc = 'https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png';
+
+    function applyDarkLogoMask() {
+        if (!logoLink || !logoImg) return;
+        if (document.body.classList.contains('dark-theme')) {
+            const src = logoImg.src || originalSrc;
+            logoLink.style.webkitMaskImage = 'url(' + src + ')';
+            logoLink.style.maskImage = 'url(' + src + ')';
+        } else {
+            logoLink.style.webkitMaskImage = '';
+            logoLink.style.maskImage = '';
+        }
+    }
+
+    themeToggle.addEventListener('change', () => {
+        const newTheme = themeToggle.checked ? 'dark-theme' : 'light-theme';
+        document.body.classList.remove('light-theme', 'dark-theme');
+        document.body.classList.add(newTheme);
+        localStorage.setItem('theme', newTheme);
+        applyDarkLogoMask();
+    });
+
+    applyDarkLogoMask();
 
    // Проверь, главная ли страница
 const isHomePage = window.location.pathname === '{% url "main_app:home" %}';
@@ -293,19 +308,21 @@ if (!isHomePage) {
     logoLink.addEventListener('mouseenter', () => {
         if (!clicked) {
             logoImg.src = altSrc;
+            applyDarkLogoMask();
         }
     });
 
     logoLink.addEventListener('mouseleave', () => {
         if (!clicked) {
             logoImg.src = originalSrc;
+            applyDarkLogoMask();
         }
     });
 
     logoLink.addEventListener('click', (e) => {
         clicked = true;
         logoImg.src = altSrc;
-        // window.location.href = logoLink.href; // при необходимости
+        applyDarkLogoMask();
     });
 }
 

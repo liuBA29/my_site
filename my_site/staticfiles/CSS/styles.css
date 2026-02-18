@@ -28,19 +28,44 @@
 
     /* Добавляем недостающие переменные для тем */
     --background-color: var(--bg-warm);
-    --text-color: #1a1a1a;
+    --text-color: #5a5552; /* тёплый серый — комфортнее для чтения */
 
     --main-padding: 30px;
     --gap-large: 20px;
 
-    /* Шрифты: мягкий для заголовков, нейтральный для текста */
+    /* Шрифты */
     --font-heading: 'Nunito', sans-serif;
     --font-body: 'Source Sans 3', sans-serif;
+
+    /* Шкала размеров (modular scale 1.25, база 16px) */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 1.875rem;
+    --text-hero: 2rem;
+
+    /* Шкала отступов (шаг 8px) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-8: 2.5rem;
+    --space-10: 3rem;
+
+    /* Сетка: gutter и брейкпоинты (для справки в медиа-запросах) */
+    --gutter: 1.5rem;
 }
 
 /* ================== БАЗА ================== */
 body {
     font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.65;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -51,29 +76,42 @@ body {
     width: 90%;
     margin: 0 auto;
     max-width: 1200px;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
 }
 
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
+    line-height: 1.25;
 }
 
-h1, h2 {
+h1 {
     color: var(--pink-pink);
     text-align: center;
-    font-size: 1.2em;
+    font-size: var(--text-2xl);
 }
 
-a {
-    color: inherit;           /* берём цвет текста родителя */
-    /* убираем подчёркивание */
+h2 {
+    color: var(--pink-pink);
+    text-align: center;
+    font-size: var(--text-xl);
+}
+
+h3 {
+    font-size: var(--text-lg);
 }
 
 h4 {
     color: var(--pink-pink);
+    font-size: var(--text-lg);
+}
+
+a {
+    color: inherit;
 }
 
 p {
-    line-height: 1.8;
+    line-height: 1.65;
 }
 
 /* ================== HEADER ================== */
@@ -154,22 +192,23 @@ p {
   font-weight: 600;
   font-size: 1.05em;
   letter-spacing: 0.05em;
-  color: var(--pink-light-pink);
-  color: #E8A0B8; /* fallback для iOS */
+  color: var(--pink-pink);
+  color: #DB4D7A; /* fallback для iOS */
   text-decoration: none;
-  border: 1px solid var(--pink-light-pink);
-  border: 1px solid #E8A0B8; /* fallback для iOS */
+  border: 1px solid var(--pink-pink);
+  border: 1px solid #DB4D7A; /* fallback для iOS */
   border-radius: 12px;
   padding: 6px 14px;
-  transition: opacity 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(219, 77, 122, 0.08);
 }
 
 .order-link:hover {
-  opacity: 0.9;
-  background-color: rgba(232, 160, 184, 0.15);
-  box-shadow: 0 4px 12px rgba(219, 77, 122, 0.12);
+  color: var(--pink-dark-pink);
+  border-color: var(--pink-dark-pink);
+  background-color: rgba(219, 77, 122, 0.08);
+  box-shadow: 0 4px 12px rgba(219, 77, 122, 0.15);
 }
 
 /* Правая часть (тоггл + языки) */
@@ -304,7 +343,8 @@ nav ul li {
     text-align: center;
 }
 
-nav ul li a {
+nav ul li a,
+header nav ul li a {
     display: block;
     padding: 0 8px;
     color: white;
@@ -313,17 +353,12 @@ nav ul li a {
     font-size: 20px;
     text-decoration: none;
     font-weight: 500;
-    transition: transform 0.2s ease-in-out;
+    transition: color 0.2s ease;
 }
 
-nav ul li a:hover {
-
-    text-decoration: underline;
-}
-
-
-nav ul li a.active {
-    text-decoration: underline;
+nav ul li a:hover,
+header nav ul li a:hover {
+    color: var(--pink-dark-pink); /* тёмно-розовый: контраст на светлом фоне хедера */
 }
 
 /* Убираем специальный отступ для последнего пункта - gap работает для всех */
@@ -561,7 +596,7 @@ nav ul li a.active {
 .section-description {
     font-size: 1.2rem;
     margin: 1rem 0 2rem 0;
-    color: #5a5552; /* тёплый серый для текста */
+    color: #7a7572; /* мягкий тёплый серый — комфортное чтение основного текста */
     line-height: 1.6;
     position: relative;
 }
@@ -617,13 +652,38 @@ footer {
 
 .footer-copyright {
     margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.95;
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    font-size: var(--text-sm);
+    opacity: 0.9;
+    font-weight: 500;
 }
 
 /* Логотип в шапке */
 #logo-img,
 .header-logo-img {
+    width: 70px;
+    height: auto;
+}
+
+/* В тёмной теме — логотип-силуэт цветом меню (mask задаётся в JS) */
+.dark-theme #logo-link {
+    background-color: var(--pink-light-pink);
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+.dark-theme #logo-link .header-logo-img,
+.dark-theme #logo-link #logo-img {
+    visibility: hidden;
+    position: absolute;
     width: 70px;
     height: auto;
 }
@@ -1007,8 +1067,7 @@ footer {
 /* Темная и светлая темы */
 .light-theme {
     --background-color: var(--white);
-    --text-color: var(--black);
-
+    --text-color: #5a5552; /* тёплый серый вместо чёрного — меньше нагрузка на глаза */
 }
 
 .light-theme h3{
@@ -1041,11 +1100,23 @@ footer {
     background: var(--pink-gray-header-footer);
 }
 
-/* Применяем белый цвет только к ссылкам в основном контенте, не в прехедере */
-.dark-theme main.container a,
-.dark-theme header a,
-.dark-theme footer a {
+/* Ссылки в контенте — мягкий светлый тон */
+.dark-theme main.container a {
+    color: var(--pink-light-pink);
+}
+.dark-theme main.container a:hover {
     color: var(--white);
+}
+
+/* Навигация в хедере и футере — акцент палитры */
+.dark-theme header nav ul li a,
+.dark-theme footer .footer-links a {
+    color: var(--pink-light-pink) !important;
+}
+.dark-theme header nav ul li a:hover,
+.dark-theme footer .footer-links a:hover {
+    color: var(--white) !important;
+    text-decoration: none;
 }
 
 /* Сохраняем розовые цвета для элементов в прехедере в темной теме */
@@ -1084,13 +1155,15 @@ footer {
 
 /* Стили для ссылки заказа в темной теме */
 .dark-theme .order-link {
-    color: #FF69B4 !important; /* ярко-розовый для лучшей видимости на темном фоне */
-    border-color: #FF69B4 !important; /* ярко-розовая обводка */
+    color: var(--pink-light-pink) !important;
+    border-color: var(--pink-light-pink) !important;
 }
 
 .dark-theme .order-link:hover {
-    background-color: rgba(255, 105, 180, 0.2); /* ярко-розовый фон при наведении */
-    opacity: 1; /* убираем затемнение, цвет и так яркий */
+    color: var(--pink-pink) !important;
+    border-color: var(--pink-pink) !important;
+    background-color: rgba(232, 160, 184, 0.15);
+    opacity: 1;
 }
 
 /* 📱 Мобильная версия темной темы - белая кнопка "оставить заявку" для старых iPhone */
@@ -1161,7 +1234,7 @@ footer {
 }
 
 .dark-theme .instruction-pdf a i.fa-download {
-    color: #4CAF50;
+    color: var(--pink-light-pink);
 }
 
 /* 📱 Очень маленькие экраны (375px) - белая кнопка в темной теме */
@@ -1212,12 +1285,14 @@ footer {
 
 /* Ссылка "Оставить заявку" в светлой теме - ярко-розовый */
 .light-theme .order-link {
-    color: #FF69B4 !important; /* ярко-розовый, как заголовки */
-    border-color: #FF69B4 !important; /* ярко-розовая обводка */
+    color: var(--pink-pink) !important;
+    border-color: var(--pink-pink) !important;
 }
 
 .light-theme .order-link:hover {
-    background-color: rgba(255, 105, 180, 0.1); /* светло-розовый фон при наведении */
+    color: var(--pink-dark-pink) !important;
+    border-color: var(--pink-dark-pink) !important;
+    background-color: rgba(219, 77, 122, 0.08);
 }
 
 /* Языковые кнопки в светлой теме - темно-серый почти черный */
@@ -1249,25 +1324,29 @@ footer {
     color: #404040;
 }
 
-/* Блок авторизации в темной теме - розовый */
+/* Блок авторизации в темной теме — палитра */
 .dark-theme .auth a {
-    color: var(--pink-pink) !important;
+    color: var(--pink-light-pink) !important;
 }
 
 .dark-theme .auth a:hover {
-    color: var(--pink-dark-pink) !important;
+    color: var(--white) !important;
 }
 
 .dark-theme .auth strong {
-    color: var(--pink-dark-pink) !important;
+    color: var(--pink-light-pink) !important;
 }
 
 .dark-theme main.container .simple-link {
-    color: #ccc; /* светло-серый, но не слишком бледный */
+    color: var(--pink-light-pink);
     font-weight: bold;
-    font-size: 1.1em; /* немного больше обычного */
+    font-size: 1.1em;
     text-decoration: underline;
-    text-decoration-color: pink; /* подчёркивание розовым */
+    text-decoration-color: var(--pink-pink);
+}
+.dark-theme main.container .simple-link:hover {
+    color: var(--white);
+    text-decoration-color: var(--pink-light-pink);
 }
 
 /* Pricing cards в темной теме */
@@ -1299,7 +1378,17 @@ footer {
 }
 
 .dark-theme .pricing-body p {
-    color: #bbbbbb !important; /* светло-серый текст */
+    color: var(--pink-gray-light) !important; /* мягкий серый в палитре */
+}
+
+.dark-theme .soft-item h3 {
+    color: var(--pink-light-pink) !important;
+}
+.dark-theme .soft-item .right {
+    color: var(--pink-gray-light) !important;
+}
+.dark-theme .footer-copyright {
+    color: var(--pink-gray-light);
 }
 
 
@@ -1357,15 +1446,16 @@ body.dark-theme .soft-item-link:hover {
 
 /* Тёмная тема */
 .dark-theme .back-btn {
-    color: var(--pink-gray-light);
-}
-
-.dark-theme .back-btn:hover {
     color: var(--pink-light-pink);
 }
 
+.dark-theme .back-btn:hover {
+    color: var(--white);
+}
+
 .dark-theme .modal-content {
-    background-color: #2e2e2e;
+    background-color: var(--pink-gray-header-footer);
+    border: 1px solid rgba(232, 160, 184, 0.2);
 }
 
 
@@ -1903,25 +1993,25 @@ a.btn-youtube i.fab.fa-youtube {
   }
 }
 
-/* 📱 Адаптивное уменьшение заголовков */
+/* 📱 Адаптивное уменьшение заголовков (tablet и уже) */
 @media (max-width: 768px) {
   h1 {
-    font-size: 1.0em; /* было, вероятно, около 2em */
+    font-size: var(--text-xl);
     line-height: 1.2;
   }
 
   h2 {
-    font-size: 1.2em;
+    font-size: var(--text-lg);
     line-height: 1.3;
   }
 
   h3 {
-    font-size: 1em;
+    font-size: var(--text-base);
     line-height: 1.4;
   }
 
   p {
-    font-size: 0.95em;
+    font-size: var(--text-sm);
   }
 }
 }

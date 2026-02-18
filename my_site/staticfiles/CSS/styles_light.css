@@ -1,12 +1,25 @@
 /* styles_light.css - облегчённая тема (старые iOS), та же палитра и шрифты что в styles.css */
 
+:root {
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --gutter: 1.5rem;
+}
+
 /* БАЗА */
 body {
   font-family: 'Source Sans 3', Arial, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.65;
   margin: 0;
   padding: 0;
-  background-color: #FAF9F8; /* тёплый фон */
-  color: #1a1a1a;
+  background-color: #FAF9F8;
+  color: #5a5552; /* тёплый серый — комфортнее для чтения */
 }
 
 /* Сброс стандартных стилей браузера для button и input */
@@ -46,17 +59,32 @@ label {
   width: 90%;
   margin: 0 auto;
   max-width: 1200px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
 h1, h2, h3, h4 {
   font-family: 'Nunito', sans-serif;
+  line-height: 1.25;
 }
 
-h1,
-h2 {
-  color: #DB4D7A; /* основной розовый */
+h1 {
+  color: #DB4D7A;
   text-align: center;
-  font-size: 1.2em;
+  font-size: var(--text-2xl);
+}
+
+h2 {
+  color: #DB4D7A;
+  text-align: center;
+  font-size: var(--text-xl);
+}
+
+h3 { font-size: var(--text-lg); }
+
+h4 {
+  color: #DB4D7A;
+  font-size: var(--text-lg);
 }
 
 a {
@@ -64,12 +92,8 @@ a {
   text-decoration: none;
 }
 
-h4 {
-  color: #DB4D7A;
-}
-
 p {
-  line-height: 1.8;
+  line-height: 1.65;
 }
 
 /* PREHEADER (такие же стили как в хедере, БЕЗ sticky и z-index) */
@@ -140,20 +164,21 @@ p {
   font-weight: 600;
   font-size: 1.05em;
   letter-spacing: 0.05em;
-  color: #DB4D7A;
+  color: #DB4D7A; /* основной розовый палитры */
   text-decoration: none;
   border: 1px solid #DB4D7A;
   border-radius: 12px;
   padding: 6px 14px;
-  transition: opacity 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(219, 77, 122, 0.08);
 }
 
 .order-link:hover {
-  opacity: 0.9;
+  color: #C44C6F; /* тёмно-розовый при наведении */
+  border-color: #C44C6F;
   background-color: rgba(219, 77, 122, 0.08);
-  box-shadow: 0 4px 12px rgba(219, 77, 122, 0.12);
+  box-shadow: 0 4px 12px rgba(219, 77, 122, 0.15);
 }
 
 .right-controls {
@@ -356,20 +381,24 @@ nav ul > * + * {
 
 nav ul li { flex: 1; text-align: center; }
 
-nav ul li a {
+nav ul li a,
+header nav ul li a {
   display: block;
   width: 100px;
+  padding: 0;
   color: #ffffff;
   white-space: nowrap;
   font-size: 20px;
   text-decoration: none;
   font-weight: 500;
-  transition: transform 0.2s ease-in-out;
+  transition: color 0.2s ease;
   text-transform: lowercase;
 }
 
-nav ul li a:hover { text-decoration: underline; }
-nav ul li a.active { text-decoration: underline; }
+nav ul li a:hover,
+header nav ul li a:hover {
+  color: #C44C6F; /* тёмно-розовый: контраст на фоне #E8A0B8 */
+}
 
 /* Отступ для последнего пункта меню (Контакты) */
 nav ul li:last-child {
@@ -505,7 +534,7 @@ main.container {
 .section-description {
   font-size: 1.2rem;
   margin: 1rem 0 2rem 0;
-  color: #5a5552;
+  color: #7a7572; /* мягкий тёплый серый — комфортное чтение основного текста */
   line-height: 1.6;
   position: relative;
 }
@@ -551,13 +580,38 @@ footer {
 
 .footer-copyright {
   margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.95;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 0.875rem;
+  opacity: 0.9;
+  font-weight: 500;
 }
 
 /* Логотип в шапке */
 #logo-img,
 .header-logo-img {
+  width: 70px;
+  height: auto;
+}
+
+/* В тёмной теме — логотип-силуэт цветом меню (mask задаётся в JS) */
+.dark-theme #logo-link {
+  background-color: #E8A0B8;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+.dark-theme #logo-link .header-logo-img,
+.dark-theme #logo-link #logo-img {
+  visibility: hidden;
+  position: absolute;
   width: 70px;
   height: auto;
 }
@@ -1198,10 +1252,20 @@ a.btn-youtube i.fab.fa-youtube {
   background: #3a3a3a;
 }
 
-.dark-theme main.container a,
-.dark-theme header a,
-.dark-theme footer a {
+.dark-theme main.container a {
+  color: #E8A0B8;
+}
+.dark-theme main.container a:hover {
   color: #ffffff;
+}
+.dark-theme header nav ul li a,
+.dark-theme footer .footer-links a {
+  color: #E8A0B8 !important;
+}
+.dark-theme header nav ul li a:hover,
+.dark-theme footer .footer-links a:hover {
+  color: #ffffff !important;
+  text-decoration: none;
 }
 
 /* Логотип в темной теме - розовый */
@@ -1253,13 +1317,15 @@ a.btn-youtube i.fab.fa-youtube {
 
 /* Ссылка заказа в темной теме */
 .dark-theme .order-link {
-  color: #E8A0B8 !important; /* светло-розовый */
+  color: #E8A0B8 !important; /* светло-розовый на тёмном фоне */
   border-color: #E8A0B8 !important;
 }
 
 .dark-theme .order-link:hover {
-  background-color: rgba(255, 182, 193, 0.15);
-  opacity: 0.9;
+  color: #DB4D7A !important;
+  border-color: #DB4D7A !important;
+  background-color: rgba(232, 160, 184, 0.15);
+  opacity: 1;
 }
 
 /* 📱 Мобильная версия темной темы - белая кнопка "оставить заявку" для старых iPhone */
@@ -1290,24 +1356,28 @@ a.btn-youtube i.fab.fa-youtube {
 
 /* Блок авторизации в темной теме */
 .dark-theme .auth a {
-  color: #DB4D7A !important; /* ярко-розовый */
+  color: #E8A0B8 !important;
 }
 
 .dark-theme .auth a:hover {
-  color: #D16B8A !important; /* тёмно-розовый */
+  color: #ffffff !important;
 }
 
 .dark-theme .auth strong {
-  color: #D16B8A !important; /* тёмно-розовый */
+  color: #E8A0B8 !important;
 }
 
 /* Ссылки в основном контенте темной темы */
 .dark-theme main.container .simple-link {
-  color: #cccccc;
+  color: #E8A0B8;
   font-weight: bold;
   font-size: 1.1em;
   text-decoration: underline;
-  text-decoration-color: pink;
+  text-decoration-color: #DB4D7A;
+}
+.dark-theme main.container .simple-link:hover {
+  color: #ffffff;
+  text-decoration-color: #E8A0B8;
 }
 
 /* Описание секций в темной теме */
@@ -1321,7 +1391,21 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .dark-theme .soft-item h3 {
+  color: #E8A0B8 !important;
+}
+.dark-theme .footer-copyright {
+  color: #bbbbbb;
+}
+
+.dark-theme .back-btn {
   color: #E8A0B8;
+}
+.dark-theme .back-btn:hover {
+  color: #ffffff;
+}
+.dark-theme .modal-content {
+  background-color: #3a3a3a;
+  border: 1px solid rgba(232, 160, 184, 0.2);
 }
 
 /* «Назад к списку» — указатель назад, не кнопка */
@@ -1447,7 +1531,7 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .dark-theme .instruction-pdf a i.fa-download {
-    color: #4CAF50;
+    color: #E8A0B8;
 }
 
 /* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
@@ -1548,5 +1632,5 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .dark-theme .instruction-pdf a i.fa-download {
-    color: #4CAF50;
+    color: #E8A0B8;
 }
