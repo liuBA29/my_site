@@ -62,9 +62,7 @@
 }
 
 /* ================== БАЗА ================== */
-html {
-    overflow-x: hidden; /* предотвращаем горизонтальный скролл */
-}
+/* Не ставим overflow-x: hidden на html/body — ломает position: sticky у хедера и прехедера */
 body {
     font-family: var(--font-body);
     font-size: var(--text-base);
@@ -73,8 +71,6 @@ body {
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
-    overflow-x: hidden; /* предотвращаем горизонтальный скролл */
-    max-width: 100vw; /* не шире экрана */
 }
 
 .container {
@@ -148,7 +144,6 @@ p {
   transform: translateZ(0);
   width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
   min-width: 0; /* позволяет flex-элементам сжиматься */
 }
 
@@ -314,14 +309,13 @@ header {
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     box-shadow: 0 4px 8px var(--pink-shadow);
+    position: -webkit-sticky;
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 52px; /* высота прехедера, чтобы прилипал под ним */
+    z-index: 999;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden;
-      /* 🔹 всегда поверх содержимого */
- }
+}
 
 
 
@@ -1671,11 +1665,6 @@ body.dark-theme .soft-item-link:hover {
 }
 
 @media (max-width: 768px) {
-    /* Убираем sticky-поведение хедера на малых экранах */
-    header {
-        position: static; /* Убираем прилипание, чтобы не занимало место */
-    }
-    
     nav ul {
         flex-direction: column; /* Меню в столбик */
         gap: 4px; /* поддерживается с iOS 14.5+ - уменьшено в 2 раза */
