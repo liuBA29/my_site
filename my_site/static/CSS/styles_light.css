@@ -381,7 +381,7 @@ p {
 header {
   background: #E8A0B8; /* светло-розовый */
   color: #ffffff;
-  padding: 10px 0;
+  padding: 5px 0;
   text-align: center;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
@@ -407,7 +407,7 @@ header .nav-container {
 }
 
 header .nav-container > * + * {
-  margin-left: 20px; /* fallback для старых iOS */
+  margin-left: 14px; /* fallback для старых iOS */
 }
 
 header nav { 
@@ -450,7 +450,7 @@ header nav ul li a {
   padding: 0;
   color: #ffffff;
   white-space: nowrap;
-  font-size: 20px;
+  font-size: 17px;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -654,10 +654,10 @@ footer {
   font-weight: 500;
 }
 
-/* Логотип в шапке */
+/* Логотип в шапке — компактный под тонкую менюшку */
 #logo-img,
 .header-logo-img {
-  width: 70px;
+  width: 52px;
   height: auto;
 }
 
@@ -665,8 +665,8 @@ footer {
 .dark-theme #logo-link {
   background-color: #E8A0B8;
   display: inline-block;
-  width: 70px;
-  height: 70px;
+  width: 52px;
+  height: 52px;
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -678,7 +678,7 @@ footer {
 .dark-theme #logo-link #logo-img {
   visibility: hidden;
   position: absolute;
-  width: 70px;
+  width: 52px;
   height: auto;
 }
 

@@ -62,7 +62,7 @@
 }
 
 /* ================== БАЗА ================== */
-/* Не ставим overflow-x: hidden на html/body — ломает position: sticky у хедера и прехедера */
+/* Не ставим overflow-x: hidden на html/body — ломает position: sticky у хедера */
 body {
     font-family: var(--font-body);
     font-size: var(--text-base);
@@ -135,13 +135,7 @@ p {
   padding: 10px 20px;
   background-color: var(--pink-gray-very-light);
   background-color: #FFF5F8; /* fallback: тёплый кремово-розовый */
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  /* Исправление для iOS 16.7.12 */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  /* не sticky — верхняя часть уезжает при прокрутке */
   width: 100%;
   box-sizing: border-box;
   min-width: 0; /* позволяет flex-элементам сжиматься */
@@ -304,15 +298,15 @@ p {
 header {
     background: var(--pink-light-pink);
     color: #fff;
-    padding: 10px 0;
+    padding: 5px 0;
     text-align: center;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     box-shadow: 0 4px 8px var(--pink-shadow);
     position: -webkit-sticky;
     position: sticky;
-    top: 52px; /* высота прехедера, чтобы прилипал под ним */
-    z-index: 999;
+    top: 0;
+    z-index: 1000;
     width: 100%;
     box-sizing: border-box;
 }
@@ -324,7 +318,7 @@ header .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 14px;
 }
 
 header nav {
@@ -380,11 +374,11 @@ nav ul li {
 nav ul li a,
 header nav ul li a {
     display: block;
-    padding: 0 8px;
+    padding: 0 6px;
     color: white;
     text-transform: lowercase;
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 17px;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -727,19 +721,23 @@ footer {
     font-weight: 500;
 }
 
-/* Логотип в шапке */
+/* Логотип в шапке — компактный под тонкую менюшку */
 #logo-img,
 .header-logo-img {
-    width: 70px;
+    width: 52px;
     height: auto;
+}
+header #logo-link .header-logo-img,
+header #logo-link #logo-img {
+    width: 52px;
 }
 
 /* В тёмной теме — логотип-силуэт цветом меню (mask задаётся в JS) */
 .dark-theme #logo-link {
     background-color: var(--pink-light-pink);
     display: inline-block;
-    width: 70px;
-    height: 70px;
+    width: 52px;
+    height: 52px;
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;
@@ -751,7 +749,7 @@ footer {
 .dark-theme #logo-link #logo-img {
     visibility: hidden;
     position: absolute;
-    width: 70px;
+    width: 52px;
     height: auto;
 }
 
@@ -2269,14 +2267,6 @@ a.btn-youtube i.fab.fa-youtube {
   /* Исправление для box-shadow */
   .preheader {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-  }
-}
-
-/* Дополнительные fallback для старых версий iOS */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .preheader {
-    position: -webkit-sticky !important;
-    position: sticky !important;
   }
 }
 
