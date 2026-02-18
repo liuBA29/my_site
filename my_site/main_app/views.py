@@ -13,6 +13,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from datetime import timedelta
 from .forms import OrderForm
+from .utils import get_client_ip
 from accounts.views import send_telegram_message
 
 
@@ -115,14 +116,6 @@ def contact(request):
     return render(request, 'main_app/contact.html')
 
 
-def get_client_ip(request):
-    """Получение IP адреса клиента"""
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0].strip()
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
 
 
 def check_daily_order_limit(ip_address, max_orders_per_day=5):

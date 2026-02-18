@@ -3,6 +3,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from .models import Order
+from .utils import get_client_ip
 
 
 class OrderForm(forms.ModelForm):
@@ -100,14 +101,8 @@ class OrderForm(forms.ModelForm):
             raise forms.ValidationError(_('Please complete the verification.'))
         
         # Получаем IP адрес пользователя для дополнительной проверки
-        request = getattr(self, 'request', None)
-        remote_ip = None
-        if request:
-            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-            if x_forwarded_for:
-                remote_ip = x_forwarded_for.split(',')[0].strip()
-            else:
-                remote_ip = request.META.get('REMOTE_ADDR')
+        request_obj = getattr(self, 'request', None)
+        remote_ip = get_client_ip(request_obj) if request_obj else None
         
         url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
         data = {

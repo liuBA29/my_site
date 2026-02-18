@@ -1,6 +1,7 @@
 import os
 from django.utils.timezone import now
 from dotenv import load_dotenv
+from .utils import get_client_ip
 
 load_dotenv()  # Загружает переменные из .env файла
 
@@ -21,7 +22,7 @@ class PageViewMiddleware:
 
     def __call__(self, request):
         # Получаем IP
-        ip = self.get_client_ip(request)
+        ip = get_client_ip(request)
 
         # Пропускаем, если IP в исключениях
         if ip in EXCLUDED_IPS:
@@ -54,8 +55,7 @@ class PageViewMiddleware:
                 # Обновление/создание записи просмотров
                 view, _ = PageView.objects.get_or_create(path=path)
                 view.views_count += 1
-                view.last_viewed_at = now()
-                view.last_viewed_ip = ip
+                view.last_viewed = now()  # Используем существующее поле из модели
                 view.save()
 
                 # Запись в лог
@@ -65,9 +65,3 @@ class PageViewMiddleware:
                 print(f"Ошибка логирования посещения: {e}")
 
         return response
-
-    def get_client_ip(self, request):
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            return x_forwarded_for.split(',')[0].strip()
-        return request.META.get('REMOTE_ADDR')
