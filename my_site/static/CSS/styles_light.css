@@ -66,6 +66,9 @@ label {
   max-width: 1200px;
   padding-left: var(--gutter);
   padding-right: var(--gutter);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -384,6 +387,10 @@ header {
   border-bottom-right-radius: 2px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: static;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 header .nav-container {
@@ -403,7 +410,12 @@ header .nav-container > * + * {
   margin-left: 20px; /* fallback для старых iOS */
 }
 
-header nav { padding-right: 45px; }
+header nav { 
+  padding-right: 45px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 header h1 a { color: #ffffff; text-decoration: none; }
 
 /* НАВИГАЦИЯ */
@@ -579,6 +591,10 @@ main.container {
   margin-top: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .section-description {
@@ -1117,7 +1133,15 @@ a.btn-youtube i.fab.fa-youtube {
   nav ul li { flex: none; }
   nav ul li:last-child { margin-left: 0; } /* Убираем лишний отступ для Контактов в мобильной версии */
   .section-description { font-size: 1rem; line-height: 1.5; margin: 0.8rem 0 1.2rem 0; }
-  main.container { padding: 20px 16px; border-radius: 16px; }
+  main.container { 
+    padding: 20px 16px; 
+    border-radius: 16px; 
+  }
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 
   /* Мобильная версия прехедера */
   .name-logo {
@@ -1336,6 +1360,15 @@ a.btn-youtube i.fab.fa-youtube {
     padding: 4px 6px;
     font-size: 0.75rem;
   }
+
+  header nav {
+    padding-right: 15px;
+  }
+
+  header nav ul li a {
+    font-size: 17px;
+    padding: 0 5px;
+  }
 }
 
 /* 📱 Экстремально маленькие экраны (320px и меньше) */
@@ -1378,6 +1411,35 @@ a.btn-youtube i.fab.fa-youtube {
 
   .auth {
     font-size: 0.7rem;
+  }
+
+  main.container {
+    padding: 16px 12px;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  header nav {
+    padding-right: 10px;
+  }
+
+  header nav ul li a {
+    font-size: 16px;
+    padding: 0 4px;
+  }
+}
+
+@media (max-width: 320px) {
+  main.container {
+    padding: 12px 8px;
+  }
+
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
