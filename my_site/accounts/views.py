@@ -1,12 +1,17 @@
 # accounts/views.py
+import logging
+
 import requests
 from django.conf import settings
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
-from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
-from .models import Room
+from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
+
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
+from .models import Room
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -22,8 +27,8 @@ def send_telegram_message(text):
     try:
         response = requests.post(url, data=data)
         response.raise_for_status()
-    except requests.RequestException as e:
-        print(f"Ошибка отправки в Telegram: {e}")
+    except requests.RequestException:
+        logger.exception("Ошибка отправки в Telegram")
 
 
 def register_view(request):
@@ -32,24 +37,14 @@ def register_view(request):
         # Передаем request в форму для получения IP адреса
         form.request = request
         
-        # Отладочная информация
         turnstile_token = request.POST.get('cf_turnstile_response', '')
         site_key = settings.CLOUDFLARE_TURNSTILE_SITE_KEY
         secret_key = settings.CLOUDFLARE_TURNSTILE_SECRET_KEY
-        
-        print(f"🔍 Turnstile Debug:")
-        print(f"   Site Key configured: {bool(site_key)}")
-        print(f"   Secret Key configured: {bool(secret_key)}")
-        print(f"   Token received: {bool(turnstile_token)}")
-        if turnstile_token:
-            print(f"   Token length: {len(turnstile_token)}")
-            print(f"   Token preview: {turnstile_token[:20]}...")
-        else:
-            if site_key and secret_key:
-                print(f"   ⚠️ WARNING: Keys are configured but no token received!")
-            else:
-                print(f"   ℹ️ INFO: Keys not configured - verification skipped")
-        
+        logger.debug(
+            "Turnstile: site_key=%s, secret_key=%s, token_received=%s",
+            bool(site_key), bool(secret_key), bool(turnstile_token)
+        )
+
         if form.is_valid():
             user = form.save()
 
@@ -68,8 +63,7 @@ def register_view(request):
 
             return redirect('main_app:contact')
         else:
-            print("❌ Ошибка валидации формы:")
-            print(form.errors)
+            logger.warning("Ошибка валидации формы регистрации: %s", form.errors)
             # Проверяем, есть ли ошибка Cloudflare Turnstile
             if 'cf_turnstile_response' in form.errors:
                 messages.error(request, _('Please complete the verification to prove you are not a robot.'))

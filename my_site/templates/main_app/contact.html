@@ -28,102 +28,12 @@
   </p>
 
   <!-- Модальное окно -->
-  <div id="chatModal" class="modal" style="display:none;">
-
+  <div id="chatModal" class="modal">
     <div class="modal-content">
-      <span class="close" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
+      <span class="close">&times;</span>
       <div id="chatContent">{% trans "Loading..." %}</div>
     </div>
   </div>
-
-  <style>
-.page-messages {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.page-message {
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 10px auto;
-    max-width: 600px;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.page-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.page-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.page-message.warning {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
-}
-
-.page-message.info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
-}
-
-      .modal-content {
-      resize: both;
-      overflow: auto;
-    }
-
-
-    .modal {
-      position: fixed;
-      z-index: 9999;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-
-    }
-
-    .modal-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 90vw; /* максимум — ширина экрана */
-      width: 90vw;
-      position: relative;
-      top: 1cm;
-      margin: auto;
-
-    }
-
-
-     .dark-theme .modal-content {
-      background-color: #2e2e2e;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 800px;
-      position: relative;
-      top: 1cm;
-      margin: auto;
-
-    }
-
-
-
-    .modal-open {
-      overflow: hidden;
-    }
-
-
-
-  </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {

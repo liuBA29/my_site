@@ -1,7 +1,12 @@
+import logging
 import os
+
 from django.utils.timezone import now
 from dotenv import load_dotenv
+
 from .utils import get_client_ip
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()  # Загружает переменные из .env файла
 
@@ -60,8 +65,8 @@ class PageViewMiddleware:
 
                 # Запись в лог
                 PageVisitLog.objects.create(path=path, ip_address=ip)
-            except Exception as e:
+            except Exception:
                 # Игнорируем ошибки логирования, чтобы не сломать сайт
-                print(f"Ошибка логирования посещения: {e}")
+                logger.exception("Ошибка логирования посещения")
 
         return response

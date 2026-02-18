@@ -143,11 +143,11 @@ class FreeSoftware(SoftwareBase):
         return reverse('main_app:free_soft_detail', kwargs={'slug': self.slug})
 
     class Meta:
-        verbose_name = "Бесплатный софт"
-        verbose_name_plural = "Бесплатный софт"
+        verbose_name = "Бесплатно"
+        verbose_name_plural = "Бесплатно"
 
 
-# 🔹 Модель для софта для бизнеса
+# 🔹 Модель для продуктов для бизнеса
 class BusinessSoftware(SoftwareBase):
     youtube_link = models.URLField(verbose_name="YouTube видео (ссылка)", blank=True, null=True)
     # Поля для тарифов
@@ -182,8 +182,8 @@ class BusinessSoftware(SoftwareBase):
         return reverse('main_app:business_soft_detail', kwargs={'slug': self.slug})
 
     class Meta:
-        verbose_name = "Софт для бизнеса"
-        verbose_name_plural = "Софт для бизнеса"
+        verbose_name = "Продукты для бизнеса"
+        verbose_name_plural = "Продукты для бизнеса"
 
 
 

@@ -287,7 +287,7 @@ msgid ""
 "Portfolio of web developer Liubov Kovaleva: projects, useful utilities, "
 "contact for collaboration."
 msgstr ""
-"Портфолио веб-разработчицы Любови Ковалёвой: проекты, бесплатный софт, "
+"Портфолио веб-разработчицы Любови Ковалёвой: проекты, бесплатно, "
 "контакты для сотрудничества."
 
 #: .\templates\base.html:82
@@ -314,6 +314,10 @@ msgstr "Вход | Портфолио Любови Ковалёвой"
 msgid "Submit a request"
 msgstr "Оставить заявку"
 
+#: .\templates\base.html:215
+msgid "About me"
+msgstr "Обо мне"
+
 #: .\templates\base.html:183
 msgid "Hello"
 msgstr "Привет"
@@ -323,13 +327,16 @@ msgid "Logout"
 msgstr "Выйти"
 
 #: .\templates\base.html:216 .\templates\main_app\free_soft.html:4
+#: .\templates\main_app\free_soft.html:6
 #: .\templates\main_app\free_soft.html:10
 #: .\templates\main_app\free_soft_detail.html:5
 #: .\templates\main_app\free_soft_detail.html:7
+#: .\templates\main_app\free_soft_detail.html:8
 #: .\templates\main_app\free_soft_detail.html:52
 #: .\templates\main_app\free_soft_detail.html:73
-msgid "Free Software"
-msgstr "Бесплатный софт"
+#: .\templates\main_app\business_soft_detail.html:132
+msgid "Free"
+msgstr "Бесплатно"
 
 #: .\templates\base.html:217 .\templates\main_app\my_projects.html:6
 #: .\templates\main_app\my_projects.html:12
@@ -338,20 +345,51 @@ msgstr "Бесплатный софт"
 msgid "My Projects"
 msgstr "Мои проекты"
 
-#: .\templates\base.html:218 .\templates\main_app\business_soft.html:4
+#: .\templates\base.html:222 .\templates\main_app\business_soft.html:4
+#: .\templates\main_app\business_soft.html:6
 #: .\templates\main_app\business_soft.html:10
 #: .\templates\main_app\business_soft_detail.html:5
 #: .\templates\main_app\business_soft_detail.html:7
+#: .\templates\main_app\business_soft_detail.html:8
 #: .\templates\main_app\business_soft_detail.html:52
 #: .\templates\main_app\business_soft_detail.html:73
-msgid "Business Software"
-msgstr "Софт для бизнеса"
+msgid "Business products"
+msgstr "Продукты для бизнеса"
 
-#: .\templates\base.html:219 .\templates\main_app\contact.html:4
+#: .\templates\base.html:221 .\templates\main_app\cooperation.html:6
+#: .\templates\main_app\cooperation.html:9
+msgid "Cooperation"
+msgstr "Сотрудничество"
+
+#: .\templates\main_app\cooperation.html:10
+msgid "Content coming soon."
+msgstr "Содержимое скоро появится."
+
+#: .\templates\base.html:223 .\templates\main_app\contact.html:4
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\templates\base.html:244
+#: .\templates\base.html:250
+msgid "Footer navigation"
+msgstr "Навигация в подвале"
+
+#: .\templates\base.html:256
+msgid "AI agents"
+msgstr "AI-агенты"
+
+#: .\templates\base.html:257
+msgid "CRM for dentistry"
+msgstr "CRM для стоматологии"
+
+#: .\templates\base.html:258 .\templates\main_app\requisites.html:6
+#: .\templates\base.html:260
+msgid "Email sender"
+msgstr "Email рассылка"
+
+msgid "Requisites"
+msgstr "Реквизиты"
+
+#: .\templates\base.html:264
 msgid "Thank you for visiting my site"
 msgstr "Благодарю, что посетили мой сайт"
 
@@ -512,10 +550,6 @@ msgstr "Доступные версии"
 #: .\templates\main_app\business_soft_detail.html:131
 msgid "Demo Version"
 msgstr "Демо версия"
-
-#: .\templates\main_app\business_soft_detail.html:132
-msgid "Free"
-msgstr "Бесплатно"
 
 #: .\templates\main_app\business_soft_detail.html:135
 msgid "Try the demo version for free"
@@ -696,7 +730,7 @@ msgid ""
 "Django web development. Projects, useful utilities, and freelance services "
 "by Liubov Kovaleva."
 msgstr ""
-"Веб-разработка на Django. Проекты, бесплатный софт и фриланс-услуги от "
+"Веб-разработка на Django. Проекты, бесплатно и фриланс-услуги от "
 "Любови Ковалёвой."
 
 #: .\templates\main_app\index.html:24

@@ -1,12 +1,12 @@
-/* styles_light.css - простая светлая тема без переменных и без прехедера */
+/* styles_light.css - облегчённая тема (старые iOS), та же палитра и шрифты что в styles.css */
 
 /* БАЗА */
 body {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Source Sans 3', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #ffffff; /* белый фон */
-  color: #000000; /* чёрный текст */
+  background-color: #FAF9F8; /* тёплый фон */
+  color: #1a1a1a;
 }
 
 /* Сброс стандартных стилей браузера для button и input */
@@ -48,9 +48,13 @@ label {
   max-width: 1200px;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Nunito', sans-serif;
+}
+
 h1,
 h2 {
-  color: #FF69B4; /* ярко-розовый */
+  color: #DB4D7A; /* основной розовый */
   text-align: center;
   font-size: 1.2em;
 }
@@ -61,7 +65,7 @@ a {
 }
 
 h4 {
-  color: #FF69B4; /* ярко-розовый */
+  color: #DB4D7A;
 }
 
 p {
@@ -79,8 +83,8 @@ p {
   -webkit-box-align: center; /* iOS Safari fallback */
   -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  padding: 6px 16px;
-  background-color: #FFB6C1; /* светло-розовый, как в хедере */
+  padding: 10px 20px;
+  background-color: #FFF5F8; /* тёплый кремово-розовый */
   position: static; /* БЕЗ sticky для совместимости */
 }
 
@@ -91,10 +95,10 @@ p {
   -webkit-box-align: center; /* iOS Safari fallback */
   -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
   font-size: 1em;
-  color: #1a1a1a; /* темно-серый почти черный */
+  color: #1a1a1a;
 }
 
 .name-logo > * + * {
@@ -107,12 +111,12 @@ p {
 }
 
 .name-logo .last-name {
-  border: 1px solid #ffffff; /* белая обводка */
-  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   padding: 2px 6px;
   text-transform: capitalize;
   font-weight: 400;
-  color: #1a1a1a; /* темно-серый почти черный */
+  color: #1a1a1a;
 }
 
 /* Центральная часть (ссылка на заказ) */
@@ -132,22 +136,24 @@ p {
 }
 
 .order-link {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
   font-size: 1.05em;
-  letter-spacing: 0.08em;
-  color: #FF69B4; /* ярко-розовый, как заголовки */
+  letter-spacing: 0.05em;
+  color: #DB4D7A;
   text-decoration: none;
-  border: 1px solid #FF69B4; /* ярко-розовая обводка */
-  border-radius: 6px;
-  padding: 4px 12px;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
+  border: 1px solid #DB4D7A;
+  border-radius: 12px;
+  padding: 6px 14px;
+  transition: opacity 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .order-link:hover {
-  opacity: 0.8;
-  background-color: rgba(255, 105, 180, 0.1); /* светло-розовый фон при наведении */
+  opacity: 0.9;
+  background-color: rgba(219, 77, 122, 0.08);
+  box-shadow: 0 4px 12px rgba(219, 77, 122, 0.12);
 }
 
 .right-controls {
@@ -177,23 +183,21 @@ p {
 }
 
 .language-button {
-  /* Сброс стандартных стилей браузера для button */
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   appearance: none !important;
   background: transparent !important;
-  border: 2px solid #1a1a1a !important; /* темно-серый почти черный */
-  padding: 0px 7px !important;
+  border: 2px solid #1a1a1a !important;
+  padding: 4px 10px !important;
   text-decoration: none !important;
   font-weight: bold !important;
-  color: #1a1a1a !important; /* темно-серый почти черный */
-  border-radius: 5px !important;
+  color: #1a1a1a !important;
+  border-radius: 10px !important;
   margin: 5px !important;
   cursor: pointer !important;
   font-family: inherit !important;
   font-size: inherit !important;
-  transition: background-color 0.3s, color 0.3s !important;
-  /* Убираем стандартные стили iOS */
+  transition: background-color 0.25s, color 0.25s !important;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -268,7 +272,7 @@ p {
 }
 
 .toggle__input:checked ~ .toggle__fill {
-  background: #FFB6C1 !important; /* светло-розовый */
+  background: #E8A0B8 !important; /* светло-розовый */
 }
 
 .toggle__fill::after {
@@ -297,7 +301,7 @@ p {
 
 /* HEADER (обычный, не липкий) */
 header {
-  background: #FFB6C1; /* светло-розовый */
+  background: #E8A0B8; /* светло-розовый */
   color: #ffffff;
   padding: 10px 0;
   text-align: center;
@@ -359,8 +363,9 @@ nav ul li a {
   white-space: nowrap;
   font-size: 20px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
   transition: transform 0.2s ease-in-out;
+  text-transform: lowercase;
 }
 
 nav ul li a:hover { text-decoration: underline; }
@@ -431,7 +436,7 @@ nav ul li:last-child {
   margin: 0;
   padding: 10px 12px;
   font-size: 16px; /* минимум 16px на iOS, чтобы не зумило при фокусе */
-  border-radius: 6px;
+  border-radius: 12px;
   border: 1px solid #ccc;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -443,7 +448,7 @@ nav ul li:last-child {
 .login-button {
   -webkit-appearance: none !important;
   appearance: none !important;
-  background: #FF69B4 !important;
+  background: #DB4D7A !important;
   color: #fff !important;
   border: none !important;
   padding: 12px 28px !important;
@@ -462,21 +467,22 @@ nav ul li:last-child {
   -webkit-box-pack: center !important;
   -webkit-justify-content: center !important;
   justify-content: center !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  box-shadow: 0 4px 16px rgba(219, 77, 122, 0.25) !important;
 }
 .login-button:hover {
-  background: #ff85c1 !important;
+  background: #C44C6F !important; /* --pink-dark-pink */
   opacity: 0.95;
+  box-shadow: 0 6px 20px rgba(219, 77, 122, 0.3) !important;
 }
 .simple-link {
   font-weight: bold;
   text-decoration: underline;
-  color: #FF69B4;
+  color: #DB4D7A;
 }
 .auth-link-inline {
   font-weight: bold;
   text-decoration: underline;
-  color: #FF69B4;
+  color: #DB4D7A;
   padding: 4px 8px;
   min-height: 44px;
   display: inline-block;
@@ -489,37 +495,217 @@ nav ul li:last-child {
 
 /* MAIN */
 main.container {
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 30px;
   margin-top: 20px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .section-description {
   font-size: 1.2rem;
   margin: 1rem 0 2rem 0;
-  color: #6F6F6F; /* затемненный серый цвет */
+  color: #5a5552;
   line-height: 1.6;
   position: relative;
 }
 
 /* FOOTER */
 footer {
-  background: #FFB6C1; /* светло-розовый */
+  background: #E8A0B8;
   color: #ffffff;
   text-align: center;
-  padding: 10px 0;
+  padding: 18px 0 14px;
   margin-top: 20px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
 }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+/* Логотип в шапке */
+#logo-img,
+.header-logo-img {
+  width: 70px;
+  height: auto;
+}
+
+/* Баннер cookies */
+#cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  width: 90%;
+  background: rgba(34, 34, 34, 0.9);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.8s, bottom 0.8s;
+}
+
+#accept-cookies {
+  margin-left: 15px;
+  padding: 6px 14px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#accept-cookies:hover {
+  background: #43a047;
+}
+
+/* Хлебные крошки */
+.breadcrumb-nav { margin-bottom: 20px; }
+.breadcrumb-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.9em;
+}
+.breadcrumb-sep { color: #888; }
+.breadcrumb-current { color: #666; }
+
+.btn-order-similar { margin-left: 10px; }
+
+/* Страница предупреждения о скачивании */
+.download-warning-card {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.download-warning-title { color: #e74c3c; margin-bottom: 20px; }
+.download-warning-body { margin-bottom: 30px; }
+.download-warning-body p { font-size: 1.1em; line-height: 1.6; }
+.download-warning-body p.warning-text { margin-top: 20px; color: #e74c3c; }
+.download-warning-body p.note { font-size: 1em; margin-top: 20px; color: #666; }
+.download-warning-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.download-warning-actions .btn { min-width: 150px; }
+
+/* Блок информации о продукте, подсказки формы */
+.product-info-box {
+  background-color: #f0f8ff;
+  border: 2px solid #4a90e2;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+.product-info-box h3 { margin-top: 0; color: #4a90e2; }
+.product-info-box p { margin: 10px 0; font-size: 1.1em; }
+.form-hint { color: #666; font-size: 0.9em; }
+
+.modal { display: none; }
+.modal .close { float: right; font-size: 24px; cursor: pointer; }
+
+.alert-warning-box {
+  padding: 10px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.os-windows { color: #0078D4; font-weight: bold; }
+
+#lobby-area, .lobby-area { text-align: center; }
+#in-chat-area, .in-chat-area { display: none; text-align: center; }
+#chat-area, .chat-area { display: none; }
+
+.page-messages { margin: 20px 0; text-align: center; }
+.page-message {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px auto;
+  max-width: 600px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.page-message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.page-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.page-message.warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+.page-message.info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+.modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90vw;
+  width: 90vw;
+  position: relative;
+  top: 1cm;
+  margin: auto;
+  resize: both;
+  overflow: auto;
+}
+.modal-open { overflow: hidden; }
 
 /* ССЫЛКИ ДЛЯ ЗАГРУЗКИ */
 a.btn {
   display: inline-block;
   background-color: transparent;
-  color: #FF69B4;
+  color: #DB4D7A;
   padding: 10px 20px;
   border-radius: 12px;
   text-decoration: none;
@@ -527,7 +713,7 @@ a.btn {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-a.btn:hover { background-color: #FFB6C1; color: #ffffff; }
+a.btn:hover { background-color: #E8A0B8; color: #ffffff; }
 
 /* Кнопка YouTube — белый фон, красная иконка (#ff0033), чёрный текст */
 a.btn-youtube {
@@ -561,15 +747,15 @@ a.btn-youtube i.fab.fa-youtube {
   width: 250px;
   margin-left: 20px;
   margin-bottom: 20px;
-  background-color: #f9f0ff; /* светло-розовый фон */
+  background-color: #FFF5F8;
   margin-top: 140px;
   padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #d19cd6; /* розовая рамка */
+  border-radius: 12px;
+  border: 1px solid #E8A0B8;
 }
 
 .tech-stack-box {
-  border: 2px solid #F77CA3; /* розовая рамочка */
+  border: 2px solid #DB4D7A;
   border-radius: 12px;
   padding: 20px;
   margin: 30px 0;
@@ -586,7 +772,8 @@ a.btn-youtube i.fab.fa-youtube {
   text-align: center;
   font-size: 1em;
   margin: 4px 0 8px 0;
-  color: #F77CA3; /* розовый цвет */
+  color: #DB4D7A;
+  font-family: 'Nunito', sans-serif;
 }
 
 .tech-stack-list {
@@ -616,7 +803,7 @@ a.btn-youtube i.fab.fa-youtube {
 
 .tech-stack-list li i {
   font-size: 1.1em;
-  color: #F77CA3; /* розовый цвет для иконок */
+  color: #DB4D7A;
   margin-right: 3px;
   vertical-align: middle;
 }
@@ -636,7 +823,7 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .tech-stack-icons i {
-  color: #F77CA3; /* розовый цвет для иконок */
+  color: #DB4D7A;
   margin-right: 10px;
   font-size: 1.2em;
   min-width: 20px;
@@ -647,17 +834,18 @@ a.btn-youtube i.fab.fa-youtube {
 @media (max-width: 900px) {
   .tech-stack-box {
     float: none !important;
-    margin: 10px auto;
+    margin: 16px auto;
     max-width: 100%;
     width: 90%;
-    font-size: 0.8em;
-    padding: 6px 10px;
-    line-height: 1.05;
+    font-size: 0.85em;
+    padding: 14px 16px;
+    line-height: 1.2;
     display: block;
     clear: both;
     text-align: center;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    border-radius: 14px;
   }
 
   .tech-stack-list li i {
@@ -667,13 +855,12 @@ a.btn-youtube i.fab.fa-youtube {
 
 /* ИЗОБРАЖЕНИЯ - уменьшенный размер */
 .soft-item .left img {
-  width: 150px; /* было 250px, уменьшили */
-  height: 150px; /* было 250px, уменьшили */
-  border-radius: 5px;
-  /* object-fit поддерживается с iOS 10+, для старых версий изображение просто обрежется */
-  -webkit-object-fit: cover; /* iOS Safari fallback */
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  -webkit-object-fit: cover;
   object-fit: cover;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .soft-item .left {
@@ -695,7 +882,7 @@ a.btn-youtube i.fab.fa-youtube {
   justify-content: center;
   text-align: center;
   font-size: 0.9rem;
-  border-radius: 5px;
+  border-radius: 12px;
 }
 
 .soft-item {
@@ -807,7 +994,7 @@ a.btn-youtube i.fab.fa-youtube {
 
 .soft-item h3 {
   margin: 0 0 10px 0;
-  color: #FF69B4;
+  color: #DB4D7A;
 }
 
 .soft-item h3:hover {
@@ -825,8 +1012,9 @@ a.btn-youtube i.fab.fa-youtube {
   nav ul > * + * { margin-left: 0; margin-top: 10px; }
   nav ul li { flex: none; }
   nav ul li:last-child { margin-left: 0; } /* Убираем лишний отступ для Контактов в мобильной версии */
-  .section-description { font-size: 1rem; line-height: 1.4; margin: 0.8rem 0 1.2rem 0; }
-  
+  .section-description { font-size: 1rem; line-height: 1.5; margin: 0.8rem 0 1.2rem 0; }
+  main.container { padding: 20px 16px; border-radius: 16px; }
+
   /* Мобильная версия прехедера */
   .name-logo {
     font-size: 0.9em;
@@ -1018,39 +1206,39 @@ a.btn-youtube i.fab.fa-youtube {
 
 /* Логотип в темной теме - розовый */
 .dark-theme .name-logo {
-  color: #FFB6C1 !important; /* светло-розовый */
+  color: #E8A0B8 !important; /* светло-розовый */
 }
 
 .dark-theme .name-logo .first-name {
-  color: #FFB6C1 !important; /* светло-розовый */
+  color: #E8A0B8 !important; /* светло-розовый */
 }
 
 .dark-theme .name-logo .last-name {
-  color: #FFB6C1 !important; /* светло-розовый */
-  border: 1px solid #FFB6C1 !important; /* светло-розовая обводка */
+  color: #E8A0B8 !important; /* светло-розовый */
+  border: 1px solid #E8A0B8 !important; /* светло-розовая обводка */
 }
 
 /* Языковые кнопки в темной теме */
 .dark-theme .language-button {
-  color: #FF69B4 !important; /* ярко-розовый */
-  border-color: #FF69B4 !important;
+  color: #DB4D7A !important; /* ярко-розовый */
+  border-color: #DB4D7A !important;
 }
 
 .dark-theme .language-button:hover {
-  background-color: #FF69B4 !important;
+  background-color: #DB4D7A !important;
   color: white !important;
-  border-color: #FF69B4 !important;
+  border-color: #DB4D7A !important;
 }
 
 .dark-theme .language-button.active {
-  background-color: #FF69B4 !important;
+  background-color: #DB4D7A !important;
   color: white !important;
-  border-color: #FF69B4 !important;
+  border-color: #DB4D7A !important;
 }
 
 /* Toggle в темной теме */
 .dark-theme .toggle__input:checked ~ .toggle__fill {
-  background: #FFB6C1 !important; /* светло-розовый */
+  background: #E8A0B8 !important; /* светло-розовый */
 }
 
 /* Заголовки в темной теме */
@@ -1060,13 +1248,13 @@ a.btn-youtube i.fab.fa-youtube {
 
 .dark-theme h1,
 .dark-theme h2 {
-  color: #FF69B4; /* ярко-розовый */
+  color: #DB4D7A; /* ярко-розовый */
 }
 
 /* Ссылка заказа в темной теме */
 .dark-theme .order-link {
-  color: #FFB6C1 !important; /* светло-розовый */
-  border-color: #FFB6C1 !important;
+  color: #E8A0B8 !important; /* светло-розовый */
+  border-color: #E8A0B8 !important;
 }
 
 .dark-theme .order-link:hover {
@@ -1102,7 +1290,7 @@ a.btn-youtube i.fab.fa-youtube {
 
 /* Блок авторизации в темной теме */
 .dark-theme .auth a {
-  color: #FF69B4 !important; /* ярко-розовый */
+  color: #DB4D7A !important; /* ярко-розовый */
 }
 
 .dark-theme .auth a:hover {
@@ -1133,9 +1321,33 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .dark-theme .soft-item h3 {
-  color: #FFB6C1;
+  color: #E8A0B8;
 }
 
+/* «Назад к списку» — указатель назад, не кнопка */
+.back-btn {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 4px 0;
+  text-decoration: none;
+  font-weight: 500;
+  color: #8F8F8F;
+  transition: color 0.2s ease;
+}
+.back-btn span {
+  margin-right: 6px;
+  font-size: 1em;
+  opacity: 0.85;
+}
+.back-btn:hover {
+  color: #DB4D7A;
+}
+.back-btn:hover span {
+  opacity: 1;
+}
 
 /* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
 .instruction-pdf {
@@ -1149,7 +1361,7 @@ a.btn-youtube i.fab.fa-youtube {
 .instruction-pdf h4 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: #FF69B4;
+    color: #DB4D7A;
 }
 
 .instruction-pdf a {
@@ -1199,7 +1411,7 @@ a.btn-youtube i.fab.fa-youtube {
 
 .dark-theme .instruction-pdf {
     background-color: #3a3a3a;
-    border-left-color: #FF69B4;
+    border-left-color: #DB4D7A;
 }
 
 .dark-theme .instruction-pdf h4 {
@@ -1207,7 +1419,7 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .dark-theme .instruction-pdf a {
-    color: #FFB6C1;
+    color: #E8A0B8;
 }
 
 .dark-theme /* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
@@ -1231,7 +1443,7 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .instruction-pdf a:hover {
-    color: #FF69B4;
+    color: #DB4D7A;
 }
 
 .dark-theme .instruction-pdf a i.fa-download {
@@ -1250,7 +1462,7 @@ a.btn-youtube i.fab.fa-youtube {
 .instruction-pdf h4 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: #FF69B4;
+    color: #DB4D7A;
 }
 
 .instruction-pdf a {
@@ -1300,7 +1512,7 @@ a.btn-youtube i.fab.fa-youtube {
 
 .dark-theme .instruction-pdf {
     background-color: #3a3a3a;
-    border-left-color: #FF69B4;
+    border-left-color: #DB4D7A;
 }
 
 .dark-theme .instruction-pdf h4 {
@@ -1308,7 +1520,7 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .dark-theme .instruction-pdf a {
-    color: #FFB6C1;
+    color: #E8A0B8;
 }
 
 .dark-theme /* Fallback РґР»СЏ gap РІ СЃС‚Р°СЂС‹С… iOS - РёСЃРїРѕР»СЊР·СѓРµРј margin РґР»СЏ РґРѕС‡РµСЂРЅРёС… СЌР»РµРјРµРЅС‚РѕРІ */
@@ -1332,7 +1544,7 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 .instruction-pdf a:hover {
-    color: #FF69B4;
+    color: #DB4D7A;
 }
 
 .dark-theme .instruction-pdf a i.fa-download {

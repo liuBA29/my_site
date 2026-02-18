@@ -18,6 +18,9 @@ env
 # Logs
 *.log
 
+# Backups
+*.bak
+
 # OS Files
 .DS_Store
 Thumbs.db
@@ -27,6 +30,7 @@ resume.docx
 
 bot_test.py
 delete_table.py
+fucking_test.py
 delete_then_create_as_sample.py
 table_structure.py
 remotedb.sqlite3

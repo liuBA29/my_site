@@ -110,7 +110,6 @@
     <meta name="twitter:image" content="{% block twitter_image %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endblock %}">
 
     <!-- Hreflang для мультиязычности -->
-    {% get_available_languages as LANGUAGES %}
     {% for lang_code, lang_name in LANGUAGES %}
     <link rel="alternate" hreflang="{{ lang_code }}" href="{% block hreflang_url %}{{ request.build_absolute_uri }}{% endblock %}">
     {% endfor %}
@@ -210,16 +209,15 @@
                     <li>
 
               <a href="{% url 'main_app:home' %}" id="logo-link">
-                <img id="logo-img"
+                <img id="logo-img" class="header-logo-img"
                      src="{% if request.resolver_match.url_name == 'home' %}https://res.cloudinary.com/dczzlelzw/image/upload/v1751985098/uxqacxdfkqeq9l12gbv4.png{% else %}https://res.cloudinary.com/dczzlelzw/image/upload/v1742906472/face1-re_y281rk.png{% endif %}"
-                     alt="Обо мне"
-                     style="width: 70px; height: auto;">
+                     alt="{% trans 'About me' %}">
               </a>
 
                     </li>
-                    <li><a href="{% url 'main_app:free_soft' %}" class="{% if request.resolver_match.url_name == 'free_soft' or request.resolver_match.url_name == 'free_soft_detail' %}active{% endif %}">{% trans "Free Software" %}</a></li>
-                    <li><a href="{% url 'main_app:my_projects' %}" class="{% if request.resolver_match.url_name == 'my_projects' %}active{% endif %}">{% trans "My Projects" %}</a></li>
-                    <li><a href="{% url 'main_app:business_soft' %}" class="{% if request.resolver_match.url_name == 'business_soft' or request.resolver_match.url_name == 'business_soft_detail' %}active{% endif %}">{% trans "Business Software" %}</a></li>
+                    <li><a href="{% url 'main_app:free_soft' %}" class="{% if request.resolver_match.url_name == 'free_soft' or request.resolver_match.url_name == 'free_soft_detail' %}active{% endif %}">{% trans "Free" %}</a></li>
+                    <li><a href="{% url 'main_app:cooperation' %}" class="{% if request.resolver_match.url_name == 'cooperation' %}active{% endif %}">{% trans "Cooperation" %}</a></li>
+                    <li><a href="{% url 'main_app:business_soft' %}" class="{% if request.resolver_match.url_name == 'business_soft' or request.resolver_match.url_name == 'business_soft_detail' %}active{% endif %}">{% trans "Business products" %}</a></li>
                     <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
                     {% if user.is_staff or user.is_superuser %}
                     <li><a href="{% url 'contract_maker:form' %}" class="{% if request.resolver_match.namespace == 'contract_maker' %}active{% endif %}">{% trans "Contracts" %}</a></li>
@@ -248,7 +246,21 @@
 
     <footer>
         <div class="container">
-            <p>{% trans 'Thank you for visiting my site' %}<br> &copy;LiuBA29 {% now "Y" %}</p>
+            <nav class="footer-links" aria-label="{% trans 'Footer navigation' %}">
+                <div class="footer-col">
+                    <a href="{% url 'main_app:business_soft' %}">{% trans "Business products" %}</a>
+                    <a href="{% url 'main_app:cooperation' %}">{% trans "Cooperation" %}</a>
+                    <a href="{% url 'main_app:contact' %}">{% trans "Contacts" %}</a>
+                    <a href="{% url 'main_app:my_projects' %}">{% trans "My Projects" %}</a>
+                </div>
+                <div class="footer-col">
+                    <a href="{% url 'main_app:cooperation' %}#ai-agents">{% trans "AI agents" %}</a>
+                    <a href="{% url 'main_app:business_soft' %}">{% trans "CRM for dentistry" %}</a>
+                    <a href="{% url 'main_app:cooperation' %}#email-sender">{% trans "Email sender" %}</a>
+                    <a href="{% url 'main_app:requisites' %}">{% trans "Requisites" %}</a>
+                </div>
+            </nav>
+            <p class="footer-copyright">{% trans 'Thank you for visiting my site' %}<br> &copy; LiuBA29 {% now "Y" %}</p>
         </div>
     </footer>
 
@@ -304,38 +316,9 @@ if (!isHomePage) {
 
 {% endblock %}
 
-<div id="cookie-banner" style="
-    display:none;
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    max-width:600px;
-    width:90%;
-    background:rgba(34,34,34,0.9);
-    color:#fff;
-    padding:15px 20px;
-    border-radius:12px;
-    text-align:center;
-    z-index:1000;
-    opacity:0;
-    box-shadow:0 4px 12px rgba(0,0,0,0.3);
-    transition: opacity 0.8s, bottom 0.8s;
-">
+<div id="cookie-banner">
     <span>{% trans "This site uses cookies to improve your experience" %}</span>
-    <button id="accept-cookies" style="
-        margin-left:15px;
-        padding:6px 14px;
-        background:#4CAF50;
-        color:white;
-        border:none;
-        border-radius:8px;
-        cursor:pointer;
-        font-weight:bold;
-        transition: background 0.3s;
-    ">
-        {% trans "Accept" %}
-    </button>
+    <button id="accept-cookies" type="button">{% trans "Accept" %}</button>
 </div>
 
 <script>

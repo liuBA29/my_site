@@ -56,9 +56,9 @@
                  data-theme="light"
                  data-callback="turnstileCallback"
                  data-error-callback="turnstileErrorCallback"></div>
-            <small style="color: #666; font-size: 0.9em;">{% trans "Please complete the verification above" %}</small>
+            <small class="form-hint">{% trans "Please complete the verification above" %}</small>
         {% else %}
-            <div style="padding: 10px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 5px; margin: 10px 0;">
+            <div class="alert-warning-box">
                 <strong>⚠️ {% trans "Warning" %}:</strong> {% trans "Cloudflare Turnstile is not configured. Registration is not protected from bots." %}
             </div>
         {% endif %}

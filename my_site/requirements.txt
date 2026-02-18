@@ -23,7 +23,6 @@ channels==3.0.5
 channels-redis==4.1.0
 redis==6.2.0
 
-requests==2.32.3
 beautifulsoup4==4.13.4
 
 python-docx>=1.0.0  # для contract_maker (генерация договоров/актов)

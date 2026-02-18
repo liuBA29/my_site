@@ -1,13 +1,13 @@
 /*  styles.css  */
 
 :root {
-    /* Основные цвета */
-    --pink-pink: #FF69B4;                /* 💖 ярко-розовый */
-    --pink-light-pink: #FFB6C1;          /* 🌸 светло-розовый */
-    --pink-dark-pink: #D16B8A;           /* 🌺 тёмно-розовый */
+    /* Палитра: приглушённые розовые, современно и женственно */
+    --pink-pink: #DB4D7A;                /* 💖 основной розовый (чуть мягче) */
+    --pink-light-pink: #E8A0B8;          /* 🌸 светло-розовый */
+    --pink-dark-pink: #C44C6F;           /* 🌺 тёмно-розовый */
     --white: #ffffff;                     /* ⚪ белый */
     --black: #000000;                     /* ⚫ черный */
-    --pink-gray-very-light: #f5f5f5;            /* 🌫 очень светло-серый */
+    --pink-gray-very-light: #FFF5F8;     /* тёплый кремово-розовый для шапки */
     --pink-gray-medium: #8F8F8F;           /* 🌁 средний серый */
     --pink-gray-light: #bbbbbb;             /* 🪨 светло-серый */
     --pink-gray-bg: #2b2b2b;               /* темный кофе */
@@ -15,21 +15,32 @@
     --pink-link-blue: #4169E1;             /* 🔵 синий для ссылок */
     --pink-link-blue-hover: #27408B;       /* 🟦 синий при наведении */
     --pink-toast-bg: #FFF5E1;             /* 🍯 фон всплывающих уведомлений beige*/
-    --pink-tech-bg: #f9f0ff;              /* 🟪 фон блока "технологии" */
-    --pink-tech-accent: #F77CA3;          /* 💗 акцент в блоке "технологии" */
-    --pink-border-tech: #d19cd6;         /* 🟪 граница блока "технологии" */
-    --pink-shadow: rgba(0, 0, 0, 0.1);     /* 🌑 тень для элементов */
+    --pink-tech-bg: #FFF5F8;              /* фон блока "технологии" — в тон палитре */
+    --pink-tech-accent: #DB4D7A;          /* 💗 акцент (как основной розовый) */
+    --pink-border-tech: #E8A0B8;          /* граница блока "технологии" */
+    --pink-shadow: rgba(0, 0, 0, 0.06);   /* мягкая тень */
+
+    /* Акцент для tech-stack и тем (совпадает с основным розовым) */
+    --theme-accent: var(--pink-pink);
+
+    /* Тёплый нейтральный фон страницы */
+    --bg-warm: #FAF9F8;
 
     /* Добавляем недостающие переменные для тем */
-    --background-color: #ffffff;
-    --text-color: #000000;
+    --background-color: var(--bg-warm);
+    --text-color: #1a1a1a;
 
     --main-padding: 30px;
     --gap-large: 20px;
 
+    /* Шрифты: мягкий для заголовков, нейтральный для текста */
+    --font-heading: 'Nunito', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
 /* ================== БАЗА ================== */
 body {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -42,7 +53,11 @@ body {
     max-width: 1200px;
 }
 
-h1,h2 {
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+}
+
+h1, h2 {
     color: var(--pink-pink);
     text-align: center;
     font-size: 1.2em;
@@ -76,9 +91,9 @@ p {
   -webkit-box-align: center; /* iOS Safari fallback */
   -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
-  padding: 6px 16px;
+  padding: 10px 20px;
   background-color: var(--pink-gray-very-light);
-  background-color: #f5f5f5; /* fallback для iOS */
+  background-color: #FFF5F8; /* fallback: тёплый кремово-розовый */
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -97,8 +112,8 @@ p {
   -webkit-align-items: center; /* iOS Safari fallback */
   align-items: center;
   /* gap: 8px; - убираем gap для iOS совместимости */
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 600;
   font-size: 1em;
   color: var(--pink-light-pink);
   color: #FFB6C1; /* fallback для iOS */
@@ -120,7 +135,7 @@ p {
 
 .name-logo .last-name {
   border: 1px solid var(--pink-light-pink);
-  border-radius: 6px;
+  border-radius: 10px;
   padding: 2px 6px;
   text-transform: capitalize;
   font-weight: 400;
@@ -135,24 +150,26 @@ p {
 }
 
 .order-link {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 600;
   font-size: 1.05em;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   color: var(--pink-light-pink);
-  color: #FFB6C1; /* fallback для iOS */
+  color: #E8A0B8; /* fallback для iOS */
   text-decoration: none;
   border: 1px solid var(--pink-light-pink);
-  border: 1px solid #FFB6C1; /* fallback для iOS */
-  border-radius: 6px;
-  padding: 4px 12px;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
+  border: 1px solid #E8A0B8; /* fallback для iOS */
+  border-radius: 12px;
+  padding: 6px 14px;
+  transition: opacity 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .order-link:hover {
-  opacity: 0.8;
-  background-color: rgba(255, 182, 193, 0.1);
+  opacity: 0.9;
+  background-color: rgba(232, 160, 184, 0.15);
+  box-shadow: 0 4px 12px rgba(219, 77, 122, 0.12);
 }
 
 /* Правая часть (тоггл + языки) */
@@ -191,8 +208,8 @@ p {
 
 
 .name-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-weight: 600;
   font-size: 1em;
   letter-spacing: 0.06em;
   color: var(--pink-light-pink);
@@ -207,7 +224,7 @@ p {
 
 .last-name {
   border: 2px solid var(--pink-light-pink);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 6px 14px 4px;
   text-transform: capitalize;
   font-weight: 400;
@@ -291,10 +308,11 @@ nav ul li a {
     display: block;
     padding: 0 8px;
     color: white;
+    text-transform: lowercase;
     white-space: nowrap;
     font-size: 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -395,11 +413,11 @@ nav ul li a.active {
 }
 
 .login-form input {
-    width: 250px;  /* фиксированная ширина, чтобы все поля были одинаковыми */
+    width: 250px;
     margin: 0;
     padding: 8px 12px;
     font-size: 1rem;
-    border-radius: 6px;
+    border-radius: 12px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
@@ -412,16 +430,17 @@ nav ul li a.active {
     font-size: 1rem;
     font-weight: bold;
     border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 16px rgba(219, 77, 122, 0.25);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     min-width: 150px;
-    align-self: flex-start; /* чтобы кнопка тоже вровень с полями была */
+    align-self: flex-start;
 }
 
 .login-button:hover {
-    background-color: #ff85c1;
-    transform: scale(1.05);
+    background-color: var(--pink-dark-pink);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(219, 77, 122, 0.3);
 }
 
 
@@ -449,20 +468,21 @@ nav ul li a.active {
 
 
 .language-button {
-    padding: 0px 7px;
+    padding: 4px 10px;
     text-decoration: none;
     font-weight: bold;
     color: var(--pink-pink);
     background-color: transparent;
     border: 2px solid var(--pink-pink);
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
 }
 
 .language-button:hover {
     background-color: var(--pink-pink);
     color: white;
+    box-shadow: 0 2px 8px rgba(219, 77, 122, 0.2);
 }
 
 .language-button.active {
@@ -539,20 +559,20 @@ nav ul li a.active {
 /* ================== MAIN ================== */
 
 .section-description {
-    font-size: 1.2rem; /* Увеличиваем размер шрифта */
+    font-size: 1.2rem;
     margin: 1rem 0 2rem 0;
-    color: #6F6F6F; /* Затемненный серый цвет вместо среднего */
+    color: #5a5552; /* тёплый серый для текста */
     line-height: 1.6;
     position: relative;
 }
 
 
 main.container {
-    background: #FFF;
+    background: var(--white);
     padding: 30px;
     margin-top: 20px;
     border-radius: 20px;
-    box-shadow: 0 4px 12px var(--pink-shadow);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 /* ================== FOOTER ================== */
@@ -561,10 +581,296 @@ footer {
     background: var(--pink-light-pink);
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 18px 0 14px;
     margin-top: 20px;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 3rem;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.95;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.footer-copyright {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
+/* Логотип в шапке */
+#logo-img,
+.header-logo-img {
+    width: 70px;
+    height: auto;
+}
+
+/* Баннер cookies */
+#cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    width: 90%;
+    background: rgba(34, 34, 34, 0.9);
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.8s, bottom 0.8s;
+}
+
+#accept-cookies {
+    margin-left: 15px;
+    padding: 6px 14px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+#accept-cookies:hover {
+    background: #43a047;
+}
+
+/* Хлебные крошки */
+.breadcrumb-nav {
+    margin-bottom: 20px;
+}
+
+.breadcrumb-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.breadcrumb-sep {
+    color: #888;
+}
+
+.breadcrumb-current {
+    color: #666;
+}
+
+/* Кнопка "Заказать аналогичный" рядом с другими */
+.btn-order-similar {
+    margin-left: 10px;
+}
+
+/* Страница предупреждения о скачивании */
+.download-warning-card {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.download-warning-title {
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.download-warning-body {
+    margin-bottom: 30px;
+}
+
+.download-warning-body p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.download-warning-body p.warning-text {
+    margin-top: 20px;
+    color: #e74c3c;
+}
+
+.download-warning-body p.note {
+    font-size: 1em;
+    margin-top: 20px;
+    color: #666;
+}
+
+.download-warning-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.download-warning-actions .btn {
+    min-width: 150px;
+}
+
+/* Блок информации о продукте в форме заказа */
+.product-info-box {
+    background-color: #f0f8ff;
+    border: 2px solid #4a90e2;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.product-info-box h3 {
+    margin-top: 0;
+    color: #4a90e2;
+}
+
+.product-info-box p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.form-hint {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Модальное окно (чат на странице контактов) */
+.modal {
+    display: none;
+}
+
+.modal .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Предупреждение в форме регистрации */
+.alert-warning-box {
+    padding: 10px;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Акцент ОС Windows в тексте */
+.os-windows {
+    color: #0078D4;
+    font-weight: bold;
+}
+
+/* Области чата (видимость переключается JS) */
+#lobby-area,
+.lobby-area {
+    text-align: center;
+}
+
+#in-chat-area,
+.in-chat-area {
+    display: none;
+    text-align: center;
+}
+
+#chat-area,
+.chat-area {
+    display: none;
+}
+
+/* Сообщения страницы (успех/ошибка и т.д.) */
+.page-messages {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.page-message {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px auto;
+    max-width: 600px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.page-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.page-message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.page-message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Модальное окно (полные стили) */
+.modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90vw;
+    width: 90vw;
+    position: relative;
+    top: 1cm;
+    margin: auto;
+    resize: both;
+    overflow: auto;
+}
+
+.modal-open {
+    overflow: hidden;
 }
 
 
@@ -673,17 +979,18 @@ footer {
 @media (max-width: 900px) {
   .tech-stack-box {
     float: none !important;
-    margin: 10px auto;
+    margin: 16px auto;
     max-width: 100%;
     width: 90%;
-    font-size: 0.8em;
-    padding: 6px 10px;
-    line-height: 1.05;
+    font-size: 0.85em;
+    padding: 14px 16px;
+    line-height: 1.2;
     display: block;
     clear: both;
     text-align: center;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    border-radius: 14px;
   }
 
   .tech-stack-list li i {
@@ -1007,8 +1314,8 @@ footer {
     border-radius: 20px;
     padding: 10px 5px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 16px rgba(219, 77, 122, 0.2);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 
@@ -1023,35 +1330,42 @@ body.dark-theme .soft-item-link:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* стрелочка */
-/* Стрелочка для кнопки в светлой теме */
-.light-theme .back-btn {
-
-    color: pink;
-    border: 1px solid #ddd;
+/* «Назад к списку» — указатель назад, не кнопка */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 0;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--pink-gray-medium);
+    transition: color 0.2s ease;
 }
 
-.light-theme .back-btn:hover {
-    background-color: pink;
-    color: white;
+.back-btn span {
+    margin-right: 6px;
+    font-size: 1em;
+    opacity: 0.85;
 }
 
-/* Стрелочка для кнопки в темной теме */
-.dark-theme .back-btn {
-    background-color: #333;
+.back-btn:hover {
     color: var(--pink-pink);
-    border: 1px solid #555;
+}
+
+.back-btn:hover span {
+    opacity: 1;
+}
+
+/* Тёмная тема */
+.dark-theme .back-btn {
+    color: var(--pink-gray-light);
 }
 
 .dark-theme .back-btn:hover {
-    background-color: var(--pink-pink);
-    color: white;
+    color: var(--pink-light-pink);
 }
 
-/* Увеличение размера стрелочки */
-.back-btn span {
-    margin-right: 8px;
-    font-size: 18px;
+.dark-theme .modal-content {
+    background-color: #2e2e2e;
 }
 
 
@@ -1103,9 +1417,21 @@ body.dark-theme .soft-item-link:hover {
 
 @media (max-width: 600px) {
   .section-description {
-    font-size: 1rem;      /* чуть меньше шрифт */
-    line-height: 1.4;     /* поменьше межстрочный интервал */
-    margin: 0.8rem 0 1.2rem 0;  /* чуть плотнее блоки */
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0.8rem 0 1.2rem 0;
+  }
+
+  main.container {
+    padding: 20px 16px;
+    margin-top: 16px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .preheader {
+    padding: 10px 14px;
   }
 }
 
@@ -1125,8 +1451,8 @@ body.dark-theme .soft-item-link:hover {
     text-decoration: none;
     color: inherit;
     display: block;
-    transition: background-color 0.3s ease;
-    border-radius: 10px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 14px;
 }
 
 .soft-item-link:hover {
@@ -1154,9 +1480,9 @@ body.dark-theme .soft-item-link:hover {
 .soft-item .left img {
     width: 250px;
     height: 250px;
-    border-radius: 5px;
+    border-radius: 12px;
     object-fit: cover;
-    box-shadow: 0 2px 5px var(--pink-shadow);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* Обтекание изображения текстом для страницы деталей бизнес-софта */
@@ -1389,16 +1715,18 @@ body.dark-theme .soft-item-link:hover {
 /* downolads styles */
 a.btn {
     display: inline-block;
-    background-color: #FF00;
+    background-color: transparent;
     color: var(--pink-pink);
     padding: 10px 20px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(219, 77, 122, 0.15);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 a.btn:hover {
-    background-color: var(--pink-light-pink);
+    background-color: rgba(219, 77, 122, 0.08);
+    box-shadow: 0 4px 14px rgba(219, 77, 122, 0.2);
 }
 
 /* Кнопка YouTube — белый фон, красная иконка (#ff0033), чёрный текст */
@@ -1409,11 +1737,11 @@ a.btn-youtube {
     background-color: #ffffff !important;
     color: #000000 !important;
     padding: 12px 24px;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 a.btn-youtube:hover {
     background-color: #f5f5f5 !important;
@@ -1492,7 +1820,7 @@ a.btn-youtube i.fab.fa-youtube {
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: var(--font-body);
     font-size: 14px;
     color: #4A4A4A;
     z-index: 1000;
@@ -1666,18 +1994,18 @@ a.btn-youtube i.fab.fa-youtube {
     max-width: 240px;
     background: var(--white);
     border: 2px solid var(--pink-light-pink);
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 18px;
-    box-shadow: 0 4px 12px var(--pink-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(219, 77, 122, 0.15);
 }
 
 .pricing-card.pricing-featured {
@@ -1693,10 +2021,10 @@ a.btn-youtube i.fab.fa-youtube {
     background: var(--pink-pink);
     color: var(--white);
     padding: 4px 12px;
-    border-radius: 15px;
+    border-radius: 12px;
     font-size: 0.75em;
     font-weight: 600;
-    box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 2px 10px rgba(219, 77, 122, 0.25);
 }
 
 .pricing-header {
@@ -1739,15 +2067,16 @@ a.btn-youtube i.fab.fa-youtube {
     width: 100%;
     padding: 10px 16px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     text-decoration: none;
     display: inline-block;
     text-align: center;
     box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .btn-pricing:disabled {
@@ -1762,7 +2091,8 @@ a.btn-youtube i.fab.fa-youtube {
 
 .btn-demo:hover:not(:disabled) {
     background: var(--pink-pink);
-    transform: scale(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(219, 77, 122, 0.25);
 }
 
 .btn-standard {
@@ -1772,7 +2102,8 @@ a.btn-youtube i.fab.fa-youtube {
 
 .btn-standard:hover {
     background: var(--pink-dark-pink);
-    transform: scale(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(219, 77, 122, 0.25);
 }
 
 .btn-custom {
@@ -1782,7 +2113,8 @@ a.btn-youtube i.fab.fa-youtube {
 
 .btn-custom:hover {
     background: var(--pink-dark-pink);
-    transform: scale(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(219, 77, 122, 0.25);
 }
 
 /* Адаптивность для мобильных устройств */

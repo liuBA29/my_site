@@ -1,8 +1,14 @@
 # accounts/signals.py
+import logging
+
 from django.contrib.auth.signals import user_logged_in, user_login_failed
 from django.dispatch import receiver
 from django.utils import timezone
+
+from main_app.utils import get_client_ip
 from .views import send_telegram_message
+
+logger = logging.getLogger(__name__)
 
 
 @receiver(user_logged_in)
@@ -38,8 +44,8 @@ def admin_login_notification(sender, request, user, **kwargs):
         
         try:
             send_telegram_message(message)
-        except Exception as e:
-            print(f"Ошибка отправки уведомления о входе в Telegram: {e}")
+        except Exception:
+            logger.exception("Ошибка отправки уведомления о входе в Telegram")
 
 
 @receiver(user_login_failed)
@@ -72,18 +78,6 @@ def admin_login_failed_notification(sender, credentials, request, **kwargs):
         
         try:
             send_telegram_message(message)
-        except Exception as e:
-            print(f"Ошибка отправки уведомления о неудачной попытке входа в Telegram: {e}")
-
-
-def get_client_ip(request):
-    """
-    Получает IP адрес клиента из запроса.
-    """
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0].strip()
-    else:
-        ip = request.META.get('REMOTE_ADDR', 'неизвестно')
-    return ip
+        except Exception:
+            logger.exception("Ошибка отправки уведомления о неудачной попытке входа в Telegram")
 

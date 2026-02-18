@@ -9,6 +9,7 @@ urlpatterns = [
     path("contracts/<int:pk>/edit/", views.contract_edit, name="contract_edit"),
     path("contracts/<int:pk>/delete/", views.contract_delete, name="contract_delete"),
     path("act-for-contract/", views.act_for_contract, name="act_for_contract"),
+    path("customer/add/", views.customer_add, name="customer_add"),
     path("api/customer/add/", views.api_add_customer, name="api_add_customer"),
     path("preview/", views.contract_maker_preview, name="preview"),
     path("preview/generate-act/", views.preview_generate_act, name="preview_generate_act"),

@@ -1,20 +1,31 @@
 # main_app/views.py
 
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import *
-from django.utils.deprecation import MiddlewareMixin
-from django.http import HttpResponse, Http404
-from django.contrib.sitemaps import Sitemap
-from django.urls import reverse
+import logging
+from datetime import timedelta
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
+from django.http import HttpResponse, Http404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from datetime import timedelta
+
 from .forms import OrderForm
+from .models import (
+    BusinessSoftware,
+    DownloadLog,
+    ExternalLinkLog,
+    FreeSoftware,
+    Order,
+    PageVisitLog,
+    PageView,
+    Project,
+)
 from .utils import get_client_ip
 from accounts.views import send_telegram_message
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -41,18 +52,13 @@ def page_view(request):
 
 
 def main_page(request):
-    project = Project.objects.all().values('title', 'description')
-    show_alt_image = request.GET.get("alt") == "1"
-
-    return render(request, 'main_app/index.html', )
+    return render(request, 'main_app/index.html')
 
 
 
 @login_required
 def visits_log(request):
     """Страница с логами посещений, скачиваний и внешних ссылок - только для суперпользователя"""
-    from .models import PageVisitLog, DownloadLog, ExternalLinkLog
-    
     # Проверяем, что пользователь является суперпользователем
     if not request.user.is_superuser:
         raise Http404("Page not found")
@@ -97,6 +103,12 @@ def business_soft_detail(request, slug):
     context = {'soft': soft}
 
     return render(request, 'main_app/business_soft_detail.html', context)
+
+def cooperation(request):
+    return render(request, 'main_app/cooperation.html')
+
+def requisites(request):
+    return render(request, 'main_app/requisites.html')
 
 def my_projects(request):
     projects = Project.objects.all()
@@ -195,7 +207,7 @@ def order_request(request):
                 try:
                     send_telegram_message(telegram_message)
                 except Exception as e:
-                    print(f"Ошибка отправки в Telegram: {e}")
+                    logger.exception("Ошибка отправки в Telegram")
                 
                 messages.success(
                     request, 
@@ -209,18 +221,12 @@ def order_request(request):
         initial_data = {}
         service_type = request.GET.get('service_type', '')
         if service_type:
-            # Проверяем, что значение валидно (существует в choices формы)
-            valid_service_types = [
-                'Website development',
-                'Software development',
-                'Project modification',
-                'Technical support',
-                'Consultation',
-                'Other'
-            ]
-            if service_type in valid_service_types:
+            # Берём допустимые значения из choices формы, чтобы не дублировать
+            form_for_choices = OrderForm()
+            valid_values = [choice[0] for choice in form_for_choices.fields['service_type'].choices if choice[0]]
+            if service_type in valid_values:
                 initial_data['service_type'] = service_type
-        
+
         form = OrderForm(initial=initial_data)
         
         # Получаем информацию о продукте из GET параметров
@@ -274,8 +280,6 @@ def track_download(request, file_type, slug=None, file_id=None):
     slug: slug объекта (для soft или project)
     file_id: ID объекта (альтернатива slug)
     """
-    from .models import BusinessSoftware
-    
     ip_address = get_client_ip(request)
     user_agent = request.META.get('HTTP_USER_AGENT', 'Unknown')
     referer = request.META.get('HTTP_REFERER', 'Unknown')
@@ -283,7 +287,8 @@ def track_download(request, file_type, slug=None, file_id=None):
     download_url = None
     file_name = None
     item_name = None
-    
+    soft = None
+
     try:
         # Определяем тип объекта и получаем его
         if slug:
@@ -294,16 +299,15 @@ def track_download(request, file_type, slug=None, file_id=None):
                 soft = BusinessSoftware.objects.filter(slug=slug).first()
             
             if not soft:
-                print(f"DEBUG: Объект с slug={slug} не найден ни в FreeSoftware, ни в BusinessSoftware")
-            
+                logger.debug("Объект с slug=%s не найден ни в FreeSoftware, ни в BusinessSoftware", slug)
+
             if soft:
-                print(f"DEBUG: Найден soft: {soft.name}, тип: {type(soft).__name__}")
+                logger.debug("Найден soft: %s, тип: %s", soft.name, type(soft).__name__)
                 item_name = soft.name
                 if file_type == 'pdf_instruction' and soft.instruction_pdf:
                     download_url = soft.get_pdf_url()
                     file_name = "PDF инструкция"
                 elif file_type == 'pdf_instruction_en':
-                    from .models import BusinessSoftware
                     if isinstance(soft, BusinessSoftware) and soft.instruction_pdf_en:
                         download_url = soft.get_pdf_url_en()
                         file_name = "PDF Instruction (EN)"
@@ -322,9 +326,9 @@ def track_download(request, file_type, slug=None, file_id=None):
                             download_url = demo_link_value
                             file_name = "Демо версия" if file_type == 'demo_ru' else "Демо версия (EN)"
                         else:
-                            print(f"DEBUG: Объект {slug} имеет атрибут demo_link, но он пустой или None (значение: {demo_link_value})")
+                            logger.debug("Объект %s: demo_link пустой или None", slug)
                     else:
-                        print(f"DEBUG: Объект {slug} не имеет атрибута demo_link (тип: {type(soft).__name__})")
+                        logger.debug("Объект %s не имеет атрибута demo_link (тип: %s)", slug, type(soft).__name__)
         
         # Если не нашли в soft, пробуем Project
         if not download_url and slug:
@@ -338,11 +342,10 @@ def track_download(request, file_type, slug=None, file_id=None):
                     download_url = project.demo_link_en
                     file_name = "Демо (EN)"
         
-        # Отладочная информация
         if not download_url:
-            print(f"DEBUG: Не удалось найти download_url для file_type={file_type}, slug={slug}")
+            logger.debug("Не удалось найти download_url для file_type=%s, slug=%s", file_type, slug)
             if soft:
-                print(f"DEBUG: soft.demo_link = {getattr(soft, 'demo_link', 'НЕТ АТРИБУТА')}")
+                logger.debug("soft.demo_link = %s", getattr(soft, 'demo_link', 'НЕТ АТРИБУТА'))
         
         # Если нашли файл для скачивания
         if download_url:
@@ -367,7 +370,6 @@ def track_download(request, file_type, slug=None, file_id=None):
             
             # Сохраняем информацию о скачивании в лог
             try:
-                from .models import DownloadLog
                 DownloadLog.objects.create(
                     product_name=item_name or 'Неизвестно',
                     file_name=file_name or 'Неизвестно',
@@ -379,21 +381,16 @@ def track_download(request, file_type, slug=None, file_id=None):
                     user_os=detect_os(user_agent)
                 )
             except Exception as e:
-                print(f"Ошибка сохранения лога скачивания: {e}")
-            
-            # Редиректим на реальный файл
+                logger.exception("Ошибка сохранения лога скачивания")
+
             return redirect(download_url)
         else:
-            # Если файл не найден, возвращаем 404
-            from django.http import Http404
             raise Http404("File not found")
-            
+
     except Exception as e:
-        print(f"Ошибка при отслеживании скачивания: {e}")
-        # В случае ошибки все равно пытаемся редиректить, если URL есть
+        logger.exception("Ошибка при отслеживании скачивания")
         if download_url:
             return redirect(download_url)
-        from django.http import Http404
         raise Http404("File not found")
 
 
@@ -404,8 +401,6 @@ def track_link(request, link_type, slug=None):
     link_type: 'youtube', 'repo', 'other'
     slug: slug объекта (для soft или project)
     """
-    from .models import ExternalLinkLog, FreeSoftware, BusinessSoftware, Project
-    
     ip_address = get_client_ip(request)
     user_agent = request.META.get('HTTP_USER_AGENT', 'Unknown')
     referer = request.META.get('HTTP_REFERER', 'Unknown')
@@ -448,18 +443,15 @@ def track_link(request, link_type, slug=None):
                     user_os=detect_os(user_agent)
                 )
             except Exception as e:
-                print(f"Ошибка сохранения лога внешней ссылки: {e}")
-            
-            # Редиректим на реальную ссылку
+                logger.exception("Ошибка сохранения лога внешней ссылки")
+
             return redirect(link_url)
         else:
-            from django.http import Http404
             raise Http404("Link not found")
-            
+
     except Exception as e:
-        print(f"Ошибка при отслеживании внешней ссылки: {e}")
+        logger.exception("Ошибка при отслеживании внешней ссылки")
         if link_url:
             return redirect(link_url)
-        from django.http import Http404
         raise Http404("Link not found")
 

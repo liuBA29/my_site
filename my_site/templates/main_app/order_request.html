@@ -21,9 +21,9 @@
   </div>
 
   {% if product_info %}
-  <div class="product-info-box" style="background-color: #f0f8ff; border: 2px solid #4a90e2; border-radius: 10px; padding: 20px; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-    <h3 style="margin-top: 0; color: #4a90e2;">{% trans "Order details" %}:</h3>
-    <p style="margin: 10px 0; font-size: 1.1em;">
+  <div class="product-info-box">
+    <h3>{% trans "Order details" %}:</h3>
+    <p>
       <strong>{% trans "Product" %}:</strong> {{ product_info.product_name }}<br>
       {% if product_info.product_version %}
       <strong>{% trans "Version" %}:</strong> {{ product_info.product_version }}<br>
@@ -103,7 +103,7 @@
              data-theme="light"
              data-callback="turnstileCallback"
              data-error-callback="turnstileErrorCallback"></div>
-        <small style="color: #666; font-size: 0.9em;">{% trans "Please complete the verification above" %}</small>
+        <small class="form-hint">{% trans "Please complete the verification above" %}</small>
       {% endif %}
       {{ form.cf_turnstile_response }}
       {% if form.cf_turnstile_response.errors %}

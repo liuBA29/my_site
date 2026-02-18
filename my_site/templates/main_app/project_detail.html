@@ -69,13 +69,13 @@
 {% block content %}
 <main class="cont">
     <!-- Breadcrumbs -->
-    <nav aria-label="breadcrumb" style="margin-bottom: 20px;">
-        <ol style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.9em;">
+    <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <ol class="breadcrumb-list">
             <li><a href="{% url 'main_app:home' %}">{% trans "Home" %}</a></li>
-            <li style="color: #888;">/</li>
+            <li class="breadcrumb-sep">/</li>
             <li><a href="{% url 'main_app:my_projects' %}">{% trans "My Projects" %}</a></li>
-            <li style="color: #888;">/</li>
-            <li style="color: #666;">{{ project.title }}</li>
+            <li class="breadcrumb-sep">/</li>
+            <li class="breadcrumb-current">{{ project.title }}</li>
         </ol>
     </nav>
 
@@ -113,7 +113,7 @@
                     </a>
                 {% endif %}
                 
-                <a href="{% url 'main_app:order_request' %}?service_type=Project modification" class="btn btn-primary" style="margin-left: 10px;">
+                <a href="{% url 'main_app:order_request' %}?service_type=Project modification" class="btn btn-primary btn-order-similar">
                     {% trans "Order similar project" %}
                 </a>
             </div>

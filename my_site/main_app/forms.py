@@ -1,12 +1,12 @@
 # main_app/forms.py
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from django.conf import settings
+
+from .mixins import TurnstileMixin
 from .models import Order
-from .utils import get_client_ip
 
 
-class OrderForm(forms.ModelForm):
+class OrderForm(TurnstileMixin, forms.ModelForm):
     """Форма для создания заказа (заявки)"""
     
     def __init__(self, *args, **kwargs):
@@ -80,53 +80,4 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['client_name', 'client_email', 'client_phone', 'service_type', 'description']
-    
-    def clean_cf_turnstile_response(self):
-        """Проверка Cloudflare Turnstile токена"""
-        import requests
-        
-        token = self.cleaned_data.get('cf_turnstile_response', '')
-        
-        secret_key = getattr(settings, 'CLOUDFLARE_TURNSTILE_SECRET_KEY', '')
-        site_key = getattr(settings, 'CLOUDFLARE_TURNSTILE_SITE_KEY', '')
-        
-        # Если ключи не настроены, пропускаем проверку (для разработки)
-        if not secret_key or not site_key:
-            print("⚠️ WARNING: Cloudflare Turnstile keys not configured! Order form is NOT protected.")
-            return token
-        
-        # Если ключи настроены, но токена нет - ошибка
-        if not token:
-            print("❌ Turnstile token missing - blocking order")
-            raise forms.ValidationError(_('Please complete the verification.'))
-        
-        # Получаем IP адрес пользователя для дополнительной проверки
-        request_obj = getattr(self, 'request', None)
-        remote_ip = get_client_ip(request_obj) if request_obj else None
-        
-        url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-        data = {
-            'secret': secret_key,
-            'response': token,
-        }
-        
-        if remote_ip:
-            data['remoteip'] = remote_ip
-        
-        try:
-            response = requests.post(url, data=data, timeout=10)
-            result = response.json()
-            
-            print(f"🔍 Cloudflare Turnstile API Response: {result}")
-            
-            if not result.get('success', False):
-                error_codes = result.get('error-codes', [])
-                print(f"❌ Turnstile verification failed. Error codes: {error_codes}")
-                raise forms.ValidationError(_('Verification failed. Please try again.'))
-            
-            print(f"✅ Turnstile verification successful!")
-            return token
-        except requests.RequestException as e:
-            print(f"❌ Ошибка проверки Cloudflare Turnstile: {e}")
-            return token
 

@@ -156,18 +156,18 @@
   {% endif %}
 
   <!-- Блок с кнопкой Войти -->
-  <div id="lobby-area" style="text-align: center;">
+  <div id="lobby-area" class="lobby-area">
     <button class="btn-login" id="room-join">{% trans "Join Chat" %}</button>
   </div>
 
   <!-- Блок с надписью "Вы в чате" и кнопкой Выйти, изначально скрыт -->
-  <div id="in-chat-area" style="display: none; text-align: center;">
+  <div id="in-chat-area" class="in-chat-area">
     <p>{% trans "You are in chat," %} <strong><span id="chat-username">{{ username }}</span></strong></p>
     <button id="room-leave" class="btn-login">{% trans "Leave Chat" %}</button>
   </div>
 
   <!-- Область чата, изначально скрыта -->
-  <div id="chat-area" style="display: none;">
+  <div id="chat-area" class="chat-area">
     <div class="chat-log" id="chat-log"></div>
 
     <div class="chat-input-area">
