@@ -172,11 +172,13 @@
 
 
 
-<form action="#">
+<form action="#" class="theme-switcher-form" aria-label="{% trans 'Theme' %}">
+                <span class="theme-icon theme-icon-sun" title="{% trans 'Light theme' %}" aria-hidden="true"><i class="fas fa-sun"></i></span>
                 <label class="toggle" for="themeToggle">
                     <input class="toggle__input" type="checkbox" id="themeToggle">
                     <span class="toggle__fill"></span>
                 </label>
+                <span class="theme-icon theme-icon-moon" title="{% trans 'Dark theme' %}" aria-hidden="true"><i class="fas fa-moon"></i></span>
             </form>
 
      <!-- block authentication -->
