@@ -272,12 +272,34 @@ p {
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
+  margin-right: 10px;
 }
 .theme-icon {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   opacity: 0.9;
   line-height: 1;
+}
+.theme-icon-sun,
+.theme-icon-moon {
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  margin: -10px 0;
+  min-width: 44px;
+  min-height: 44px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+.theme-icon-sun:hover,
+.theme-icon-moon:hover {
+  opacity: 0.85;
 }
 .theme-icon-sun,
 .theme-icon-sun i {
@@ -285,18 +307,57 @@ p {
   -webkit-text-stroke: 2px #000;
   paint-order: stroke fill;
 }
+.light-theme .theme-icon-sun {
+  background: none;
+}
 .theme-icon-moon,
 .theme-icon-moon i {
   color: #ffffff;
+}
+.theme-icon-moon {
+  position: relative;
+}
+.light-theme .theme-icon-moon {
+  background-color: #000000;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 4px rgba(255, 255, 255, 0.08), inset -2px -2px 5px rgba(0, 0, 0, 0.25);
+}
+.theme-icon-moon .theme-star {
+  position: absolute;
+  font-size: 0.22em;
+  color: rgba(255, 255, 255, 0.95);
+  pointer-events: none;
+}
+.theme-icon-moon .theme-star-1 { top: 6%; left: 32%; font-size: 0.2em; }
+.theme-icon-moon .theme-star-2 { top: 22%; right: 10%; font-size: 0.26em; }
+.theme-icon-moon .theme-star-3 { top: 52%; left: 6%; font-size: 0.18em; }
+.theme-icon-moon .theme-star-4 { bottom: 28%; left: 26%; font-size: 0.24em; }
+.theme-icon-moon .theme-star-5 { bottom: 6%; right: 28%; font-size: 0.2em; }
+.theme-icon-moon .theme-star-6 { top: 38%; right: 28%; font-size: 0.18em; }
+.light-theme .theme-icon-moon .theme-star {
+  -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.25);
 }
 .light-theme .theme-icon-moon,
 .light-theme .theme-icon-moon i {
   -webkit-text-stroke: 1.5px #000;
   paint-order: stroke fill;
 }
+.dark-theme .theme-icon-sun {
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+.dark-theme .theme-icon-moon {
+  background-color: transparent;
+  box-shadow: none;
+}
 .dark-theme .theme-icon-moon,
 .dark-theme .theme-icon-moon i {
   color: #ffffff;
+}
+
+/* На старых iPhone только солнышко и луна (бегунок скрыт) */
+.theme-switcher-form .toggle {
+  display: none !important;
 }
 
 .toggle {
@@ -1220,10 +1281,17 @@ a.btn-youtube i.fab.fa-youtube {
     justify-content: flex-end;
   }
   .theme-switcher-form {
-    gap: 4px;
+    gap: 10px;
   }
   .theme-icon {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
+  }
+  .theme-icon-sun,
+  .theme-icon-moon {
+    padding: 8px;
+    margin: -8px 0;
+    min-width: 40px;
+    min-height: 40px;
   }
   .auth {
     display: -webkit-box !important;
@@ -1340,11 +1408,19 @@ a.btn-youtube i.fab.fa-youtube {
   }
 
   .theme-switcher-form {
-    gap: 2px;
+    gap: 8px;
   }
 
   .theme-icon {
-    font-size: 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .theme-icon-sun,
+  .theme-icon-moon {
+    padding: 6px;
+    margin: -6px 0;
+    min-width: 36px;
+    min-height: 36px;
   }
 
   .language-button {
@@ -1401,7 +1477,15 @@ a.btn-youtube i.fab.fa-youtube {
   }
 
   .theme-icon {
-    font-size: 0.6rem;
+    font-size: 0.67rem;
+  }
+
+  .theme-icon-sun,
+  .theme-icon-moon {
+    padding: 6px;
+    margin: -6px 0;
+    min-width: 34px;
+    min-height: 34px;
   }
 
   .language-button {
