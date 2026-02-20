@@ -596,8 +596,7 @@ header nav ul li a:hover {
 .theme-icon-sun,
 .theme-icon-sun i {
   color: #ffd700;
-  -webkit-text-stroke: 2px #000;
-  paint-order: stroke fill;
+  font-size: 1.3rem;
 }
 .light-theme .theme-icon-sun {
   background: none;
@@ -1370,27 +1369,53 @@ header #logo-link #logo-img {
     color: var(--pink-light-pink);
 }
 
-/* 📱 Очень маленькие экраны (375px) - белая кнопка в темной теме */
+/* 📱 Очень маленькие экраны (375px) - name-logo слева, auth справа на одной строке */
 @media (max-width: 375px) {
   .preheader {
+    position: relative;
     padding: 6px 8px;
+    padding-top: 28px; /* место для auth сверху */
     gap: 4px;
     flex-wrap: wrap;
   }
 
+  /* Auth блок позиционируем абсолютно справа вверху */
+  .auth {
+    position: absolute !important;
+    top: 4px;
+    right: 8px;
+    font-size: 0.68rem;
+    z-index: 10;
+  }
+
+  .auth nav a {
+    padding: 2px 5px;
+    font-size: 0.68rem;
+    min-height: 24px;
+  }
+
   .left-controls {
-    flex-shrink: 1;
+    flex: 0 0 auto;
     min-width: 0;
+    order: 1;
   }
 
   .name-logo {
-    margin-right: 4px;
+    margin-right: 0;
     font-size: 0.7em;
   }
 
   .name-logo .last-name {
     padding: 1px 3px;
     font-size: 0.9em;
+  }
+
+  /* Вторая строка: элементы управления */
+  .right-controls {
+    gap: 3px;
+    flex-shrink: 0;
+    order: 2;
+    margin-left: auto;
   }
 
   .center-controls {
@@ -1403,12 +1428,6 @@ header #logo-link #logo-img {
   .order-link {
     font-size: 0.7em !important;
     padding: 2px 6px !important;
-  }
-
-  .right-controls {
-    gap: 3px;
-    flex-shrink: 0;
-    order: 2;
   }
 
   .theme-switcher-form {
@@ -1432,22 +1451,13 @@ header #logo-link #logo-img {
     padding: 0 3px;
   }
 
-  .auth {
-    font-size: 0.75rem;
-  }
-
-  .auth nav a {
-    padding: 4px 6px;
-    font-size: 0.75rem;
-  }
-
   .dark-theme .order-link {
-    color: #ffffff !important; /* белый цвет для очень маленьких экранов */
-    border-color: #ffffff !important; /* белая обводка */
+    color: #ffffff !important;
+    border-color: #ffffff !important;
   }
 
   .dark-theme .order-link:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* белый фон при наведении */
+    background-color: rgba(255, 255, 255, 0.2);
     opacity: 1;
   }
 
@@ -1466,7 +1476,20 @@ header #logo-link #logo-img {
 @media (max-width: 320px) {
   .preheader {
     padding: 5px 6px;
+    padding-top: 24px; /* место для auth сверху */
     gap: 3px;
+  }
+
+  .auth {
+    top: 3px;
+    right: 6px;
+    font-size: 0.62rem;
+  }
+
+  .auth nav a {
+    padding: 2px 4px;
+    font-size: 0.62rem;
+    min-height: 22px;
   }
 
   .name-logo {
@@ -1506,10 +1529,6 @@ header #logo-link #logo-img {
   .language-button {
     transform: scale(0.6);
     padding: 0 2px;
-  }
-
-  .auth {
-    font-size: 0.7rem;
   }
 
   header nav {
@@ -2550,6 +2569,70 @@ a.btn-youtube i.fab.fa-youtube {
     .btn-pricing {
         padding: 8px 12px;
         font-size: 0.85em;
+    }
+}
+
+/* Cooperation page cards */
+.cooperation-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.cooperation-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 30px 20px;
+    background: var(--pink-pink-transparent, rgba(232, 160, 184, 0.1));
+    border: 2px solid var(--pink-pink, #e8a0b8);
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--text-color, #333);
+    transition: all 0.3s ease;
+    flex: 1 1 200px;
+    max-width: 250px;
+    min-height: 180px;
+    box-sizing: border-box;
+}
+
+.cooperation-card:hover {
+    background: var(--pink-pink, #e8a0b8);
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(232, 160, 184, 0.3);
+}
+
+.cooperation-card i {
+    font-size: 2.5rem;
+    color: var(--pink-pink, #e8a0b8);
+    transition: color 0.3s ease;
+}
+
+.cooperation-card:hover i {
+    color: #fff;
+}
+
+.cooperation-card span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .cooperation-links {
+        flex-direction: column;
+    }
+    
+    .cooperation-card {
+        width: 100%;
+        min-width: unset;
+        max-width: none;
     }
 }
 

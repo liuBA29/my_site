@@ -107,6 +107,15 @@ def business_soft_detail(request, slug):
 def cooperation(request):
     return render(request, 'main_app/cooperation.html')
 
+def ai_assistants(request):
+    return render(request, 'main_app/ai_assistants.html')
+
+def custom_crm(request):
+    return render(request, 'main_app/custom_crm.html')
+
+def desktop_apps(request):
+    return render(request, 'main_app/desktop_apps.html')
+
 def requisites(request):
     return render(request, 'main_app/requisites.html')
 

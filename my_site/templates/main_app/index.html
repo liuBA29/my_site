@@ -84,10 +84,10 @@
 
     <h3>{% trans "What I can create:" %}</h3>
     <ul>
-      <li>{% trans "AI assistants and Telegram bots" %}</li>
+      <li><a href="{% url 'main_app:ai_assistants' %}">{% trans "AI assistants" %}</a> {% trans "and Telegram bots" %}</li>
       <li>{% trans "Web applications on Django for browsers" %}</li>
       <li>{% trans "Desktop applications for Windows and Linux" %}</li>
-      <li>{% trans "Custom CRM systems for specialized tasks" %}</li>
+      <li>{% trans "Individual systems for client management (custom CRM)" %}</li>
       <li>{% trans "Bash and Python scripts to automate routine work" %}</li>
       <li>{% trans "Android applications" %}</li>
     </ul>

@@ -6,5 +6,21 @@
 
 {% block content %}
     <h1>{% trans 'Cooperation' %}</h1>
-    <p class="section-description">{% trans "Content coming soon." %}</p>
+    
+    <p class="section-description">{% trans "For your business or personal needs, I can create useful tools for you, such as:" %}</p>
+    
+    <div class="cooperation-links">
+        <a href="{% url 'main_app:ai_assistants' %}" class="cooperation-card">
+            <i class="fas fa-robot"></i>
+            <span>{% trans "AI assistants" %}</span>
+        </a>
+        <a href="{% url 'main_app:custom_crm' %}" class="cooperation-card">
+            <i class="fas fa-users-cog"></i>
+            <span>{% trans "Custom CRM" %}</span>
+        </a>
+        <a href="{% url 'main_app:desktop_apps' %}" class="cooperation-card">
+            <i class="fas fa-desktop"></i>
+            <span>{% trans "Desktop apps" %}<br>{% trans "for Windows" %}</span>
+        </a>
+    </div>
 {% endblock %}

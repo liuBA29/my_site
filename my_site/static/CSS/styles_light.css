@@ -304,8 +304,7 @@ p {
 .theme-icon-sun,
 .theme-icon-sun i {
   color: #ffd700;
-  -webkit-text-stroke: 2px #000;
-  paint-order: stroke fill;
+  font-size: 1.3rem;
 }
 .light-theme .theme-icon-sun {
   background: none;
@@ -1362,22 +1361,41 @@ a.btn-youtube i.fab.fa-youtube {
 }
 
 /* 📱 Очень маленькие экраны (старые iPhone) */
+/* 📱 Очень маленькие экраны (375px) - name-logo слева, auth справа */
 @media (max-width: 375px) {
   .preheader {
+    position: relative;
     padding: 6px 8px;
+    padding-top: 28px; /* место для auth сверху */
     gap: 4px;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
   }
 
+  /* Auth блок позиционируем абсолютно справа вверху */
+  .auth {
+    position: absolute !important;
+    top: 4px;
+    right: 8px;
+    font-size: 0.68rem;
+    z-index: 10;
+  }
+
+  .auth nav a {
+    padding: 2px 5px;
+    font-size: 0.68rem;
+    min-height: 24px;
+  }
+
   .left-controls {
-    -webkit-flex-shrink: 1;
-    flex-shrink: 1;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
     min-width: 0;
+    order: 1;
   }
 
   .name-logo {
-    margin-right: 4px;
+    margin-right: 0;
     font-size: 0.7em;
   }
 
@@ -1386,11 +1404,22 @@ a.btn-youtube i.fab.fa-youtube {
     font-size: 0.9em;
   }
 
+  /* Вторая строка: элементы управления */
+  .right-controls {
+    gap: 3px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    order: 2;
+    margin-left: auto;
+  }
+
   .center-controls {
-    flex: 1 1 100% !important;
+    -webkit-flex: 1 1 100%;
+    flex: 1 1 100%;
     order: 3;
-    margin: 4px 0 0 0 !important;
-    justify-content: center !important;
+    margin: 4px 0 0 0;
+    -webkit-justify-content: center;
+    justify-content: center;
   }
 
   .order-link {
@@ -1398,13 +1427,6 @@ a.btn-youtube i.fab.fa-youtube {
     padding: 2px 6px !important;
     letter-spacing: 0.03em !important;
     border-radius: 4px !important;
-  }
-
-  .right-controls {
-    gap: 3px;
-    -webkit-flex-shrink: 0;
-    flex-shrink: 0;
-    order: 2;
   }
 
   .theme-switcher-form {
@@ -1424,17 +1446,9 @@ a.btn-youtube i.fab.fa-youtube {
   }
 
   .language-button {
+    -webkit-transform: scale(0.65);
     transform: scale(0.65);
     padding: 0 3px;
-  }
-
-  .auth {
-    font-size: 0.75rem;
-  }
-
-  .auth nav a {
-    padding: 4px 6px;
-    font-size: 0.75rem;
   }
 
   header nav {
@@ -1451,7 +1465,20 @@ a.btn-youtube i.fab.fa-youtube {
 @media (max-width: 320px) {
   .preheader {
     padding: 5px 6px;
+    padding-top: 24px; /* место для auth сверху */
     gap: 3px;
+  }
+
+  .auth {
+    top: 3px;
+    right: 6px;
+    font-size: 0.62rem;
+  }
+
+  .auth nav a {
+    padding: 2px 4px;
+    font-size: 0.62rem;
+    min-height: 22px;
   }
 
   .name-logo {
@@ -1489,12 +1516,9 @@ a.btn-youtube i.fab.fa-youtube {
   }
 
   .language-button {
+    -webkit-transform: scale(0.6);
     transform: scale(0.6);
     padding: 0 2px;
-  }
-
-  .auth {
-    font-size: 0.7rem;
   }
 
   main.container {
@@ -1835,6 +1859,110 @@ a.btn-youtube i.fab.fa-youtube {
     color: #E8A0B8;
 }
 
+/* Cooperation page cards */
+.cooperation-links {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.cooperation-links > * + * {
+    margin-left: 20px;
+}
+
+.cooperation-card {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: rgba(232, 160, 184, 0.1);
+    border: 2px solid #e8a0b8;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #333;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 200px;
+    flex: 1 1 200px;
+    max-width: 250px;
+    min-height: 180px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cooperation-card > * + * {
+    margin-top: 15px;
+}
+
+.cooperation-card:hover {
+    background: #e8a0b8;
+    color: #fff;
+}
+
+.cooperation-card i {
+    font-size: 2.5rem;
+    color: #e8a0b8;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.cooperation-card:hover i {
+    color: #fff;
+}
+
+.cooperation-card span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+}
+
+.dark-theme .cooperation-card {
+    color: #fff;
+    border-color: #e8a0b8;
+}
+
+.dark-theme .cooperation-card:hover {
+    background: #e8a0b8;
+}
+
+@media (max-width: 600px) {
+    .cooperation-links {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    
+    .cooperation-links > * + * {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    
+    .cooperation-card {
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+    }
+}
+
 /* ================== БЛОК PDF ИНСТРУКЦИИ ================== */
 .instruction-pdf {
     margin: 20px 0;
@@ -1934,4 +2062,108 @@ a.btn-youtube i.fab.fa-youtube {
 
 .dark-theme .instruction-pdf a i.fa-download {
     color: #E8A0B8;
+}
+
+/* Cooperation page cards */
+.cooperation-links {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.cooperation-links > * + * {
+    margin-left: 20px;
+}
+
+.cooperation-card {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: rgba(232, 160, 184, 0.1);
+    border: 2px solid #e8a0b8;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #333;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 200px;
+    flex: 1 1 200px;
+    max-width: 250px;
+    min-height: 180px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.cooperation-card > * + * {
+    margin-top: 15px;
+}
+
+.cooperation-card:hover {
+    background: #e8a0b8;
+    color: #fff;
+}
+
+.cooperation-card i {
+    font-size: 2.5rem;
+    color: #e8a0b8;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.cooperation-card:hover i {
+    color: #fff;
+}
+
+.cooperation-card span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    display: block;
+}
+
+.dark-theme .cooperation-card {
+    color: #fff;
+    border-color: #e8a0b8;
+}
+
+.dark-theme .cooperation-card:hover {
+    background: #e8a0b8;
+}
+
+@media (max-width: 600px) {
+    .cooperation-links {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    
+    .cooperation-links > * + * {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    
+    .cooperation-card {
+        width: 100%;
+        min-width: auto;
+        max-width: none;
+    }
 }

@@ -374,8 +374,36 @@ msgid "Footer navigation"
 msgstr "Навигация в подвале"
 
 #: .\templates\base.html:256
-msgid "AI agents"
-msgstr "AI-агенты"
+msgid "AI assistants"
+msgstr "ИИ-ассистенты"
+
+#: .\templates\main_app\cooperation.html
+msgid "For your business or personal needs, I can create useful tools for you, such as:"
+msgstr "Для вашего бизнеса или личных целей я могу создать такие полезные инструменты, как:"
+
+#: .\templates\main_app\cooperation.html .\templates\main_app\custom_crm.html
+msgid "Custom CRM"
+msgstr "Индивидуальные (кастомные) CRM"
+
+#: .\templates\main_app\custom_crm.html
+msgid "Custom CRM systems for your business. Tailored solutions for your specific needs."
+msgstr "Кастомные CRM-системы для вашего бизнеса. Решения, созданные под ваши задачи."
+
+#: .\templates\main_app\cooperation.html .\templates\main_app\desktop_apps.html
+msgid "Desktop apps for Windows"
+msgstr "Десктопные приложения для Windows"
+
+#: .\templates\main_app\cooperation.html
+msgid "Desktop apps"
+msgstr "Десктопные приложения"
+
+#: .\templates\main_app\cooperation.html
+msgid "for Windows"
+msgstr "для Windows"
+
+#: .\templates\main_app\desktop_apps.html
+msgid "Desktop applications for Windows. Custom software solutions for your business."
+msgstr "Десктопные приложения для Windows. Программные решения под ваши задачи."
 
 #: .\templates\base.html:257
 msgid "CRM for dentistry"
@@ -773,7 +801,11 @@ msgstr "Что я умею создавать:"
 
 #: .\templates\main_app\index.html:87
 msgid "AI assistants and Telegram bots"
-msgstr "AI-ассистенты и Телеграм-боты"
+msgstr "ИИ-ассистенты и Телеграм-боты"
+
+#: .\templates\main_app\index.html:87
+msgid "and Telegram bots"
+msgstr "и Телеграм-боты"
 
 #: .\templates\main_app\index.html:88
 msgid "Web applications on Django for browsers"
@@ -784,8 +816,8 @@ msgid "Desktop applications for Windows and Linux"
 msgstr "Десктопные приложения для Windows и Linux"
 
 #: .\templates\main_app\index.html:90
-msgid "Custom CRM systems for specialized tasks"
-msgstr "Кастомные CRM-системы для узкоспециализированных задач"
+msgid "Individual systems for client management (custom CRM)"
+msgstr "Индивидуальные системы для работы с клиентами (индивидуальные CRM)"
 
 #: .\templates\main_app\index.html:91
 msgid "Bash and Python scripts to automate routine work"
@@ -1075,3 +1107,163 @@ msgstr "Сохранить и продолжить"
 #: .\templates\contract_maker\preview.html
 msgid "Back to form"
 msgstr "Вернуться к форме"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "What Is an AI Assistant and Why Do You Need One?"
+msgstr "Что такое ИИ-ассистент и зачем он нужен"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "What is an AI assistant and why do you need one? Types of AI assistants, real examples, and how they can help your business."
+msgstr "Что такое ИИ-ассистент и зачем он нужен? Виды ИИ-ассистентов, реальные примеры и польза для бизнеса."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "An AI assistant is a smart digital helper."
+msgstr "ИИ-ассистент — это умный цифровой помощник."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "It takes care of routine tasks so you can save time and focus on what really matters."
+msgstr "Он помогает выполнять рутинные задачи быстрее и проще."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Simply put: it's a program you can \"talk to,\" and it can answer questions, organize information, or handle routine tasks for you."
+msgstr "Проще говоря: это программа, с которой можно общаться как с человеком, а она выполняет нужные действия вместо вас."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Today, AI assistants are not only for large corporations."
+msgstr "Сегодня ИИ-ассистенты используют не только крупные компании."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "They are useful for small businesses, freelancers, and anyone who wants to simplify their workflow."
+msgstr "Они подходят и для малого бизнеса, и для фрилансеров."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Types of AI Assistants"
+msgstr "Какие бывают ИИ-ассистенты"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Chatbots"
+msgstr "Чат-боты"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "They work inside messengers and websites."
+msgstr "Работают в мессенджерах и на сайтах."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "They answer questions, collect requests, book appointments, and help customers 24/7."
+msgstr "Отвечают на вопросы, принимают заявки, записывают клиентов, помогают с заказами."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Voice Assistants"
+msgstr "Голосовые помощники"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "For example, Siri, Google Assistant, or Amazon Alexa."
+msgstr "Например, Siri, Google Assistant или Алиса."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "You speak — they respond and perform the task."
+msgstr "Им можно сказать команду голосом — и они её выполнят."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Assistants Inside Software"
+msgstr "Помощники внутри программ"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "These assistants work within CRM systems or other business tools."
+msgstr "Такие ассистенты могут работать в CRM или других сервисах."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "They help fill in data, generate documents, and make daily operations easier."
+msgstr "Они помогают заполнять данные, создавать документы и упрощают работу."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "A Real Example: My Own AI Assistant"
+msgstr "Живой пример: мой собственный ИИ-ассистент"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "I built my own AI assistant to simplify how I work with clients."
+msgstr "Я создала ИИ-ассистента для себя — чтобы упростить работу с клиентами."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "When a new client appears, I no longer have to manually create documents and enter data."
+msgstr "Когда появляется новый клиент, мне не нужно вручную оформлять документы и заносить данные."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "My assistant:"
+msgstr "Ассистент:"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "generates contracts automatically"
+msgstr "сам формирует договор"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "adds clients to the database"
+msgstr "добавляет клиента в базу данных"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "works via Telegram — I manage everything from my phone"
+msgstr "работает через Telegram — я могу управлять всем с телефона"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "reduces mistakes and saves time"
+msgstr "помогает избежать ошибок"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Before, onboarding a client took 15–20 minutes."
+msgstr "Раньше оформление занимало 15–20 минут."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Now it takes just a few messages to my assistant."
+msgstr "Сейчас — несколько сообщений ассистенту."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "It makes the process faster, simpler, and less stressful."
+msgstr "Это экономит время и делает процесс спокойнее."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Why It Matters for Business"
+msgstr "Зачем это бизнесу"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "An AI assistant can help you:"
+msgstr "ИИ-ассистент помогает:"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "process requests faster"
+msgstr "быстрее обрабатывать заявки"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "reduce manual work"
+msgstr "сократить ручную работу"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "avoid common mistakes"
+msgstr "не забывать важные шаги"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "keep your workflow organized"
+msgstr "работать удобнее и проще"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "work from anywhere"
+msgstr ""
+
+#: .\templates\main_app\ai_assistants.html
+msgid "AI is not about hype."
+msgstr "Это не сложная «технология ради технологии»."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "It's about making your work easier."
+msgstr "Это способ сделать работу легче."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "I can build a similar assistant tailored to your business needs."
+msgstr "Могу сделать для вас такого же помощника — под ваши задачи и ваш формат работы."
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Get a consultation"
+msgstr "Получить консультацию"
+
+#: .\templates\main_app\ai_assistants.html
+msgid "Contact me"
+msgstr "Связаться со мной"
