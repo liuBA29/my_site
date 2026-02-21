@@ -215,8 +215,10 @@
 
 
             <nav>
-                <ul>
-                    <li>
+                <div class="nav-scroll-inner" id="navScrollInner" role="presentation">
+                    <button type="button" class="nav-scroll-hint" id="navScrollHint" aria-label="{% trans 'Scroll menu' %}"><span class="nav-scroll-hint-icon" aria-hidden="true"></span></button>
+                    <ul>
+                        <li>
 
               <a href="{% url 'main_app:home' %}" id="logo-link">
                 <img id="logo-img" class="header-logo-img"
@@ -224,19 +226,19 @@
                      alt="{% trans 'About me' %}">
               </a>
 
-                    </li>
-                    <li><a href="{% url 'main_app:free_soft' %}" class="{% if request.resolver_match.url_name == 'free_soft' or request.resolver_match.url_name == 'free_soft_detail' %}active{% endif %}">{% trans "Free" %}</a></li>
-                    <li><a href="{% url 'main_app:cooperation' %}" class="{% if request.resolver_match.url_name == 'cooperation' %}active{% endif %}">{% trans "Cooperation" %}</a></li>
-                    <li><a href="{% url 'main_app:business_soft' %}" class="{% if request.resolver_match.url_name == 'business_soft' or request.resolver_match.url_name == 'business_soft_detail' %}active{% endif %}">{% trans "Business products" %}</a></li>
-                    <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
-                    {% if user.is_staff or user.is_superuser %}
-                    <li><a href="{% url 'contract_maker:form' %}" class="{% if request.resolver_match.namespace == 'contract_maker' %}active{% endif %}">{% trans "Contracts" %}</a></li>
-                    {% endif %}
+                        </li>
+                        <li><a href="{% url 'main_app:free_soft' %}" class="{% if request.resolver_match.url_name == 'free_soft' or request.resolver_match.url_name == 'free_soft_detail' %}active{% endif %}">{% trans "Free" %}</a></li>
+                        <li><a href="{% url 'main_app:cooperation' %}" class="{% if request.resolver_match.url_name == 'cooperation' %}active{% endif %}">{% trans "Cooperation" %}</a></li>
+                        <li><a href="{% url 'main_app:business_soft' %}" class="{% if request.resolver_match.url_name == 'business_soft' or request.resolver_match.url_name == 'business_soft_detail' %}active{% endif %}">{% trans "Business products" %}</a></li>
+                        <li><a href="{% url 'main_app:contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contacts" %}</a></li>
+                        {% if user.is_staff or user.is_superuser %}
+                        <li><a href="{% url 'contract_maker:form' %}" class="{% if request.resolver_match.namespace == 'contract_maker' %}active{% endif %}">{% trans "Contracts" %}</a></li>
+                        {% endif %}
 
-                </ul>
+                    </ul>
+                </div>
+                <button type="button" class="nav-scroll-hint nav-scroll-hint-back" id="navScrollHintBack" aria-label="{% trans 'Scroll menu back' %}"><span class="nav-scroll-hint-icon nav-scroll-hint-icon-back" aria-hidden="true"></span></button>
             </nav>
-
-
 
         </div>
 
@@ -385,6 +387,32 @@ if (!isHomePage) {
             banner.style.bottom = "0px"; // уезжает вниз
             setTimeout(() => banner.style.display = "none", 800);
         };
+
+        var navScrollHint = document.getElementById("navScrollHint");
+        var navScrollHintBack = document.getElementById("navScrollHintBack");
+        var navScrollInner = document.getElementById("navScrollInner");
+        function updateScrollHints() {
+            if (!navScrollInner || !navScrollHint || !navScrollHintBack) return;
+            var atStart = navScrollInner.scrollLeft <= 5;
+            var atEnd = navScrollInner.scrollLeft >= navScrollInner.scrollWidth - navScrollInner.clientWidth - 5;
+            navScrollHint.classList.toggle("nav-scroll-hint-hidden", !atStart);
+            navScrollHintBack.classList.toggle("nav-scroll-hint-hidden", atStart);
+        }
+        if (navScrollHint && navScrollInner) {
+            navScrollHint.addEventListener("click", function() {
+                navScrollInner.scrollBy({ left: 400, behavior: "smooth" });
+            });
+        }
+        if (navScrollHintBack && navScrollInner) {
+            navScrollHintBack.addEventListener("click", function() {
+                navScrollInner.scrollBy({ left: -400, behavior: "smooth" });
+            });
+        }
+        if (navScrollInner && navScrollHint && navScrollHintBack) {
+            navScrollInner.addEventListener("scroll", updateScrollHints);
+            window.addEventListener("resize", updateScrollHints);
+            updateScrollHints();
+        }
     });
 </script>
 

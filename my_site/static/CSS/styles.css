@@ -1761,26 +1761,130 @@ body.dark-theme .soft-item-link:hover {
     }
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Меню в столбик */
-        gap: 4px; /* поддерживается с iOS 14.5+ - уменьшено в 2 раза */
-        padding-top: 0; /* Убираем отступ сверху */
-        margin-top: 0; /* Убираем отступ сверху */
-    }
-    
-    nav ul > * + * {
-        margin-top: 4px; /* fallback для iOS < 14.5 - уменьшено в 2 раза */
-    }
+/* Кнопка-стрелка для прокрутки меню — только на малых экранах */
+.nav-scroll-hint {
+    display: none;
+}
+.nav-scroll-hint-hidden {
+    display: none !important;
+}
+header .nav-scroll-hint-back.nav-scroll-hint-hidden {
+    display: none !important;
+}
 
-    nav ul li {
-        flex: none; /* Убрать равномерное растяжение пунктов меню */
+/* На десктопе обёртка не создаёт бокс */
+header nav .nav-scroll-inner {
+    display: contents;
+}
+
+/* На малых экранах — скролл у обёртки; правая стрелка всегда справа на экране */
+@media (max-width: 768px) {
+    header .container {
+        position: relative;
     }
-    
-    /* Убираем маргины у первого элемента, используем только gap */
+    header nav {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0;
+        padding-right: 12px;
+    }
+    header nav .nav-scroll-inner {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.5) transparent;
+        -ms-overflow-style: none;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    header .nav-scroll-hint {
+        display: block;
+        flex: 0 0 auto;
+        padding: 16px;
+        margin: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .nav-scroll-hint-icon {
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 14px solid rgba(255,255,255,0.75);
+        filter: drop-shadow(-2px 0 4px rgba(0,0,0,0.15));
+    }
+    .nav-scroll-hint:hover .nav-scroll-hint-icon,
+    .nav-scroll-hint:focus .nav-scroll-hint-icon {
+        border-left-color: rgba(255,255,255,0.95);
+    }
+    /* правая стрелка в конце скролла (после Контакты); видна, когда левая уже скрыта */
+    header .nav-scroll-hint-back {
+        flex: 0 0 auto;
+        padding: 16px;
+        margin: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    header nav ul {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 16px;
+        width: max-content;
+        min-width: 0;
+        padding-top: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .nav-scroll-hint-icon-back {
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: none;
+        border-right: 14px solid rgba(255,255,255,0.75);
+        filter: drop-shadow(2px 0 4px rgba(0,0,0,0.15));
+    }
+    .nav-scroll-hint-back:hover .nav-scroll-hint-icon-back,
+    .nav-scroll-hint-back:focus .nav-scroll-hint-icon-back {
+        border-right-color: rgba(255,255,255,0.95);
+    }
+    header nav .nav-scroll-inner::-webkit-scrollbar {
+        height: 4px;
+    }
+    header nav .nav-scroll-inner::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    header nav .nav-scroll-inner::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.5);
+        border-radius: 2px;
+    }
+    nav ul > * + * {
+        margin-top: 0;
+    }
+    nav ul li {
+        flex: 0 0 auto;
+    }
     nav ul li:first-child {
-        margin-top: 0; /* Убираем отступ сверху */
-        margin-bottom: 0; /* Убираем отступ снизу, gap уже работает */
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    nav ul li:first-child + li {
+        margin-left: 0 !important;
     }
 }
 
