@@ -148,64 +148,53 @@
         </a>
    </div>
 
+   <div class="auth">
+       <nav>
+           {% if user.is_authenticated %}
+               {% trans "Hello" %}, <strong>{{ user.username }}</strong>
+               <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
+           {% else %}
+               <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a><span class="auth-sep" aria-hidden="true">|</span><a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
+           {% endif %}
+       </nav>
+   </div>
+
    <div class="center-controls">
        <a href="{% url 'main_app:order_request' %}" class="order-link">{% trans "Submit a request" %}</a>
    </div>
 
-    <div class="right-controls">
-
-     <form action="{% url 'set_language' %}" method="post">
-            {% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}">
-            <div class="language-buttons">
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                    <button type="submit" name="language" value="{{ language.code }}" class="language-button{% if language.code == LANGUAGE_CODE %} active{% endif %}">
-                        {{ language.code|upper }}
-                    </button>
-                {% endfor %}
-            </div>
-
-        </form>
-
-
-
-<form action="#" class="theme-switcher-form" aria-label="{% trans 'Theme' %}">
-                <span class="theme-icon theme-icon-sun" title="{% trans 'Light theme' %}" aria-hidden="true"><i class="fas fa-sun"></i></span>
-                <label class="toggle" for="themeToggle">
-                    <input class="toggle__input" type="checkbox" id="themeToggle">
-                    <span class="toggle__fill"></span>
-                </label>
-                <span class="theme-icon theme-icon-moon" title="{% trans 'Dark theme' %}" aria-hidden="true">
-                    <i class="fas fa-star theme-star theme-star-1"></i>
-                    <i class="fas fa-star theme-star theme-star-2"></i>
-                    <i class="fas fa-star theme-star theme-star-3"></i>
-                    <i class="fas fa-star theme-star theme-star-4"></i>
-                    <i class="fas fa-star theme-star theme-star-5"></i>
-                    <i class="fas fa-star theme-star theme-star-6"></i>
-                    <i class="fas fa-moon"></i>
-                </span>
-            </form>
-
-     <!-- block authentication -->
-<div class="auth">
-    <nav>
-        {% if user.is_authenticated %}
-            {% trans "Hello" %}, <strong>{{ user.username }}</strong>
-            <a class="logout" href="{% url 'accounts:logout' %}">| {% trans "Logout" %}</a>
-        {% else %}
-            <a href="{% url 'accounts:register' %}">{% trans "Register" %}</a> |
-            <a href="{% url 'accounts:login' %}">{% trans "Login" %}</a>
-        {% endif %}
-    </nav>
-</div>
-<!-- end block authentication -->
-
-
-
-</div>
+   <div class="right-controls">
+       <form action="{% url 'set_language' %}" method="post">
+           {% csrf_token %}
+           <input name="next" type="hidden" value="{{ redirect_to }}">
+           <div class="language-buttons">
+               {% get_current_language as LANGUAGE_CODE %}
+               {% get_available_languages as LANGUAGES %}
+               {% get_language_info_list for LANGUAGES as languages %}
+               {% for language in languages %}
+                   <button type="submit" name="language" value="{{ language.code }}" class="language-button{% if language.code == LANGUAGE_CODE %} active{% endif %}">
+                       {{ language.code|upper }}
+                   </button>
+               {% endfor %}
+           </div>
+       </form>
+       <form action="#" class="theme-switcher-form" aria-label="{% trans 'Theme' %}">
+           <span class="theme-icon theme-icon-sun" title="{% trans 'Light theme' %}" aria-hidden="true"><i class="fas fa-sun"></i></span>
+           <label class="toggle" for="themeToggle">
+               <input class="toggle__input" type="checkbox" id="themeToggle">
+               <span class="toggle__fill"></span>
+           </label>
+           <span class="theme-icon theme-icon-moon" title="{% trans 'Dark theme' %}" aria-hidden="true">
+               <i class="fas fa-star theme-star theme-star-1"></i>
+               <i class="fas fa-star theme-star theme-star-2"></i>
+               <i class="fas fa-star theme-star theme-star-3"></i>
+               <i class="fas fa-star theme-star theme-star-4"></i>
+               <i class="fas fa-star theme-star theme-star-5"></i>
+               <i class="fas fa-star theme-star theme-star-6"></i>
+               <i class="fas fa-moon"></i>
+           </span>
+       </form>
+   </div>
 </div>
 
 

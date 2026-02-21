@@ -135,10 +135,16 @@ p {
   padding: 10px 20px;
   background-color: var(--pink-gray-very-light);
   background-color: #FFF5F8; /* fallback: тёплый кремово-розовый */
-  /* не sticky — верхняя часть уезжает при прокрутке */
   width: 100%;
   box-sizing: border-box;
-  min-width: 0; /* позволяет flex-элементам сжиматься */
+  min-width: 0;
+}
+
+@media (min-width: 481px) {
+  .preheader .left-controls { order: 0; }
+  .preheader .center-controls { order: 1; }
+  .preheader .right-controls { order: 2; }
+  .preheader .auth { order: 3; }
 }
 
 /* Имя слева */
@@ -438,6 +444,11 @@ header nav ul li a:hover {
 /* Заменяем gap на margin для iOS совместимости */
 .auth > * + * {
     margin-left: 8px;
+}
+
+.auth-sep {
+    margin: 0 4px;
+    opacity: 0.9;
 }
 
 .auth strong {
@@ -1376,13 +1387,14 @@ header #logo-link #logo-img {
     color: var(--pink-light-pink);
 }
 
-/* 📱 Маленькие экраны (480px и уже) — чтобы на Samsung и др. не наезжали солнце/луна на Login/Register */
+/* 📱 Маленькие экраны: строка 1 — имя + Регистрация/Войти; строка 2 — язык, тема, Оставить заявку (компактно) */
 @media (max-width: 480px) {
   .preheader {
     position: relative;
     padding: 8px 10px;
-    gap: 6px;
+    gap: 8px 10px;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .left-controls {
@@ -1391,48 +1403,44 @@ header #logo-link #logo-img {
     order: 0;
   }
 
-  .right-controls {
-    gap: 6px;
-    flex-shrink: 1;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  .auth {
     order: 1;
     margin-left: auto;
-    min-width: 0;
-  }
-
-  /* Auth на отдельной строке справа, чтобы не наезжать на солнце/луну */
-  .auth {
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
+    flex: 0 0 auto;
     text-align: right;
-    box-sizing: border-box;
-    padding-top: 2px;
-  }
-
-  .auth nav {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 4px;
   }
 
   .auth nav a {
-    padding: 2px 6px;
+    padding: 2px 3px;
     font-size: 0.75rem;
     white-space: nowrap;
   }
 
-  .center-controls {
-    flex: 1 1 100%;
+  .auth .auth-sep {
+    margin: 0 1px;
+  }
+
+  .right-controls {
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
     order: 2;
-    margin: 2px 0 0 0;
-    justify-content: center;
+    min-width: 0;
+  }
+
+  .center-controls {
+    flex: 0 0 auto;
+    order: 3;
+    justify-content: flex-start;
+    margin-left: 6px;
   }
 
   .name-logo {
     font-size: 0.8em;
+  }
+
+  .name-logo > * + * {
+    margin-left: 3px;
   }
 
   .name-logo .last-name {
@@ -1470,20 +1478,16 @@ header #logo-link #logo-img {
 @media (max-width: 375px) {
   .preheader {
     padding: 6px 8px;
-    gap: 4px;
+    gap: 6px 8px;
   }
 
   .auth nav a {
-    padding: 2px 5px;
+    padding: 2px 2px;
     font-size: 0.68rem;
   }
 
-  .left-controls {
-    order: 0;
-  }
-
   .right-controls {
-    gap: 3px;
+    gap: 6px;
   }
 
   .name-logo {
@@ -1491,13 +1495,13 @@ header #logo-link #logo-img {
     font-size: 0.7em;
   }
 
+  .name-logo > * + * {
+    margin-left: 2px;
+  }
+
   .name-logo .last-name {
     padding: 1px 3px;
     font-size: 0.9em;
-  }
-
-  .center-controls {
-    margin: 4px 0 0 0;
   }
 
   .order-link {
@@ -1555,12 +1559,16 @@ header #logo-link #logo-img {
   }
 
   .auth nav a {
-    padding: 2px 4px;
+    padding: 2px 1px;
     font-size: 0.62rem;
   }
 
   .name-logo {
     font-size: 0.65em;
+  }
+
+  .name-logo > * + * {
+    margin-left: 1px;
   }
 
   .name-logo .first-name {
