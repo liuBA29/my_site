@@ -1806,35 +1806,68 @@ header nav .nav-scroll-inner {
     header .nav-scroll-hint {
         display: block;
         flex: 0 0 auto;
-        padding: 16px;
+        padding: 14px;
         margin: 0;
         background: transparent;
         border: none;
+        border-radius: 50%;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
+        -webkit-transition: background 0.25s ease;
+        transition: background 0.25s ease;
+    }
+    header .nav-scroll-hint:hover,
+    header .nav-scroll-hint:focus {
+        background: rgba(255,255,255,0.12);
     }
     .nav-scroll-hint-icon {
         display: block;
         width: 0;
         height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 14px solid rgba(255,255,255,0.75);
-        filter: drop-shadow(-2px 0 4px rgba(0,0,0,0.15));
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 11px solid rgba(255,255,255,0.88);
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+        -webkit-transition: border-left-color 0.2s ease, filter 0.2s ease;
+        transition: border-left-color 0.2s ease, filter 0.2s ease;
     }
     .nav-scroll-hint:hover .nav-scroll-hint-icon,
     .nav-scroll-hint:focus .nav-scroll-hint-icon {
-        border-left-color: rgba(255,255,255,0.95);
+        border-left-color: rgba(255,255,255,0.98);
+        filter: drop-shadow(0 1px 3px rgba(0,0,0,0.1));
     }
-    /* правая стрелка в конце скролла (после Контакты); видна, когда левая уже скрыта */
     header .nav-scroll-hint-back {
         flex: 0 0 auto;
-        padding: 16px;
+        padding: 14px;
         margin: 0;
         background: transparent;
         border: none;
+        border-radius: 50%;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
+        -webkit-transition: background 0.25s ease;
+        transition: background 0.25s ease;
+    }
+    header .nav-scroll-hint-back:hover,
+    header .nav-scroll-hint-back:focus {
+        background: rgba(255,255,255,0.12);
+    }
+    .nav-scroll-hint-icon-back {
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: none;
+        border-right: 11px solid rgba(255,255,255,0.88);
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.08));
+        -webkit-transition: border-right-color 0.2s ease, filter 0.2s ease;
+        transition: border-right-color 0.2s ease, filter 0.2s ease;
+    }
+    header .nav-scroll-hint-back:hover .nav-scroll-hint-icon-back,
+    header .nav-scroll-hint-back:focus .nav-scroll-hint-icon-back {
+        border-right-color: rgba(255,255,255,0.98);
+        filter: drop-shadow(0 1px 3px rgba(0,0,0,0.1));
     }
     header nav ul {
         flex-direction: row;
@@ -1846,20 +1879,6 @@ header nav .nav-scroll-inner {
         padding-top: 0;
         margin-top: 0;
         margin-bottom: 0;
-    }
-    .nav-scroll-hint-icon-back {
-        display: block;
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: none;
-        border-right: 14px solid rgba(255,255,255,0.75);
-        filter: drop-shadow(2px 0 4px rgba(0,0,0,0.15));
-    }
-    .nav-scroll-hint-back:hover .nav-scroll-hint-icon-back,
-    .nav-scroll-hint-back:focus .nav-scroll-hint-icon-back {
-        border-right-color: rgba(255,255,255,0.95);
     }
     header nav .nav-scroll-inner::-webkit-scrollbar {
         display: none;
