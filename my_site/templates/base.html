@@ -391,12 +391,27 @@ if (!isHomePage) {
         var navScrollHint = document.getElementById("navScrollHint");
         var navScrollHintBack = document.getElementById("navScrollHintBack");
         var navScrollInner = document.getElementById("navScrollInner");
+        var navScrollKey = "headerNavScroll";
         function updateScrollHints() {
             if (!navScrollInner || !navScrollHint || !navScrollHintBack) return;
             var atStart = navScrollInner.scrollLeft <= 5;
             var atEnd = navScrollInner.scrollLeft >= navScrollInner.scrollWidth - navScrollInner.clientWidth - 5;
             navScrollHint.classList.toggle("nav-scroll-hint-hidden", !atStart);
             navScrollHintBack.classList.toggle("nav-scroll-hint-hidden", atStart);
+        }
+        if (navScrollInner) {
+            var saved = sessionStorage.getItem(navScrollKey);
+            if (saved !== null && saved !== "") {
+                var pos = parseInt(saved, 10);
+                if (!isNaN(pos) && pos >= 0) {
+                    navScrollInner.scrollLeft = pos;
+                }
+            }
+            navScrollInner.addEventListener("click", function(e) {
+                if (e.target.closest("a") && !e.target.closest(".nav-scroll-hint")) {
+                    try { sessionStorage.setItem(navScrollKey, String(navScrollInner.scrollLeft)); } catch (err) {}
+                }
+            });
         }
         if (navScrollHint && navScrollInner) {
             navScrollHint.addEventListener("click", function() {
