@@ -4,16 +4,11 @@ import uuid
 from datetime import date
 from pathlib import Path
 
-import json
 from django.core.files.storage import default_storage
-
-from django.conf import settings
 from django.contrib import messages
 from django.http import FileResponse, Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
 from django.urls import reverse
 
 from .forms import ActForContractForm, ContractEditForm, ContractMakerForm, ContractManualForm, CustomerForm
@@ -29,64 +24,6 @@ def _staff_required(user):
 def _get_customers_queryset():
     """Список клиентов для выбора (текущий пользователь + общие)."""
     return Customer.objects.all().order_by("org_name")
-
-
-def _json_response(data, status=200):
-    return HttpResponse(
-        json.dumps(data, ensure_ascii=False),
-        content_type="application/json; charset=utf-8",
-        status=status,
-    )
-
-
-@csrf_exempt
-@require_http_methods(["POST"])
-def api_add_customer(request):
-    """
-    Тестовый API для бота: добавить клиента. POST JSON.
-    Тело: {"org_name": "ООО Рога", "client_type": "legal", "rep_name": "...", ...}
-    Опционально заголовок X-Bot-Token или поле "token" в JSON (значение из CONTRACT_MAKER_BOT_TOKEN).
-    Потом убрать.
-    """
-    try:
-        body = json.loads(request.body) if request.body else {}
-    except json.JSONDecodeError:
-        return _json_response({"ok": False, "error": "Invalid JSON"}, status=400)
-
-    token = getattr(settings, "CONTRACT_MAKER_BOT_TOKEN", None)
-    if token:
-        header_token = request.headers.get("X-Bot-Token")
-        body_token = body.get("token")
-        if header_token != token and body_token != token:
-            return _json_response({"ok": False, "error": "Invalid token"}, status=403)
-
-    org_name = (body.get("org_name") or "").strip()
-    if not org_name:
-        return _json_response({"ok": False, "error": "org_name is required"}, status=400)
-
-    client_type = body.get("client_type") or Customer.CLIENT_TYPE_LEGAL
-    if client_type not in (Customer.CLIENT_TYPE_INDIVIDUAL, Customer.CLIENT_TYPE_LEGAL):
-        client_type = Customer.CLIENT_TYPE_LEGAL
-
-    customer = Customer(
-        client_type=client_type,
-        org_name=org_name,
-        rep_position=(body.get("rep_position") or "").strip()[:100],
-        rep_name=(body.get("rep_name") or "").strip()[:255],
-        basis=(body.get("basis") or "Устава").strip()[:255],
-        short_name=(body.get("short_name") or "").strip()[:100],
-        address=(body.get("address") or "").strip()[:500],
-        unp=(body.get("unp") or "").strip()[:20],
-        okpo=(body.get("okpo") or "").strip()[:20],
-        iban=(body.get("iban") or "").strip()[:50],
-        created_by=None,
-    )
-    customer.save()
-    return _json_response({
-        "ok": True,
-        "id": customer.pk,
-        "org_name": customer.org_name,
-    })
 
 
 @login_required

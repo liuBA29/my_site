@@ -37,9 +37,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
             await self.close()
             return
 
-        # 🟢 Telegram-уведомление:
+        # 🟢 Telegram-уведомление (sync_to_async — не блокировать event loop):
         if not user.is_superuser:
-            send_telegram_message(_("💬 User %(username)s has joined the chat!") % {"username": user.username})
+            await sync_to_async(send_telegram_message)(
+                _("💬 User %(username)s has joined the chat!") % {"username": user.username}
+            )
 
         # Отправка сообщения только подключившемуся пользователю
         if user.is_superuser:

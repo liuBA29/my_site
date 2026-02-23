@@ -8,7 +8,8 @@ import requests
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from contract_maker.models import Customer
+from bot.telegram import send_telegram
+from bot.actions.add_customer import add_customer_from_payload
 
 
 # Фразы, после которых идёт название организации или ФИО (регистронезависимо)
@@ -32,6 +33,40 @@ ADD_CONTRACT_HINT = re.compile(
     re.IGNORECASE,
 )
 
+# Кнопки под сообщением (ReplyKeyboard)
+ADD_CUSTOMER_BUTTON = "➕ Добавить клиента"
+KEYBOARD_COMMANDS = {
+    "keyboard": [[ADD_CUSTOMER_BUTTON]],
+    "resize_keyboard": True,
+}
+
+# Приветствия — отвечаем «Привет!»
+GREETING_WORDS = (
+    "привет", "приветик", "здравствуй", "здравствуйте", "здаров", "хай", "hello",
+    "hi", "hey", "добрый день", "добрый вечер", "доброе утро", "доброй ночи",
+)
+GREETING_RE = re.compile(
+    r"^(" + "|".join(re.escape(w) for w in GREETING_WORDS) + r")[\s!?.,]*$",
+    re.IGNORECASE,
+)
+
+
+def is_greeting(text):
+    """Сообщение — приветствие (одно слово/фраза из списка или начинается с приветствия)."""
+    if not text or not isinstance(text, str):
+        return False
+    t = text.strip()
+    if not t:
+        return False
+    # Точное совпадение (с пунктуацией в конце) или первое слово — приветствие
+    if GREETING_RE.match(t):
+        return True
+    t_lower = t.lower()
+    if t_lower in GREETING_WORDS:
+        return True
+    first_word = t_lower.split()[0].rstrip("!?.,;:")
+    return first_word in GREETING_WORDS
+
 
 def extract_org_name(text):
     """Если текст — запрос на добавление клиента, вернуть название; иначе None."""
@@ -45,20 +80,10 @@ def extract_org_name(text):
     return None
 
 
-def send_telegram_reply(token, chat_id, text):
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    try:
-        r = requests.post(url, json={"chat_id": chat_id, "text": text}, timeout=10)
-        r.raise_for_status()
-    except requests.RequestException as e:
-        return False
-    return True
-
-
 class Command(BaseCommand):
     help = (
         "Запуск бота @myregibot: слушает сообщения в Telegram, "
-        "по фразам «добавь клиента …» добавляет клиента в contract_maker."
+        "отвечает «Привет!» на приветствие, по фразам «добавь клиента …» добавляет клиента в contract_maker."
     )
 
     def add_arguments(self, parser):
@@ -71,13 +96,17 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         token = getattr(settings, "TELEGRAM_BOT_TOKEN", None)
+        if token:
+            token = (token or "").strip()
         if not token:
             self.stderr.write(
-                self.style.ERROR("TELEGRAM_BOT_TOKEN не задан в .env. Добавьте переменную и перезапустите.")
+                self.style.ERROR(
+                    "TELEGRAM_BOT_TOKEN не задан. Проверьте: .env лежит в папке с manage.py, "
+                    "строка TELEGRAM_BOT_TOKEN=токен без кавычек и пробелов вокруг =."
+                )
             )
             return
 
-        # Разрешённые chat_id: для бота можно задать свой (личный чат), отдельно от TELEGRAM_CHAT_ID (уведомления в группу)
         allowed_raw = (
             getattr(settings, "TELEGRAM_BOT_ALLOWED_CHAT_IDS", None)
             or getattr(settings, "TELEGRAM_BOT_ALLOWED_CHAT_ID", None)
@@ -98,14 +127,17 @@ class Command(BaseCommand):
             except (TypeError, ValueError):
                 pass
         if not allowed_ids:
-            self.stderr.write(self.style.ERROR("TELEGRAM_BOT_ALLOWED_CHAT_ID / TELEGRAM_CHAT_ID должны быть числом (или числа через запятую)."))
+            self.stderr.write(
+                self.style.ERROR("TELEGRAM_BOT_ALLOWED_CHAT_ID / TELEGRAM_CHAT_ID должны быть числом (или числа через запятую).")
+            )
             return
 
         poll_interval = options["poll_interval"]
         url = f"https://api.telegram.org/bot{token}/getUpdates"
         offset = None
+        token_preview = f"{token[:6]}...{token[-4:]}" if len(token) > 12 else "***"
         self.stdout.write(
-            f"Бот @myregibot запущен. Отвечает только в чатах: {', '.join(sorted(allowed_ids))}. Ctrl+C — выход."
+            f"Токен: {token_preview}. Разрешённые чаты: {', '.join(sorted(allowed_ids))}. Ctrl+C — выход."
         )
 
         while True:
@@ -130,10 +162,8 @@ class Command(BaseCommand):
                     if not text or chat_id is None:
                         continue
 
-                    # Лог: каждое входящее сообщение (чтобы в docker logs видеть chat_id и текст)
                     self.stdout.write(f"[msg] chat_id={chat_id} text={text[:50]!r}")
 
-                    # Отвечаем только разрешённым чатам (хозяину бота)
                     if str(chat_id) not in allowed_ids:
                         self.stdout.write(
                             f"[skip] chat_id {chat_id} не в разрешённых (разрешены: {', '.join(sorted(allowed_ids))}). "
@@ -141,33 +171,47 @@ class Command(BaseCommand):
                         )
                         continue
 
+                    if is_greeting(text):
+                        send_telegram("Привет!", chat_id=chat_id, reply_markup=KEYBOARD_COMMANDS)
+                        self.stdout.write("[greeting] ответ «Привет!» + кнопки")
+                        continue
+
+                    # Нажатие «Добавить клиента» или фраза без названия — подсказка
+                    t_strip = text.strip()
+                    t_lower = t_strip.lower()
+                    if t_strip in (ADD_CUSTOMER_BUTTON, "Добавить клиента") or t_lower in ("добавить клиента", "добавь клиента"):
+                        hint = (
+                            "Напиши: добавь клиента <название>, например:\n"
+                            "добавь клиента ООО Ромашка"
+                        )
+                        send_telegram(hint, chat_id=chat_id, reply_markup=KEYBOARD_COMMANDS)
+                        self.stdout.write("[hint] подсказка «добавить клиента» + кнопки")
+                        continue
+
                     org_name = (extract_org_name(text) or "").strip()
                     if not org_name:
                         if ADD_CONTRACT_HINT.match(text):
-                            hint = "Пока умею только добавлять клиентов. Напиши, например: «Добавь клиента ООО Ромашка». Договор создаётся на сайте liuba.site в разделе Договоры."
-                            send_telegram_reply(token, chat_id, hint)
-                            self.stdout.write(f"[hint] отправлена подсказка про договор")
+                            hint = (
+                                "Пока умею только добавлять клиентов. Напиши, например: «Добавь клиента ООО Ромашка». "
+                                "Договор создаётся на сайте liuba.site в разделе Договоры."
+                            )
+                            send_telegram(hint, chat_id=chat_id)
+                            self.stdout.write("[hint] отправлена подсказка про договор")
                         else:
                             self.stdout.write(f"[skip] не команда «добавь клиента …»: {text[:50]!r}")
                         continue
-                    org_name = org_name[:255]
-                    try:
-                        customer, created = Customer.objects.get_or_create(
-                            org_name=org_name,
-                            defaults={
-                                "client_type": Customer.CLIENT_TYPE_LEGAL,
-                                "created_by": None,
-                            },
-                        )
+
+                    customer, created, error = add_customer_from_payload({"org_name": org_name[:255]})
+                    if error:
+                        reply = f"Ошибка при добавлении клиента: {error}"
+                        self.stderr.write(f"[error] {error}")
+                    else:
                         if created:
                             reply = f"Клиент «{customer.org_name}» добавлен в базу (id={customer.pk})."
                         else:
                             reply = f"Клиент «{customer.org_name}» уже есть в базе (id={customer.pk})."
                         self.stdout.write(f"[ok] {reply}")
-                    except Exception as e:
-                        reply = f"Ошибка при добавлении клиента: {e}"
-                        self.stderr.write(f"[error] {e}")
-                    send_telegram_reply(token, chat_id, reply)
+                    send_telegram(reply, chat_id=chat_id)
 
             except requests.RequestException as e:
                 self.stderr.write(f"Request error: {e}")

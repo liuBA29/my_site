@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'agregator.apps.AgregatorConfig',
     'contract_maker.apps.ContractMakerConfig',
+    'bot.apps.BotConfig',
 
     'cloudinary',
     'cloudinary_storage',

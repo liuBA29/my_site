@@ -1,8 +1,6 @@
 # accounts/views.py
 import logging
 
-import requests
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
@@ -10,25 +8,14 @@ from django.utils.translation import gettext_lazy as _
 
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from .models import Room
+from bot.telegram import send_telegram
 
 logger = logging.getLogger(__name__)
 
 
-
-
 def send_telegram_message(text):
-    token = settings.TELEGRAM_BOT_TOKEN
-    chat_id = settings.TELEGRAM_CHAT_ID
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    data = {
-        'chat_id': chat_id,
-        'text': text
-    }
-    try:
-        response = requests.post(url, data=data)
-        response.raise_for_status()
-    except requests.RequestException:
-        logger.exception("Ошибка отправки в Telegram")
+    """Уведомления с сайта — отправка в TELEGRAM_CHAT_ID. Общая логика в accounts.telegram_utils."""
+    send_telegram(text)
 
 
 def register_view(request):
